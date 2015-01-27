@@ -23,4 +23,4 @@ ${ECLIPSE_PATH}/eclipse  -debug -consolelog -nosplash -verbose -application org.
 
 # inform user --------------------------------------------------------------------------------
 echo Artifacts installed.
-echo Don\'t forget to add <targetplatform.repo>${LOCAL_REPO_PATH}</targetplatform.repo> into your settings.xml
+echo Don\'t forget to add <targetplatform.repo>${LOCAL_REPO_PATH}</targetplatform.repo> into agregator/pom.xml
