@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MongoDB Plugin
+Bundle-SymbolicName: com.jaspersoft.studio.data.mongodb;singleton:=true
+Bundle-Version: 5.6.2.final
+Bundle-Activator: com.jaspersoft.studio.data.mongodb.Activator
+Bundle-Vendor: Jaspersoft Corporation
+Require-Bundle: com.jaspersoft.studio.data;bundle-version="5.6.2";visibility:=reexport,
+ com.jaspersoft.studio.server;bundle-version="5.6.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Eclipse-RegisterBuddy: com.jaspersoft.studio.data
+Bundle-ClassPath: lib/js-mongodb-datasource-1.0.4-SNAPSHOT.jar,
+ lib/mongo-java-driver-2.11.3.jar,
+ .

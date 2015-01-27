@@ -1,0 +1,195 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.jaspersoft.studio.community-edition</groupId>
+	<artifactId>aggregator</artifactId>
+	<version>5.6.2.final</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<tycho-version>0.18.0</tycho-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <targetplatform.repo>/Users/tom/Documents/workspace-4.4/eclipse_local_repo/jss382target/</targetplatform.repo>
+        <jre.packages.location>/Users/tom/Documents/workspace-4.4/jre_packages</jre.packages.location>
+        <jre.packages.version>76</jre.packages.version>
+        <!-- Force this property when producing official release -->
+        <!-- <buildQualifier>RELEASE</buildQualifier> -->
+	</properties>
+
+	<repositories>
+		<!--  
+			Local repository obtained from the target platform, using the following command:
+			./eclipse  -debug -consolelog -nosplash -verbose \
+			-application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
+			-metadataRepository file:/Users/mrabbi/Sviluppo/jaspersoftstudio/updatesite/jss381target \
+			-artifactRepository file:/Users/mrabbi/Sviluppo/jaspersoftstudio/updatesite/jss381target \
+			-source /Users/mrabbi/Sviluppo/jaspersoftstudio/targetPlatforms/macserver/jss_381 -compress -append -publishArtifacts
+		-->
+		<repository>
+			<id>jss381TargetPlaftorm</id>
+			<layout>p2</layout>
+			<url>file://${targetplatform.repo}</url>
+		</repository>
+		<!-- The online repositories 
+		<repository>
+			<id>juno</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/juno/</url>
+		</repository>
+		<repository>
+			<id>eclipse38</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/eclipse/updates/3.8/</url>
+		</repository>
+		<repository>
+			<id>nebula</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/technology/nebula/snapshot/</url>
+		</repository>
+		<repository>
+			<id>orbitR20130118183705</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/</url>
+		</repository>
+		<repository>
+			<id>xtext</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+		</repository>
+		<repository>
+			<id>yakinduItemisJfaceIntegration</id>
+			<layout>p2</layout>
+			<url>http://updates.yakindu.com/indigo/milestones/</url>
+		</repository>
+		-->
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<!-- Use this to retrieve the SVN revision number in order to build the final name -->
+			<!--  
+			<plugin>
+				<groupId>com.google.code.maven-svn-revision-number-plugin</groupId>
+				<artifactId>svn-revision-number-maven-plugin</artifactId>
+				<version>1.13</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<entries>
+						<entry>
+							<prefix>prefix</prefix>
+						</entry>
+					</entries>
+				</configuration>
+			</plugin>
+			-->
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<!-- 
+						DIFFERENT WAYS TO PRODUCE QUALIFIERS AND FINAL FILE NAME.
+						PAY ATTENTION THAT ALSO THE SIGNING INFORMATION IN plugins/pom.xml, features/pom.xml
+						MUST HAVE A COHERENT JARPATH INFORMATION.
+						 
+						1. When producing SNAPSHOT use this snippet to have a formatted qualifier and
+						a coherent output file name.
+						<format>'v'yyyyMMddHHmm</format>
+						<finalName>${project.artifactId}_${project.version}.${buildQualifier}</finalName>
+						
+						2. Use this snippet to have a qualifier, plus final name, svnrevision-related.
+						<qualifier>r${prefix.revision}</qualifier>
+						<finalName>${project.artifactId}_${project.version}-r${prefix.revision}</finalName>
+						
+						3. Comment lines below when performing official releases.
+					-->
+					<format>'beta-v'yyyyMMddHHmm</format>
+					<finalName>${project.artifactId}_${project.version}.${buildQualifier}</finalName>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-versions-plugin</artifactId>
+				<version>${tycho-version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<pomDependencies>consider</pomDependencies>
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<!-- All Jaspersoft Studio plug-ins -->
+		<module>plugins</module>
+		<!-- All Jaspersoft Studio features -->
+		<module>features</module>
+		<!-- The plug-in for (old-style) update site: uses eclipse-update-site packaging -->
+		<module>updatesite</module>
+		<!--  The product for different platforms -->
+		<module>product</module>
+		<!--  A P2-like repository -->
+		<module>repository</module>
+		<!-- Q7 Tests -->
+		<!-- <module>../com.jaspersoft.studio.tests.q7</module> -->
+	</modules>
+</project>

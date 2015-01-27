@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+<title>Create a New Project Folder</title>
+<section>
+        <para>From JasperSoft Studio, open the menu File, select New and then Others....</para>
+       	<figure>
+			<title>Select New-&gt;Other</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="11.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+        <para>
+   			In the dialog that will appear type &quot;Jasper&quot; in the Wizards bar, this will filter all the actions showing only
+        	the ones related to JasperSoft Studio, and from this filtered list select &quot;JasperReports Project&quot;. Then hit
+       		Next.
+        </para>
+        <figure>
+			<title>Select JasperReports Project</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="12.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+        <para>At this point you need only to insert the name of the folder and hit Finish.</para>
+        <figure>
+			<title>Insert the Name of the Folder</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="13.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+     	</section>
+</section>

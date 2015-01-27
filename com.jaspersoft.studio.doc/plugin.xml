@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+   </extension>
+   
+   <extension
+         point="org.eclipse.help.contexts">
+    <contexts
+            file="context.xml"
+            plugin="com.jaspersoft.studio.doc">
+    </contexts>
+</extension>
+    <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="com.jaspersoft.studio.cheatsheets.elements"
+            name="Report elements"
+            parentCategory="com.jaspersoft.studio.doc.jasperRoot">
+      </category>
+      <category
+            id="com.jaspersoft.studio.cheatsheets.reports"
+            name="Manage reports"
+            parentCategory="com.jaspersoft.studio.doc.jasperRoot">
+      </category>
+      <category
+            id="com.jaspersoft.studio.cheatsheets.server"
+            name="Working with JasperReports Server"
+            parentCategory="com.jaspersoft.studio.doc.jasperRoot">
+      </category>
+      <category
+            id="com.jaspersoft.studio.doc.jasperRoot"
+            name="JasperReports Development">
+      </category>
+      <cheatsheet
+            category="com.jaspersoft.studio.cheatsheets.reports"
+            composite="false"
+            contentFile="cheatsheets/content.xml"
+            id="com.jaspersoft.studio.cheatsheets.datasource"
+            name="Manage Data Connections">
+      </cheatsheet>
+      <cheatsheet
+            category="com.jaspersoft.studio.cheatsheets.reports"
+            composite="false"
+            contentFile="cheatsheets/designreports.xml"
+            id="com.jaspersoft.studio.cheatsheets.designreport"
+            name="Start Designing a report">
+      </cheatsheet>
+      <cheatsheet
+            category="com.jaspersoft.studio.cheatsheets.reports"
+            composite="false"
+            contentFile="cheatsheets/runreport.xml"
+            id="com.jaspersoft.studio.cheatsheets.runreport"
+            name="Preview and Run Reports">
+      </cheatsheet>
+      <cheatsheet
+           	category="com.jaspersoft.studio.cheatsheets.elements"
+            composite="true"
+            contentFile="cheatsheets/createchart.xml"
+            id="com.jaspersoft.studio.cheatsheets.createchart"
+            name="Create a chart inside a report">
+      </cheatsheet>
+      <cheatsheet
+           	category="com.jaspersoft.studio.cheatsheets.elements"
+            composite="false"
+            contentFile="cheatsheets/createdataset.xml"
+            id="com.jaspersoft.studio.cheatsheets.createdataset"
+            name="Create a dataset">
+      </cheatsheet>
+      <cheatsheet
+           	category="com.jaspersoft.studio.cheatsheets.reports"
+            composite="false"
+            contentFile="cheatsheets/reportcreation.xml"
+            id="com.jaspersoft.studio.cheatsheets.createreport"
+            name="Create a Report">
+      </cheatsheet>
+      <cheatsheet
+           	category="com.jaspersoft.studio.cheatsheets.elements"
+            composite="false"
+            contentFile="cheatsheets/addfields.xml"
+            id="com.jaspersoft.studio.cheatsheets.addfield"
+            name="Add fields to a report">
+      </cheatsheet>
+      <cheatsheet
+           	category="com.jaspersoft.studio.cheatsheets.server"
+            composite="false"
+            contentFile="cheatsheets/creasteJServerConnection.xml"
+            id="com.jaspersoft.studio.cheatsheets.JServerConnection"
+            name="Create a connection to JasperReports Server">
+      </cheatsheet>
+      <cheatsheet
+           	category="com.jaspersoft.studio.cheatsheets.server"
+            composite="false"
+            contentFile="cheatsheets/uploadReport.xml"
+            id="com.jaspersoft.studio.cheatsheets.UploadReport"
+            name="Publish a report to JasperReports Server">
+      </cheatsheet>
+      <cheatsheet
+            category="com.jaspersoft.studio.cheatsheets.elements"
+            composite="true"
+            contentFile="cheatsheets/chart.xml"
+            id="com.jaspersoft.studio.doc.chartreport"
+            name="Create a report with a chart">
+      </cheatsheet>
+   </extension>
+    <extension
+          point="com.jaspersoft.studio.babel.editor.resourceInput">
+       <input
+             class="com.jaspersoft.studio.doc.messages.ResourcePublisher">
+       </input>
+    </extension>
+
+</plugin>

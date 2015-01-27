@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Add fields to a report">
+   <intro>
+      <description>
+         In this cheatsheet we will see how to add a field to a report by editing the query of its main dataset. To add a field we have to edit the query of the main dataset of the report.
+      </description>
+   </intro>
+    <item title="Open a report">
+    	<description>
+    		Open a report or create a new one, even blank. A report without field it is suggested.
+    	</description>
+    </item>
+    <item title="Go into the Outline tab">
+      <description>
+         With the report opened, move into its outline tab.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=org.eclipse.ui.views.ContentOutline)"/>
+   </item>
+    <item title="Edit the report query" dialog="true">
+      <description>
+         Now you need to enter in the main query editor, to do this select the report element in the Outline view and from the Properties view hit the button <b>Edit query, filter and sort options</b>
+      </description>
+      <action pluginId="com.jaspersoft.studio.doc" class="com.jaspersoft.studio.doc.handlers.OpenQueryHandler" required="false"/>
+   </item>
+   <item title="Select the dataset">
+    	<description>
+    		From the current dialog, select in the upper left corner the dataset <b>Sample DB</b>.</description>
+    </item>
+   <item title="Insert the query">
+    	<description>
+			Insert the query <b>select count(orderid), year(shippeddate) from orders group by year(shippeddate)</b>, this will extract from the database the number of shipment done in every year.
+    	</description>
+    </item>
+    <item title="Read the fields">
+    	<description>
+    		Hit the <b>Read Fields</b> button to discover the new fields using the provided query. If it is all right two fields should be discovered, C1 and C2. Then hit <b>Ok</b>. Fields button to discover the new fields using the provided query. If it is all right two fields should be discovered, C1 and C2. Then hit <b>Ok</b>.
+    	</description>
+    </item>
+
+    <item
+          title="Place the field">
+       <description>
+          In the outline view now you can find the two new fields, under the <b>Fields</b> element. Drag and drop them inside the detail band of the report.
+       </description>
+    </item>
+    <item
+          title="Run the report">
+       <description>
+          The new fields are now placed into the report through two text fields, you can execute the report and see the result.
+       </description>
+    </item></cheatsheet>

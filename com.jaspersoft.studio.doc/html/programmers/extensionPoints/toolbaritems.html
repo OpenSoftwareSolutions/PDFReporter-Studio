@@ -1,0 +1,288 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>How to create context tool items</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>How to create context tool items</h2></div></div><hr></div>
+	
+
+	<div class="section"><div class="titlepage"></div>
+		<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="N4000E"></a>Introduction</h4></div></div></div>
+			
+			<p>
+				This tutorial is about the Jaspersoft Studio extensions that add actions or contribution items for the selected element or elements to the global eclipse toolbar. This actions and
+				contribution
+				items are organized into groups, visibility of this groups of items is controlled by the user using preferences.
+			</p>
+		</div>
+		<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="N40017"></a>Extension Points</h4></div></div></div>
+			
+
+
+			<p>
+				<span class="emphasis"><em>com.jaspersoft.studio.toolitems</em></span>
+				&ndash; contains all the actions or ContributionItems that could be found on the toolbar
+			</p>
+
+			<p>
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>id</em></span>
+							&ndash; the toolitem unique identifier
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>contributionItemClass</em></span>
+							&ndash; ContributionItem class name, null if this is an action
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>ActionID</em></span>
+							&ndash; action ID, null if this is a ContributionItem
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>label</em></span>
+							&ndash; item label, make sens for actions
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>tooltip</em></span>
+							&ndash; item tooltip, description
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>icon</em></span>
+							&ndash; if not null override action icon
+						</p>
+					</li></ul></div><p>
+			</p>
+			<p>for each toolitem it's necessary to add classes for each this item apply</p>
+			<p>
+				<span class="emphasis"><em>com.jaspersoft.studio.toolitemsets</em></span>
+				&ndash; defines item groups, and their visibility
+			</p>
+			<p>
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>
+								id
+							</em></span>
+							&ndash; group unique identifier
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>
+								name
+							</em></span>
+							&ndash; the name that is visible in preferences page
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>
+								visibility
+							</em></span>
+							&ndash; default group visibility
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>
+								description
+							</em></span>
+							&ndash; description, tooltip of the group
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>
+								toolbaruri
+							</em></span>
+							&ndash; the toolbar uri from global eclipse toolbar namespace
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+							<span class="emphasis"><em>
+								menuuri
+							</em></span>
+							&ndash; the menu uri from global eclipse menu (not used for the moment)
+						</p>
+					</li></ul></div><p>
+			</p>
+			<p>
+				for each group, a list of id of toolitems from com.jaspersoft.studio.toolitems should be defined
+			</p>
+		</div>
+		<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="N400A9"></a>Steps to add an Action</h4></div></div></div>
+			
+			<p>A good example are actions we already have to set some boolean properties for text elements and actions to help arrange elements in the report, look at:</p>
+			<p>
+				</p><pre class="programlisting">
+			com.jaspersoft.studio.editor.action.order.BringBackwardAction
+			com.jaspersoft.studio.editor.action.text.BoldAction
+			</pre><p>
+			</p>
+			<p>
+				in this tutorial we will explain BoldAction, this action set bold property on a text element
+			</p>
+			<p>
+				We have to create an action that usually extends a SelectionAction, in this tutorial we'll extend AbooleanPropertyAction class, this clas implements functionality to set/get a boolean
+				property
+				from
+				the model, we just have to override a method that check if this action apply to the model, and a method that return the property name
+				the action should be added to the editors
+				ActionsRegistry,
+				in out example we'll add this lines to com.jaspersoft.studio.editor.report.AbstractVisualEditor.
+			</p>
+			<p>
+				</p><pre class="programlisting">
+		protected void createActions() {
+
+		...
+
+		action = new BoldAction(this);
+
+		registry.registerAction(action);
+
+		selectionActions.add(action.getId());
+
+		...
+
+		}
+		</pre><p>
+			</p>
+			<p>
+				add the item to plugin.xml:
+			</p>
+			<p>
+				</p><pre class="programlisting">
+		&lt;extension point="com.jaspersoft.studio.toolitems"&gt;
+
+			...
+
+			&lt;toolitems ActionID="com.jaspersoft.studio.editor.action.text.bold" icon="icons/resources/eclipse/font-bold.gif" id="com.jaspersoft.studio.editor.action.text.bold" label="Bold"
+				tooltip="Set font to Bold"&gt;
+
+				&lt;selectedObject class="com.jaspersoft.studio.model.text.MTextElement"&gt;&lt;/selectedObject&gt;
+
+			&lt;/toolitems&gt;
+
+			...
+
+		&lt;/extension&gt;
+		</pre><p>
+			</p>
+			<p>
+				add item to the group, we will use &ldquo;com.jaspersoft.studio.graphic.text&rdquo; uri for our toolbar
+			</p>
+			<p>
+				</p><pre class="programlisting">
+		&lt;extension point="com.jaspersoft.studio.toolitemsets"&gt;
+
+			...
+
+			&lt;toolitemsets description="Text Element properties" id="com.jaspersoft.studio.graphic.text" name="Text Properties" toolbaruri="com.jaspersoft.studio.graphic.text" visibility="true"&gt;
+
+				...
+
+				&lt;toolitem toolitemID="com.jaspersoft.studio.editor.action.text.bold"&gt;&lt;/toolitem&gt;
+
+				...
+
+		&lt;/extension&gt;
+		</pre><p>
+			</p>
+			<p>
+				test, select a Static Text element and look if &ldquo;bold&rdquo; button is visible in the eclipse global toolbar
+			</p>
+		</div>
+
+		<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="N400DD"></a>Steps to add an ContributionItem</h4></div></div></div>
+			
+			<p>A contribution item give us possibility to add a widget to the toolbar like a combo. In this example we will look at FontNameContributionItem, for more examples look in
+				com.jaspersoft.studio.editor.action.text package.
+			</p>
+			<p>
+				</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						<p>
+							create the contribution item we will extend ApropertyComboContributionItem class , this class implements the functionality necessary to get and set values in the model, we have just set an
+							ID,
+							property name and implement a method that will populate our combo box.
+						</p>
+					</li><li class="listitem">
+						<p>
+							add the item to plugin.xml:
+						</p>
+						<p>
+							</p><pre class="programlisting">
+    &lt;extension point="com.jaspersoft.studio.toolitems"&gt;
+
+    ...
+
+    &lt;toolitems contributionItemClass="com.jaspersoft.studio.editor.action.text.FontNameComboContributionItem" id="com.jaspersoft.studio.editor.action.text.fontname" tooltip="Font Name"&gt;
+
+    &lt;selectedObject class="com.jaspersoft.studio.model.text.MTextElement"&gt;&lt;/selectedObject&gt;
+
+    &lt;/toolitems&gt;
+
+    ...
+
+    &lt;/extension&gt;
+</pre><p>
+						</p>
+						<p>
+							meaning is straightforward we tell to extension which class implements contribution item, tooltip for this contribution item and for what selected model classes this item is visible
+						</p>
+					</li><li class="listitem">
+						<p>
+							add item to the group, we will use &ldquo;com.jaspersoft.studio.graphic.text&rdquo; uri for our toolbar
+						</p>
+						<p>
+							</p><pre class="programlisting">
+    &lt;extension
+
+    point="com.jaspersoft.studio.toolitemsets"&gt;
+
+    ...
+
+    &lt;toolitemsets
+
+    description="Text Element properties"
+
+    id="com.jaspersoft.studio.graphic.text"
+
+    name="Text Properties"
+
+    toolbaruri="com.jaspersoft.studio.graphic.text"
+
+    visibility="true"&gt;
+
+    ...
+
+    &lt;toolitem
+
+    toolitemID="com.jaspersoft.studio.editor.action.text.fontname"&gt;
+
+    &lt;/toolitem&gt;
+
+    ...
+
+    &lt;/toolitemsets&gt;
+
+    ...
+
+    &lt;/extension&gt;</pre><p>
+						</p>
+					</li><li class="listitem">
+						<p>
+							test, select a Static Text element and look if combo with font names is visible in the eclipse global toolbar
+						</p>
+					</li></ol></div><p>
+			</p>
+		</div>
+		<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="N40116"></a>Preferences</h4></div></div></div>
+			
+			<p>To hide or show a group of items, go to Preferences &rarr; Jaspersoft Studio &rarr; Toolbars and use checkboxes.
+			</p>
+			<div class="figure"><a name="N4011E"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Toolbar visibility preferences page</b></p><div class="figure-contents">
+				
+				<div class="screenshot">
+					<div class="mediaobject"><img src="Preferences _042.png" width="800" alt="Toolbar visibility preferences page"></div>
+				</div>
+			</div></div><br class="figure-break">
+		</div>
+	</div>
+</div></body></html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   
+   
+   <context id="adapter_hive" title="Hive Data Adapter">
+      <description>Hive is a data warehouse system for Hadoop that facilitates easy data summarization, ad-hoc queries, and the analysis of large datasets stored in Hadoop compatible file systems. Hive provides a mechanism to project structure onto this data and query the data using a SQL-like language called HiveQL. At the same time this language also allows traditional map/reduce programmers to plug in their custom mappers and reducers when it is inconvenient or inefficient to express this logic in HiveQL. To create a connection with an hive database provide its URL</description>
+      <topic href="html/hive.html" label="Hive Data Adapter"/>
+   </context>
+   <context id="query_HIVE" title="Dataset and query dialog">
+      <description>From this dialog you can change the dataset query, define new parameters or change the adapter used to retrive the data.</description>
+      <topic href="https://cwiki.apache.org/confluence/display/Hive/Tutorial" label="Hive Tutorial"/>
+      <topic href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual" label="HIVE Reference"/>
+   </context>
+</contexts>

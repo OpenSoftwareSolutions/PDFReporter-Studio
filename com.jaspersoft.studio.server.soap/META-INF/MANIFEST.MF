@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JasperReports Server Integration with SOAP
+Bundle-SymbolicName: com.jaspersoft.studio.server.soap;singleton:=true
+Bundle-Version: 5.6.2.final
+Bundle-Activator: com.jaspersoft.studio.server.soap.Activator
+Bundle-Vendor: Jaspersoft Corporation
+Require-Bundle: org.apache.commons.httpclient;bundle-version="3.1.0",
+ org.apache.commons.codec;bundle-version="1.3.0",
+ org.apache.commons.discovery;bundle-version="0.2.0",
+ com.jaspersoft.studio.server;bundle-version="5.6.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Eclipse-RegisterBuddy: com.jaspersoft.studio.server
+Eclipse-BuddyPolicy: registered
+Export-Package: com.jaspersoft.ireport.jasperserver.ws,
+ javax.xml.rpc,
+ javax.xml.rpc.encoding 
+Bundle-ClassPath: lib/js_activation-1.1.jar,
+ lib/js_jaxrpc.jar,
+ lib/js_mail-1.4.jar,
+ lib/js_saaj-api-1.3.jar,
+ lib/js_wsdl4j-1.5.1.jar,
+ .

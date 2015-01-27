@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="suggestion" name="Suggestion Provider Extension Point" schema="schema/org.eclipse.babel.editor.suggestion.exsd"/>
+   <extension-point id="resourceInput" name="resourceInput" schema="schema/resourceInput.exsd"/>
+   <extension-point id="resourceSender" name="resourceSender" schema="schema/resourceSender.exsd"/>
+   <extension-point id="resourceFactory" name="resourceFactory" schema="schema/resourceFactory.exsd"/>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.babel.editor.internal.MessagesEditor"
+            contributorClass="org.eclipse.babel.editor.internal.MessagesEditorContributor"
+            default="true"
+            extensions="properties"
+            icon="icons/propertiesfile.gif"
+            id="com.essiembre.rbe.eclipse.editor.ResourceBundleEditor"
+            name="%editor.title">
+      </editor>
+      <editor
+            class="org.eclipse.pde.nls.internal.ui.editor.LocalizationEditor"
+            icon="icons/obj16/nls_editor.gif"
+            id="org.eclipse.pde.nls.ui.LocalizationEditor"
+            name="%localizationEditorName">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="%editor.title"
+            class="org.eclipse.babel.editor.preferences.GeneralPrefPage"
+            id="com.jaspersoft.studio.babel.editor.preferences.GeneralPrefPage">
+      </page>
+      <page
+            class="org.eclipse.babel.editor.preferences.FormattingPrefPage"
+            category="com.jaspersoft.studio.babel.editor.preferences.GeneralPrefPage"
+            name="%prefs.formatting"
+            id="com.jaspersoft.studio.babel.editor.preferences.FormattingPrefPage"/>
+      <page
+            class="org.eclipse.babel.editor.preferences.ReportingPrefPage"
+            category="com.jaspersoft.studio.babel.editor.preferences.GeneralPrefPage"
+            name="%prefs.performance"
+            id="com.essiembre.eclipse.rbe.ui.preferences.RBEReportingPrefPage"/>
+   </extension>
+
+ <extension
+       id="rbeBuilder"
+       name="RBE Project Builder"
+       point="org.eclipse.core.resources.builders">
+    <builder hasNature="true">
+       <run class="org.eclipse.babel.editor.builder.Builder"/>
+    </builder>
+ </extension>
+ <extension
+       id="rbeNature"
+       name="RBE Project Nature"
+       point="org.eclipse.core.resources.natures">
+    <runtime>
+       <run class="org.eclipse.babel.editor.builder.Nature"/>
+    </runtime>
+    <builder id="com.jaspersoft.studio.babel.editor.rbeBuilder"/>
+ </extension>
+ <extension
+         id="translationNature"
+         name="Translation Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="com.jaspersoft.translation.resources.TranslationProjectNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/translation_project_icon.png"
+            id="com.essiembre.translation.natureImage"
+            natureId="com.jaspersoft.studio.babel.editor.translationNature">
+      </image>
+   </extension>
+ <extension
+       point="org.eclipse.ui.popupMenus">
+    <!--objectContribution
+          adaptable="true"
+          id="com.essiembre.rbe.eclipse.contribution1"
+          nameFilter="*"
+          objectClass="org.eclipse.core.resources.IProject">
+       <action
+             class="com.jaspersoft.studio.babel.editor.builder.ToggleNatureAction"
+             enablesFor="+"
+             id="com.essiembre.rbe.eclipse.addRemoveNatureAction"
+             label="Unable/Disable i18n properties validator builder"
+             menubarPath="additions"/>
+    </objectContribution-->
+    
+    <objectContribution
+            adaptable="true"
+            id="com.essiembre.rbe.eclipse.objectContribution2"
+            objectClass="org.eclipse.core.resources.IProject">
+       	 <visibility>
+         <and>
+            <objectState
+                  name="open"
+                  value="true"/>
+        	<not>
+            <objectState 
+	            name="nature" 
+	            value="com.jaspersoft.studio.babel.editor.rbeNature"/>
+            </not>
+         </and>
+         </visibility>
+         <action
+               class="org.eclipse.babel.editor.builder.ToggleNatureActionAdd"
+               enablesFor="1"
+               id="com.essiembre.rbe.eclipse.addNatureAction"
+               label="%addNatureAction.label"
+               menubarPath="additions"
+               tooltip="%addNatureAction.tooltip"/>
+      </objectContribution>
+      <objectContribution
+            adaptable="true"
+            id="com.essiembre.rbe.eclipse.objectContribution3"
+            objectClass="org.eclipse.core.resources.IProject">
+       	 <visibility>
+         <and>
+            <objectState
+                  name="open"
+                  value="true"/>
+        	<objectState 
+	            name="nature" 
+	            value="com.jaspersoft.studio.babel.editor.rbeNature"/>
+         </and>
+         </visibility>
+         <action
+               class="org.eclipse.babel.editor.builder.ToggleNatureActionRemove"
+               enablesFor="1"
+               id="com.essiembre.rbe.eclipse.removeNatureAction"
+               label="%removeNatureAction.label"
+               menubarPath="additions"
+               tooltip="%removeNatureAction.tooltip"/>
+      </objectContribution>
+ </extension>
+ <extension
+       id="com.essiembre.rbe.startup"
+       name="RBE Startup"
+       point="org.eclipse.ui.startup">
+    <startup class="org.eclipse.babel.editor.plugin.Startup"/>
+ </extension>
+ <extension
+       point="org.eclipse.ui.newWizards">
+    <category
+          id="com.jaspersoft.studio.babel.editor.wizards.ResourceBundle"
+          name="%wizard.category">
+    </category>
+    <wizard
+          category="com.jaspersoft.studio.babel.editor.wizards.ResourceBundle"
+          class="org.eclipse.babel.editor.wizards.internal.ResourceBundleWizard"
+          icon="icons/resourcebundle.gif"
+          id="com.jaspersoft.studio.babel.editor.wizards.internal.ResourceBundleWizard"
+          name="%wizard.rb.title">
+       <description>
+          %wizard.rb.description
+       </description>
+    </wizard>
+    <wizard
+          category="com.jaspersoft.studio.babel.editor.wizards.ResourceBundle"
+          class="com.jaspersoft.translation.wizard.TranslateBundleWizard"
+          icon="icons/newpropertiesfile.gif"
+          id="com.essiembre.eclipse.rbe.ui.wizards.TranslateBundleWizard"
+          name="%wizard.tb">
+    </wizard>
+    <wizard
+          category="com.jaspersoft.studio.babel.editor.wizards.ResourceBundle"
+          class="com.jaspersoft.translation.wizard.TranslationProjectWizard"
+          icon="icons/language-document.png"
+          id="com.essiembre.eclipse.rbe.ui.wizards.TranslationProjectWizard"
+          name="%wizard.tp">
+    </wizard>
+ </extension>
+
+
+
+   <extension
+         point="org.eclipse.ui.elementFactories">
+      <factory
+            class="org.eclipse.pde.nls.internal.ui.editor.LocalizationEditorInputFactory"
+            id="org.eclipse.pde.nls.ui.LocalizationEditorInputFactory"/>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.eclipse.pde.nls.internal.ui.OpenLocalizationEditorHandler"
+            id="org.eclipse.pde.nls.ui.OpenLocalizationEditor"
+            name="%command_openLocalizationEditor_name">
+      </command>
+      <command
+            id="com.jaspersoft.translation.resources.command.sendTranslationAction"
+            name="sendTranslationCommand">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=export">
+         <command
+               commandId="com.jaspersoft.translation.resources.command.sendTranslationAction"
+               icon="icons/language-send.png"
+               id="com.jaspersoft.translation.resources.sendTranslationAction"
+               label="%popup.st"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <and>
+                  <test
+                        forcePluginActivation="true"
+                        property="com.jaspersoft.translation.action.checkNature">
+                  </test>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.babel.editor.resourceInput">
+      <input
+            class="org.eclipse.babel.messages.ResourcePublisher">
+      </input>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.jaspersoft.translation.action.SendTranslationCommand"
+            commandId="com.jaspersoft.translation.resources.command.sendTranslationAction">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="com.jaspersoft.translation.action.NatureTranslationTester"
+            id="testNature"
+            namespace="com.jaspersoft.translation.action"
+            properties="checkNature"
+            type="java.lang.Object">
+      </propertyTester>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="context.xml"
+            plugin="com.jaspersoft.studio.babel.editor">
+      </contexts>
+   </extension>
+</plugin>

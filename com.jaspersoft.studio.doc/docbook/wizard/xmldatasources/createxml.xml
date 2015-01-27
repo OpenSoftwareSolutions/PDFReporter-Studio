@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+<title>Creation of an XML dataset</title>
+<section>
+        <para>An XML data source uses an XML file to provide the data to print. The XML structure is not flat like a table, there are
+        not rows and columns, it is more similar to a tree, where we can have several levels of data. We can say that all start
+        from a root node, that can have any number of children. A child could be a value or another node with its children and so
+        on. For this reason it is necessary to use an XPath query to identify which nodes of the XML document must be considered as
+        records. The following XML is simple enough to easily explain how to do it:</para>
+        		<figure>
+			<title>XML Example</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="extra.png" format="PNG" contentwidth="200px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+        <para>Each record that we want to print can be identified with the XML node labeled &quot;person&quot;. The selection of these
+        specific xml tags is done with an XPath query like this: /addressbook/person XPath is a powerful query language to select
+        data in an XML file. In this case the expression will select all the nodes of type &quot;person&quot; children of
+        &quot;addressbook&quot;. The result from the data source will be a set of three records (since the occurrences of the tag
+        person child of addressbook are three). The goal is to write a report in Jaspersoft Studio with the list all the persons in
+        the address book, showing for each person the name and the phone number..</para>
+        <para>Open Jaspersoft Studio and create a new report with &quot;File-&gt;New-&gt;Jasper Report&quot;. In this example it is
+        used a new report with the template select &quot;Silhouette&quot; and with file name &quot;ContactXMLReport&quot;. Now you
+        have to choose the data adapter, but since we don&#39;t have an adapter for the XML you have to click &quot;New&quot; and
+        in the window that will appear select &quot;XML document&quot; and hit &quot;Next&quot;.</para>
+        		<figure>
+			<title>Create the Data Adapter</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="1.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+        <para>In the next window insert the name of the new data adapter, for example &quot;XMLAdapter&quot;, then hit the button
+        &quot;Browse&quot; and select the XML file containing the data, select the option &quot;Use the report Xpath expression
+        when filling the report&quot; to use an expression directlly inside the reprot. The difference from this two options is
+        that the first use an expression defined into the report, so every report could use its own expression to retrive the data,
+        the second one define an expression into the data adapter, so every report that will use that data adapter will is also its
+        expression. When configuring an XML data source is possible to specify in which mode the data source must operate or to use
+        and a Date and Number patterns that can be used to convert a text value in a more appropriate object (like a date or a
+        number), since we don&#39;t need this simply click &quot;Finish&quot;.</para>
+        		<figure>
+			<title>Fill the Data Adapter</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="2.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+        <para>Now you will return to the report creation wizard and the data adapter just created should be selected, so you need to
+        insert the XPath query, like we did with the SQL query in other tutorials. In this case JasperReports will execute the
+        XPath query to select the nodes from the XML document provided using the XML data source. Infact every type of data adapter
+        can provide an editor to interact with the data source (the XML in this case). For example for a JBDC data adapter we
+        insert the SQL query and from this Jaspersoft Studio discovers the fields. With the XML you can provide an XPath query,
+        like &quot;/addressbook/person&quot; but you can also compose it using a visual editor that show the tree structure of the
+        the XML and you can browse the nodes. By double clicking on a node the XPath query will be automatically generated. The
+        advantage of keeping the XPath query inside the report is that we can use parameters to make the query dynamic.</para>
+        		<figure>
+			<title>Select the Node</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="3.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+        <para>Note that the query &quot;/addressbook/person&quot; returns all the people under the tag &quot;addressbook&quot;, and as
+        fields there are the children nodes of person, so name and phone. Now you can click next and as announced the fields
+        &quot;name&quot; and &quot;phone&quot; were discovered. Add them to the report with the button &quot;&gt;&gt;&quot; and
+        then hit &quot;Next&quot;.</para>
+        		<figure>
+			<title>Add the Fields</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="4.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+        <para>We don&#39;t need groups so on the next step select &quot;Next&quot; and then &quot;Finish&quot;. Now the report will be
+        created and if you switch in the &quot;Preview&quot; mode you should see this result:</para>
+        		<figure>
+			<title>Compile the Report</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="5.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+     	</section>
+</section>

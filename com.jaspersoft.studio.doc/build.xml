@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<project name="docbook-src" default="build-html">
+	<description>
+		This Ant buildhtml.xml file is used to transform DocBook
+		XML to html
+		output
+	</description>
+
+	<property name="input.dir" value="docbook" />
+	<property name="output.dir" value="html" />
+	<property name="html.stylesheet" value="docbook-xsl/html/docbook.xsl" />
+
+	<target name="clean" description="Cleans up generated files.">
+		<delete dir="${output.dir}" />
+	</target>
+
+	<target name="depends">
+		<mkdir dir="${output.dir}" />
+	</target>
+
+	<target name="build-html" depends="depends"
+		description="Generates HTML files from DocBook XML">
+		<xslt style="${html.stylesheet}" basedir="${input.dir}" destdir="${output.dir}"
+			includes="**/*.xml">
+			<factory name="org.apache.xalan.processor.TransformerFactoryImpl">
+				<attribute name="http://xml.apache.org/xalan/features/optimize"
+					value="true" />
+			</factory>
+			<sysproperty key="org.apache.xerces.xni.parser.XMLParserConfiguration"
+				value="org.apache.xerces.parsers.XIncludeParserConfiguration" />
+		</xslt>
+		<copy todir="${output.dir}">
+			<fileset dir="${input.dir}">
+				<exclude name="**/*.xml" />
+			</fileset>
+		</copy>
+	</target>
+
+</project>

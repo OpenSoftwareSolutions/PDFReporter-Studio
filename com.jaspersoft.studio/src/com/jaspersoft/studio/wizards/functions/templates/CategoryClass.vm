@@ -1,0 +1,10 @@
+#if($categoryPackage && !("$categoryPackage" == ""))
+package $categoryPackage;
+#end
+
+import net.sf.jasperreports.functions.annotations.FunctionCategory;
+
+@FunctionCategory()
+public class $categoryClassName 
+{
+}

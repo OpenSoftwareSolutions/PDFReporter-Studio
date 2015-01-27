@@ -1,0 +1,80 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Editing the number of columns</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Editing the number of columns</h2></div></div><hr></div>
+	
+	<div class="section"><div class="titlepage"></div>
+		<p>
+			As you have seen, a report is divided into horizontal sections: bands. The page, one or more of which make up a report, presents bands are 
+			independent from the data (such as the title or the page footers) and other bands that are printed only if there are one or more data records 
+			to print (such as the group headers and the detail band). these last sections can be divided into vertical columns in order to take advantage 
+			of the available space on the page. In this context, the concept of a column can be easily confused with that of a field. In fact, a column 
+			does not concern the record fields, but it does concern the detail band. This means that if you have record with ten fields and you desire 
+			a table view, ten columns are not needed. However, the element will have to be placed correctly to have a table effect. Ten columns will 
+			result when long records lists (that are horizontally very narrow) are printed.
+		</p>
+		<p>
+			Now we will seen how to set up columns in a report with an example. Create a new report from File-&gt;New-&gt;Jasper Report. Choose as template 
+			"Blank A4" and as name "ColumnExample" and as data adapter we can use "Sample DB - Database JBDC Connection" with the following SQL query: select * from orders. 
+			Now some fields from the database will be discovered, for our purpose we need only the "SHIPNAME", so double click on it to add to the report fields and hit "Next", 
+			another time "Next" and "Finish".
+		</p>
+		<p>
+			Now from the outline view drag the "SHIPNAME" field in the report in the detail band, resize the detail band and remove the unused band to obtain the result in the following image:
+		</p>
+		<div class="figure"><a name="N40017"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Example report</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="4.png" width="800" alt="Example report"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>
+			Now go to the Preview tab to see the report compiled:
+		</p>
+		<div class="figure"><a name="N4002E"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Example report compiled</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="5.png" width="800" alt="Example report compiled"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>
+			By default the number of columns is 1, and its width is equal to the entire page, except the margins. The space between columns is zero by default. 
+			As you can see in the previous image most of the page is unused. If multiple columns are used, this report would look better. Set from the Page Format 
+			dialog the number of columns to two, compile the report and you will see the following result:
+		</p>
+		<div class="figure"><a name="N40045"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Example report with two columns</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="6.png" width="800" alt="Example report with two columns"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>
+			In this case, the columns field is set to two to specify the number of columns you want. Jaspersoft Studio will automatically calculate the maximum 
+			column width according to the margins and to the page width. If you want to increase the space between the columns, just increase the value of "Space" field. 
+			In the following figure there is the same report this time with three columns separated by some blank space:
+		</p> 
+		<div class="figure"><a name="N4005C"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Example report with three columns</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="7.png" width="800" alt="Example report with three columns"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>
+			The restricted area is used to mark every column after the first, to show that all the elements should be placed in the first column and in the others will 
+			be replicated automatically during the compilation process. Anyway you are not forced about this, if you want you can also put elements in the other columns, 
+			but in most of cases you need only the first. So you shouldn't use parts of the report as margins and columns after the first, which have to be considered as 
+			though they were a continuation of of the first.
+ 		</p> 
+ 		<p>
+			Multiple columns are commonly used for prints of very long lists (for example a phone directory). Functionally, it is important to remember that when you have 
+			more thant one column, the width of the detail band and of linked bands is reduced to the width of the columns.
+ 		</p> 
+ 		<p>
+			The sum of the margins, column widths, and space between columns has to be less or equal to the page width. If this condition is not met, the compilation 
+			could result in error. The example report with three columns should appear like in the following image
+		</p> 
+		<div class="figure"><a name="N40079"></a><p class="title"><b>Figure&nbsp;5.&nbsp;Example report with three columns compiled</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="8.png" width="800" alt="Example report with three columns compiled"></div>
+			</div>
+		</div></div><br class="figure-break">
+	</div>
+</div></body></html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compositeCheatsheet name="Create a chart inside a report">
+   <taskGroup kind="sequence" name="Create a chart for a report" skip="false">
+      <intro>
+         In this cheatsheet will be explained how to insert a chart into a raport, that use its own dataset.
+      </intro>
+      <onCompletion>
+         <b>Conclusion</b>
+      </onCompletion>
+      <task kind="cheatsheet" name="Create the dataset" skip="true">
+         <intro>
+            In this steps the dataset necessary to fill the chart will be created.
+         </intro>
+         <onCompletion>
+            Now you have  the dataset and you can proced with the chart.
+         </onCompletion>
+         <param name="path" value="createdataset.xml">
+         </param>
+      </task>
+      <task kind="cheatsheet" name="Place the chart" skip="false">
+         <intro>
+            At this point you have all the prerequisites to insert the chart into the report.
+         </intro>
+         <onCompletion>
+            Now the report has inside a chart and its dataset and you can execute the report.
+         </onCompletion>
+         <param name="path" value="chartstep.xml">
+         </param>
+      </task>
+   </taskGroup>
+</compositeCheatsheet>

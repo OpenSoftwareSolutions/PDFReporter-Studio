@@ -1,0 +1,19 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.jaspersoft.studio.community-edition</groupId>
+		<artifactId>aggregator</artifactId>
+		<version>5.6.2.final</version>
+	</parent>
+
+	<groupId>com.jaspersoft.studio.community-edition</groupId>
+	<artifactId>updatesite</artifactId>
+	<packaging>pom</packaging>
+	<version>5.6.2.final</version>
+
+	<modules>
+		<module>../../com.jaspersoft.studio.updatesite</module>
+	</modules>
+</project> 

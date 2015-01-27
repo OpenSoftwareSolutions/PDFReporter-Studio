@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Import and compile a report from the samples">
+   <intro>
+      <description>
+         In this tutorial we will see how to open an example report from the Samples. If the samples was not in your workspace you can also import them following this cheatsheet
+      </description>
+   </intro>
+   <item
+         title="Import the samples" dialog="true">
+      <description>
+         You need to import the report samples into your workspace. The project name suggested for the samples is <b>JasperReports Samples</b>, the default one, to use the automated commands provided by this cheatsheet.
+      </description>
+      <subitem
+            dialog="true"
+            label="Open the samples wizard"
+            skip="true">
+           <action pluginId="com.jaspersoft.studio.doc" class="com.jaspersoft.studio.doc.samples.handlers.ImportSamplesWizardHandler" required="false"/> 
+      </subitem>
+      <subitem
+            label="Select the project name for the samples, if possible leave the default one."
+            skip="true">
+      </subitem>
+      <subitem
+            label="Hit &quot;Finish&quot; and wait the import is completed."
+            skip="true">
+      </subitem>
+   </item>
+   <item title="Open a report" dialog="true">
+      <description>
+         Open the sample report <b>ImagesReport</b>
+      </description>
+      <action pluginId="com.jaspersoft.studio.doc" class="com.jaspersoft.studio.doc.samples.handlers.OpenReportHandler" required="false"/>
+   </item>
+   <item title="Compile the report">
+      <description>
+         You can now compile the report by switching into the preview tab.
+      </description>
+	 <action pluginId="com.jaspersoft.studio.doc" class="com.jaspersoft.studio.doc.handlers.SwitchToPreviewHandler" required="false"/>
+   </item>
+</cheatsheet>

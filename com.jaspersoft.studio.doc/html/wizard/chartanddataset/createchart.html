@@ -1,0 +1,62 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Creation of a Chart</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Creation of a Chart</h2></div></div><hr></div>
+
+
+<div class="section"><div class="titlepage"></div>
+ <p>JasperReports supports a large number of built-in charts created using the popular open source library JFreeChart. Chart
+        types include Pie, Bar, Stacked Bar, Line, Area, Bubble, Gantt, Thermometer and Meter. In this tutorial we will learn how
+        to add a multi-series chart to a report, using the datasource created in the tutorial Creation of a Dataset. With the report opened, drag and drop it from the palette into the
+        Summary section:</p>
+        		<div class="figure"><a name="N40011"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Drag the chart into the report</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="5.png" width="800" alt="Drag the chart into the report"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>After the chart is placed the creation wizard will appear. On the first step select a "Pie Chart", to have
+        something different from the previous tutorial, and hit Next. In the following step find the field named
+        "Dataset", normally with the value "[MainDataset]". You must change this value to
+        "GroupData" (to create this dataset follow the <a class="ulink" href="createdataset.html" target="_top">create a dataset</a> tutorial), so the chart will use the new dataset, as in the image below:</p>
+        		<div class="figure"><a name="N4002C"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Select the dataset for the Chart</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="6.png" width="800" alt="Select the dataset for the Chart"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>Now you have to configure the series of the chart, click the button with three dots on the right of the series combo, a
+        new dialog will appear:</p>
+                		<div class="figure"><a name="N40043"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Add the Series</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="7.png" width="800" alt="Add the Series"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>In this dialog you can define the series of the chart, even using an expression. Delete the default item by selecting it
+        and clicking the "Delete" button, and then press the "Add" button. The expression editor will be
+        opened, and here select the item "Fields" and double click on the item "SHIPCITY", finally click
+        "Finish" to close the expression editor:</p>
+                		<div class="figure"><a name="N4005A"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Select the Field SHIPCITY for the series</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="8.png" width="800" alt="Select the Field SHIPCITY for the series"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>Now you will return to the dialog of the series, here just hit "Ok" to go to the chart configuration.
+        Configure it as shown in the following image:</p>
+                		<div class="figure"><a name="N40071"></a><p class="title"><b>Figure&nbsp;5.&nbsp;Finish to configure the Charts</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="9.png" width="800" alt="Finish to configure the Charts"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>The chart configuration is finished, click the button "Finish" to complete the wizard. The only thing to do is
+        give to the chart all the avaiable space in its band, so right click on the chart, select "Size to Container" and
+        then "Fit Both". Doing this the chart will fill the Summary band, now go in the "Preview" tab to
+        compile the report and go to the last page to see the chart:</p>
+                        		<div class="figure"><a name="N40088"></a><p class="title"><b>Figure&nbsp;6.&nbsp;Run the Report</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="10.png" width="800" alt="Run the Report"></div>
+			</div>
+		</div></div><br class="figure-break">
+	</div>
+</div></body></html>

@@ -1,0 +1,867 @@
+<html>
+<body>
+
+<h1>Jaspersoft Studio Release Notes</h1>
+<hr/>
+<pre>
+Jaspersoft Studio version 5.6.2 (2014-10-02)
+---------------------------------------------
+
+- JRS plugin, resource permissions
+
+- JRS plugin, added a dialog, that ask what to do in case resource with the same name exists on paste
+
+- added wizards to create and install a Jaspersoft Studio data adapter plugin
+
+- added the new Custom Visualization component: allows to embed SVG outputs, possibly provided by Javascript libraries
+
+- improved performances when operating with many elements
+
+- major and minor bug-fixes
+
+Jaspersoft Studio version 5.6.1 (2014-09-04)
+---------------------------------------------
+
+- full support for JasperReports 5.6.1
+
+- support for silent install/uninstall of the standalone package using the /S flag
+
+- new action to hide/show a band content
+
+- new preference to disable the auto-resize behavior of a band when a bigger element is dropped inside
+
+- RCP standalone version now ships with Oracle JRE 1.7.0.u67
+
+- re-written the toolbar contribution mechanism
+
+- re-factored the properties view for improved performances
+
+- template sets feature in order to provide defaults for report elements 
+
+- updated Hive connector in order to support CDH5 and Impala 1.3.1
+
+- JRS plugin, import/export to JasperReports Server
+
+- JRS plugin, use of REST-API sessions for improved performances
+
+- JRS plugin, usability improvements when publishing reports
+
+- JRS plugin, HTML viewer is now by default 
+
+- JRS plugin, report formats are generated on the server side
+
+- JRS plugin, CAS authentication
+
+- Domains plugin, use of REST-API
+
+- improved SQL query editor support for H2, Firebird, Hive
+
+- faster report compilation
+
+- major and minor bug-fixes
+
+Jaspersoft Studio version 5.6.0 (2014-05-28)
+---------------------------------------------
+
+- full support for JasperReports 5.6.0
+
+- added new preference in "Jaspersoft Studio > Global Settings" page that allows to redirect the System.out and System.err streams to an internal JSS console available in the Console View
+
+- added new preference in "Jaspersoft Studio > Report Designer" page that allows to disable the auto-center feature of the editor when selecting items
+
+- support for Crosstab Title Cell
+
+- settings for SQL Query Editor Quotes
+
+- allow users to move tables in SQL Query Editor
+
+- major and minor bug-fixes  
+
+Jaspersoft Studio version 5.5.2 (2014-04-29)
+---------------------------------------------
+
+- full support for JasperReports 5.5.2
+
+- updated the Cassandra plug-in, now using Datastax 1.0.4-dse core driver
+
+- resolved various performance issues 
+
+- refactored the Resource Bundle Editor plug-in: now using the Eclipse Babel project one
+
+- removed the Vertica and Ingress drivers
+
+- refactored the XML/A data adapter, including the removal of the REX client 
+
+- refactored exporters and report viewers
+
+- refactored Excel data adapters
+
+- ability to switch to Report Preview without automatically run it, keeping pressed the SHIFT key
+
+- added in the editor a menu to change quickly the main data adapter and the preview output format
+
+- ability to start the color pick operation inside the color dialog by pressing SPACE
+
+- fixed the report preview thumbnail in the Outline view
+
+- new Outline view context menu "Reload Style" for Style template items
+
+- major and minor bug-fixes  
+
+Jaspersoft Studio version 5.5.1 (2014-02-10)
+---------------------------------------------
+
+- full support for JasperReports 5.5.1
+
+- introduced RESTv2 support into JRS plug-in
+
+- improved support XML/A and Mondrian
+
+- added support for the parameters REPORT_LOCALE and REPORT_TIME_ZONE to the Standard Functions Library. Therefore, "Date & Time" functions have been reviewed and TEXT() and FIXED() of the "Text" category too
+
+- added support to move elements directly hitting the keyboard arrows
+
+- added support to move elements only horizontally or vertically by pressing the SHIFT-key
+
+- re-factored the MongoDB plug-in
+
+- re-factored the Cassandra plug-in
+
+- re-factored the Hive plug-in
+
+- ability to delete a row instead of cell by cell, available through context-menu
+
+- added pop-up window support for the internal browser widget, used for HTML-like previews 
+
+- added new advanced color dialog
+
+- added the movement of the details band using drag and drop inside the outline
+
+- added the text styles
+
+- fixed the default chart theme
+
+- added the ability to copy and paste a dataset
+
+- enhanced error and info outputs when compiling
+
+- major and minor bug-fixes  
+
+Jaspersoft Studio version 5.5.0 (2013-10-22)
+---------------------------------------------
+
+- full support for JasperReports 5.5.0
+
+- ability to install plugins for standalone version
+
+- pre-installed plugins for versioning: now supporting CVS, SVN and GIT
+
+- support for authentication details in Google Maps component (API Key, Client ID, Signature and Version details)
+
+- support for Paths in Google Maps component
+
+- bundling the Oracle JRE 1.7.0.u25 in the RCP standalone version 
+
+- search widget for Properties view in order to fast locate them
+
+- new widget for better listing and describing available JasperReports properties for a report element/component
+
+- SQL query editor improvements
+
+- initial support for JRS templates
+
+- new properties files editor
+
+- new section to configure Map Paths and Styles for the Google Map component
+
+- ability to contribute and submit Jaspersoft Studio translations
+
+- refactor support when renaming Datasets and Groups
+
+- refactored report publishing to JasperReports Server
+
+- ability to enable/disable the use of the Eclipse Secure Storage for handling credentials
+
+- major and minor bug-fixes  
+
+Jaspersoft Studio version 5.2.0 (2013-06-28)
+---------------------------------------------
+
+- full support for JasperReports 5.2.0
+
+- improved report compilation
+
+- improved UI speed
+
+- improved JasperReports Server repository browsing
+
+- initial implementation of the SQL Editor
+
+- secure password storage
+
+- categories for report templates
+
+- import feature for iReport and Jaspersoft Studio installations
+
+- export of report templates
+
+- new actions for aligning, spacing and resizing
+
+- ability to change order for Detail bands and Groups
+
+- ability to specificy the exact color for single Crosstab and Table sections, besides using a predefined schema 
+
+- major and minor bug-fixes
+
+Jaspersoft Studio version 5.1.0 (2013-04-29)
+---------------------------------------------
+
+- full support for JasperReports 5.1.0
+
+- added the new "Templates View" that allows to define skins for tables and crosstabs (that can be imported/exported)
+
+- added new built-in functions to the Expression Editor
+
+- added new preferences: font settings for internal editors and Jetty port configuration
+
+- new widget to handle collections as input parameter
+
+- improvements to Chart Theme editor
+
+- group support for the table-based templates
+
+- major and minor bug-fixes
+
+Jaspersoft Studio version 2.0.2 (2013-04-02)
+---------------------------------------------
+
+- full support for JasperReports 5.0.4
+
+- new buttons in the Overview, Tutorials and Sample sections of the Welcome Page (plug-in version)
+
+- added DND features:
+	a) images: drag source can be the workspace, the external file-system and a JRS repository; drop target can be the editor area or the outline view
+	b) dragging a Report Unit and dropping it on both a TextField and an Image element will create a dedicated hyperlink
+	c) list of items that can be dropped to the JRS repository: JRXML, JAR, XML, BUNDLES, FONT, JRTX files. They can be dragged from the workspace or the file-system
+	d) data adapters can be dragged from the tree and dropped on the JRS repository
+
+- added the table based reports
+
+- added the ability to change the Style for an already defined Table or Crosstab
+
+- initial implementation of the Chart Theme editor
+
+- major and minor bug-fixes
+
+Jaspersoft Studio version 2.0.1 (2013-02-25)
+---------------------------------------------
+
+- added support for styles in crosstabs and tables 
+
+- improved help references and tutorials
+
+- more context toolbars for graphic elements
+
+- major and minor bug-fixes
+
+Jaspersoft Studio version 2.0.0 (2013-02-01)
+---------------------------------------------
+
+- UI for JRS Amazon datasource
+
+- dialog to submit issues to the community tracker
+
+- new feature with samples regarding JasperReports and Jaspersoft Studio
+
+- cheatsheets and contextual help improvements
+
+- better compatibility with Eclipse 4
+
+- major and minor bug-fixes
+
+Jaspersoft Studio version 1.3.3 (2013-01-14)
+---------------------------------------------
+
+- full support for JasperReports 5.0.1
+
+- implemented the self-update mechanism for the standalone version
+
+- refactored the resources creation in JasperReports Server plugin
+
+- improved the Preferences mechanism, now available also at file level
+
+- implemented callouts similar to iReport
+
+- implemented context toolbars for graphic elements
+
+- implemented auto-scroll behavior inside report designer
+
+- implemented contextual help infrastructure
+
+- added some cheetsheets
+
+- major and minor bug-fixes
+
+Jaspersoft Studio version 1.3.2 (2012-11-12)
+---------------------------------------------
+
+- full support for JasperReports 4.8.0
+
+- standalone version now based on Eclipse 3.8.1
+
+- standalone version now supports Windows 8 
+
+- improved map component (support for markers)
+
+- support for Mongo DB and Hadoop-Hive data sources in JasperReports Server plugin
+
+- support for Audit Datasources in JasperReports Server plugin
+
+- more connection options for JasperServer
+
+- improved support for hidden bands
+
+- element decorators for XLS
+
+- scriptlets support
+
+- JasperReports extensions are loaded dynamically on classpath changes
+
+- better group creation wizards
+
+- new UI widgets 
+
+- re-arranged the report sections in properties view
+
+- re-arranged the chart sections in the properties view 
+
+- major and minor bug-fixes
+
+
+Jaspersoft Studio version 1.3.1 (2012-10-05)
+---------------------------------------------
+
+- improved Data Adapter for MongoDB connection
+
+- improved Data Adapter for Hive connection
+
+- improved JasperReports Server plugin
+
+- fixed plugin version problems with Eclipse 3.6.x
+
+- major and minor bug-fixes
+
+
+Jaspersoft Studio version 1.3.0 (2012-09-24)
+---------------------------------------------
+
+- latest JasperReports version support
+
+- dynamic font extensions support
+
+- added SugarCRM default HSQLDB database and data adapter
+
+- improvements in container layouts
+
+- report viewer: possibility to change parameters for exporters before report running
+
+- report viewer: UI-improvements
+
+- report viewer: asynchronous report running with immediate show and possibility to stop
+
+- properties view: inheritance tab to view/manage the attributes related to style
+
+- element decorators for PDF-508 and layout problems
+
+- new image creation dialog
+
+- wizard query editor support: JSON, XML (local and remote), JDBC, EBJ-QL, HQL
+
+- report toolbar re-organizing
+
+- wizard engine refactoring
+
+- major and minor bug-fixes;
+
+
+Jaspersoft Studio version 1.1.2 (2012-07-16)
+---------------------------------------------
+
+- query editor for Xpath/Xpath2
+
+- query editor for JSON
+
+- syntax highlighting for SQL-based editors (SQL,PL/SQL, HQL, EJB-QL)
+
+- data preview tab in the "Dataset & Query" dialog
+
+- better management of Table, List, Crosstab, Frame
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 1.1.0 (2012-04-18)
+---------------------------------------------
+
+- JasperReports 4.6.0
+
+- improved UI for Properties View
+
+- improved UI for all Wizards
+
+- new Expression editor
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 1.0.9 (2012-03-21)
+---------------------------------------------
+
+- JasperReports 4.5.1
+
+- exporting reports from JasperReports Server
+
+- better Jasper Reports Server support
+
+- better QueryExecuters and Languages support
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 1.0.8 (2012-02-02)
+---------------------------------------------
+
+- publishing reports to JasperReports Server
+
+- exporting reports from JasperReports Server
+
+- fixed chart themes
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 1.0.7 (2012-01-18)
+---------------------------------------------
+
+- hadoop hive data adapter
+
+- improvements and refactoring of data adapter framework
+
+- several improvements in JasperReports Server plugin
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 1.0.6 (2011-12-19)
+---------------------------------------------
+
+- hibernate datasources
+
+- several improvements in JasperReports Server plugin
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 1.0.5 (2011-12-09)
+---------------------------------------------
+
+- JasperReports 4.5.0 library
+
+- crosstab element border and padding properties
+
+- new preferences for excel exporter
+
+- improved report preview, that can show report in many formats
+
+- new JasperReports Server plugin
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 1.0.4 (2011-11-09)
+---------------------------------------------
+
+- several bug fixes
+
+
+
+
+
+
+Jaspersoft Studio version 1.0.3 (2011-10-20)
+---------------------------------------------
+
+- better crossplatform properties view widgets
+
+- some chart properties improvements
+
+- refactored preview tab, reports can be previewed in html or swt
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 1.0.2 (2011-09-19)
+---------------------------------------------
+
+- new JasperReports 4.1.2
+
+- Sort and Map component support from JasperReports 4.1.2
+
+- PDF/A support
+
+- better chart properties and chart wizard
+
+- refactored Palette extention point, now it's possible to add groups
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 1.0.1 (2011-07-27)
+---------------------------------------------
+
+- new JasperReports 4.1.1
+
+- added jdbc properties to jdbc data adapter
+
+- new xlsx data adapter
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 1.0.0 (2011-07-13)
+---------------------------------------------
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.2.6 (2011-07-04)
+---------------------------------------------
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.2.5 (2011-06-20)
+---------------------------------------------
+
+- dataset query dialog;
+
+- extension point for query designers and data mapping tools
+
+- new plugable data adapter framework;
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.2.4 (2011-05-17)
+---------------------------------------------
+
+- font preferences page;
+
+- support for execution options and virtualizers;
+
+- page format dialog;
+
+- many bug-fixes and improvements;
+
+- more translations;
+
+
+
+
+
+Jaspersoft Studio version 0.2.3 (2011-04-20)
+---------------------------------------------
+
+- exporter preferences pages;
+
+- upgrade to jasperreports 4.0.2;
+
+- paragraph properties for text elements;
+
+- improvements in Data Adapters;
+
+- many bug-fixes and improvements;
+
+- more translations;
+
+
+
+
+
+Jaspersoft Studio version 0.2.2 (2011-03-21)
+---------------------------------------------
+
+- drag and drop report objects into designer creates text field elements;
+
+- new html component plug-in;
+
+- style template editor UI;
+
+- many bug-fixes and improvements;
+
+- more translations;
+
+
+
+
+
+Jaspersoft Studio version 0.2.1 (2011-03-07)
+---------------------------------------------
+
+- open scriptlets, style templates on double click;
+
+- better report compilation for Groovy, BeanShell and other expression languages;  
+ 
+- more complete style templates;
+
+- improvements on wizards;
+
+- many bug-fixes and improvements;
+
+- more translations;
+
+
+
+
+
+Jaspersoft Studio version 0.2.0 (2011-02-21)
+---------------------------------------------
+
+- Crosstab, Table, List, Chart, Subreport, Group, Image, Style Template wizards;
+
+- better Parameters and Return Values Dialogs in subreports;
+
+- better HyperLink Parameters Dialog;
+
+- built-in parameters and sort fields in Input Parameters Dialog;
+
+- boolean parameters for Input Parameters Dialog;
+
+- fixed bug with long numbers in Input Parameters Dialog;
+
+- fixed Evaluation Time and Evaluation Group;
+
+- many bug-fixes and improvements;
+
+- more translations;
+
+
+
+
+
+Jaspersoft Studio version 0.1.9 (2011-02-04)
+---------------------------------------------
+
+- crosstab, table, list, chart wizards;
+
+- fixed mac suport;
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.1.8 (2011-02-02)
+---------------------------------------------
+
+- report designer usability enhancements;
+
+- per editor customizable palette;
+
+- better property view usability;
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.1.6 (2011-01-20)
+---------------------------------------------
+
+- report designer usability enhancements;
+
+- many bug-fixes and improvements;
+
+
+
+
+Jaspersoft Studio version 0.1.6 (2011-01-20)
+---------------------------------------------
+
+- report designer usability enhancements;
+
+- many bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.0.8 (2011-01-06)
+---------------------------------------------
+
+- crosstab, table and list elements can be edited in a separate editor tabs;
+
+- support for internationalization added;
+
+- more features in crosstab and table components;
+
+- new rotation property added in Barbecue barcode component;
+
+- upgrade to JasperReports 4.0.0;
+
+- many small bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.0.7 (2010-12-17)
+---------------------------------------------
+
+- crosstab improvements and bug fixes;
+
+- table component support through com.jaspersoft.studio.table plug-in;
+
+- many small bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.0.6 (2010-11-29)
+---------------------------------------------
+
+- charts dataset-series implementation;
+
+- crosstab support through com.jaspersoft.studio.crosstab plug-in;
+
+- many small bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.0.5 (2010-11-02)
+---------------------------------------------
+
+- clean up MANIFEST.MF files from warnings;
+
+- removed org.eclipse.core.filesystem 1.2.1 dependency;
+
+- many small bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.0.4 (2010-10-29)
+---------------------------------------------
+
+- chart support through chart plug-in;
+
+- support for Groovy and BeanShell as report expression language;
+
+- many small bug-fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.0.3 (2010-10-18)
+---------------------------------------------
+
+- improved data source support;
+
+- export button added to report preview tab;
+
+- new widgets added for Locale and Timezone input parameters;
+
+- generic element support in report designer;
+
+- support for the list component added as separate plugin;
+
+- support for barcode components added as separate plugin;
+
+- many small bug fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.0.2 (2010-09-30)
+---------------------------------------------
+
+- improved JasperReports project builder;
+
+- viewer for generated reports (*.jrprint files);
+
+- added support for XML and XLS data sources;
+
+- upgrade to JasperReports 3.7.5;
+
+- bug fixes and improvements;
+
+
+
+
+
+Jaspersoft Studio version 0.0.1 (2010-09-17)
+---------------------------------------------
+
+- main report template editor implemented (JasperReports Designer);
+
+- main report design views implemented (Outline view, Properties view, Repository view);
+
+- initial data source support (JDBC, CSV and empty datas ource);
+
+- simple report creation wizard;
+
+- report template file quick preview (JasperReports View);
+
+- JasperReports project builder;
+
+</pre>
+</body>
+</html>
+

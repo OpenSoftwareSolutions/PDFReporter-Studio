@@ -1,0 +1,2 @@
+net.sf.jasperreports.extension.registry.factory.functions=net.sf.jasperreports.functions.FunctionsRegistryFactory
+net.sf.jasperreports.extension.functions.$libraryName=$libraryClass

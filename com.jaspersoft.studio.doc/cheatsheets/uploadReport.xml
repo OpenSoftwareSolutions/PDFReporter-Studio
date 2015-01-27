@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Publish a report to JasperReports Server">
+   <intro>
+      <description>
+         In this cheatsheet we will see how to upload a report into a local installation of JasperReports Server. To follow this cheatsheet a connection to the JasperRepost Server is required, and also the report to upload must be already opened in the editor.
+      </description>
+   </intro>
+   <item
+         title="Go into the repository explorer">
+      <description>
+         With a report opened, go into the design view.
+      </description>
+      <action pluginId="com.jaspersoft.studio.doc" class="com.jaspersoft.studio.doc.handlers.SwitchToDesignerHandler" required="false"/>
+   </item>
+   <item title="Start the upload action" dialog="true">
+      <description>
+         On the top right border of the editor window there is a button with a blue arrow. Click it to start the upload.
+      </description>
+       <action pluginId="com.jaspersoft.studio.doc" class="com.jaspersoft.studio.doc.handlers.UploadReportCheatAction" required="false"/>
+   </item>
+   <item title="Select the location" dialog="true">
+      <description>
+         Expand the server where you want to upload the report and select the folder <b>Reports</b>.
+      </description>
+   </item>
+   <item
+         title="Choose a name">
+      <description>
+         Choose an unique name for the report unit (the folder where will be uploaded the report). Optionally you can provide a more expressive name and a description. Then hit <b>Next</b>.
+      </description>
+   </item>
+   <item
+         skip="true"
+         title="Identify the resource">
+      <description>
+         Jaspersoft Studio will identify the resources used from your report, like images and subreport, and will propose to to upload them with the report. Leave them selected for the upload (default value) if you have them, otherwise proceed to the next step.
+      </description>
+   </item>
+   <item
+         title="Handle the datasource">
+      <description>
+         For this choose to not upload the datasource, selecting the third option. Then hit <b>Finish</b>.
+      </description>
+   </item>
+   <item
+         title="Completed">
+      <description>
+         The wizard is now complete and the report will be uploaded into the server.
+      </description>
+   </item>
+</cheatsheet>

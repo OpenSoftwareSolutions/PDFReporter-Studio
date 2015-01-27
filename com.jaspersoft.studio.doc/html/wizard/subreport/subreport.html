@@ -1,0 +1,233 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>How to use a subreport with parameters</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>How to use a subreport with parameters</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+	  <p><b>Creation of the main report.&nbsp;</b>
+      
+      	The subreport element allow to use a report inside another report and it is a very powerful because It allows the creation of very complex layouts with 
+      	different portions of a single document filled using different data sources and reports.
+ 	  	
+	  
+	  	In this tutorial we want to create an address book for each person in the company in a database with the names, the list of phone numbers and the list of email addresses, 
+	  	as shown in the following image:
+	  
+	  </p><div class="figure"><a name="N40018"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Final goal</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="0.png" alt="Final goal"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	To do this we will need a main report and two different subreports.
+	  
+	  
+	  	This time we need a datasource more complex, for this reason we need install JasperReports Server because it has some sample databases useful for our purpose. 
+	  	If you are unsure on which is the correct Jaspersoft Server for your operative system. After that from Jaspersoft Studio start the creation of a new Jasper Report 
+	  	using the template "Flower Gray" and as report name "ContactsList". When you must select the data adapter click the "New" button, then from the new dialog select 
+	  	"Database JDBC Connection" and hit next.
+	  
+  	  </p><div class="figure"><a name="N40031"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Create a data adapter</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="1.png" width="800" alt="Create a data adapter"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	Now you must choose a name for your new data adapter, use "ContactsDataset" and configure it with this data:
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">JBDC Driver: org.postgresql.Driver;</li><li class="listitem" style="list-style-type: circle">JDBC URL: jdbc:postgresql://localhost:5432/sugarcrm;</li><li class="listitem" style="list-style-type: circle">Username : postgres</li><li class="listitem" style="list-style-type: circle">Password: postgres</li></ul></div><p>
+		After this, use the button "Test" to check if the connection works, and in that case hit "Finish".
+	  
+   	  </p><div class="figure"><a name="N40058"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Configure the data adapter</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="2.png" width="800" alt="Configure the data adapter"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	At this point we are back into the report creation wizard, in the step where we have to select the data adapter. The new data adapter should be selected automatically, 
+	  	otherwise for the field "Data Adapter" select "ContactsAdapter". As main query uses "select id, name, shipping_address_city from accounts", this one returns the name of a 
+	  	company and the city where it store is located. Then hit Next.
+	  
+   	  </p><div class="figure"><a name="N4006F"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Configure the main report</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="3.png" width="800" alt="Configure the main report"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	Finally we can define groups, but we don't need them, so simply hit the button "&gt;&gt;" to add all the fields to the report and hit "Next". Finally we can define groups, but we don't 
+	  	them, so simply hit the button "Next" and then "Finish".  Now the report will be created and it should be similar to the one in the following image:
+	  
+	  </p><div class="figure"><a name="N40086"></a><p class="title"><b>Figure&nbsp;5.&nbsp;The main report</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="4.png" width="800" alt="The main report"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  </p>
+	  <p><b>Creation of the first Subreport.&nbsp;</b>
+	  
+	  	The second step is to create the subreport to display the email addresses. Start a n new report from File-&gt;New-&gt;Jasper Report, as template choose "Blank A4", 
+	  	save it in the same directory of the master report, and call it EmailReport.jrxml. When we need to choose the data adapter select the "ContactsAdapter" created before and use as query:
+	  
+	  
+	  </p><pre class="programlisting">
+		select contacts.email1
+		from contacts, accounts_contacts
+		where accounts_contacts.account_id = 'placeholder' and accounts_contacts.contact_id=contacts.id
+ 	  </pre><p>
+ 	  
+ 	  
+		In the query is used a static string "placehoder" is used, as suggested by the name this is not a real value but a placeholder that will be changed with a 
+		parameter in the next steps. After doing this click "Next".
+	  
+  	  </p><div class="figure"><a name="N400AB"></a><p class="title"><b>Figure&nbsp;6.&nbsp;Configure the datasource of the first subreport</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="5.png" width="800" alt="Configure the datasource of the first subreport"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	   
+		The query will discover one filed, add it to the report with the button "&gt;&gt;", click next and in the next step another time "Next", since we don't need groups. 
+		Finally hit the button "Finish" and the report will be created. Now select the report root node in the outline view and in the properties tab hit the button "Edit Page Format".
+	  
+	  </p><div class="figure"><a name="N400C2"></a><p class="title"><b>Figure&nbsp;7.&nbsp;Page format of the first subreport</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="6.png" width="800" alt="Page format of the first subreport"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	A window to change the page size and margins will appear, reduce the width of the page to 270 pixels and remove the margins, since they are not useful in a subreport, then hit "Ok".
+	  
+	  </p><div class="figure"><a name="N400D9"></a><p class="title"><b>Figure&nbsp;8.&nbsp;New page formato of the first subreport</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="7.png" width="800" alt="New page formato of the first subreport"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	This report will not list any email address because we used a static value as placeolder, but what we want is retrieve just the one of the current person in the master. 
+	  	To filter the email addresses, we will use a parameter. In the outline view select the report root node and in the property tab hit the button "Edit query, filder and options". 
+	  	In the new window that will appear go into the tab "Parameters" and click the "Add" button.
+	  
+	  </p><div class="figure"><a name="N400F0"></a><p class="title"><b>Figure&nbsp;9.&nbsp;Go into the parameters section</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="8.png" width="800" alt="Go into the parameters section"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	A new parameter will be added with the name "Parameter_1", change its name to "ACCOUNT_ID", the type should be String by default and if you want you can add a description. 
+	  	In query now change the string 'placeholer' with the value $P{ACCOUNT_ID}. Doing this the query result is influenced by a parameter that come from the main report. Then hit "Ok".
+	  
+	  </p><div class="figure"><a name="N40107"></a><p class="title"><b>Figure&nbsp;10.&nbsp;Add the parameter to the query</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="9.png" width="800" alt="Add the parameter to the query"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	The syntax $P{ACCOUNT_ID} allows the use of a parameter inside a query, in this case to filter the result using a "where" condition.
+	  
+	  
+		Now drag inside the report, in the band "column header", a Static Text from the palette and change its content to "eMail address" and also drag the field "email1" from the 
+		outline into the "detail" band. Then delete the unused bands (title,page header, column footer, page footer, summary) and resize "column header" and "detail bands" to take 
+		an appropriate space in the main report. You need to obtain layout like the one in the image below:
+	  
+	  </p><div class="figure"><a name="N40121"></a><p class="title"><b>Figure&nbsp;11.&nbsp;Set the layout of the first subreport</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="10.png" width="800" alt="Set the layout of the first subreport"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	Save the report and if you want you can run this report to see the result.
+	  
+	  </p>
+	  <p><b>Creation of the second Subreport.&nbsp;</b>
+	  
+	  	The procedure to create the second subreport it is almost identical to the first one. Start a n new report from File-&gt;New-&gt;Jasper Report, as 
+	  	template choose "Blank A4", save it in the same directory as the master, and call it PhoneReport.jrxml. When we need to choose the data adapter 
+	  	select the "ContactsAdapter" created before and as query use:
+	  
+	  
+	  </p><pre class="programlisting">
+	  	select phone_work
+		from contacts, accounts_contacts
+		where accounts_contacts.account_id = 'placeholder' and accounts_contacts.contact_id=contacts.id
+	  </pre><p>
+	  
+	  
+	  	Add the discovered field to the report, don't define groups and complete the wizard. When the report will be created enter in the "Page Format" 
+	  	dialog and remove the margins and set the width to 270. At this point enter in the "edit query, filter and sort expression" dialog, switch to the tab parameters 
+	  	and add a new parameter "ACCOUNT_ID" and substitute the placeholder in the query with it, as in the image below:
+	  
+	  </p><div class="figure"><a name="N40149"></a><p class="title"><b>Figure&nbsp;12.&nbsp;Add the parameter to the query of the second subreport</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="11.png" width="800" alt="Add the parameter to the query of the second subreport"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	Even this time put a StaticText element with the text "Telephone" in the "Column Header" band and the field "phone_work" in the "Detail" band, delete the unused bands 
+	  	and eventually resize this two elements and their bands until you get a report as the one in the image below:
+	  
+  	  </p><div class="figure"><a name="N40160"></a><p class="title"><b>Figure&nbsp;13.&nbsp;Set the layout of the second subreport</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="12.png" width="800" alt="Set the layout of the second subreport"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	The second report is done, save it and if you want compile it to see if it is all right. Now it's time to finish the work on the main report.
+	  
+	  </p>
+	  <p><b>Completing the Main Report.&nbsp;</b>
+	  
+	  	The two subreports have been created, now we need to include them in the main report, so open the report "ContactList" and resize the detail band to have enought space 
+	  	to include the subreports, for now use 50 pixels. Now place a subreport element from the palette into the detail band and a wizard will appear.  
+	  	Use the option "Select an existing report" (selected by default) and hit the "Select a report file" button. A window that show all the created reports will appear, 
+	  	select "EmailReport.jrxml" and hit "Ok" and then "Next".
+	  
+  	  </p><div class="figure"><a name="N4017F"></a><p class="title"><b>Figure&nbsp;14.&nbsp;Add a subreport to the main report</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="13.png" width="800" alt="Add a subreport to the main report"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	In the following step use the option "Use the same connection used to fill the master report" (which should be selected by defaut). In this way the database 
+	  	connection will be passed to the subreport to let it execute its SQL query and hit Next. In the next step we can set an expression for the parameter exposed 
+	  	by the subreport. Hit "Add" to add a new parameter, double click on the name and write "ACCOUNT_ID" and hit the  button with three dots on the value field (the 
+	  	button is visible only if the value field is selected) and the expression editor will be opened. Here from the "Fields" select "id" ny double clicking on it and 
+	  	hit "Finish". At this point you will return to the parameters dialog that should look as the one in the image below:
+	  
+  	  </p><div class="figure"><a name="N40196"></a><p class="title"><b>Figure&nbsp;15.&nbsp;Configure the parameter</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="14.png" width="800" alt="Configure the parameter"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	Now hit "Finish" and the first subreport will be added to the main report. From the palette drag another subreport and repeat the same procedure using as report 
+	  	file "PhoneReport.jrxml", all the other fields use the same values. At this point you should have the two subreports into the main report. Resize them to and resize 
+	  	the detail to obtain this result:
+	  
+  	  </p><div class="figure"><a name="N401AD"></a><p class="title"><b>Figure&nbsp;16.&nbsp;Set the layout of the main report</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="15.png" width="800" alt="Set the layout of the main report"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  
+	  	Go in the Preview tab to compile and if it is all right you should see this result (don't mind if the emails are all the same, it is right because they are the same in the used database):
+	  
+  	  </p><div class="figure"><a name="N401C4"></a><p class="title"><b>Figure&nbsp;17.&nbsp;Final result</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="16.png" width="800" alt="Final result"></div>
+		</div>
+	  </div></div><p><br class="figure-break">
+	  </p>
+      </div>
+</div></body></html>

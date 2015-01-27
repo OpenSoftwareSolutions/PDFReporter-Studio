@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JasperReport Components
+Bundle-SymbolicName: com.jaspersoft.studio.components; singleton:=true
+Bundle-Version: 5.6.2.final
+Bundle-Localization: plugin
+Bundle-Activator: com.jaspersoft.studio.components.Activator
+Bundle-Vendor: Jaspersoft Corporation
+Require-Bundle: com.jaspersoft.studio;bundle-version="5.6.2",
+ com.buzzcoders.yasw.widgets.map;bundle-version="1.0.0"
+Eclipse-RegisterBuddy: com.jaspersoft.studio
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Export-Package: com.jaspersoft.studio.components.map.model.marker,
+ com.jaspersoft.studio.components.map.model.marker.dialog

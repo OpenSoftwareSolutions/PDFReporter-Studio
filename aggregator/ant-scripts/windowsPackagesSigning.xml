@@ -1,0 +1,44 @@
+<project default="signWindowsEXEs">
+	<!-- import properties for windows signing machine -->
+	<property file="authenticationInfo.properties"/>
+	<!-- location for the dist folder where the .exe are located -->
+	<property name="build.distFolder" value="${basedir}/../product/dist" />
+
+	<!-- ================================= 
+             target: signWindowsEXEs
+             ================================= -->
+	<target name="signWindowsEXEs" description="Sign the Windows exes on the dedicated Windows machine">
+		<taskdef resource="net/sf/antcontrib/antlib.xml">
+			<classpath>
+				<pathelement location="${basedir}/../../com.jaspersoft.studio.rcp.product/lib/ant-contrib-1.0b3.jar"/>
+			</classpath>
+		</taskdef>
+
+		<!-- COMMENTED: Let's assume that the folder exists.		
+		<echo message="Remove and re-create remote folder"/>
+		<sshexec host="${windows.signing.hostname}" username="${windows.signing.username}" password="${windows.signing.password}" command="cmd /c rmdir &quot;${windows.signing.tempdir}&quot; /s /q" failonerror="false" />
+		<sshexec host="${windows.signing.hostname}" username="${windows.signing.username}" password="${windows.signing.password}" command="cmd /c &quot;cd ${windows.signing.dirprefix} &amp; mkdir ${windows.signing.dirname}&quot;" />
+		-->
+		<echo message="Remove old .exe files"/>
+		<sshexec host="${windows.signing.hostname}" username="${windows.signing.username}" password="${windows.signing.password}" command="cmd /c cd ${windows.signing.tempdir} &amp; del /F *.exe" failonerror="false" />		
+
+		<echo message="Process .exe files inside the build folder"/>
+		<for param="exeFile">
+			<path>
+				<fileset dir="${build.distFolder}">
+					<include name="**/*.exe"/>
+				</fileset>
+			</path>
+			<sequential>
+				<!-- Remote copy and sign every single .exe-->
+				<scp file="@{exeFile}" todir="${windows.signing.username}:${windows.signing.password}@${windows.signing.hostname}:/${windows.signing.dirname}/" trust="true" sftp="true"/>
+				<propertyregex override="yes" property="exeFileName" input="@{exeFile}" regexp=".*/(.*)" select="\1" casesensitive="true" />
+				<sshexec 
+					host="${windows.signing.hostname}" username="${windows.signing.username}" password="${windows.signing.password}" 
+					command="cmd /c signtool.exe sign /f ${windows.signing.pfx.filepath} /p ${windows.signing.pfx.filepassword} /v /d &quot;Jaspersoft Studio CE Installer&quot; /du &quot;www.jaspersoft.com&quot; ${windows.signing.tempdir}/${exeFileName}" />
+				<delete file="@{exeFile}"/>
+				<scp file="${windows.signing.username}@${windows.signing.hostname}:/${windows.signing.dirname}/${exeFileName}" todir="${build.distFolder}"  password="${windows.signing.password}" trust="yes" sftp="true"/>
+			</sequential>
+		</for>
+	</target>
+</project>

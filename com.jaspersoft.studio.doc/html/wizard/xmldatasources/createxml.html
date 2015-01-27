@@ -1,0 +1,78 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Creation of an XML dataset</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Creation of an XML dataset</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+        <p>An XML data source uses an XML file to provide the data to print. The XML structure is not flat like a table, there are
+        not rows and columns, it is more similar to a tree, where we can have several levels of data. We can say that all start
+        from a root node, that can have any number of children. A child could be a value or another node with its children and so
+        on. For this reason it is necessary to use an XPath query to identify which nodes of the XML document must be considered as
+        records. The following XML is simple enough to easily explain how to do it:</p>
+        		<div class="figure"><a name="N40011"></a><p class="title"><b>Figure&nbsp;1.&nbsp;XML Example</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="extra.png" width="200" alt="XML Example"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>Each record that we want to print can be identified with the XML node labeled "person". The selection of these
+        specific xml tags is done with an XPath query like this: /addressbook/person XPath is a powerful query language to select
+        data in an XML file. In this case the expression will select all the nodes of type "person" children of
+        "addressbook". The result from the data source will be a set of three records (since the occurrences of the tag
+        person child of addressbook are three). The goal is to write a report in Jaspersoft Studio with the list all the persons in
+        the address book, showing for each person the name and the phone number..</p>
+        <p>Open Jaspersoft Studio and create a new report with "File-&gt;New-&gt;Jasper Report". In this example it is
+        used a new report with the template select "Silhouette" and with file name "ContactXMLReport". Now you
+        have to choose the data adapter, but since we don't have an adapter for the XML you have to click "New" and
+        in the window that will appear select "XML document" and hit "Next".</p>
+        		<div class="figure"><a name="N4002B"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Create the Data Adapter</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="1.png" width="800" alt="Create the Data Adapter"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>In the next window insert the name of the new data adapter, for example "XMLAdapter", then hit the button
+        "Browse" and select the XML file containing the data, select the option "Use the report Xpath expression
+        when filling the report" to use an expression directlly inside the reprot. The difference from this two options is
+        that the first use an expression defined into the report, so every report could use its own expression to retrive the data,
+        the second one define an expression into the data adapter, so every report that will use that data adapter will is also its
+        expression. When configuring an XML data source is possible to specify in which mode the data source must operate or to use
+        and a Date and Number patterns that can be used to convert a text value in a more appropriate object (like a date or a
+        number), since we don't need this simply click "Finish".</p>
+        		<div class="figure"><a name="N40042"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Fill the Data Adapter</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="2.png" width="800" alt="Fill the Data Adapter"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>Now you will return to the report creation wizard and the data adapter just created should be selected, so you need to
+        insert the XPath query, like we did with the SQL query in other tutorials. In this case JasperReports will execute the
+        XPath query to select the nodes from the XML document provided using the XML data source. Infact every type of data adapter
+        can provide an editor to interact with the data source (the XML in this case). For example for a JBDC data adapter we
+        insert the SQL query and from this Jaspersoft Studio discovers the fields. With the XML you can provide an XPath query,
+        like "/addressbook/person" but you can also compose it using a visual editor that show the tree structure of the
+        the XML and you can browse the nodes. By double clicking on a node the XPath query will be automatically generated. The
+        advantage of keeping the XPath query inside the report is that we can use parameters to make the query dynamic.</p>
+        		<div class="figure"><a name="N40059"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Select the Node</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="3.png" width="800" alt="Select the Node"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>Note that the query "/addressbook/person" returns all the people under the tag "addressbook", and as
+        fields there are the children nodes of person, so name and phone. Now you can click next and as announced the fields
+        "name" and "phone" were discovered. Add them to the report with the button "&gt;&gt;" and
+        then hit "Next".</p>
+        		<div class="figure"><a name="N40070"></a><p class="title"><b>Figure&nbsp;5.&nbsp;Add the Fields</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="4.png" width="800" alt="Add the Fields"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>We don't need groups so on the next step select "Next" and then "Finish". Now the report will be
+        created and if you switch in the "Preview" mode you should see this result:</p>
+        		<div class="figure"><a name="N40087"></a><p class="title"><b>Figure&nbsp;6.&nbsp;Compile the Report</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="5.png" width="800" alt="Compile the Report"></div>
+			</div>
+		</div></div><br class="figure-break">
+     	</div>
+</div></body></html>

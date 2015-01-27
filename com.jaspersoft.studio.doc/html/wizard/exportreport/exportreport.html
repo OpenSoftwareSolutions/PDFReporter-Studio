@@ -1,0 +1,45 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Exporting reports</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Exporting reports</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+      <p>
+      	In addition to generating and viewing reports, Jaspersoft Studio allows you to export reports into many formats, including  PDF, XLS, HTML and others. In this tutorial 
+		we will go over the steps necessary to export a generated report using Jaspersoft Studio. 
+	  </p>
+	  <p>
+	  	When you switch on the Preview tab in the designer bottom bar, Jaspersoft Studio performs a set of operations to create the final report. The first operation compiles 
+		the JRXML source file in a Jasper file. This first step can fail if the elements are not correctly positioned (for example, if an element is placed outside of a band), 
+		or if an expression in the report has errors and cannot be compiled.
+	  </p>
+	  <p>
+		If the compilation runs successfully, the produced Jasper file is loaded and filled using the active connection or data source. This second operation can also lead to errors. 
+		This can happen if the referenced database is not active, an invalid query has been provided, or a null field produced an error in an expression during the filling process. 
+		If all operations complete without error, the report is displayed in the integrated viewer. Errors are shown in the Report State window, after clicking the Errors button, 
+		as shown in the following image:
+	  </p>
+	  <div class="figure"><a name="N40017"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Design tab</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="1.png" width="800" alt="Design tab"></div>
+			</div>
+	  </div></div><br class="figure-break">
+	  <p>
+		  If errors occur during the compilation, the tab changes from Preview to Design.
+	  </p>
+	  <p>
+		If the compilation completes and there are no errors in the file, the preview is shown. From there you can browse the generated report and change its visualization, 
+		change the data source or export the report. Note that after changing the data source the report is recompiled automatically.  You can also change the preview format 
+		and save the report in different formats.
+	  </p>
+	  <div class="figure"><a name="N40031"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Preview tab</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="2.png" width="800" alt="Preview tab"></div>
+			</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	In the image you can see that there is a green Play button. Clicking this button forces the report to be regenerated; it should be used when a subreport changes, or 
+		when you want to execute the report with different input parameters. When you set a preview format, the report is automatically regenerated in the chosen format, and 
+		the corresponding viewer application is opened - a PDF viewer or OpenOffice, for example.
+	  </p>
+      </div>
+</div></body></html>

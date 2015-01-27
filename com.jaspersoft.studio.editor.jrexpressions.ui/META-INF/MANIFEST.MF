@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: com.jaspersoft.studio.editor.jrexpressions.ui
+Bundle-Vendor: Jaspersoft Corporation
+Bundle-Version: 5.6.2.final
+Bundle-SymbolicName: com.jaspersoft.studio.editor.jrexpressions.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Require-Bundle: com.jaspersoft.studio.editor.jrexpressions;bundle-version="5.6.2",
+ org.eclipse.xtext.ui;bundle-version="2.3.1",
+ org.eclipse.xtext.ui.shared;bundle-version="2.3.1",
+ org.eclipse.xtext.builder;bundle-version="2.3.1",
+ org.eclipse.xtext.common.types.ui;bundle-version="2.3.1",
+ org.eclipse.xtext.ui.codetemplates.ui;bundle-version="2.3.1",
+ com.jaspersoft.studio.xtext.jface;bundle-version="5.6.2"
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Export-Package: com.jaspersoft.studio.editor.jrexpressions.ui.contentassist,
+ com.jaspersoft.studio.editor.jrexpressions.ui.contentassist.antlr,
+ com.jaspersoft.studio.editor.jrexpressions.ui
+Bundle-Activator: com.jaspersoft.studio.editor.jrexpressions.ui.JRExpressionsUIPlugin
+Bundle-ClassPath: .

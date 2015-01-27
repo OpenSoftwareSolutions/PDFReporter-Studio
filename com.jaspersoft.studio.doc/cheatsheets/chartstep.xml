@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create of a chart">
+   <intro>
+      <description>
+         JasperReports supports a large number of built-in charts created using the popular open source library JFreeChart. Chart types include Pie, Bar, Stacked Bar, Line, Area, Bubble, Gantt, Thermometer and Meter. In this tutorial we will learn how to add a bar chart to a report.
+      </description>
+   </intro>
+   <item
+         title="Set the chart" dialog="true">
+      <description>
+         Drag and Drop the chart element from the <b>Palette</b> into the <b>Summary</b> band, then wizard of the chart will appear.
+      </description>
+      <action pluginId="com.jaspersoft.studio.components" class="com.jaspersoft.studio.components.chart.model.command.NewChartWizardHandler" required="false"/>
+   </item>
+   <item
+         title="Select the type of chart">
+      <description>
+         From the first step of the wizard select the bar chart and hit <b>Next</b>.
+      </description>
+   </item>
+   <item
+         title="Add the series and labels for the cities">
+      <description>
+         In the fields <b>Series</b> and <b>Label</b> add the value <b>$F{SHIPCITY}</b>.
+      </description>
+   </item>
+   <item
+         title="Select the correct dataset">
+      <description>
+         In the field <b>Dataset</b> select the dataset created before.
+      </description>
+   </item>
+   <item
+         title="Set the value">
+      <description>
+         For the field <b>Value</b> use <b>$F{C1}</b>, to have the number of shipments for every city.
+      </description>
+   </item>
+   <item
+         title="Complete the wizard">
+      <description>
+         The category is not needed, so in the field <b>Category</b> insert an empty string with a double quote. Then hit the button <b>Finish</b>.
+      </description>
+   </item>
+   <item
+         title="Change the size of the summary">
+      <description>
+         Select the summary band and set its height to 500.
+      </description>
+   </item>
+   <item
+         title="Resize the chart">
+      <description>
+         Resize the chart to fill the summary band, you can right click on the chart , go under <b>Size To Container</b> and select <b>Fit Both</b>.
+      </description>
+   </item>
+</cheatsheet>

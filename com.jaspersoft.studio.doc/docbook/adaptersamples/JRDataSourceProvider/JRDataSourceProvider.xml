@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+<title>How to create and use a JRDataSource adapter</title>
+<section>
+        <para>
+	        In the tutorial <ulink url="../JRDataSource/JRDataSourceAdapter.html"><citetitle>How to create and use a JRDataSource adapter</citetitle></ulink> we have seen how to create a simple data adapter that gets the data from a custom class. 
+	        One of the problem of that adapter was the managing of the fields. Suppose to use a custom JRDataSource providden by someone, how do you know which fields are required? 
+	        Obviously you can read documentation on the data adapter or ask the author, but we will see another way to provide a data adapter, and integrated with it all these informations 
+	        like list of fields, with name, description and type. We can do this by definig a custom datasource provider, a java class that implements the interface JRDataSourceProvider. 
+        </para>
+        <para>
+			To create a custom datasource provider we need to implement the interface JRDataSourceProvider, lets see which method this interface require:
+        	<itemizedlist mark='opencircle'>
+        		<listitem>
+        			<para>
+        			boolean supportsGetFieldsOperation() : returns true if the provider supports the field retriving operation, using the method getField. 
+        			By returning true in this method the data source provider indicate that it is able to introspect the data source and discover the available fields.
+        			</para>
+        		</listitem>
+        		<listitem>
+        		<para>
+        			public JRField[] getFields(JasperReport report) : Returns the fields that are available from the data source. The provider can use the passed in report to 
+        			extract some additional configuration information such as report properties. 
+        		</para>
+        		</listitem>
+        		<listitem>
+        		<para>
+        		public JRDataSource create(JasperReport arg0) : Creates and returns a new instance of the provided data source. The provider can use the passed in report to extract 
+        		some additional configuration information such as report properties. In other words this return the class that implements a JRDataSource interface (like the class MyImplementation 
+        		seen in How to create and use a JRDataSource adapter) that contains the real data.
+        		</para>
+        		</listitem>
+        		<listitem><para>
+        		public void dispose(JRDataSource dataSource) : disposes the data source previously obtained using the create method. This method must close any resources associated with the data source. 
+        		</para></listitem>
+        	</itemizedlist>
+        	Now we have a general idea on how this inderface does, but lets see a pratical example. In this example as data adapter for the create method we have used MyImplementation, seen in How to create and use a JRDataSource adapter, 
+        	inside the implementation of the method create:	
+        </para>
+       	<programlisting language="java"><![CDATA[
+			package CustomDataSource;
+			
+			import CustomDataAdapter.MyImplementation;
+			import net.sf.jasperreports.engine.JRDataSource;
+			import net.sf.jasperreports.engine.JRDataSourceProvider;
+			import net.sf.jasperreports.engine.JRException;
+			import net.sf.jasperreports.engine.JRField;
+			import net.sf.jasperreports.engine.JasperReport;
+			import net.sf.jasperreports.engine.base.JRBaseField;
+			
+			/**
+			 * 
+			 * This class implements a DataSource for the data adapter MyImplementation. A data source it 
+			 * is like an envelope for the data adapter. It can create and destroy the data adapter itself, 
+			 * but it can also provide informations about the data adapters, like which fields it provide and 
+			 * a description\type for everyone of them.
+			 * 
+			 * 
+			 * @author Orlandin Marco
+			 *
+			 */
+			public class MyDataSource implements JRDataSourceProvider {
+			
+				/**
+				 * A field is composed basically of three informations: a name, a description and a type. And 
+				 * every instance of this class represent a field.
+				 * To be sure that our field provide this information we normally should implements the interface 
+				 * JRField. To avoid to implement all the methods we extended the class JRBaseField (that already 
+				 * implements JRField), redefining only the constructors to adapt to our needs.
+				 */
+				private class MyField extends JRBaseField{
+					
+					/**
+					 * An optional numerical id of the class, it can be generated automatically or omitted.
+					 */
+					private static final long serialVersionUID = -5570289821891736393L;
+			
+					/**
+					 * First constructor for the field
+					 * 
+					 * @param name : name of the field
+					 * @param description : description of the field
+					 * @param type : type of the field
+					 */
+					public MyField(String name,String description, Class<?> type){
+						this.name = name;
+						this.description = description;
+						this.valueClass = type;
+						this.valueClassName = type.getName();
+					}
+					
+					/**
+					 * Second Constructor, the type of the field is supposed to be 
+					 * String.
+					 * @param name : name of the field
+					 * @param description : description of the field
+					 */
+					public MyField(String name,String description){
+						this(name, description, String.class);
+					}
+				}
+				
+				/**
+				 * Build and return the data adapter that will provide an access to the real 
+				 * data that will be used to fill the report. 
+				 * In this case will be returned an instance of MyImplementation.
+				 */
+				@Override
+				public JRDataSource create(JasperReport arg0) throws JRException {
+					return new MyImplementation();
+				}
+			
+				/**
+				 * Method used to destroy the data adapter. Some time a data adapter can 
+				 * require additional operations when it isn't more needed. For example 
+				 * a remote connection should be closed. In this case we don't need to do 
+				 * anything since all data is embedded inside the data adapter.
+				 */
+				@Override
+				public void dispose(JRDataSource arg0) throws JRException {
+				}
+			
+				
+				/**
+				 * This method return true if the datasource can provide a list of fields used by the 
+				 * data adapter, otherwise false. If this return true the method getFileds is used to 
+				 * obtain a list of the fields provided.
+				 */
+				@Override
+				public boolean supportsGetFieldsOperation() {
+					return true;
+				}
+				
+				/**
+				 * Return a list of all the fields this datasource provide. In this case two fields 
+				 * are provided, one with a string that represent the Name of an employee and another 
+				 * one that is his age, expressed as an integer number.
+				 */
+				@Override
+				public JRField[] getFields(JasperReport arg0) throws JRException,
+						UnsupportedOperationException {
+					JRField field1 = new MyField("Name","The name of an employee");
+					JRField field2 = new MyField("Age","The age of an employee", Integer.class);
+					return new JRField[]{field1, field2};
+				}
+			
+			}
+		]]></programlisting>
+		<para>
+			This class to work must be placed in the same project folder where you have your custom data adapter 
+			(MyImplementation in the example). We can put the class in a new package, so right click in the project folder MyReports and select New->Package.
+		</para>
+	    <figure>
+			<title>Create the package</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="1.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+		<para>
+			At this point right click on the CustomDataAdapter package and select New -> Class. On the dialog that will appear insert MyDataSource as class name. 
+			Then press the button Add to add a new interface and select JRDataSourceProvider, if you have done right the JRDataSourceProvider interface will appear in the 
+			list of the used interfaces. Finally hit the Finish button to create the new class. At this point you have to write the data adapter code, but for this example 
+			you can just copy and paste the code written before.
+		</para>
+	  	<figure>
+			<title>Create the class</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="2.png" format="PNG"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+		<para>
+			Now you have to create the data adapter that use this class, from select the element File -> New -> Data adapter.
+		</para>
+	 	<figure>
+			<title>Create the data adapter</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="3.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+		<para>
+			From the dialog select the same project folder where you put the class (in this case MyReports) and has name of the file put MyCustomSource and hit Next. Now you have to choose the type of 
+			the data adapter, select JasperReports DataSource Provider Class and hit Next. At this point you must provide the information to get the class previously written:
+			<itemizedlist mark='opencircle'>
+				<listitem>
+				<para>As name of the datasource you can put anything you like, in this case we can use MyCustomSource.</para>
+				</listitem>
+				<listitem>
+				<para>On the field JasperReports DataSource Provider Class Name hit the button with three dots "...", and in the new dialog search for MyCustomSource and hit Ok. At the end in this 
+				field you should find something like CustomDataSource.MyDataSource.</para>
+				</listitem>
+			</itemizedlist>
+			After you have compiled all the fields hit the Test button to check if it is all right, and if you obtain a successful response hit the Finish button.
+		</para>
+	    <figure>
+			<title>Provide the class informations</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="4.png" format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+	  <para>
+			At this point you can use this new data adapter inside a report. Create a new report from the report wizard (File -> New -> Jasper Report), for this example use the template Coffee. Place it 
+			in the same Project folder of the data adapter (MyReports) and as data adapter select MyCustomSource. At this point the new datasource should be recognized as a fields provider and you will see the following image:
+	  </para>
+   	  <figure>
+			<title>Select the previously created datasource</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="5.png" format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+	  <para>
+			and hit Next. Now to the provider will be requested the available fields, and they will be shown in the left list (in this example Name and Age), add them all to the report and then hit Finish.
+	  </para>
+   	  <figure>
+			<title>Add all the fields to the report</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="6.png" format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+  	  <para>
+			ow your report will be generated with the two fields already in it. Switch to the preview tab to see the result:
+	  </para>
+   	  <figure>
+			<title>Report compiled</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="7.png" format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+     </section>
+</section>

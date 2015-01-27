@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JasperReports Library Samples
+Bundle-SymbolicName: net.sf.jasperreports.samples; singleton:=true
+Bundle-Version: 5.6.2.final
+Bundle-Activator: net.sf.jasperreports.samples.Activator
+Bundle-Vendor: Jaspersoft Corporation
+Require-Bundle: net.sf.jasperreports;bundle-version="5.6.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: net.sf.jasperreports.samples,
+ net.sf.jasperreports.samples.wizards

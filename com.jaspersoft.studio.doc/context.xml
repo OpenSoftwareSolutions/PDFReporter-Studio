@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+	<context id="dataAdapters_wizard_list">
+		<description>Here you can select the type of data adapter you want to create. Every type of data adapter allow to connect and query a different type of data source. It is possible to say that a data adapter act as bridge from a source of information and JasperReport\Jaspersoft Studio.</description>
+		<topic href="html/dataAdapters/dataadapters.html" label="Data Adapters" />
+  		<topic href="html/editors/dataAdapter/dataadapter.html" label="Data Adapter Editor"/>
+  <topic href="html/dataAdapters/wizard.html" label="Data Adapter Wizard"/>
+	</context>
+	<context id="jaspersoftserver">
+		<description>Hello here is our help for JasperReports Server</description>
+		<topic href="html/jasperserver/wizard.html" label="Create a JasperReports Server connection" />
+	</context>
+	<context id="select_template">
+		<description>Here you can select a template for the new report, to define its base layout. Select the template by clicking on it, then hit the button "Next" to proceed.</description>
+		<topic
+			href="html/wizard/createreport/createreport.html"
+			label="Designing a report" />
+	</context>
+	<context id="select_name">
+		<description>Here you can select the folder in the workspace where you want to put the report, and name for the report itself, then hit the button "Next" to proceed.</description>
+		<topic
+			href="html/wizard/createreport/createreport.html"
+			label="Designing a report" />
+		<topic href="html/wizard/createreport/addfolder.html" label="Create a Project Folder" />
+	</context>
+	<context id="select_dataset">
+		<description>Here you can define a datasource, the location from which the data is taken to fill the report. A datasource is composed by a data adapter, that is a connection to a resource (like and XML file or an SQL database), and eventually a query to identify fields that will be extracted from the resource.
+		</description>
+		<topic href="html/wizard/createreport/createreport.html" label="Designing a report" />
+		<topic href="html/wizard/xmldatasources/createxml.html" label="Using XML datasources"/>
+		<topic href="html/wizard/xmldatasources/remotexml.html" label="Using Remote XML datasources"/>
+      	<topic href="html/wizard/chartanddataset/createdataset.html" label="Creation of a dataset"/>
+	</context>
+	<context id="select_fields">
+		<description>Here you can select which fields, discovered in the data adapter, will be added to the report or table. Fields that are not added now can be added later.</description>
+		<topic
+			href="html/wizard/createreport/createreport.html"
+			label="Designing a report" />
+	</context>
+	<context id="select_groups">
+		<description>Here you can choose which from the added fields will became groups.</description>
+		<topic href="html/wizard/createreport/createreport.html" label="Designing a report" />
+		<topic href="html/wizard/creategroup/creategroup.html" label="Groups in JasperSoft Studio" />
+	</context>
+   <context id="view_reportstate" title="Report State View">
+      <description>Report state view</description>
+      <topic href="html/view/reportstate/reportstate.html" label="Report State View"/>
+   </context>
+   <context id="view_outline" title="Outline View">
+      <description>Outline view</description>
+      <topic href="html/view/outline/outline.html" label="Outline View"/>
+   </context>
+   <context id="view_properties" title="Properties View">
+      <description>Properties view</description>
+      <topic href="html/view/properties/properties.html" label="Properties View"/>
+   </context>
+   <context id="view_preview" title="Report Templates Preview">
+      <description>Report Templates Preview</description>
+      <topic href="html/view/preview/preview.html" label="Report Templates Preview"/>
+   </context>
+    <context id="view_repository" title="Repository View">
+      <description>Properties view</description>
+      <topic href="html/view/repository/repository.html" label="Repository View"/>
+   </context>
+   
+   <context id="editor_jrxml" title="Report Templates (jrxml) Editor">
+      <description>Report Templates (jrxml) Editor</description>
+      <topic href="html/editors/jrxml/jrxml.html" label="Report Templates (jrxml) Editor"/>
+   </context>
+   <context id="editor_jrtx" title="Style Templates Editor">
+      <description>Style Templates Editor</description>
+      <topic href="html/editors/jrtx/jrtx.html" label="Style Templates Editor"/>
+   </context>
+    <context id="editor_jrctx" title="Chart Theme Editor">
+      <description>Chart Theme Editor</description>
+      <topic href="html/editors/jrctx/jrctx.html" label="Chart Theme Editor"/>
+   </context>
+    <context id="editor_dataadapter" title="Data Adapter Editor">
+      <description>Data Adapter Editor</description>
+      <topic href="html/dataAdapters/dataadapters.html" label="Data Adapters" />
+	  <topic href="html/editors/dataAdapter/dataadapter.html" label="Data Adapter Editor"/>
+	  <topic href="html/dataAdapters/wizard.html" label="Data Adapter Wizard"/>
+   </context>
+   <context id="editor_jrprint" title="Report Preview Editor">
+      <description>Report Preview Editor</description>
+      <topic href="html/editors/jrprint/jrprint.html" label="Report Preview Editor"/>
+   </context>
+   <context id="editor_preview" title="Report Run And Preview Editor">
+      <description>Report Run And Preview Editor</description>
+      <topic href="html/editors/preview/preview.html" label="Report Run And Preview Editor"/>
+   </context>
+   
+   <context id="preferences_font" title="Font management">
+      <description>Font Management</description>
+      <topic href="html/preferences/font/fontmanagement.html" label="Font Management"/>
+   </context>
+   <context id="select_table_dataset" title="Select a dataset">
+      <description>Here you need to specify a dataset, choosing if you want to create a new one or reuse another one created before.</description>
+      <topic href="html/wizard/chartanddataset/createdataset.html" label="Creation of a dataset"/>
+      <topic href="html/wizard/tablecrosstabs/createtable.html" label="Creation of a table"/>
+      <topic href="html/wizard/tablecrosstabs/createcrosstab.html" label="Creation of a crosstab"/>
+   </context>
+   <context id="select_dataset_name" title="Select name and type">
+      <description>Here you need to specify a name for the new dataset, and it must be unique since it is used as identifier. You also need to specify if the new dataset get the data from a data source (like a database or a XML file for example) or if it is empty and has no data in it.</description>
+      <topic href="html/wizard/chartanddataset/createdataset.html" label="Creation of a dataset"/>
+      <topic href="html/wizard/tablecrosstabs/createtable.html" label="Creation of a table"/>
+      <topic href="html/wizard/tablecrosstabs/createcrosstab.html" label="Creation of a crosstab"/>
+   </context>
+   <context id="select_dataset_connection" title="Select the connection">
+      <description>Here you need to specify the connection used from the dataset to retrieve the data from the datasource. You can use an existing connection created for another datasource, or create a new one, choose the connection with an expression, or create and empty connection (this case it is equivalent to have an empty dataset.</description>
+      <topic href="html/wizard/chartanddataset/createdataset.html" label="Creation of a dataset"/>
+      <topic href="html/wizard/tablecrosstabs/createtable.html" label="Creation of a table"/>
+      <topic href="html/wizard/tablecrosstabs/createcrosstab.html" label="Creation of a crosstab"/>
+      <topic href="html/wizard/subreport/subreport.html" label="How to use a subreport with parameters" />
+   </context>
+   <context id="select_layout" title="Select the layout">
+      <description>Here you can select which columns will be created for the table. Note that all the fields selected in the previous steps will be inserted into the Detail cell, so it is not present in this selection.</description>
+      <topic href="html/wizard/chartanddataset/createdataset.html" label="Creating a dataset"/>
+      <topic href="html/wizard/tablecrosstabs/createtable.html" label="Creation of a table"/>
+      <topic href="html/wizard/tablecrosstabs/createcrosstab.html" label="Creation of a crosstab"/>
+   </context>
+   <context id="select_chart_type" title="Select the chart type">
+      <description>Here you can select the type of chart you want to place into the report, select a template and hit Next.</description>
+      <topic href="html/wizard/chartanddataset/createchart.html" label="Creation of a chart"/>
+      <topic href="html/wizard/chartanddataset/createdataset.html" label="Creation of a dataset"/>
+   </context>
+   <context id="select_chart_data" title="Select the chart data">
+      <description>Here you can configure your chart. The dataset define the context of the report, or in other words the location of the data used to fill the chart. Reset type allow you to periodically reset the dataset. The increment when expressions allows you to add a flag to determine whether to add a record to the record set designed to feed the chart. You can provide one or more series using fields and variables.</description>
+      <topic href="html/wizard/chartanddataset/createdataset.html" label="Creation of a dataset"/>
+      <topic href="html/wizard/chartanddataset/createchart.html" label="Creation of a chart"/>
+   </context>
+   <context id="select_style_template_path" title="Select location and name of the new syle template file">
+      <description>A style template is a container where you can define one or more styles and these styles can then be shared by many reports. In these step you can define location and name of the template file.</description>
+		<topic href="html/wizard/createreport/addfolder.html" label="Create a Project Folder" />
+		<topic href="html/wizard/stylestemplate/createtemplate.html" label="Create a Styles Template" />
+		<topic href="html/wizard/stylestemplate/usetemplate.html" label="Use a Styles Template" />
+   </context>
+   <context id="select_style_template_load" title="Select the styles template">
+      <description>Here you can select a styles template to include in your report. Doing this all the styles defined inside the template can be used inside the report.</description>
+		<topic href="html/wizard/createreport/addfolder.html" label="Create a Project Folder" />
+		<topic href="html/wizard/stylestemplate/createtemplate.html" label="Create a Styles Template"/>
+		<topic href="html/wizard/stylestemplate/usetemplate.html" label="Use a Styles Template" />
+   </context>
+   <context id="select_chart_theme_path" title="Select location and name of the new chart theme file">
+      <description>A chart theme is a style that could be applied to a charts. In these step you can define location and name of the chart theme file.</description>
+		<topic href="html/wizard/createreport/addfolder.html" label="Create a Project Folder" /> 
+   </context>
+   <context id="select_chart_theme_load" title="Select the chart theme">
+      <description>Here you can select a chart theme to include in your report.</description>
+		<topic href="html/wizard/createreport/addfolder.html" label="Create a Project Folder" /> 
+   </context>
+   <context id="select_expression" title="Compose your expression">
+      <description>Here you can define an expression and use it inside your report. This powerful expression editor allows the edit and composing an expression with a graphical interface that suggest the available fields, variables, function and their parameters.</description>
+		<topic href="html/wizard/expressioneditor/useexpressioneditor.html" label="Expression Editor: what it is and how it works" />
+		<topic href="html/wizard/expressioneditor/extendeditor.html" label="Expression Editor: how to extend it and contribute your own functions" />
+   </context>
+   <context id="select_page_format" title="Change the page format">
+      <description>Here you can define the page format of the report. This includes margin, number of columns, paper format and page orientation. You can use also use many measure unit when you define one of this parameters.</description>
+		<topic href="html/wizard/reportstructure/pageformat.html" label="Editing the page format" />
+		<topic href="html/wizard/reportstructure/columns.html" label="Editing the number of columns" />
+		<topic href="html/wizard/reportstructure/reportstructure.html" label="The report structure" />
+   </context>
+   <context id="select_subreport_source" title="Select the source of the subreport">
+      <description>Here you can define the source of the subreport. You can create a new report, using an existing one (you can directly select a report in the workspace or provide an expression to select it) or just create the subreport element in the report as palceholder.</description>
+		<topic href="html/wizard/subreport/subreport.html" label="How to use a subreport with parameters" />
+		<topic href="html/wizard/chartsubreport/createsubchart.html" label="Using charts and subreports" />
+   </context>
+   <context id="select_subreport_property" title="Select the parameters of the subreport">
+      <description>Here you can insert the parameter that will be passed to the subreport. The name of the parameter must be the same of the one used in the subreport and you can set the value of the parameters with an expression.</description>
+	  <topic href="html/wizard/subreport/subreport.html" label="How to use a subreport with parameters" />
+	  <topic href="html/wizard/chartsubreport/createsubchart.html" label="Using charts and subreports" />
+   </context>
+   <context id="select_subreport_file" title="Select the subreport file">
+      <description>Select the a report file from your workspace, and it will be used as subreport.</description>
+	  <topic href="html/wizard/subreport/subreport.html" label="How to use a subreport with parameters" />
+	  <topic href="html/wizard/chartsubreport/createsubchart.html" label="Using charts and subreports" />
+   </context>
+   <context id="SPText_name" title="Test property name help">
+      <description>This is the help of the property name.</description>
+	  <topic href="html/wizard/subreport/subreport.html" label="How to use a subreport with parameters" />
+	  <topic href="html/wizard/chartsubreport/createsubchart.html" label="Using charts and subreports" />
+   </context>
+   <context id="select_barcode" title="Select the type of barcode">
+      <description>Select the type of bar code you want insert in your report. Note that from here you can select only the type, instead the value can be set from the element properties when inserted.</description>
+   </context>
+   <context id="select_server" title="Select the server and location">
+      <description>Select a JasperReports server and the location where the report will be uploaded. Select also a report unit id, and an optional name (can be equal to the id) and description. The report unit is the "folder" that will contains the report on the server and its resources.</description>
+ 	  <topic href="html/wizard/jasperserver/connection.html" label="Connect to JasperReports Server" />
+ 	  <topic href="html/wizard/jasperserver/publishreport.html" label="Publish a report into JasperReports Server" />
+   </context>
+   <context id="select_server_resources" title="Select the resources to upload">
+      <description>Here you can select the resources used inside the report (like images) that will be uploaded with it in the report unit. Note that a report to be executed from JasperReports Server, must have all its resources uploaded.</description>
+ 	  <topic href="html/wizard/jasperserver/connection.html" label="Connect to JasperReports Server" />
+ 	  <topic href="html/wizard/jasperserver/publishreport.html" label="Publish a report into JasperReports Server" />
+   </context>
+   <context id="select_server_datasources" title="Select how to manage the data sources">
+      <description>Here you can define how to manage the datasources used by the report, since they can be needed to execute it. You can select to upload your use a datasource already on the server, try to upload your local one, or don't use any datasource.</description>
+ 	  <topic href="html/wizard/jasperserver/connection.html" label="Connect to JasperReports Server" />
+ 	  <topic href="html/wizard/jasperserver/publishreport.html" label="Publish a report into JasperReports Server" />
+   </context>
+   <context id="congratualions_page" title="Wizard completed">
+      <description>You have successfully completed the wizard, hit Finish to return to the report.</description>
+   </context>
+   <context id="select_sample_location" title="Select the sample location">
+      <description>Here you can select the location in the workspace for the sample projects, by providing a name for the workspace fodler. Note that the name must be unique.</description>
+   </context>
+   <context id="select_return_values" title="Select the return values">
+      <description>Here you can insert the value that will be returned by the subreport. The value must be assigned to a variable and have a calculation time, necessary to know when evaluate the parameter</description>
+      <topic href="html/wizard/reportvariables/createvariable.html" label="The variables in Jaspersoft Studio" />
+	  <topic href="html/wizard/subreport/subreport.html" label="How to use a subreport with parameters" />
+	  <topic href="html/wizard/chartsubreport/createsubchart.html" label="Using charts and subreports" />
+   </context>
+   <context id="select_new_adapter" title="Select the data adapter location">
+      <description>Here you can select the name and the location of your new data adapter</description>
+	  <topic href="html/wizard/chartanddataset/createdataset.html" label="Creation of a dataset"/>
+	  <topic href="html/wizard/createreport/addfolder.html" label="Create a Project Folder" />
+   </context>
+   <context id="adapter_csv" title="Create a CSV data adapter">
+      <description>The CSV (comma separated values) data adapter use as source a text file with all values expressed as strings, separated by a simbol, tipically a comma.</description>
+   </context>
+   <context id="adapter_javabeans" title="JavaBean data adapter">
+      <description>JavaBeans are reusable software components for Java. Practically, they are classes written in the Java programming language conforming to a particular convention. They are used to encapsulate many objects into a single object (the bean), so that they can be passed around as a single bean object instead of as multiple individual objects. A JavaBean is a Java Object that is serializable, has a 0-argument constructor, and allows access to properties using getter and setter methods. A collection of JavaBeans is produced by a Bean Factory.</description>
+      <topic href="html/adaptersamples/bean/adapterfactory.html" label="Exemple of a Bean factory"/>
+      <topic href="html/adaptersamples/bean/beanfile.html" label="Exemple of a Bean class"/>
+   </context>
+   <context id="adapter_JDBC" title="JDBC data adapter">
+      <description>JDBC is a Java-based data access technology (Java Standard Edition platform) from Oracle. It is an acronym as it is unofficially referred to as Java Database Connectivity, with DB being universally recognized as the abbreviation for database. This technology provide the functionality to allow a client may access a database and it also provides methods for querying and updating data in a database. To define this data adapter you must provide its address expressed as URL and the access credential (username and password).</description>
+   </context>
+   <context id="adapter_EJBQL" title="EJBQL data adapter">
+      <description>EJBQL is a portable database query language for Enterprise Java Beans.</description>
+   </context>
+   <context id="adapter_empty" title="Empty Rows data adapter">
+      <description>A simple list of empty rows. The number of rows can be defined by users.</description>
+   </context>
+   <context id="adapter_hibernate" title="Hibernate connection data adapter">
+      <description>Hibernate is an object-relational mapping (ORM) library for the Java language, providing a framework for mapping an object-oriented domain model to a traditional relational database. Hibernate solves object-relational impedance mismatch problems by replacing direct persistence-related database accesses with high-level object handling functions. You need to provide a valide hibernate configuration in your classpath.</description>
+   </context>
+   <context id="adapter_hibernatespring" title="Hibernate connection data adapter, using Spring">
+      <description>If you use the Spring framework, you can use a Spring configuration file to define your connection. In this case, you'll need to set the configuration file name and the seesion factory bean ID.</description>
+   </context>
+   <context id="adapter_jndi" title="JNDI data adapter">
+      <description>The Java Naming and Directory Interface (JNDI) is a Java API for a directory service that allows Java software clients to discover and look up data and objects via a name. Like all Java APIs that interface with host systems, JNDI is independent of the underlying implementation. Additionally, it specifies a service provider interface (SPI) that allows directory service implementations to be plugged into the framework. It may make use of a server, a flat file, or a database.</description>
+   </context>
+   <context id="adapter_json" title="JSON data adapter">
+      <description>JSON, or JavaScript Object Notation, is a text-based open standard designed for human-readable data interchange. It is derived from the JavaScript scripting language for representing simple data structures and associative arrays, called objects.</description>
+   	   <topic href="html/adaptersamples/json/jsonexample.html" label="Exemple of JSON file"/>
+   </context>
+   <context id="adapter_excel" title="Excel data adapter">
+      <description>Use a file generated from microsoft excel as data source. You need to provide the path to a local excel file and define the columns from where the data will be taken.</description>
+   </context>
+   <context id="adapter_mondrian" title="Mondrian data adapter">
+      <description>Mondrian is an open source OLAP (online analytical processing) server, written in Java. It supports the MDX (multidimensional expressions) query language and the XML for Analysis and olap4j interface specifications. It reads from SQL and other data sources and aggregates data in a memory cache.</description>
+   </context>
+   <context id="adapter_xml" title="XML data adapter">
+      <description>The Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. Here you can provide a local XML file used to fill the report.</description>
+   	  <topic href="html/wizard/xmldatasources/createxml.html" label="Using XML datasources"/>
+	  <topic href="html/wizard/xmldatasources/remotexml.html" label="Using Remote XML datasources"/>
+   </context>
+   <context id="adapter_xml_remote" title="Remote XML data adapter">
+      <description>The Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. The xml is not read from a local resource, but it is retrived from a URL that can be for example and XML on a server or an RSS Feed.</description>
+   	  <topic href="html/wizard/xmldatasources/createxml.html" label="Using XML datasources"/>
+	  <topic href="html/wizard/xmldatasources/remotexml.html" label="Using Remote XML datasources"/>
+   </context>
+   <context id="adapter_xmla" title="XMLA server data adapter">
+      <description>XML for Analysis (abbreviated as XMLA) is an industry standard for data access in analytical systems, such as OLAP and data mining. XMLA is based on other industry standards such as XML, SOAP and HTTP.</description>
+   </context>
+   <context id="adapter_custom" title="Class as data adapter">
+      <description>Some time it is necessary to reterive informations from sources unsopported by any data adapters. In this case you can write your own java class to connect and query this sources, and then elaborate the extracted informations to made them compatible with JasperReport. Using this data adapter you must specify this class that implements the interface JRDataSource, the jar where it is (or required as dependencies) or the path in the workspace, and the method used to retreive the information. With this information JasperReport will use this class to extract the informations and will use them to fill the report.</description>
+   	  <topic href="html/adaptersamples/JRDataSource/JRDataSourceAdapter.html" label="How to Create and Use a JRDataSource adapter" />
+   	  <topic href="html/adaptersamples/JRDataSourceProvider/JRDataSourceProvider.html" label="How to Create and Use a JRDataSourceProvider adapter" />	
+   </context>
+  <context id="adapter_jrdatasourceprovider" title="Custom Class as data adapter">
+      <description>In a similar way to the custom JRDataSource you can write your own java class to connect and query a source, but in additional you can provide a description of the fields that your adapter will provide. To do this you must specify this class, that must implements the JRDataSourceProvider interface, and in case the jar where it is or where are its dependencies. With this information JasperReport will use this class to extract the informations and will use them to fill the report.</description>	
+      <topic href="html/adaptersamples/JRDataSourceProvider/JRDataSourceProvider.html" label="How to Create and Use a JRDataSourceProvider adapter"/>	
+      <topic href="html/adaptersamples/JRDataSource/JRDataSourceAdapter.html" label="How to Create and Use a JRDataSource adapter" />
+   </context>
+   <context id="adapter_quryexecutor" title="Empty data adapter">
+      <description>An empty data adapter that can be used as placeholder, without connection, sources or data. It is needed to run a report without any data source and it is characterized only by its name.</description>
+   </context>
+   <context id="query_dialog" title="Dataset and query dialog">
+      <description>From this dialog you can change the dataset query, define new parameters or change the adapter used to retrive the data.</description>
+      <topic href="html/dataAdapters/dataadapters.html" label="Data Adapters" />
+      <topic href="html/wizard/xmldatasources/createxml.html" label="Using XML datasources"/>
+      <topic href="html/wizard/chartanddataset/createdataset.html" label="Creation of a dataset"/>
+  	  <topic href="html/wizard/subreport/subreport.html" label="How to use a subreport with parameters" />
+   </context>
+   <context id="properties_tab" title="Element properties">
+      <description>In this table are shown all the configuration properties of the element. You can change, edit or remove them. These properties are used to change the behavior of JasperReport when the your report will be compiled.</description>
+   	 <topic href="../net.sf.jasperreports.doc/docs/config.reference.html" label="Configurations properties reference" />
+   </context>
+   <context id="issue_detail" title="Feedback details">
+      <description>In this step of the wizard you can provide some details for the bug or feature you want to submit, the title and a description are mandatory. At the end of the procedure you will see you feedback in the bug tracker on the community site of JasperSoft, and you will able to interact with the other users and developers. For this reason you must be a registered user to commit a feedback.</description>
+   	  <topic href="http://community.jaspersoft.com/bug-tracker?field_bug_project_target_id=496" label="Bug Tracker" />
+   	  <topic href="http://community.jaspersoft.com/modal_forms/nojs/login" label="Register User page" />
+   </context>
+   <context id="issue_attachments" title="Feedback attachments">
+      <description>If you are submitting an issue you can also attach to the feedback some standard files like the eclipse log, a summary of your hardware configuration or choose manually the file to upload.</description>
+   	  <topic href="http://community.jaspersoft.com/bug-tracker?field_bug_project_target_id=496" label="Bug Tracker" />
+   	  <topic href="http://community.jaspersoft.com/modal_forms/nojs/login" label="Register User page" />
+   </context>
+   <context id="issue_login" title="Provide your login informations">
+      <description>To complete the feedback procedure you must provide a valid username and password to access to community.jaspersoft.com, the official community site of JasperSoft . If you haven't an account you can register just now, it is free and with an account you can interact with the other users and developers by JasperSoft, post your own tutorials or questions, and many other things.</description>
+   	  <topic href="http://community.jaspersoft.com/bug-tracker?field_bug_project_target_id=496" label="Bug Tracker" />
+   	  <topic href="http://community.jaspersoft.com/modal_forms/nojs/login" label="Register User page" />
+   </context>
+ 	<context id="preferences_properties_tab" title="Manage the properties configuration">
+      <description>In this page you can set some properties that will be used to configure JasperReports. To get information on what a property does, select it from the list and press the help key (on linux and windows it is the key F1).</description>
+   </context>
+   <context id="wizard_crosstab_layout" title="Define the crosstab layout">
+      <description>In this step you can define the crosstab layout, this include the color schema of the crosstab and the color of the grid.</description>
+   </context>
+   <context id="wizard_pattern" title="Define a pattern for the field">
+      <description>In this dialog you can insert a pattern to format your value. If can select from a list of default patterns or write a new one. In every case you can see a preview of the pattern applied to an example value. The pattern symbols changes according to the data type, so you must select the type of the field you want to format, available types are: Percentage, Time, Date, Numbers, Currency and Scientific Numbers</description>
+  	  <topic href="http://docs.oracle.com/javase/tutorial/i18n/format/index.html" label="Java official tutorial on the data formatting" />
+   </context>
+   <context id="ImportStyleDialog" title="Define the styles you want to import">
+      <description>Select an XML file containing one or more Template Style. Then you will be able to select the templates found inside this file and import only the selected ones</description>
+   </context>
+   <context id="ExportStyleDialog" title="Define the styles you want to export">
+      <description>Select one or more styles and a valid location to save them. The exported templates can be acquired in any moments using the import procedure</description>
+   </context>
+   <context id="wizard_exported_resources" title="Check the exported resource and select a path">
+      <description>In this step you can see a list of exported resources along with the report. This resources are required by the report, so they will be copied in the same directory of the template. You must also define the destination path of the template, you can not proceed until a valid path is defined or if there are conflict beteween the exported resources</description>
+   </context>
+   <context id="wizard_exported_category" title="Select the report type and categories">
+      <description>In this step you can see a list of available categories. This category can be assigned one by one to the report, you can also create new categories on the fly. You must also select the type of report this template will generate.</description>
+   </context>
+   <context id="wizard_import_select_ireport" title="Select an iReport configuration">
+      <description>Here you can see all the detected configuration of iReport, and by selecting one of them you can import the wanted data. If the wanted configuration isn't between them you can select manually a file called ireport.properties that contain the iReport configuration. You can select only one configuration at time.</description>
+   </context>
+   <context id="wizard_import_select_dataadapters" title="Select the data adapters to import">
+      <description>Here you can see all the detected data adapter inside the iReport configuration, select one or more of them and press Finish to import them into Jaspersoft Studio</description>
+   </context>
+   <context id="wizard_import_select_serverconnection" title="Select the JR Server connections to import">
+      <description>Here you can see all the detected JasperReports Server connections inside the iReport configuration, select one or more of them and press Next to continue</description>
+   </context>
+   <context id="wizard_import_select_properties" title="Select the Properties to import">
+      <description>Here you can see all the properties that can be automatically imported into JasperSoft Studio (existing properties will be replaced), select one or more of them and press Finish to import all the selected data into Jaspersoft Studio</description>
+   </context>
+   <context id="wizard_functionslibrary" title="Create a new Functions Library for the Expression Editor">
+      <description>The wizard will guide you through the creation of a Functions Library that can be used to extend the Expression Editor.</description>
+		<topic href="html/wizard/expressioneditor/extendeditor.html" label="Expression Editor: how to extend it and contribute your own functions" />
+   </context>
+   <context id="editInputControl" title="Edit Input Control">
+      <description>Input controls are graphical widgets the server displays with the report. Input controls can be used to Prompt the user for input, validate the format of the input, pass the input to the report.Based on the input, the server modifies the WHERE filter clauses in SQL parametrized queries. Input controls correspond to the parameters defined in JRXML reports, such as $P{name}. The server maps the value that the user enters for the input control to the parameter of the same name. If you define an input control in the JasperReport and the server can’t find a parameter by the same name in the JRXML, the input control doesn’t function when the report runs.</description>
+  	  <topic href="http://community.jaspersoft.com/documentation/jasperreports-server-user-guide/adding-input-controls" label="Input Controls in JasperReport Server" />
+   </context>
+   <context id="editGenericFile" title="Edit File Resource">
+      <description>In this dialog you can download a file resource or replace the one in the server with another one. Depending on the type of file resource (for example with images) you can also see a preview of the resource actually on the server.</description>
+   </context>
+   <context id="editResource" title="Edit Resource">
+      <description>In this dialog you can view and edit some generic informations about the resource. The only informations that can be edited are a textual description of the resource and the name used when the it is shown. The information inside a dark gray field, like the Id, can not b changed.</description>
+   </context>
+   <context id="editReportUnitContent" title="Edit Report Unit">
+      <description>In this dialog you specify the main report of the report unit. This report will be the one executed when the report unit is launched, all the other report inside the report unit could be anyway executed if they are subreport inside the main one.</description>
+   </context>
+   <context id="editReportUnitDSContent" title="Edit Report Unit Main Datasource">
+      <description>In this dialog you specify the main datasource of the report unit. This will be the datasource used from the main report.</description>
+   </context>
+   <context id="editReportUnitICContent" title="Edit Report Unit Input Control">
+      <description>In this dialog you specify how the input control defined inside the report unit will interact with the user. For example you can define if the input controls values will be requested from the user with an input dialog and where this dialog will be placed.</description>
+   </context>
+   <context id="editListOfValue" title="Edit List Of Value">
+      <description>In this dialog you can add, remove or edit the every single elements of a list of values. To every value is associated a name and the type of both name and value is textual. This list of values can be used from other controls, like the input controls.</description>
+   </context>
+   <context id="editDataType" title="Edit Data Type">
+      <description>In this dialog you can define the attributes of a data type. Between this attributes there is a base data type like Date, String, Number and so one. Then, depending from the base type, you can apply to it some constraints to define your own type. For example you can define a new data type that has as base type a number but with the constraints to have as minimum 0 and as maximum 100.</description>
+   </context>
+   <context id="editVirtualDatasource" title="Edit Virtual Datasource">
+      <description>A virtual data source is an artifact that combines one or more physical data sources together to provide for easy data integration. The physical sources can be JDBC sources, delimited text files, spreadsheets, or even Web services. In this dialog you can add other datasources on the server inside the virtual datasource, or you can remove from the virtual datasource any datasource inside it</description>
+   </context>
+   <context id="editVirtualDatasource" title="Edit Virtual Datasource">
+      <description>A virtual data source is an artifact that combines one or more physical data sources together to provide for easy data integration. The physical sources can be JDBC sources, delimited text files, spreadsheets, or even Web services. In this dialog you can add other datasources on the server inside the virtual datasource, or you can remove from the virtual datasource any datasource inside it</description>
+   </context>   
+   <context id="editOtherSection" title="Define the section Other">
+      <description>The slice "Other" contains the sum of all the slices with a percentage value less then of the allowed minimum. In this dialog you can define the label and the key of this special slice and eventually and hyperlink for it</description>
+   </context>
+   <context id="createHyperlinkSection" title="Definition of an Hyperlink">
+      <description>In this dialog you can set an Hyperlink to the value represented in the chart, allowing the user to click the chart to open a web page or drill down the report. The clickable area depends on the chart type.</description>
+   </context>
+   <context id="createTranslationFragmentStep1" title="Install the Translation">
+      <description>In this step you can define which components of Jaspersoft Studio will be translated. You can provide also advanced and technical informations, but if you are unsure of what this informations are and you need only to install the translation only on your Jaspersoft Studio then you can leave the default values.</description>
+      <topic href="html/wizard/translation/installtranslation.html" label="How install a Jaspersoft Studio translation" />
+   </context>
+   <context id="createTranslationFragmentStep2" title="Install the Translation">
+      <description>Here you can define the languages provided from the translation package and the translation destination. Both this fields are filled automatically, but the second one may need to run Jaspersoft Studio as Administrator on some operative systems (like Windows 7/8). In general if you are using a Windows system it is suggested to run Jaspersoft Studio as administrator when you want to install a new language or switch between the installed languages</description>
+      <topic href="html/wizard/translation/installtranslation.html" label="How install a Jaspersoft Studio translation" />
+   </context>
+   <context id="createMeterSeries" title="Create a series for the meter chart">
+      <description>In this dialog you can define all the attributes of a series for the meter chart. These attributes are the name of the series (optional), the color and its transparency and the expressions for the bound of the series. The last two values are mandatory.</description>
+   </context>
+   <context id="domainConnectionWizardDialog" title="Create the parameters for the Domain">
+      <description>Create the parameters needed to connect the selected dataset to a Domain. The parameters will be created inside the main dataset, the selected dataset and all the dataset run associated to the selected dataset and they will be created only where they aren't already present. In this wizard you can see where the parameters will be created and you can proceed with the operation or cancel it.</description>
+   </context>
+</contexts>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+	<title>Report Templates (jrxml) Editor</title>
+
+	<section>
+
+		<para>
+			The Report Templates editor is where reports are built and run. You can build a report using a WYSIWYG editor or, for advanced users, a source editor for
+			<filename class='extension'>.jrxml</filename>
+			file.
+			In the Preview view, we can see our report filled with data from data source and save the results in different formats.
+		</para>
+		<section>
+			<title>Design mode WYSIWYG editor.</title>
+			<para>
+				This is the most used editor in Jaspersoft Studio. This editor is used together with
+				<emphasis>Outline View</emphasis>
+				,
+				<emphasis>Properties View</emphasis>
+				,
+				<emphasis>Palette</emphasis>
+				, and
+				<emphasis>Problems View
+				</emphasis>
+				. Some complex JasperReports
+				components like list, table, and crosstab have their own editors - to open these, just double click on the element in the designer or Outline view.
+				There are buttons on
+				the toolbar to control zoom, publish reports to a Jaspersoft Server, open query editor, or change settings related to rulers, grid, decorators.
+				To add elements to the page drag and drop them from
+				the Palette. It is also possible to drag and drop fields, properties or variables from the Outline view directly to the report.
+				Use the context menu to delete, arrange, resize, align, set PDF
+				properties of the elements. You can use keyboard to manipulate elements
+				on the canvas:
+				<keycap>DEL</keycap>
+				to delete an element, arrows to select elements,
+				<keycap>.</keycap>
+				(point) will select an operation like resize left, right, up, down, or move.
+			</para>
+			<figure>
+				<title>Design mode</title>
+				<screenshot>
+					<mediaobject>
+						<imageobject>
+							<imagedata fileref="jrxml_design.png" format="PNG" />
+						</imageobject>
+					</mediaobject>
+				</screenshot>
+			</figure>
+		</section>
+		<section>
+			<title>Source mode.</title>
+			<para>
+				This is a simple text editor with XML syntax highlighting. You can use it in combination with Outline view where all XML nodes are visible. Clicking on a node shows its position to the
+				corresponding line in text editor.
+			</para>
+			<para>
+				Jrxml errors are shown in the left vertical band of the editor in front of the problematic line. Users can see all the errors in Problems view. Clicking on an error positions the cursor on
+				the relevant error line in the editor.
+			</para>
+			<figure>
+				<title>Source mode</title>
+				<screenshot>
+					<mediaobject>
+						<imageobject>
+							<imagedata fileref="jrxml_source.png" format="PNG" />
+						</imageobject>
+					</mediaobject>
+				</screenshot>
+			</figure>
+		</section>
+		<section>
+			<title>Preview mode.</title>
+			<para>
+				The goal of this view is to prompt user input parameters, help configure some settings, select a data adapter, see generated report in different formats, and save report to a file. There are
+				three main parts to the view:
+			</para>
+			<itemizedlist mark='opencircle'>
+				<listitem>
+					<para>
+						A toolbar with buttons to select data adapter, run report button and a menu to select the preview mode like java, html, csv, etc.
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						On the right we have a preview for each format, for html this will be an embedded browser, for Java we'll have some additional controls like page navigation, zoom.
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						The right part, contains several pages: input controls, built-in controls, sort fields, exporter preferences.
+					</para>
+				</listitem>
+			</itemizedlist>
+
+			<figure>
+				<title>Preview mode</title>
+				<screenshot>
+					<mediaobject>
+						<imageobject>
+							<imagedata fileref="jrxml_preview.png" format="PNG" />
+						</imageobject>
+					</mediaobject>
+				</screenshot>
+			</figure>
+		</section>
+	</section>
+
+</section>

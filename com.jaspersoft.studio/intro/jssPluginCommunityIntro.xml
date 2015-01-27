@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<introContent>
+  	<extensionContent id="jssplugin-communityIntroExtension" style="css/jssplugin.css" name="Jaspersoft Studio Community Intro Extension" path="overview/@">
+		<group style-id="content-group" id="jssplugin-communityIntroExtension-group">
+       		<link label="Report Development with Jaspersoft Studio" url="http://community.jaspersoft.com/project/jaspersoft-studio" id="jssplugin-communityLink" style-id="content-link">
+          		<text>Get in touch with Jaspersoft Studio, the most advanced report designer for JasperReports and JasperReports Server.</text>
+       		</link>
+       	</group>
+  	</extensionContent>
+</introContent>

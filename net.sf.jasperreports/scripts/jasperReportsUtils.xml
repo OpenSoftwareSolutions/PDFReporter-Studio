@@ -1,0 +1,92 @@
+<project name="JasperReportsUtils" default="main" basedir="../../">
+	<!-- Maven installation location -->
+	<property name="maven.home" value="/usr/share/maven"/>
+	<!-- Shared properties -->
+	<property name="jss.jr.plugin.location" value="${basedir}/net.sf.jasperreports" />
+	<property name="jss.jrdoc.plugin.location" value="${basedir}/net.sf.jasperreports.doc" />
+	<property name="jss.studio.plugin.location" value="${basedir}/com.jaspersoft.studio" />
+	
+	<!-- List of projects JasperReports related for which we need the jars -->
+	<property name="jasperreports.location" value="${basedir}/jasperreports-561" />
+
+	<!-- Define the Maven ANT macro -->
+	<macrodef name="maven">
+		<attribute name="options" default="" />
+		<attribute name="goal" default="clean install"/>
+		<attribute name="basedir" />
+		<attribute name="resultproperty" default="maven.result" />
+		<element name="args" implicit="true" optional="true" />
+		<sequential>
+			<java classname="org.codehaus.classworlds.Launcher" fork="true" dir="@{basedir}" resultproperty="@{resultproperty}">
+				<jvmarg value="-Xmx512m" />
+				<classpath>
+					<fileset dir="${maven.home}/boot">
+						<include name="*.jar" />
+					</fileset>
+					<fileset dir="${maven.home}/lib">
+						<include name="*.jar" />
+					</fileset>
+				</classpath>
+				<sysproperty key="classworlds.conf" value="${maven.home}/bin/m2.conf" />
+				<sysproperty key="maven.home" value="${maven.home}" />
+				<arg line="--batch-mode @{options} @{goal}" />
+			</java>
+		</sequential>
+	</macrodef>
+
+	<!-- Main ant task that performs all the other ones -->
+	<target name="main" description="Main default task that performs all the other ones">
+		<antcall>
+			<target name="packageAndMoveJasperReportsLibraries"/>
+		</antcall>
+	</target>
+	
+	<!-- 
+		Take care of running Ant/Maven on the jasperreports project and its sub-projects.
+		It also moves the produced jar/zip files to the destination folders.
+	-->
+	<target name="packageAndMoveJasperReportsLibraries" description="Run Ant/Maven on the jasperreports project and sub-projects">
+		<!-- JasperReports Core and Fonts jars -->
+		<ant antfile="${jasperreports.location}/build.xml" target="compile" useNativeBasedir="true" />
+		<ant antfile="${jasperreports.location}/build.xml" target="alljars" useNativeBasedir="true" />
+		<move todir="${jss.jr.plugin.location}/lib">
+		    <fileset dir="${jasperreports.location}/dist/">
+		      <include name="jasperreports-*.jar"/>
+		      <exclude name="jasperreports-javaflow-*.jar"/>
+		      <exclude name="jasperreports-applet-*.jar"/>
+		    </fileset>			
+		</move>
+		
+		<!-- JasperReports Documentation (Javadocs) -->
+		<ant antfile="${jasperreports.location}/build.xml" target="docs" useNativeBasedir="true" />
+		<zip destfile="${jasperreports.location}/dist/doc.zip">
+			<zipfileset dir="${jasperreports.location}/dist/docs" prefix="docs"/>
+		</zip>
+		<move file="${jasperreports.location}/dist/doc.zip" tofile="${jss.jrdoc.plugin.location}/doc.zip" />
+		
+		<!-- Chart Themes Jar-->
+		<maven basedir="${jasperreports.location}/demo/samples/chartthemes/"/>
+		<move todir="${jss.jr.plugin.location}/lib">
+		    <fileset dir="${jasperreports.location}/demo/samples/chartthemes/target/">
+		      <include name="jasperreports-chart-themes-*.jar"/>
+		    </fileset>			
+		</move>
+		
+		<!-- Functions Library Jar-->
+		<maven basedir="${jasperreports.location}/demo/samples/functions/"/>
+		<move todir="${jss.jr.plugin.location}/lib">
+		    <fileset dir="${jasperreports.location}/demo/samples/functions/target/">
+		      <include name="jasperreports-functions-*.jar"/>
+		    </fileset>			
+		</move>
+		
+		<!-- JIVE related files -->
+		<copy todir="${jss.studio.plugin.location}/webapp">
+			<fileset dir="${jasperreports.location}/demo/samples/webapp-repo/">
+				<include name="scripts/**"/>
+				<include name="images/**"/>
+			</fileset>
+		</copy>
+		
+	</target>
+</project>

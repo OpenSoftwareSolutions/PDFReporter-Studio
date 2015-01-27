@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.jaspersoft.studio.dataAdapters">
+         <dataAdapter ClassFactory="com.jaspersoft.studio.data.mongodb.MongoDbDataAdapterFactory"/>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.queryDesigner">
+      <queryDesigner
+            QueryDesignerClass="com.jaspersoft.studio.data.mongodb.querydesigner.MongoDBQueryDesigner"
+            language="MongoDbQuery">
+      </queryDesigner>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.server.resources">
+      <resource
+            ClassFactory="com.jaspersoft.studio.data.mongodb.server.MongoResourceFactory">
+      </resource>
+   </extension>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc_dataadapters.xml"
+            primary="false">
+      </toc>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="context.xml"
+            plugin="com.jaspersoft.studio.doc">
+      </contexts>
+   </extension>
+</plugin>

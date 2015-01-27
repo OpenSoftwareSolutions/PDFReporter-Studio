@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a Variable">
+   <intro>
+      <description>Variables can be used to store partial result and do complex calculation with the data extracted from datasource. The values can then be used in various part of the report, including other variables. In this tutorial will be show how to create and configure a variable, explaining every field that define it.</description>
+   </intro>
+   <item title="Go in the outline tab">
+      <description>
+         With a report opened switch into the outline tab
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=org.eclipse.ui.views.ContentOutline)"/>
+   </item>
+   <item title="Create a variable from the contextual menu">
+      <description>
+         Right click on the element <b>Variables</b> and select <b>Create variable</b>.
+      </description>
+      <action pluginId="com.jaspersoft.studio" class="com.jaspersoft.studio.model.variable.command.CreateVariableHandler" required="false"/>
+   </item>
+</cheatsheet>

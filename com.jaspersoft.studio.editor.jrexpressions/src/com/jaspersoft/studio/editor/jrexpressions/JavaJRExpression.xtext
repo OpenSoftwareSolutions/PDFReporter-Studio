@@ -1,0 +1,291 @@
+grammar com.jaspersoft.studio.editor.jrexpressions.JavaJRExpression with org.eclipse.xtext.common.Terminals
+
+generate javaJRExpression "http://www.jaspersoft.com/studio/editor/jrexpressions/JavaJRExpression"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
+
+JRExpressionModel:
+	expression=(JasperReportsExpression)?
+;
+
+JasperReportsExpression returns JasperReportsExpression:
+	ConditionalExpression
+;
+
+ConditionalExpression returns JasperReportsExpression
+    :   ConditionalOrExpression (=>({TestExpression.condition=current} '?') trueStatement=JasperReportsExpression ':' falseStatement=JasperReportsExpression )?
+    ;
+
+ConditionalOrExpression returns JasperReportsExpression
+    :   ConditionalAndExpression (=>({BinaryExpression.left=current} op='||') right=ConditionalAndExpression)*
+    ;
+
+ConditionalAndExpression returns JasperReportsExpression
+    :   EqualityExpression (=>({BinaryExpression.left=current} op='&&') right=EqualityExpression)*
+    ;
+    
+EqualityExpression returns JasperReportsExpression
+    :   InstanceofExpression (=>({BinaryExpression.left=current} op=('==' | '!=')) right=InstanceofExpression)*
+    ;
+
+InstanceofExpression returns JasperReportsExpression:
+	RelationalExpression (=>({BinaryExpression.left=current} op='instanceof') right=Type)?
+;
+
+RelationalExpression returns JasperReportsExpression
+	:	AdditiveExpression  (=>({BinaryExpression.left=current} op=RelationalOp) right=AdditiveExpression)*
+	;
+	
+AdditiveExpression returns JasperReportsExpression
+    :   MultiplicativeExpression (=>({BinaryExpression.left=current} op=('+' | '-')) right=MultiplicativeExpression)*
+    ;
+
+MultiplicativeExpression returns JasperReportsExpression
+    :   UnaryExpression (=>({BinaryExpression.left=current} op=( '*' | '/' | '%' )) right=UnaryExpression)*
+    ;
+    
+UnaryExpression returns JasperReportsExpression		// JasperReports does not compile with '--' and '++', so do not consider it
+    :   '+' UnaryExpression
+    |   '-' UnaryExpression
+    |   UnaryExpressionNotPlusMinus
+    ;
+
+UnaryExpressionNotPlusMinus returns JasperReportsExpression:
+	'~' UnaryExpression
+	| '!' UnaryExpression
+	| (=>CastedExpression)	// Look for cast, avoiding a sort of "dangling else problem". 
+							// PrimaryExpression in fact has a ParExpression resulting in potential ambiguity
+	| PrimaryExpression;
+
+PrimaryExpression returns JasperReportsExpression:
+	ParExpression
+	| LiteralExpression
+	| ArrayCreator 
+	//| ObjectCreation
+	| =>BaseJRExpression	// Look for a base jrexpression, avoiding a sort of "dangling else problem". 
+							// MethodsExpression in fact uses BaseJRExpression resulting in potential ambiguity
+	| MethodsExpression
+	| StaticField
+	; 
+
+StaticField returns JasperReportsExpression:
+	{StaticField} (prefixQMN+=ValidID dots+='.')* fieldName=ValidID
+;
+
+BaseJRExpression returns JasperReportsExpression:
+	JRFieldObj | JRParameterObj | JRVariableObj | JRResourceBundleKeyObj;
+
+JRFieldObj returns JasperReportsExpression:
+	{JRFieldObj} '$F' bracedIdentifier=BRACED_IDENTIFIER
+;
+
+JRParameterObj returns JasperReportsExpression:
+	{JRParameterObj} '$P' bracedIdentifier=BRACED_IDENTIFIER
+;
+
+JRVariableObj returns JasperReportsExpression:
+	{JRVariableObj} '$V' bracedIdentifier=BRACED_IDENTIFIER
+;
+
+JRResourceBundleKeyObj returns JasperReportsExpression:
+	{JRResourceBundleKeyObj} '$R' bracedIdentifier=BRACED_IDENTIFIER
+;
+
+MethodsExpression returns JasperReportsExpression:
+	// arrayIndexes feature allows MethodExpression to support arrays
+	{MethodsExpression} 
+	(includeObjectInstatiation?=('new')? methodInvocations+=MethodInvocation ('.' methodInvocations+=MethodInvocation)* |
+	objectExpression=(BaseJRExpression | StringLiteral) ('.' methodInvocations+=MethodInvocation)+) ('[' arrayIndexes+=IntLiteral ']')*
+;
+
+LiteralExpression returns JasperReportsExpression:
+	IntLiteral
+	| LongLiteral
+	| FloatLiteral
+	| DoubleLiteral
+	| CharLiteral
+	| StringLiteral
+	| BooleanLiteral
+	| NullLiteral
+;
+
+IntLiteral returns JasperReportsExpression:
+	{IntLiteral} value=INT
+;
+
+LongLiteral returns JasperReportsExpression:
+	{LongLiteral} value=LONG
+;
+
+FloatLiteral returns JasperReportsExpression:
+	{FloatLiteral} value=FLOAT
+;
+
+DoubleLiteral returns JasperReportsExpression:
+	{DoubleLiteral} value=DOUBLE
+;
+
+CharLiteral returns JasperReportsExpression:
+	{CharLiteral} value=CHAR
+;
+
+StringLiteral returns JasperReportsExpression:
+	{StringLiteral} value=STRING
+;
+
+BooleanLiteral returns JasperReportsExpression:
+	{BooleanLiteral} ('false' | isTrue?='true')
+;
+
+NullLiteral  returns JasperReportsExpression:
+	{NullLiteral} 'null'
+;
+
+ParExpression returns JasperReportsExpression:	
+	'(' JasperReportsExpression ')';
+
+CastedExpression returns JasperReportsExpression:
+	{CastedExpression} '(' castType=Type ')' castedExpr=JasperReportsExpression
+;
+
+Type:
+	{Type} (primitiveType?=PrimitiveType |  jvmType=JvmTypeReference)
+;
+
+ArrayCreator returns JasperReportsExpression:
+	{ArrayCreator} 'new' type=Type (('[' size+=IntLiteral ']')+ | (('[' ']')+ initialization=ArrayInitializer))
+;
+
+ArrayInitializer:
+	{ArrayInitializer} '{' (initialization=ExpressionList)? '}'
+;
+
+//ObjectCreation returns JasperReportsExpression:
+//	{ObjectCreation} 'new' constructorInvocation=MethodInvocation
+//;
+
+MethodInvocation:
+	{MethodInvocation} fullyQualifiedMethodName=FullMethodName args=Arguments
+;
+
+FullMethodName:
+	(prefixQMN+=ValidID dots+='.')* methodName=ValidID
+;
+
+Arguments:
+	{Arguments} '(' (exprLst=ExpressionList)? ')';
+
+ExpressionList:
+	expressions+=JasperReportsExpression
+	(commas+=',' expressions+=JasperReportsExpression)*;
+
+/* Grammar part copied from the org.eclipse.xtext.xbase.Xtype (XBase) */
+JvmTypeReference returns types::JvmTypeReference:
+	JvmParameterizedTypeReference =>({JvmGenericArrayTypeReference.componentType=current} '['']')*
+;
+
+JvmParameterizedTypeReference:
+  type=[types::JvmType|QualifiedName] (=>'<' arguments+=JvmArgumentTypeReference (',' arguments+=JvmArgumentTypeReference)* '>')?;
+
+JvmArgumentTypeReference returns types::JvmTypeReference:
+	JvmTypeReference | JvmWildcardTypeReference;
+
+JvmWildcardTypeReference:
+  {JvmWildcardTypeReference} '?' (constraints+=JvmUpperBound | constraints+=JvmLowerBound)?;
+  
+JvmUpperBound : 
+ 'extends' typeReference=JvmTypeReference;
+
+JvmLowerBound :
+ 'super' typeReference=JvmTypeReference;
+/* End of copied grammar part */
+
+// Numbers related terminals (and fragments)
+terminal LONG returns ecore::ELong:
+	IntegerNumber LongSuffix;
+terminal INT returns ecore::EInt:
+	IntegerNumber;
+terminal FLOAT returns ecore::EFloat:
+	NonIntegerNumber FloatSuffix;
+terminal DOUBLE returns ecore::EDouble:
+	NonIntegerNumber DoubleSuffix?;
+terminal CHAR returns ecore::EChar:
+	'\''
+	(EscapeSequence
+	| !('\'' | '\\' | '\r' | '\n'))
+	'\'';
+terminal STRING returns ecore::EString:
+	'"'
+	(EscapeSequence
+	| !('\\' | '"' | '\r' | '\n'))*
+	'"';
+terminal fragment EscapeSequence:
+	'\\' ('b'
+	| 't'
+	| 'n'
+	| 'f'
+	| 'r'
+	| '\"'
+	| '\''
+	| '\\'
+	|
+	('0'..'3') ('0'..'7') ('0'..'7')
+	|
+	('0'..'7') ('0'..'7')
+	|
+	('0'..'7')
+	| 'u' HexDigit HexDigit HexDigit HexDigit
+	);
+terminal fragment IntegerNumber:
+	'0'
+	| '1'..'9' ('0'..'9')*
+	| '0' ('0'..'7')+
+	| HexPrefix HexDigit+;
+terminal fragment HexPrefix:
+	'0x' | '0X';
+terminal fragment HexDigit:
+	('0'..'9' | 'a'..'f' | 'A'..'F');
+terminal fragment LongSuffix:
+	'l' | 'L';
+terminal fragment NonIntegerNumber:
+	('0'..'9')+ '.' ('0'..'9')* Exponent?
+	| '.' ('0'..'9')+ Exponent?
+	| ('0'..'9')+ Exponent
+	| ('0'..'9')+
+	|
+	HexPrefix (HexDigit)*
+	('.' (HexDigit)*)
+	('p' | 'P')
+	('+' | '-')?
+	('0'..'9')+;
+terminal fragment Exponent:
+	('e' | 'E') ('+' | '-')? ('0'..'9')+;
+terminal fragment FloatSuffix:
+	'f' | 'F';
+terminal fragment DoubleSuffix:
+	'd' | 'D';
+
+// Others data types rules and terminals
+PrimitiveType:
+	('boolean'
+	| 'char'
+	| 'byte'
+	| 'short'
+	| 'int'
+	| 'long'
+	| 'float'
+	| 'double');
+RelationalOp:
+	"<="
+	| "<"
+	| ">="
+	| ">";
+QualifiedName:
+	ValidID ('.' ValidID)*;
+ValidID:
+	ID;
+terminal BRACED_IDENTIFIER:
+	'{' ExpObjIdentifier '}';
+terminal fragment ExpObjIdentifier:
+	(!('\r' | '\n' | '}'))+;

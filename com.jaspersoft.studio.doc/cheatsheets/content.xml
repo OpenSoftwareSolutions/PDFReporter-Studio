@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Manage Data Connections">
+	<intro>
+		<description>
+			This tutorial guides you through the creation of a JDBC Data Adapter, which allows you to create and run a report using a database.
+		</description>
+	</intro>
+	<item title="Show the repository view" skip="true">
+		<description>
+			Select <b>Window</b> > <b>Show View</b> > <b>Other...</b> at the top of Eclipse. In Jaspersoft Studio category, select Repository and press OK. This will show the repository view.
+		</description>
+  		<command
+        required="true"
+        serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=com.jaspersoft.studio.Repository)"/> 
+	</item>
+   <item title="Configure a Data Adapter">
+      <description>
+         To create a new Data Adapter, right click the <b>Data Adapters</b> node and select <b>Create Data Adapter</b>. Select <b>Database JDBC Connection</b> and press <b>Next</b>.
+      </description>
+       <action pluginId="com.jaspersoft.studio" class="com.jaspersoft.studio.data.actions.CreateDataAdapterAction"/> 
+	</item>   
+   <item title="Launch the JDBC datasource editor" skip="true" dialog="true">
+		<description>
+			Set the correct JDBC driver name. You will have to add the jar(s) of the driver in order to be able to connect to your database. When done, press <b>Test</b> to test your connection.  
+		</description>
+	</item>
+</cheatsheet>

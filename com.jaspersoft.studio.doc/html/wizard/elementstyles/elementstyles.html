@@ -1,0 +1,77 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Styles and Elements Attributes</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Styles and Elements Attributes</h2></div></div><hr></div>
+	
+	<div class="section"><div class="titlepage"></div>
+		<p>
+			Every element in Jaspersoft Studio has many attributes, defining its graphical appearance and its behavior. This attributes are visible on the property panel.
+		</p>
+		<div class="figure"><a name="N40011"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Attributes tab</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="1.png" width="800" alt="Attributes tab"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>
+			The attributes are divided in categories. In Figure 1, above, you can see the categories Appearance, Borders, Image, and Inheritance. Appearance and Borders are shared among many elements and contain 
+			the attributes that define the graphical appearance of the elements, such the width of its borders, the background color, and so on. The Image category is a special one, because it is present only for 
+			the elements of the type "Image."
+		</p>
+		<p>
+			In the Properties tab, every element has a unique category. These categories are used as element types. In this tab there are properties that define each element's behavior, and for this reason they are 
+			specific for every type.
+		</p>
+		<p>
+			Many times the value of an attribute is undefined, and it has a common default value. This means that the element does not have a specific behavior defined, but gets a behavior from somewhere else. 
+			For example, the default value of the attribute "background color" is undefined in most of cases, but when a non-transparent element is added to the designer, we can see that it has a white background. 
+			The value of the background color attribute is inherited from a lower level.
+		</p>
+		<p>
+			There are many levels from where the value can be inherited, the first are the styles.
+		</p>
+		<p><b>The Styles.&nbsp;</b>
+		
+			Styles are not a visual element, but a collection of attributes that can be inherited from other elements. The styles can be created and selected from the Outline tab, and edited using the Properties tab 
+			after the selection.
+		
+		</p>
+		<div class="figure"><a name="N40039"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Styles and their properties</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="2.png" width="800" alt="Styles and their properties"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>
+			In Figure 2 there are five styles defined, with the "Subtitle" style selected, and its properties displayed in the Properties tab. In the Figure 1, we can see that in the Appearance tab there is the attribute "Style". 
+			Here a user can choose one of the defined styles that will be associated with that element. This means that every undefined attribute of the element will inherit its value from the analogous attribute of the style. 
+			But, because the style is an element,  it can have some undefined attributes as well as a "Style" attribute that can be used to inherit values from another style.
+		</p>
+		<p>
+			This defines a hierarchy where an element can inherit attribute values from a style, which in turn can inherit attribute values from another style, and so on until a style that doesn't define a "Style attribute is reached. 
+			In addition to this there is the possibility to set a style as default, using the attribute "Default Style" in the Property tab of the style, in the "Style" category. Only one default style can be defined, and must be created 
+			by the user if one is to be used. When there is a default style defined,, even those that dosen't use explicitly inherit a style can inherit the attributes value from the default style. With a such complex hierarchy there is 
+			the possibility that an attribute value could be defined in more styles with different values and could be confusing think which the element will use.
+		</p>
+		<p>
+			Because of this, it is important to follow a simple rule: If an element has an undefined attribute, its value will be taken from the nearest style in the hierarchy with that attribute defined. If it's defined also from a lower 
+			style in the hierarchy we will say that the lower value is overrided from an higher one.
+		</p>
+		<p>
+			Another case is that an attribute is undefined in the whole hierarchy and in this case the value will be inherited from a series of default values defined at application level. This default attributes are at the lower level of the 
+			hierarchy, and they are in the hierarchy of every element. The definition of nearest is strictly dependant from how the hierarchy is seen. At the top level there is the element itself, under it there is the style associated 
+			(if there is) and one after another the styles in hierarchy. After them there is the default style if it's defined and at last the default values.
+		</p>
+		<p>
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle"><p>Styled Text with no forecolor and no trasparent value defined that inherit directly from the Style 1.</p></li><li class="listitem" style="list-style-type: circle"><p>The Style 1 that define the forecolor with the value green and that inherit from the Style 2.</p></li><li class="listitem" style="list-style-type: circle"><p>The Style 2 that define the forecolor with the value red.</p></li><li class="listitem" style="list-style-type: circle"><p>The Style 3, marked as default style, that set the trasparent value to false.</p></li><li class="listitem" style="list-style-type: circle"><p>The default values that define the forecolor to black and set the transparent value to ture.</p></li></ul></div><p>
+			Since the hierarchy is:
+		</p>
+		<div class="figure"><a name="N40074"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Example hierarchy</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="inherit.jpg" alt="Example hierarchy"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>
+			In this case the Styled Text will have the forecolor with the value green because the nearest style with a forecolor with a value is the style 1, and it has the value green. So the forecolor in the style 2 and in the default values are overrided. 
+			The transparent value is inherited instead from the style 3 for the same reason, and the value from the default values is overrided.
+		</p>
+	</div>
+</div></body></html>

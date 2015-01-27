@@ -1,0 +1,281 @@
+/* ---------------- */
+/*      RESETS      */
+/* ---------------- */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td	{
+	margin:0;
+	padding:0; 
+	border:0;
+	outline:0;
+	font-weight:inherit; 
+	font-style:inherit;
+	font-size:100%;
+	font-family:inherit;
+	vertical-align:baseline;
+	}
+
+:focus {outline:0;}
+
+body {
+	font-family: Verdana,Helvetica,arial,sans-serif; 
+	font-weight:normal; 
+	font-style:normal; 
+	color:#000000;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	}
+
+table	{
+	border-collapse: separate;
+	border-spacing: 0;
+	}
+		
+caption, th, td	{
+	text-align: left;
+	font-weight: normal;
+	}
+
+/* ----------------- */
+/*   BASIC ELEMENTS  */
+/* ----------------- */
+
+h1	{font-size: 20px; font-weight: bold; color: #0480ba; font-family:Helvetica,arial,sans-serif;}
+h2	{font-size: 16px; font-weight: bold}
+h3	{font-size: 14px; font-weight: bold}
+h4	{font-size: 12px; font-weight: bold}
+h5	{font-size: 11px; font-weight: bold}
+h6	{font-size: 10px; font-weight: bold}
+
+p,li	{font-size: 11px; font-weight: normal}
+
+a,	
+a:link,
+a:visited,
+a:active	{text-decoration:none}
+a:hover		{text-decoration:underline}
+
+/* ---------------- */
+/*      BANNER      */
+/* ---------------- */
+
+.banner {
+	width:100%;
+	height:140px;
+	background: repeat-x;
+	background-image: url('../images/header_bg.png');
+}
+	
+.overlay	{
+	background-image: url('../images/');
+	}
+	
+	
+/* ---------------- */
+/*   MAIN CONTENT   */
+/* ---------------- */	
+
+
+/* FRAMEWORK CONTAINERS */
+	
+.page {
+	position:relative;
+	padding:1px;
+	top:90px;
+	margin-left:90px;
+	}
+	
+.page>.columnLeft	{
+	width: 180px;
+	overflow: hidden;
+	}
+
+.page>.columnCenter {
+	width: 375px;
+	position:absolute;
+	top:0px;
+	left:220px;
+	}
+
+.page>.columnRight {
+	width: 239px;
+	position:absolute;
+	top:0px;
+	left:616px;
+	}
+
+.decorated {
+	border:1px solid #0480ba;
+	width:100%;
+	position:relative;
+	margin-top:4px;
+	}
+
+	
+	
+/* COMMUNITY ELEMENTS */
+
+.community ul	{
+	list-style-type: none;
+	margin:10px;
+	width:65%;
+	}
+
+.community ul li {
+	padding:0px 0px 10px 22px;	
+	background-image:url('../images/spriteCommunity.png');
+	background-repeat:no-repeat;	}
+	
+.community ul:last-child {
+	padding-bottom:0px;
+	margin-bottom:0px;
+	}
+	
+.forge {
+	background-position: 0 1px;
+	}
+
+.home {	
+	background-position: 0 -36px;
+	}
+
+.bugtracker {
+	background-position: 0 -70px;
+	}
+
+.forum {
+	background-position: 0 -104px;
+	}
+
+.tutorial {
+	background-position: 0 -138px;
+	}
+	
+.snIcons {
+	position:absolute;
+	top:-6px;
+	right:16px;
+	}
+	
+.snIcons img {
+	padding-left:2px
+	}
+
+.gettingStarted {
+	background-color: #0480ba;
+	}
+	
+.gettingStarted>.links {
+	padding:3px 12px 10px 30px;
+	}
+
+.number {
+	position:absolute;
+	height:38px;
+	width:38px;
+	top:11px;
+	left:-20px;	
+	background-image:url('../images/spriteSteps.png');
+	background-repeat:no-repeat;
+	}
+
+.one {
+	background-position: 0 0;
+	}
+
+.two {	
+	background-position: 0 -51px;
+	}
+
+.three {
+	background-position: 0 -102px;
+	}
+
+.steps {
+	margin-bottom:10px
+	}
+
+/* LEARNING CENTER */
+
+.learningCtr ul	{
+	list-style-type: none;
+	margin:10px 0px;
+	}
+
+.learningCtr ul li {
+	background-color:#e7e7e7;
+	margin:6px 0px;
+	padding:3px 14px; 
+	background-image:url('../images/bullet.png');
+	background-repeat:no-repeat;
+	background-position: 4px 6px;
+	color:#525252;
+	}
+	
+.learningCtr ul:first-child {
+	margin-top:0;
+	padding-top:0;
+	}
+
+
+/* --------------- */
+/*   TEXT STYLES   */
+/* --------------- */	
+
+
+/* GLOBAL */
+
+.stackedHeader	{margin-top:24px}
+
+
+/* RECENT REPORTS */
+
+.reportName {font-weight:bold; margin-top:8px;}
+.reportDate	{color:#9e9f9f;}
+
+.reports a.reportName,
+.reports a:link>.reportName,
+.reports a:visited>.reportName	{color:#525252}
+.reports a:hover>.reportName,
+.reports a:active>.reportName	{text-decoration: underline}
+
+.reports a.reportDate,
+.reports a:link>.reportDate,
+.reports a:visited>.reportDate	{color:#9e9f9f}
+.reports a:hover>.reportDate,
+.reports a:active>.reportDate	{text-decoration: underline}
+
+
+/* COMMUNITY */
+
+.community a,
+.community a:link,
+.community a:visited	{color:#0480ba}
+.community a:hover li,
+.community a:active		{text-decoration: underline}
+
+
+/* GETTING STARTED */
+
+.gettingStarted a,
+.gettingStarted a:link,
+.gettingStarted a:visited	{color:#000000;}
+.gettingStarted a:hover li,
+.gettingStarted a:active	{text-decoration: underline}
+
+
+.gettingStarted>.step	{
+	color:#FFFFFF;
+	font-size:14px;
+	font-weight:bold;
+	padding:10px 12px 3px 30px;
+	}
+	
+	
+/* LEARNING CENTER */
+
+.learningCtr a,
+.learningCtr a:link,
+.learningCtr a:visited	{color:#525252;}
+.learningCtr a:hover li,
+.learningCtr a:active	{text-decoration: underline}

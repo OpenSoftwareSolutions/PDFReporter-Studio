@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+<title>Example of a custom bean class</title>
+<section>
+        <para>Here you can see the structure of a single bean builded by the bean factory</para>
+       	<programlisting language="java"><![CDATA[
+			/**
+			 * @author Teodor Danciu (teodord@users.sourceforge.net)
+			 * @version $Id: CustomBean.java 5876 2013-01-07 19:05:05Z teodord $
+			 */
+			public class CustomBean
+			{
+			
+			
+				/**
+				 *
+				 */
+				private String city;
+				private Integer id;
+				private String name;
+				private String street;
+			
+			
+				/**
+				 *
+				 */
+				public CustomBean(
+					String pcity,
+					Integer pid,
+					String pname,
+					String pstreet
+					)
+				{
+					city = pcity;
+					id = pid;
+					name = pname;
+					street = pstreet;
+				}
+			
+			
+				/**
+				 *
+				 */
+				public CustomBean getMe()
+				{
+					return this;
+				}
+			
+			
+				/**
+				 *
+				 */
+				public String getCity()
+				{
+					return city;
+				}
+			
+			
+				/**
+				 *
+				 */
+				public Integer getId()
+				{
+					return id;
+				}
+			
+			
+				/**
+				 *
+				 */
+				public String getName()
+				{
+					return name;
+				}
+			
+			
+				/**
+				 *
+				 */
+				public String getStreet()
+				{
+					return street;
+				}
+			
+			
+			}
+		]]></programlisting>
+     	</section>
+</section>

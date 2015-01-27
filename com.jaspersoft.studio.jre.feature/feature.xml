@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.jaspersoft.studio.jre.feature"
+      label="JRE for Jaspersoft Studio"
+      version="1.7.0"
+      provider-name="Jaspersoft Corporation">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <includes
+         id="jre.linux.gtk.x86_64.feature"
+         version="0.0.0"
+         optional="true"
+         os="linux"
+         ws="gtk"
+         arch="x86_64"/>
+
+   <includes
+         id="jre.macosx.cocoa.x86_64.feature"
+         version="0.0.0"
+         optional="true"
+         os="macosx"
+         ws="cocoa"
+         arch="x86_64"/>
+
+   <includes
+         id="jre.win32.win32.x86.feature"
+         version="0.0.0"
+         optional="true"
+         os="win32"
+         ws="win32"
+         arch="x86"/>
+
+   <includes
+         id="jre.win32.win32.x86_64.feature"
+         version="0.0.0"
+         optional="true"
+         os="win32"
+         ws="win32"
+         arch="x86_64"/>
+
+   <includes
+         id="jre.linux.gtk.x86.feature"
+         version="0.0.0"
+         os="linux"
+         ws="gtk"
+         arch="x86"/>
+
+</feature>

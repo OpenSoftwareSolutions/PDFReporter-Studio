@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="JasperReports Documentation">
+	<topic label="Sample Reference" href="docs/sample.reference.html"/> 
+	<topic label="Schema Reference" href="docs/schema.reference.html"/>
+	<topic label="Configuration Reference" href="docs/config.reference.html"/>
+ <topic href="docs/api/index.html" label="JasperReports API">
+ </topic>
+ <topic href="docs/JasperReports-Ultimate-Guide-3.pdf" label="JasperReports Ultimate Guide">
+ </topic>
+</toc>

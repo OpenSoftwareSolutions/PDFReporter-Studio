@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<project name="extract Jasper Report samples" default="build-zip">
+	<description>
+		This ant build file extracts samples we want from jasperreports project
+	</description>
+
+	<property name="jr.project.path" value="../jasperreports-561/demo/samples" />
+	<property name="output.file" value="resources/jrsamples.zip" />
+
+	<target name="clean" description="Cleans up generated files.">
+		<delete file="${output.file}" />
+	</target>
+
+	<target name="build-zip" description="Get samples from jasperreports and build a zip">
+		<zip destfile="${output.file}" basedir="${jr.project.path}" excludes="mydocs/**, **/todo.html" />
+	</target>
+
+</project>

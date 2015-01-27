@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Preview and Run Reports">
+   <intro>
+      <description>
+         This cheat sheet shows you how to run reports preview and export them in different formats.
+      </description>
+   </intro> <item
+         title="Switch to preview mode">
+      <description>
+         Open a report, and click on <b>Preview</b> tab on the bottom of the editor.
+      </description>
+      <action pluginId="com.jaspersoft.studio.doc" class="com.jaspersoft.studio.doc.handlers.SwitchToPreviewHandler" required="false" dialog="true"/>
+   </item>
+  
+   <item
+         title="Run the report">
+      <description>
+         If data adapter is already selected for this report, execution will start automatically.
+      </description>
+      </item>
+      <item
+         title="Preview the report">
+      <description>
+         Use navigation and zoom buttons from the toolbar to view report pages.
+      </description>
+      </item>
+   <item title="Export report">
+      <description>
+         On the preview editor toolbar press <b>Export</b> icon and select the format you want to export. The file dialog will ask the location where report will be exported.
+      </description>
+   </item>
+</cheatsheet>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+	<title>Data Adapters</title>
+
+	<section>
+		<para>
+			Data adapters are objects that contain necessary information to access data and the logic for connection creation for jasper reports engine. This objects are portable between
+			Jaspersoft Studio and Jaspersoft Server. For iReport users Data Adapters are similar to connections.
+		</para>
+		<para>
+			Data adapters are xml files, in Jaspersoft Studio this files usually are created by the user and stored in the project
+			with report (
+			<filename class='extension'>.jrxml</filename>
+			) files and other resources. But we store a list of Data Adapters also in Eclipse workspace preferences, in this way users can reuse them in reports from all the projects.
+		</para>
+		<para>
+			Jaspersoft Studio offers all the actions to work with Data Adapters like create, delete, edit, duplicate or write new ones. To create a data adapter inside the project, go to
+			<menuchoice>
+				<guimenu>File</guimenu>
+				<guimenuitem>New</guimenuitem>
+				<guimenuitem>Other...</guimenuitem>
+				<guimenuitem>Jaspersoft Studio</guimenuitem>
+				<guimenuitem>Data Adapters</guimenuitem>
+			</menuchoice>
+
+			and select the Data Adapter from the list, next page is specific for each data adapter type. In case of the Data Adapter stored in eclipse preferences go to Repository View and use
+			<guimenu>Create Data Adapter</guimenu> action in the top right corner of the view, a similar wizard will popup.
+
+		</para>
+	</section>
+
+</section>

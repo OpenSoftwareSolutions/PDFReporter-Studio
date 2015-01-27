@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   
+   
+   <context id="adapter_cassandra" title="Cassandra Data Adapter">
+      <description>The Apache Cassandra database is the right choice when you need scalability and high availability without compromising performance. Linear scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it the perfect platform for mission-critical data. Cassandra&apos;s support for replicating across multiple datacenters is best-in-class, providing lower latency for your users and the peace of mind of knowing that you can survive regional outages. Cassandra&apos;s ColumnFamily data model offers the convenience of column indexes with the performance of log-structured updates, strong support for materialized views, and powerful built-in caching.</description>
+      <topic href="html/cassandra.html" label="Cassandra Data Adapter"/>
+   </context>
+   <context id="query_CQL" title="Dataset and query dialog">
+      <description>From this dialog you can change the dataset query, define new parameters or change the adapter used to retrive the data.</description>
+      <topic href="http://cassandra.apache.org/doc/cql/CQL.html" label="CQL Reference"/>
+   </context>
+</contexts>

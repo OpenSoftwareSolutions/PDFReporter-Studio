@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Start Designing a report">
+   <intro>
+      <description>
+         This cheat sheet shows you how to start designing reports with Jaspersoft Studio.
+      </description>
+   </intro>
+   <item title="Open the Report Design Perspective" contextId="org.eclipse.jdt.ui.open_java_perspective_action">
+      <description>
+         From the main menu, select Window > Open Perspective > Other..., then select the <b>Report Design</b> perspective.
+      </description>
+      <action pluginId="org.eclipse.ui.cheatsheets" class="org.eclipse.ui.internal.cheatsheets.actions.OpenPerspective" param1="com.jaspersoft.studio.ReportDesignPerspective"/>
+      
+   </item>
+   <item  title="The New Report Wizard">
+      <description>
+         From the main menu, select File > New > <b>Jasper Report</b>, the new JasperReport wizard will start. You will have to do the following steps:
+      </description>      
+      	<subitem label="Select a template"/>
+		<subitem label="Select the project and report file name"/>
+		<subitem label="Configure Data Adapter, report language, edit the query" skip="true"/>
+		<subitem label="Select fields you want to use" skip="true"/>
+		<subitem label="Select groups" skip="true"/>      
+   </item>
+   <item title="Report Designer">
+      <description>
+         Report designer help you to resize, move, align elements. You can zoom in and out, setup a grid, and use different tools to layout elements inside the report.
+      </description>
+   </item>
+   <item title="Outline View">
+      <description>
+         In the outline view you can see all the report elements, you can select them, you can reorder them with drag &amp; drop, you can right click on them to create new elements, delete element, or do some other actions.
+      </description>
+   </item>
+   <item title="Properties View">
+      <description>
+         In the properties view you can see and change all the element properties. You can reset properties values in <b>Advanced</b> properties tab using <b>Restore Default Value</b> button on the top right.
+      </description>
+   </item>
+   <item title="Palette">
+      <description>
+         All the elements you can use in a report are visible in the palette. Just drag &amp; drop elements from the palette to the designer to add them to the report.
+      </description>
+   </item>
+</cheatsheet>

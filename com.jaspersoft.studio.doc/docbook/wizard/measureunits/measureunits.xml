@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+	<title>Report Structure</title>
+	<section>
+		<para>
+			JasperSoft Studio can handle a wide variety of measure units, including pixels, centimeters, millimeters and inches. To accomplish this, we included a measure component in JSS. This component looks 
+			like a standard text box with a place to enter a measure unit to the right of the value. You can see an example of this widget in the following image:
+		</para>
+		<figure>
+			<title>Size and Position widgets</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="1.png" format="PNG" contentwidth="800px"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			This component can handle a different measure unit for each field, if needed.
+		</para>
+		<para>
+			You can set two preferred (default) measure units, one at the field level, the other at the report level. The report level measure is used wherever there is not a prefered field measure unit. The report's 
+			default measure unit is the pixel. To change the report level measure:
+			<itemizedlist mark='opencircle'>
+				<listitem>
+					<para>
+						Select Window > Preferences >JasperSoft Studio >Report Designer. 	
+						<figure>
+							<title>Default Measure Unit Location</title>
+							<screenshot>
+								<mediaobject>
+									<imageobject>
+										<imagedata fileref="2.png" format="PNG"/>
+									</imageobject>
+								</mediaobject>
+							</screenshot>
+						</figure>
+						</para>
+				</listitem>
+				<listitem>
+					<para>
+						Use the drop-down menu to select one of the following measure units:
+ 						<itemizedlist mark='opencircle'>
+							<listitem><para>Pixels</para></listitem>
+							<listitem><para>Inches</para></listitem>
+							<listitem><para>Millimeters</para></listitem>
+							<listitem><para>Centimeters</para></listitem>
+							<listitem><para>Meters</para></listitem>
+						</itemizedlist>
+					</para>
+				</listitem>
+			</itemizedlist>
+		</para>
+		<formalpara><title>Changing the Field Measure Unit</title>
+			<para>
+				There are two ways to change a specific field's measure units:
+				<itemizedlist mark='opencircle'>
+					<listitem><para>
+						You can insert a new value with the measure unit you want to use in that field. For example, in the figure below, there is an element with size "496 pixel". By inserting a new value, 
+						such as "5 cm", the new measure unit for this field will be switched to centimeter and saved for the current sections. This means that without closing the report and reopening it (or 
+						changing it manually)  the measure unit for the width of that element will remain centimeters. If one value is provided without a measure unit it is assumed that it is the default measure 
+						of the field, or, if one isn't provided there, the default unit defined at report level. When a value is inserted manually into the field, no spaces are allowed in the numerical value or 
+						in the measure unit, but there can be any number of spaces between the value and the unit.
+					</para></listitem>
+					<listitem><para>
+						You can also change the local measure unit of a field by double clicking on the measure unit. A pop-up menu appears with all the available measure units listed. Select one of them to set 
+						the field's preferred measure, as shown in the following image:
+						<figure>
+							<title>Measure units widget</title>
+							<screenshot>
+								<mediaobject>
+									<imageobject>
+										<imagedata fileref="3.png" format="PNG" contentwidth="800px"/>
+									</imageobject>
+								</mediaobject>
+							</screenshot>
+						</figure>
+					</para></listitem>
+				</itemizedlist>
+			</para>
+		</formalpara>
+		<formalpara><title>Alias and Autocompletion </title>
+		<para>
+			JasperSoft Studio has included alias and autocompletion services for measure units. For instance, if you want to use inches, you can type "inch", "inches", or use quote marks. the table below shows 
+			the options for entering measure units:
+			<table frame='all'><title>Alias Table</title>
+				<tgroup cols='2' align='left' colsep='1' rowsep='1'>
+					<colspec colname='Units'/>
+					<colspec colname='Accepted Values'/>
+					<thead>
+						<row>
+						  <entry>Units</entry>
+						  <entry>Accepted Values</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+						  <entry>centimeter</entry>
+						  <entry>centimeter, centimeters, cm</entry>
+						</row>
+						<row>
+						  <entry>millimeter</entry>
+						  <entry>millimeter, millimeters, mm</entry>
+						</row>
+						<row>
+						  <entry>meter</entry>
+						  <entry>meter, meters, m</entry>
+						</row>
+						<row>
+						  <entry>pixel</entry>
+						  <entry>pixel, pixels, px</entry>
+						</row>
+						<row>
+						  <entry>inch</entry>
+						  <entry>inch, inches, " (double quote)</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+			In this way, it is simpler to provide a unit, and to help, an autocompletion system is provided. After the value is provided, and the first character of a measure unit is be typed, all the 
+			available units that start with that character will be suggested with a popup, and could be selected using the keyboard arrow keys or the mouse, as you can see in the image below:
+		</para>
+		</formalpara>
+		<figure>
+			<title>autocompletion example</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="4.png" format="PNG" contentwidth="800px"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			If a typed value, or measure, is not understood, the background of its field will appear red, and the corresponding value or measure will not changed in the report until a correct value is 
+			inserted, as you can see in the following image:
+		</para>
+		<figure>
+			<title>Invalide measure example</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="5.png" format="PNG"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			For the width, in the figure above,  we have an invalid number (the numerical value can have only digits and dot). The height has "cat" as an invalid measure unit.
+		</para>
+		<formalpara><title>Approximations</title>
+		<para>
+			Even if Jaspersoft Studio handled many measure units, JasperReports works only with pixels. Because of this, pixels is the only measure unit that is allowed in the project 
+			file. JasperSoft Studio will approximate measurement and convert them to pixels. For example, if you are using centimeters, "5 cm", it will be converted to the nearest pixels value. In 
+			this case the 5 centimeters will be converted to 139 pixels (about 4.97 cm)
+		</para>
+		</formalpara>
+	</section>
+</section>

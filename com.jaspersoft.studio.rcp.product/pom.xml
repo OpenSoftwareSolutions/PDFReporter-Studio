@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.jaspersoft.studio.community-edition</groupId>
+		<artifactId>product</artifactId>
+		<version>5.6.2.final</version>
+		<relativePath>../aggregator/product/</relativePath>
+	</parent>
+
+	<properties>
+		<jre.product.version>
+			1.7.0
+		</jre.product.version>
+		<macosx.cocoa.x86_64.jre.relative.location>
+			macosx/cocoa/x86_64/jaspersoftstudio/features/jre.macosx.cocoa.x86_64.feature_${jre.product.version}/jre/Contents/Home/bin
+		</macosx.cocoa.x86_64.jre.relative.location>
+		<linux.gtk.x86_64.jre.relative.location>
+			linux/gtk/x86_64/jaspersoftstudio/features/jre.linux.gtk.x86_64.feature_${jre.product.version}/jre/bin
+		</linux.gtk.x86_64.jre.relative.location>
+		<linux.gtk.x86.jre.relative.location>
+			linux/gtk/x86/jaspersoftstudio/features/jre.linux.gtk.x86.feature_${jre.product.version}/jre/bin
+		</linux.gtk.x86.jre.relative.location>
+	</properties>
+
+	<groupId>com.jaspersoft.studio.community-edition</groupId>
+	<artifactId>com.jaspersoft.studio.rcp.product</artifactId>
+	<version>5.6.2.final</version>
+	<packaging>eclipse-repository</packaging>
+	<build>
+		<plugins>
+			<!-- Package an Eclipse p2 repository including all dependencies -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-repository-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<includeAllDependencies>true</includeAllDependencies>
+				</configuration>
+			</plugin>
+			<!-- Create the products (and create their zipped version) -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-director-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>materialize-products</id>
+						<goals>
+							<goal>materialize-products</goal>
+						</goals>
+						<configuration>
+							<products>
+								<product>
+									<id>com.jaspersoft.studio.rcp.product</id>
+									<rootFolder>jaspersoftstudio</rootFolder>								
+								</product>
+							</products>						
+						</configuration>
+					</execution>
+					<execution>
+						<id>archive-products</id>
+						<goals>
+							<goal>archive-products</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<!-- Let's fix the permissions for the JRE bin folders of the MacOSX and Linux -->
+						<id>jrefiles-permissions-fix</id>
+						<phase>package</phase>
+						<configuration>
+							<target>
+								<chmod perm="755">
+									<fileset dir="${project.build.directory}/products/${project.artifactId}/${linux.gtk.x86_64.jre.relative.location}">
+										<include name="**/*"/>
+									</fileset>
+								</chmod>
+								<chmod perm="755">
+									<fileset dir="${project.build.directory}/products/${project.artifactId}/${linux.gtk.x86.jre.relative.location}">
+										<include name="**/*"/>
+									</fileset>
+								</chmod>
+								<chmod perm="755">
+									<fileset dir="${project.build.directory}/products/${project.artifactId}/${macosx.cocoa.x86_64.jre.relative.location}">
+										<include name="**/*"/>
+									</fileset>
+								</chmod>								
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<!-- Profile for saving the build qualifier -->
+		<profile>
+			<id>saveBuildVersion</id>
+			<activation>
+				<property>
+					<name>saveProductVersion</name>			
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.7</version>
+						<executions>
+							<execution>
+								<phase>generate-resources</phase>
+								<configuration>
+									<target name="generatePropertiesFile">
+										<propertyfile file="${basedir}/../aggregator/ant-scripts/buildversion.properties" 
+										comment="This file generated during Tycho build contains the build qualifier for the product.">
+											<entry key="productBuildQualifier" value="${project.version}.${buildQualifier}" />
+										</propertyfile>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project> 

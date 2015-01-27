@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.jaspersoft.studio.components">
+      <component
+            ClassFactory="com.jaspersoft.studio.html.HtmlComponentFactory">
+      </component>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.properties.propertyTabs">
+      <propertyTabs
+            contributorId="com.jaspersoft.studio.editor.report.ReportContainer">
+         <propertyTab
+               afterTab="com.jaspersoft.studio.html.html"
+               category="element"
+               id="com.jaspersoft.studio.html.html"
+               image="icons/html-16.png"
+               label="Html">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.properties.propertySections">
+      <propertySections
+            contributorId="com.jaspersoft.studio.editor.report.ReportContainer">
+         <propertySection
+               class="com.jaspersoft.studio.html.properties.HtmlSection"
+               id="com.jaspersoft.studio.html.properties.HtmlSection"
+               tab="com.jaspersoft.studio.html.html">
+            <input
+                  type="com.jaspersoft.studio.html.model.MHtml">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.babel.editor.resourceInput">
+      <input
+            class="com.jaspersoft.studio.html.messages.ResourcePublisher">
+      </input>
+   </extension>
+
+
+</plugin>

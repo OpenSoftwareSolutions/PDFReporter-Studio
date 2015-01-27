@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Jaspersoft Studio Properties
+Bundle-SymbolicName: com.jaspersoft.studio.properties;singleton:=true
+Bundle-Version: 5.6.2.final
+Bundle-Activator: com.jaspersoft.studio.properties.Activator
+Bundle-Vendor: Jaspersoft Corporation
+Require-Bundle: org.eclipse.ui;bundle-version="3.6.0";visibility:=reexport,
+ org.eclipse.ui.forms;bundle-version="3.5.0";visibility:=reexport,
+ org.eclipse.ui.views;bundle-version="3.5.0";visibility:=reexport,
+ org.eclipse.core.runtime;bundle-version="3.6.0";visibility:=reexport,
+ com.jaspersoft.studio.babel.editor;bundle-version="5.6.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: com.jaspersoft.studio.properties;uses:="org.eclipse.ui.plugin,org.osgi.framework",
+ com.jaspersoft.studio.properties.internal;
+  uses:="org.eclipse.core.runtime,
+   org.eclipse.ui,
+   org.eclipse.swt.events,
+   org.eclipse.swt.custom,
+   org.eclipse.jface.viewers,
+   org.eclipse.swt.graphics,
+   com.jaspersoft.studio.properties.view,
+   org.eclipse.swt.widgets",
+ com.jaspersoft.studio.properties.messages;uses:="org.eclipse.osgi.util",
+ com.jaspersoft.studio.properties.view;
+  uses:="org.eclipse.ui,
+   org.eclipse.swt.custom,
+   org.eclipse.ui.views.properties,
+   org.eclipse.swt.graphics,
+   org.eclipse.jface.viewers,
+   org.eclipse.ui.part,
+   org.eclipse.swt.widgets,
+   org.eclipse.ui.forms.widgets"
+Import-Package: org.eclipse.wb.swt

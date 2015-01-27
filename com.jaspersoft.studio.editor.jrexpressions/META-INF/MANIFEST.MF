@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: com.jaspersoft.studio.editor.jrexpressions
+Bundle-Vendor: Jaspersoft Corporation
+Bundle-Version: 5.6.2.final
+Bundle-SymbolicName: com.jaspersoft.studio.editor.jrexpressions; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext.xbase;bundle-version="2.3.1";resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;bundle-version="2.3.1";resolution:=optional,
+ org.eclipse.emf.mwe2.launch;bundle-version="2.3.0";resolution:=optional,
+ com.jaspersoft.studio;bundle-version="5.6.2";visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Export-Package: com.jaspersoft.studio.editor.jrexpressions,
+ com.jaspersoft.studio.editor.jrexpressions.formatting,
+ com.jaspersoft.studio.editor.jrexpressions.functions,
+ com.jaspersoft.studio.editor.jrexpressions.generator,
+ com.jaspersoft.studio.editor.jrexpressions.javaJRExpression,
+ com.jaspersoft.studio.editor.jrexpressions.javaJRExpression.impl,
+ com.jaspersoft.studio.editor.jrexpressions.javaJRExpression.util,
+ com.jaspersoft.studio.editor.jrexpressions.parseTreeConstruction,
+ com.jaspersoft.studio.editor.jrexpressions.parser.antlr,
+ com.jaspersoft.studio.editor.jrexpressions.parser.antlr.internal,
+ com.jaspersoft.studio.editor.jrexpressions.scoping,
+ com.jaspersoft.studio.editor.jrexpressions.services,
+ com.jaspersoft.studio.editor.jrexpressions.util,
+ com.jaspersoft.studio.editor.jrexpressions.validation

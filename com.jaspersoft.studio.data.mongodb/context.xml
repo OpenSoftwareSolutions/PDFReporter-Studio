@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   
+   
+   <context id="adapter_mongodb" title="MongoDB Data Adapter">
+      <description>MongoDB is an open source document-oriented database system developed and supported by 10gen. It is part of the NoSQL family of database systems. Instead of storing data in tables as is done in a &quot;classical&quot; relational database, MongoDB stores structured data as JSON-like documents with dynamic schemas (MongoDB calls the format BSON), making the integration of data in certain types of applications easier and faster.</description>
+      <topic href="html/mongodb.html" label="MongoDB Data Adapter"/>
+   </context>
+   <context id="query_mongo" title="Dataset and query dialog">
+      <description>From this dialog you can change the dataset query, define new parameters or change the adapter used to retrive the data.</description>
+      <topic href="http://docs.mongodb.org/manual/" label="The MongoDB Manual"/>
+      <topic href="http://docs.mongodb.org/manual/core/read-operations/" label="Read Operations Reference"/>
+      <topic href="http://community.jaspersoft.com/wiki/jaspersoft-mongodb-query-language" label="MongoDB Query Language"/>
+      
+   </context>
+</contexts>

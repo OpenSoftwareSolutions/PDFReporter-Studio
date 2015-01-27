@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: $bundleName
+Bundle-SymbolicName: $bundleName$singleton
+Bundle-Version: 1.0.0.$qualifier
+Bundle-Vendor: $vendor
+Fragment-Host: $hostPlugin;bundle-version="$pluginVersion"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Localization: plugin

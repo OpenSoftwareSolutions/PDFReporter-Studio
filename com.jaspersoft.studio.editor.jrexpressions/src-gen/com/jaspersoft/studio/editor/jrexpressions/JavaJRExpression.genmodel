@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (C) 2005 - 2014 TIBCO Software Inc. All rights reserved.
+  http://www.jaspersoft.com.
+  
+  Unless you have purchased  a commercial license agreement from Jaspersoft,
+  the following license terms  apply:
+  
+  This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+-->
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.jaspersoft.studio.editor.jrexpressions/src-gen"
+    editDirectory="/com.jaspersoft.studio.editor.jrexpressions.edit/src" editorDirectory="/com.jaspersoft.studio.editor.jrexpressions.editor/src"
+    modelPluginID="com.jaspersoft.studio.editor.jrexpressions" forceOverwrite="true"
+    modelName="JavaJRExpression" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="com.jaspersoft.studio.editor.jrexpressions.edit"
+    editorPluginID="com.jaspersoft.studio.editor.jrexpressions.editor" runtimeVersion="2.8"
+    usedGenPackages="../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
+  <genPackages prefix="JavaJRExpression" basePackage="com.jaspersoft.studio.editor.jrexpressions"
+      disposableProviderFactory="true" ecorePackage="JavaJRExpression.ecore#/">
+    <genClasses ecoreClass="JavaJRExpression.ecore#//JRExpressionModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//JRExpressionModel/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//JasperReportsExpression"/>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//Type/primitiveType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//Type/jvmType"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//ArrayInitializer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//ArrayInitializer/initialization"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//MethodInvocation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//MethodInvocation/fullyQualifiedMethodName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//MethodInvocation/args"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//FullMethodName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//FullMethodName/prefixQMN"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//FullMethodName/dots"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//FullMethodName/methodName"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//Arguments">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//Arguments/exprLst"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//ExpressionList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//ExpressionList/expressions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//ExpressionList/commas"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//JvmParameterizedTypeReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//JvmParameterizedTypeReference/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//JvmParameterizedTypeReference/arguments"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//JvmWildcardTypeReference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//JvmWildcardTypeReference/constraints"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//JvmUpperBound">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//JvmUpperBound/typeReference"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//JvmLowerBound">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//JvmLowerBound/typeReference"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//TestExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//TestExpression/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//TestExpression/trueStatement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//TestExpression/falseStatement"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//BinaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//BinaryExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//BinaryExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//BinaryExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//StaticField">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//StaticField/prefixQMN"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//StaticField/dots"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//StaticField/fieldName"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//JRFieldObj">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//JRFieldObj/bracedIdentifier"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//JRParameterObj">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//JRParameterObj/bracedIdentifier"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//JRVariableObj">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//JRVariableObj/bracedIdentifier"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//JRResourceBundleKeyObj">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//JRResourceBundleKeyObj/bracedIdentifier"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//MethodsExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//MethodsExpression/includeObjectInstatiation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//MethodsExpression/methodInvocations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//MethodsExpression/objectExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//MethodsExpression/arrayIndexes"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//IntLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//IntLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//LongLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//LongLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//FloatLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//FloatLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//DoubleLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//DoubleLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//CharLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//CharLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaJRExpression.ecore#//BooleanLiteral/isTrue"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//NullLiteral"/>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//CastedExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//CastedExpression/castType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//CastedExpression/castedExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//ArrayCreator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//ArrayCreator/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//ArrayCreator/size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//ArrayCreator/initialization"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaJRExpression.ecore#//JvmGenericArrayTypeReference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaJRExpression.ecore#//JvmGenericArrayTypeReference/componentType"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a connection to JasperReports Server">
+   <intro>
+      <description>
+         In this cheatsheet will be shown how to create a connection to a local installation of JasperReports Server, configured with the default parameter. This new connection can be used then to upload the local reports into the server.
+      </description>
+   </intro>
+   <item title="Switch to repository explorer">
+      <description>
+         From JasperSoft Studio go into the repository explorer.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=com.jaspersoft.studio.Repository)"/>
+   </item>
+   <item title="Start the wizard" dialog="true">
+      <description>
+         Right click on the node <b>Servers</b> and select <b>Create a JasperServer connection</b>. A wizard dialog will appear.
+      </description>
+       <action pluginId="com.jaspersoft.studio.doc" class="com.jaspersoft.studio.doc.handlers.CreateServerCheatAction" required="false"/>
+   </item>
+   <item
+         title="Provide the access data">
+      <description>
+         Leave the URL untouched and use as username and password <b>jasperadmin</b> and hit <b>Test Connection</b>.
+      </description>
+   </item>
+   <item
+         title="Complete the wizard">
+      <description>
+         If the result of the test is successful hit <b>Finish</b> to complete the wizard. You now will see the new server into the repository explorer
+      </description>
+   </item>
+</cheatsheet>

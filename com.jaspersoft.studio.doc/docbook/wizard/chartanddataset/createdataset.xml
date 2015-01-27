@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+<title>Creation of a Dataset</title>
+<section>
+        <para>Every report has a main dataset defined during its creation, that is the one used in all the previous tutorials. But
+        some times we need fileds that are not returned by the query of the main dataset or the fields needed could also be in a
+        different datasource. To do this we can use the element &quot;Dataset&quot;, this element permit to define many dataset
+        inside the report, each one with its fields and datasource. Obviously every dataset is indipendent from the others, so its
+        fields are separated from the ones of the main dataset, and also from the ones of the other datasets. With a report opened,
+        to create a dataset right click on the report root node in the outline view and choose &quot;Create Dataset&quot;:</para>
+      		<figure>
+			<title>Select the Create Dataset Action</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="1.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+        <para>Now a new wizard will be opened, in the first step you can select the name of the new dataset and if it use a connection
+        to a datasource or it is simply empty. Since we want to read data from the databese select the first option and use as name
+        &quot;GroupData&quot;, as in the image below, then hit Next.</para>
+      		<figure>
+			<title>Select Name and Type</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="2.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+        <para>In the next step we have to select the data adapters of the new dataset, and since we use the same database of the main
+        report even this time we will select &quot;Sample DB - Database JBDC Connection&quot;. We must also provide a query to
+        retrieve the fields and this is &quot;select count(*), SHIPCITY from orders group by SHIPCITY&quot;. It returns the records
+        grouped by the shipment city, in this way we have that every record read from the database with this query will contain two
+        fields: the number of element for a city and the name of the city. After that we can click Next.</para>
+      		<figure>
+			<title>Provide the data adapter and the query</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="3.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+        <para>At this point will be shown the fields discovered using the provided query and we can choose which add to the report.
+        Since we need them all hit the button to add all and then Next, as in the following image:</para>
+      		<figure>
+			<title>Add the Fields</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="4.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+        <para>At this point we can define groups, but we don&#39;t need them so hit the Finish button. The dataset will be created and
+        is visible from the outline view, if you explore its element you can see that it has its own fields, variables and
+        groups.</para>
+     	</section>
+</section>
+

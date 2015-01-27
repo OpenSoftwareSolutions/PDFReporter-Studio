@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<introContent>
+  	<extensionContent id="jssplugin-tutorialsIntroExtension" style="css/jssplugin.css" name="Jaspersoft Studio Tutorials Intro Extension" path="tutorials/@">
+		<group style-id="content-group" id="jssplugin-tutorialsIntroExtension-group" label="Reporting">
+       		<link label="Tutorials and Resources about Jaspersoft Studio" url="http://community.jaspersoft.com/project/jaspersoft-studio/resources" id="jssplugin-tutorialsLink" style-id="content-link">
+          		<text>Browse among a list of useful information, tutorials and tips &amp; tricks regarding Jaspersoft Studio.</text>
+       		</link>
+       	</group>
+  	</extensionContent>
+</introContent>

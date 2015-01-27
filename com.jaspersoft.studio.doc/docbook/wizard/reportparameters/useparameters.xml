@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+	<title>Using Report Parameters</title>
+	<section>
+		<para>
+			Report parameters are used in many different ways inside a report. They can be used in the where condition of a SQL query, or to provide additional data to the report (i.e. the a value for a title or the 
+			name of user that executed the report). A parameter is defined by a name and a Class, which is a Java class type like java.lang.String or java.lang.Integer. Any Java class is a valid parameter class. In example 
+			a parameter of type java.sql.Connection may be used to populate a subreport, while a simple java.lang.Boolean parameter may be used to show or hide a section of the report.
+		</para>
+		<para>
+			hatever you decide to use the parameters for, they represent the best way communication channel between the report engine and the execution environment (which is your application). A parameter can have a 
+			default value which is defined by means of the default expression property. This expression is evaluated by JasperReports only when a value for the parameter has not been provided by the user at run time.
+		</para>
+		<para>
+			To manage the parameters, use the outline view. From here is possible to add a parameter by  right-clicking on the item "Parameters" and choosing "Create Parameter". To delete a parameter from the outline view 
+			right click on it and select "Delete". The parameters with a light gray name are created by the system and can not be deleted or edited.
+		</para>
+		<figure>
+			<title>Parameters in the outline view</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="1.png" format="PNG" contentwidth="800px"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<formalpara><title>Default Parameters</title>
+		<para>
+			All reports contain a set of built-in parameters, parameters available by default that contain some run time information. Some the most important are the "REPORT_CONNECTION", which holds the JDBC connection 
+			used to run the SQL query of the report (if the report is filled using a JDBC connection), the "REPORT_DATA_SOURCE" which contains, if available, the data source used to fill the report, the "REPORT_LOCALE"
+			which contains the Locale used to fill the report and so on. Some built-in parameters are specific of some query languages, in example when using the Hibernate query language, the reports automatically 
+			includes the parameter "HIBERNATE_SESSION" that holds the Hibernate session used to run the HQL query. As said, the built-in parameters can not be modified or deleted.
+		</para>
+		</formalpara>
+		<formalpara><title>Using Parameters in a SQL Query</title>
+		<para>
+			Parameters can be used in SQL queries to filter records in a where condition or to add/replace pieces of raw SQL or even to pass the entire SQL string to execute. In the first case the parameters are used as 
+			standard SQL parameters, in example:
+		</para>
+		</formalpara>
+		<programlisting>
+		<![CDATA[
+			SELECT * FROM ORDERS WHERE ORDER_ID = $P{my_order_id}
+		]]>
+		</programlisting>
+		<para>
+			In this example my_order_id is a parameter that contains the ID of the order to read. This parameter can be passed to the report from the application that is running it to select only a specific order. 
+			Please note that the parameter here is a real SQL parameter, meaning that the query will be executed using a prepared statement like:
+		</para>
+		<programlisting>
+		<![CDATA[
+			SELECT * FROM ORDERS WHERE ORDER_ID = ?
+		]]>
+		</programlisting>
+		<para>
+			And the value of the parameter my_order_id will then passed to the statement. Let's consider this query:
+		</para>
+		<programlisting>
+		<![CDATA[
+			SELECT * FROM ORDERS ORDER BY $P!{my_order_field}
+		]]>
+		</programlisting>
+		<para>
+			In this case my_order_field can not be treated as an SQL parameter. JasperReports will consider this parameter like a kind of place holder (note the special syntax $P!{}) 
+			which will be replaced with the text value of the parameter (which in this case may be for instance "ORDERDATE DESC"). With the same logic, a query can be fully passed using a parameter. 
+			The query string would look like
+		</para>
+		<programlisting>
+		<![CDATA[
+			$P!{my_query}
+		]]>
+		</programlisting>
+		<para>
+			The number of parameters in a query is arbitrary. When passing a value using the $P!{} syntax, the value of the parameter is taken as is, the user is responsible of the correctness of the passed 
+			value (SQL escaping is not performed by JasperReports in this case). When using a parameter in a query, to allow JasperSoft Studio to execute the query to retrieve the available fields, a default 
+			value must be set for the parameter.
+		</para>
+		<formalpara><title>Parameters Prompt</title>
+		<para>
+		 	If a parameter is set to be used as a prompt, when a report is executed, JasperSoft Studio asks for the value of the parameter, here is a simple example.
+			Create a simple report with the template "Blank A4", name "ParameterExample" and data adapter "One Empty Record - Empty Rows". In this report create a parameter and 
+			rename it (from its properties tab) to MESSAGE, with type String set to be used as a prompt (the property "is From Pormpting" must be checked, anyway it is checked by default). 
+			Drag the parameter from the outline view inside the title band and JasperSoft Studio will create a textfield to display the parameter value. You should have something like the 
+			following image:
+		</para>
+		</formalpara>
+		<figure>
+			<title>Drag the parameter into the report</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="2.png" format="PNG" contentwidth="800px"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			Now compile the report going in the tab "Preview", the parameter prompt dialog will appear asking for a value for the MESSAGE parameter.
+		</para>
+		<figure>
+			<title>Request for the parameter value</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="3.png" format="PNG" contentwidth="800px"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			Set a value for the parameter (i.e. Hello World!) and hit the "Play" button. The message will be printed in the title band.
+		</para>
+		<figure>
+			<title>The report compiled</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="4.png" format="PNG" contentwidth="800px"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			JasperSoft Studio provides input dialogs for parameters of type String, Date, Time, Number and Collection.
+		</para>		
+	</section>
+</section>

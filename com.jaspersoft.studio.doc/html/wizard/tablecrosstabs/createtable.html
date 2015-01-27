@@ -1,0 +1,103 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Creation of a Table</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Creation of a Table</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+      <p>The first thing to is create a new report, from Jaspersoft Studio select File-&gt;New-&gt;Jasper Report, call the new
+      report "TablesExample" and as template use "Cherry". As data adapter use "Sample DB - Database JDBC
+      connection", that came with Jaspersoft Studio and as SQL query to discover the fields use: "select * from
+      orders". Now you have a list of the discovered fields, add them to the report in this order: ORDERDATE, ORDERID,
+      SHIPNAME, SHIPADDRESS and SHIPCITY. Don't use groups and complte the wizard. Now you have the report with some fields
+      already placed in it. You can test if it is all right by compiling the report switching to the preview tab. If it all right
+      you should see something like this:</p>
+  		<div class="figure"><a name="N40011"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Example Report</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="1.png" width="800" alt="Example Report"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>Now we can create our first table, the first decisions to take are what the table should display and where it is located.
+      As location we can choose the summary, because it is printed at end of the report and could be used to view easily some
+      aggregated data. For this example we choose to show in the table the number of shipment done in every year. If you don't
+      see the summary band in your report it is probably because it has size zero, so select it from the outline view and change
+      its height. The first thing to do is drag a table element from the palette to the summary band and a wizard dialog will
+      appear. On the first step you can choose if the table use an existing dataset or if you want to create a new one, for our
+      purpose choose to create a new one and hit "Next".</p>
+  		<div class="figure"><a name="N40028"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Select the datasource type</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="2.png" width="800" alt="Select the datasource type"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>On the next step, as name of the dataset choose "TableDataset", select to create a new dataset from a connection
+      or a database and hit "Next".</p>
+  		<div class="figure"><a name="N4003F"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Enter a Name for the New Dataset</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="3.png" width="800" alt="Enter a Name for the New Dataset"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>Now you have to choose the data adapter, use the built in database "Sample DB - Database JDBC Connection" with
+      the SQL query: "select YEAR(SHIPPEDDATE),count(*) from orders group by YEAR(SHIPPEDDATE)" This query select the
+      year from the shipment date and the number of records grouped also by the shipdate year. Doing this we have the number of
+      record and the year of the shipments done in that year. Then you can hit "Next" to see the discovered fields, here
+      you can see two fields named "C1" and "C2", add them to the fields of the new dataset using the button
+      "&gt;&gt;" or by double clicking on each one. Then you can hit "Next" and, since we dosen't need
+      groups, click another time "Next". In the next step you can select the connection to the data source, here leave
+      the default option ("use the same connection used to fill the master report") and hit "Next". At this
+      point we can define the fields in the columns of the table, add them all and click "Next". Finally we can choose
+      how the table is composed, infact we have six types of speciall cells:</p>
+       <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">Table Header and Table Footer: printed at the start and at the end of the table.</li><li class="listitem" style="list-style-type: circle">Column Header and Column Footer: printed at start and at the end of the table on every column, under\above the table
+        header and footer.</li><li class="listitem" style="list-style-type: circle">Group Header and Group Footer: printed at start and at the end of every group, visibles only if the table is using
+        groups</li></ul></div>
+      <p>For what we need leave enable only the Column Header and Column Footer and hit "Finish".</p>
+  		<div class="figure"><a name="N40066"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Select the table layout</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="4.png" width="800" alt="Select the table layout"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>Now you have created the table, arrange the layout and change the label "C1" and "C2" to display
+      "Year" and "Number of Shipment". To change the value of these labels, or of any other table cell, you
+      must go in the cell editor by double clicking on the table in the main report. Now you have a fully working table, but it can
+      be enhanced doing this:</p>
+       <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">Since the table has no column footer defined we can put here for example the total of the shipments;</li><li class="listitem" style="list-style-type: circle">Some element has not a shipment date, and for this the value null is shown, we can change this with
+        "Undefined";</li><li class="listitem" style="list-style-type: circle">The color of the column header and footer cells are very different from the ones of the main report.</li></ul></div>
+      <p>For the first point we need a support variable that sum all the values returned from the second field of the
+      TableDataset query. First switch into the main report, expand the dataset "TableDataset", rightclick on
+      "Variables" and select "Create Variable". A variable called "variable_1" will be created,
+      select it from the outline and set its fields as follow:</p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">Value Class Name: set it to java.lang.Integer, since we need a numeric value;</li><li class="listitem" style="list-style-type: circle">Calculation: set it to sum since we want to sum single values;</li><li class="listitem" style="list-style-type: circle">Expression: use the value $F{C2}, since we want to sum every single value of the field C2;</li><li class="listitem" style="list-style-type: circle">Initial value Expression: new Integer(0), since the sum start from zero.</li></ul></div>
+  		<div class="figure"><a name="N4009D"></a><p class="title"><b>Figure&nbsp;5.&nbsp;Create a new variable</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="5.png" width="800" alt="Create a new variable"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>Now go in the table editor by double clicking on the table and put a static text from the palette into the left column
+      footer cell and set its text to "Total", then drag and drop the "variable_1" from the outline view into
+      the right cell of the footer, and resize them to fit the cells. Now we need to change the value "null" with the
+      string "undefined", in the table editor select the element with the value "$F{C1}", as you can see this
+      is a text field inside the cell that as expression has only a field. Edit the expression of this field by double clicking on
+      it and set its expression to: "$F{C1} == null ? "Undefined" : $F{C1}". This is a simple IF expression in
+      a compact form (condition ? case then : case else) that check if the field is null and in that case returns the value
+      "Undefined", otherwise the value of the field. After that the only thing to do is change the color of the cell:
+      when a table is created in jaspersoft studio the color is not set on the cell, but are created more styles, for example we
+      can find:</p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">Table_TH for the table header\footer cells</li><li class="listitem" style="list-style-type: circle">Table_CH for the column header\footer cells</li><li class="listitem" style="list-style-type: circle">Table_GH for the gourp header\footer cells</li></ul></div>
+      <p>And these styles are created for every table, to avoid the name clashes a progressive number is placed at the end of the
+      name of the style until an unique name is found. So select the style "Table_CH" and from the properties change the
+      background color to a light gray. The final result should be something like the following image:</p>
+  		<div class="figure"><a name="N400C4"></a><p class="title"><b>Figure&nbsp;6.&nbsp;Set the new value into the table</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="6.png" width="800" alt="Set the new value into the table"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>Now switch to the preview tab to see the result:</p>
+  		<div class="figure"><a name="N400DB"></a><p class="title"><b>Figure&nbsp;7.&nbsp;Report compiled</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="7.png" width="800" alt="Report compiled"></div>
+			</div>
+		</div></div><br class="figure-break">
+     	</div>
+</div></body></html>

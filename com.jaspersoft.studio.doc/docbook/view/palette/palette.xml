@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+	<title>Palette View</title>
+
+	<section>
+
+		<para>
+			This view contains every graphic element we can drag from Palette to the graphics editor. There are two modes for this view, one inside the report designer, and another as a separate view. To open
+			the Palette in a separate view, select
+			<menuchoice>
+				<guimenu>Windows</guimenu>
+				<guimenuitem>Show View</guimenuitem>
+				<guimenuitem>General</guimenuitem>
+				<guimenuitem>Palette</guimenuitem>
+			</menuchoice>
+			. If you close this view the palette will be available inside the graphic editor.
+		</para>
+		<para>You can configure the Palette view by right-clicking inside it and opening the context menu, which includes options for big or small icons, the way elements are arranged (column, list, icons
+			only, details), and where the Palette is docked.
+		</para>
+		<para>There are three ways to create elements from the Palette:</para>
+		<itemizedlist mark='opencircle'>
+			<listitem>
+				<para>
+					Drag and drop element over a report container like a band, when object is dropped this will be the position for the element.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Click on an element inside the palette, go to a report container like a band click in the place where you want the top left corner will be, and drag in right-down direction.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Drag from Palette to Outline view.
+				</para>
+			</listitem>
+
+		</itemizedlist>
+		<figure>
+			<title>Palette Settings</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="palette_settings.png" format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+
+	</section>
+
+</section>

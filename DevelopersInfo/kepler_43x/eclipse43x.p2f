@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?p2f version='1.0.0'?>
+<p2f version='1.0.0'>
+  <ius size='10'>
+    <iu id='org.apache.commons.dbcp' name='Apache Commons DBCP' version='1.4.0.v201204271417'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+      </repositories>
+    </iu>
+    <iu id='epp.package.rcp' name='Eclipse for RCP and RAP Developers' version='2.0.1.20130919-0803'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/releases/kepler'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.platform.sdk' name='Eclipse Platform SDK' version='4.3.1.M20130911-1000'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/eclipse/updates/4.3'/>
+        <repository location='http://download.eclipse.org/releases/kepler'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.sdk.ide' name='Eclipse SDK' version='4.3.1.M20130911-1000'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/eclipse/updates/4.3'/>
+        <repository location='http://download.eclipse.org/releases/kepler'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.gef.sdk.feature.group' name='Graphical Editing Framework GEF SDK' version='3.9.1.201308190730'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/releases/kepler'/>
+      </repositories>
+    </iu>
+    <iu id='org.apache.commons.discovery' name='Jakarta-Commons Discovery' version='0.2.0.v201004190315'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/releases/kepler'/>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.nebula.feature.feature.group' name='Nebula Widgets' version='1.0.0.201310031933'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/technology/nebula/snapshot'/>
+      </repositories>
+    </iu>
+    <iu id='org.apache.xalan' name='Xalan-Java' version='2.7.1.v201005080400'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/releases/kepler'/>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.xtext.sdk.feature.group' name='Xtext SDK' version='2.4.3.v201309030823'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/releases/kepler'/>
+        <repository location='http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/'/>
+      </repositories>
+    </iu>
+    <iu id='com.buzzcoders.yasw.widgets.map.feature.feature.group' name='YASW Map widget' version='1.0.0.v20140304-0957'>
+      <repositories size='1'>
+        <repository location='http://yasw-library.sf.net/updates/'/>
+      </repositories>
+    </iu>    
+  </ius>
+</p2f>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SampleFunctions" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4d9e1946-2622-4966-880b-a4defcf71052">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="95" uuid="729cd309-166c-4eaf-a0bb-d550942bfb3d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="25"/>
+				</textElement>
+				<text><![CDATA[Sample report with functions from the custom user-create library]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="260" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="20" width="374" height="41" uuid="c4e14f53-2d29-43c1-aa50-7614f472fc31"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="19"/>
+				</textElement>
+				<text><![CDATA[Method #HELLO_WORLD( )]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="70" width="555" height="40" uuid="5d9d2585-fe9f-4499-b3d8-d4b4a3c43854"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[HELLO_WORLD_MSG( )]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="140" width="555" height="1" uuid="fb7ef503-faaa-47b9-82ad-a32326d7e9ba">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="220" width="555" height="40" uuid="99fb00ab-d76f-40c1-b208-4c38e2773529"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[REPEAT_MSG("A message that will be probably repeated",5,true)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="180" y="170" width="374" height="41" uuid="8804253f-9e5b-4c27-a4ef-f4c273d42f9e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="19"/>
+				</textElement>
+				<text><![CDATA[Method #REPEAT_MESSAGE( )]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

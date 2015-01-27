@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site
+      associateSitesURL="associateSites.xml">
+   <description name="Jaspersoft Studio" url="http://jasperstudio.sf.net/updates">
+      Jaspersoft Studio Update Site
+   </description>
+   <feature url="features/com.jaspersoft.studio.feature_5.6.2.final.jar" id="com.jaspersoft.studio.feature" version="5.6.2.final" os="linux,macosx,win32" ws="cocoa,gtk,win32">
+      <category name="com.jaspersoft.studio.category"/>
+   </feature>
+   <category-def name="com.jaspersoft.studio.category" label="Business Intelligence, Reporting Tools"/>
+</site>

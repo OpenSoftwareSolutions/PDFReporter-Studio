@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Jaspersoft Studio Documentation
+Bundle-SymbolicName: com.jaspersoft.studio.doc; singleton:=true
+Bundle-Version: 5.6.2.final
+Bundle-Vendor: Jaspersoft Corporation
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Require-Bundle: org.eclipse.ui.cheatsheets;bundle-version="3.4.0",
+ com.jaspersoft.studio;bundle-version="5.6.2",
+ com.jaspersoft.studio.server;bundle-version="5.6.2"
+Import-Package: com.jaspersoft.studio.server,
+ com.jaspersoft.studio.server.model.server,
+ com.jaspersoft.studio.server.publish.wizard;resolution:=optional,
+ com.jaspersoft.studio.server.wizard

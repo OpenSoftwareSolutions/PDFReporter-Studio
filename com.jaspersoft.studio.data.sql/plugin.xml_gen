@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.com.jaspersoft.studio.data.Sql" 
+       class = "com.jaspersoft.studio.data.sql.SqlPackage"
+       genModel = "com/jaspersoft/studio/data/Sql.genmodel" /> 
+	
+  </extension>
+
+
+</plugin>

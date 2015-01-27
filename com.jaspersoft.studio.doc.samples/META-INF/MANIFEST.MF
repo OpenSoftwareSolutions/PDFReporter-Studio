@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Jaspersoft Studio Samples
+Bundle-SymbolicName: com.jaspersoft.studio.doc.samples;singleton:=true
+Bundle-Version: 5.6.2.final
+Bundle-Vendor: Jaspersoft Corporation
+Fragment-Host: com.jaspersoft.studio.doc;bundle-version="2.0.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Require-Bundle: net.sf.jasperreports.samples;bundle-version="5.6.2",
+ net.sf.jasperreports.doc;bundle-version="5.6.2",
+ org.eclipse.ui.navigator.resources;bundle-version="3.4.200"

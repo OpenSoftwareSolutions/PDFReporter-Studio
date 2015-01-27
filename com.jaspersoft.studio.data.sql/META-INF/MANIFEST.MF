@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SQL Query Editor Grammar
+Bundle-Vendor: Jaspersoft Corporation
+Bundle-Version: 5.6.2.final
+Bundle-SymbolicName: com.jaspersoft.studio.data.sql;singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext.generator;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ com.jaspersoft.studio.data;bundle-version="5.6.2",
+ org.eclipse.xtext,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Export-Package: com.jaspersoft.studio.data, com.jaspersoft.studio.data.scoping,
+ com.jaspersoft.studio.data.formatting,
+ com.jaspersoft.studio.data,
+ com.jaspersoft.studio.data.services,
+ com.jaspersoft.studio.data.sql,
+ com.jaspersoft.studio.data.sql.impl,
+ com.jaspersoft.studio.data.sql.util,
+ com.jaspersoft.studio.data.parseTreeConstruction,
+ com.jaspersoft.studio.data.parser.antlr,
+ com.jaspersoft.studio.data.parser.antlr.internal,
+ com.jaspersoft.studio.data.parser.antlr.lexer,
+ com.jaspersoft.studio.data.scoping
+Import-Package: org.apache.log4j

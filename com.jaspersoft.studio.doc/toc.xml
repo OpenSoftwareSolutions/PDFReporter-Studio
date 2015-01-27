@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Jaspersoft Studio Documentation">
+	<topic label="Release Notes" href="html/release.notes.html"/>
+ <topic href="html/editors/editors.html" label="Editors">
+    <topic href="html/editors/jrxml/jrxml.html" label="Report Templates (jrxml) Editor">
+    </topic>
+    <topic href="html/editors/jrprint/jrprint.html" label="Report Preview Editor">
+    </topic>
+    <topic href="html/editors/dataAdapter/dataadapter.html" label="Data Adapter Editor">
+    </topic>
+    <topic href="html/editors/jrtx/jrtx.html" label="Style Templates Editor">
+    </topic>
+    <topic href="html/editors/preview/preview.html" label="Report Run And Preview Editor">
+    </topic>
+    <anchor id="jsseditors"/>
+ </topic>
+ <topic href="html/view/views.html" label="Views">
+    <topic href="html/view/outline/outline.html" label="Outline">
+    </topic>
+    <topic href="html/view/reportstate/reportstate.html" label="Report State">
+    </topic>
+    <topic href="html/view/properties/properties.html" label="Properties">
+    </topic>
+    <topic href="html/view/palette/palette.html" label="Palette">
+    </topic>
+    <topic href="html/view/problems/problems.html" label="Problems">
+    </topic>
+    <topic href="html/view/progress/progress.html" label="Jobs Progress">
+    </topic>
+    <topic href="html/view/explorer/explorer.html" label="Project Explorer">
+    </topic>
+    <topic href="html/view/preview/preview.html" label="Report Templates Preview">
+    </topic>
+    <topic href="html/view/repository/repository.html" label="Repository">
+    </topic>
+    <anchor id="jssviews"/>
+ </topic>
+ <topic href="html/dataAdapters/dataadapters.html" label="Data Adapters">
+    <topic href="html/adaptersamples/json/jsonexample.html" label="JSON Data Adapter"/>
+    <topic href="html/adaptersamples/bean/adapterfactory.html" label="Bean Data Adapter"/>
+    <topic href="html/wizard/xmldatasources/createxml.html" label="Using XML datasources"/>
+	<topic href="html/wizard/xmldatasources/remotexml.html" label="Using Remote XML datasources"/>
+    <topic href="html/adaptersamples/JRDataSource/JRDataSourceAdapter.html" label="JRDataSource"/>
+    <anchor id="dataadapters"/>
+ </topic>
+ <topic label="Query Editors">
+    <anchor id="queryeditors"/>
+ </topic>
+ <topic href="html/preferences/font/fontmanagement.html" label="Font Management">
+ </topic>
+ <topic href="html/preferences/preferences.html" label="Preferences">
+ </topic> 
+  <topic label="Tutorials">
+  		<topic label="Report Structure">
+			<topic href="html/wizard/reportstructure/reportstructure.html" label="Overview on the report structure" />
+			<topic href="html/wizard/createreport/addfolder.html" label="Create a Project Folder" />
+			<topic href="html/wizard/createreport/createreport.html" label="Designing a report" />
+			<topic href="html/wizard/creategroup/creategroup.html" label="Groups in JasperSoft Studio" />
+			<topic href="html/wizard/reportstructure/pageformat.html" label="Editing the page format" />
+			<topic href="html/wizard/reportstructure/columns.html" label="Editing the number of columns" />
+   <topic href="html/wizard/exportreport/exportreport.html" label="Report exporting">
+   </topic>
+   <topic href="html/wizard/measureunits/measureunits.html" label="Measure Units">
+   </topic>
+		</topic>
+		<topic label="Variables and Expressions">
+			<topic href="html/wizard/reportvariables/createvariable.html" label="The variables in Jaspersoft Studio" />
+			<topic href="html/wizard/expressioneditor/useexpressioneditor.html" label="Expression Editor: what it is and how it works" />
+			<topic href="html/wizard/expressioneditor/extendeditor.html" label="Expression Editor: how to extend it and contribute your own functions" />
+		</topic>
+		<topic label="Data Adapters">
+			<topic href="html/wizard/chartanddataset/createdataset.html" label="Creation of a dataset"/>
+			<topic href="html/wizard/xmldatasources/createxml.html" label="Using XML datasources"/>
+			<topic href="html/wizard/xmldatasources/remotexml.html" label="Using Remote XML datasources"/>
+			<topic href="html/adaptersamples/JRDataSource/JRDataSourceAdapter.html" label="How to Create and Use a JRDataSource adapter" />
+   <topic href="html/adaptersamples/JRDataSourceProvider/JRDataSourceProvider.html" label="How to Create and Use a JRDataSourceProvider adapter">
+   </topic>
+			<topic href="html/adaptersamples/bean/beanfile.html" label="Exemple of a Bean class"/>
+			<topic href="html/adaptersamples/json/jsonexample.html" label="Exemple of JSON file"/>
+		</topic>
+		<topic label="Charts and Subreports">
+     <topic href="html/wizard/reportparameters/useparameters.html" label="Report Parameters">
+     </topic>
+			<topic href="html/wizard/subreport/subreport.html" label="How to use a subreport with parameters"/>
+			<topic href="html/wizard/chartanddataset/createchart.html" label="Creation of a chart"/>
+			<topic href="html/wizard/chartsubreport/createsubchart.html" label="Using charts and subreports" />
+		</topic>
+		<topic label="Tables and Crosstabs">
+			<topic href="html/wizard/tablecrosstabs/createtable.html" label="Creation of a table"/>
+			<topic href="html/wizard/tablecrosstabs/createcrosstab.html" label="Creation of a crosstab"/>
+		</topic>
+		<topic label="Styles">
+     <topic href="html/wizard/elementstyles/elementstyles.html" label="Overview on the Styles">
+     </topic>
+			<topic href="html/wizard/stylestemplate/createtemplate.html" label="Create a Styles Template"/>
+			<topic href="html/wizard/stylestemplate/usetemplate.html" label="Use a Styles Template" />
+		</topic>
+		<topic label="Working with JasperReports Server">
+			<topic href="html/wizard/jasperserver/connection.html" label="Connect to JasperReports Server" />
+			<topic href="html/wizard/jasperserver/publishreport.html" label="Publish a report into JasperReports Server" />
+   <anchor id="jasperreportsserver"/>
+		</topic>
+  <anchor id="jsstutorials"/>
+  <topic label="Jaspersoft Studio Translation">
+     <topic href="html/wizard/translation/createtranslation.html" label="Create a Translation">
+     </topic>
+     <topic href="html/wizard/translation/exporttranslation.html" label="Upload a Translation">
+     </topic>
+     <topic href="html/wizard/translation/installtranslation.html" label="Install a Translation">
+     </topic>
+  </topic>
+ </topic>
+  <topic label="Developer Guide">
+     <topic label="Extension Points">
+        <topic href="html/programmers/extensionPoints/toolbaritems.html" label="How to create context tool items">
+        </topic>
+        <anchor id="jssextensionpoints"/>
+     </topic>
+     <topic href="html/wizard/expressioneditor/extendeditor.html" label="Expression Editor: how to extend it and contribute your own functions">
+     </topic>
+     <anchor id="jssdeveloperguide"/>
+  </topic>
+  <anchor id="jsspluginhelp"/>
+
+</toc>

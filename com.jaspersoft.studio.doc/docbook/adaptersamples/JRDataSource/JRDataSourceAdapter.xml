@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+<title>How to create and use a JRDataSource adapter</title>
+<section>
+        <para>
+	        In this example will see how to create a custom JRDataSource adapter. The code in this example will be pretty simple, because all the informations provided by the data 
+	        adapter are hardcoded in the adapter itself. This means that the informations provided are embedded and for this reason there is no need of other resources. This is a simplistic 
+	        approach to show how to create a custom data adapter without do a too much complex example.
+        </para>
+        <para>
+        	The first thing to do is decide which data is returned and how it is structured. Lets suppose that we have a series of records where every record is a name and an age. So we need
+        	to return this informations. Now we need to understand how a data adapter is composed. A custom data adapter is a piece of java code with some characteristics:
+        	<itemizedlist mark='opencircle'>
+        		<listitem>
+        			<para>
+        			A class that implements the interface JRDataSource. This his necessary to guarantee the presence of the methods required to retrieve the data. To implement this interface
+        			we need to define two methods:
+        			<itemizedlist mark='opencircle'>
+        				<listitem><para>
+        					public boolean next(): this method tell to JasperReport if there are still record to read. If it return true there are other records, otherwise it must return false.
+        				</para></listitem>
+        				<listitem><para>
+        					public Object getFieldValue(JRField jrField): we already know that a record can have any number of fields. This method is called for every field in the report, and it must 
+        					return a value for that field. The parameter received by this method is the field that need to be valorized, and it contains the name of the fields, the description and in general 
+        					informations about the field. Knowing this informations could be useful to identify the field an return the appropriate data
+        				</para></listitem>
+        			</itemizedlist>
+        			Keep in mind that this methods are called for every record. At first the method next is called and if it result is true then the getFieldValue is called for every field in the report. 
+        			Then the method next is called again and all the cycle will be repeated until it will return false.
+        			</para>
+        		</listitem>
+        		<listitem>
+        		<para>
+        			Then you have to define a static method that return an instance of the class defined in the first point. This is necessary to provide to JasperReport a way to get an already builded 
+        			instance of the class.
+        		</para>
+        		</listitem>
+        	</itemizedlist>
+        	Now that the concept behind this custom data adapter are explained, we can see the code:		
+        </para>
+       	<programlisting language="java"><![CDATA[
+				package CustomDataAdapter;
+				import java.util.HashMap;
+				
+				import net.sf.jasperreports.engine.JRDataSource;
+				import net.sf.jasperreports.engine.JRException;
+				import net.sf.jasperreports.engine.JRField;
+				
+				public class MyImplementation implements JRDataSource {
+				
+					/**
+					 * For this data adapter the informations are embedded in the code
+					 */
+					private static final String[] nameArray = {"Frank", "Joseph", "Marco", "Carl", "Lenny", "Homer", "Teodor", "Leopold"};
+					
+					private static final Integer[] ageArray = {50,30,40,46,44,26,32,21};
+					
+					/**
+					 * Variable to store how much records were read
+					 */
+					private int counter = -1;
+					
+					/**
+					 * Variables to store the number of fields, and their names, in the report
+					 */
+					private HashMap<String, Integer> fieldsNumber = new HashMap<String, Integer>();
+					
+					private int lastFieldsAdded = 0;
+					
+					/**
+					 * Method used to know if there are records to read.
+					 */
+					@Override
+					public boolean next() throws JRException {
+						if (counter<nameArray.length-1) {
+							counter++;
+							return true;
+						}
+						return false;
+					}
+				
+					/**
+					 * This method is called for every field defined in the report. So if i have 2 fields it is called 2 times for every record, and 
+					 * for each of them it must provide a value.
+					 * The parameter can be used to understand for which field is requested, in fact it contains the name of the requested field. This 
+					 * data adapter is done with the goal of return two values, a name and an age. An easy option would be expect a field with the name 
+					 * "Name" and one with name "Age". But we can do something more flexible, in this case we will enumerate all the fields requested and 
+					 * and the first two will be assumed to be for name and age, for all the others will be returned an empty string. So we can have a report 
+					 * with more than two fields, but the name and the age will be returned each time only for the first two. 
+					 * 
+					 * If this example is too much complex refer to the method getFieldValue2, where is shown the first explained, and simple solution, where we 
+					 * expect two fields with a precise name.
+					 */
+					@Override
+					public Object getFieldValue(JRField jrField) throws JRException {
+						Integer fieldIndex;
+						if (fieldsNumber.containsKey(jrField.getName()))
+							fieldIndex = fieldsNumber.get(jrField.getName());
+						else {
+							fieldsNumber.put(jrField.getName(), lastFieldsAdded);
+							fieldIndex = lastFieldsAdded;
+							lastFieldsAdded ++;
+						}
+						if (fieldIndex == 0) return nameArray[counter];
+						else if (fieldIndex == 1) return ageArray[counter];
+						return "";
+					}
+					
+					/**
+					 * Example of a simpler getFieldValue, not actually used
+					 */
+					public Object getFieldValue2(JRField jrField) throws JRException {
+						if (jrField.getName().equals("Name")) return nameArray[counter];
+						else if (jrField.getName().equals("Age")) return ageArray[counter];
+						return "";
+					}
+					
+					/**
+					 * Return an instance of the class that implements the custom data adapter.
+					 */
+					public static JRDataSource getDataSource(){
+						return new MyImplementation();
+					}
+				
+				}
+		]]></programlisting>
+		<para>
+			At this point we need only to understand where put this class and how use it. From the designer right click on a JasperReport project folder and select New -> Package (if you 
+			don't see the element package search it under others), then use the name CustomDataAdapter for the new package.
+		</para>
+	    <figure>
+			<title>Create the package</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="1.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+		<para>
+			At this point right click on the CustomDataAdapter package and select New -> Class. On the dialog that will appear insert MyImplementation as class name. Then press the button 
+			Add to add a new interface and select JRDataSource, if you have done right the JRDataSource interface will appear in the list of the used interfaces. Finally hit the Finish button
+			to create the new class. At this point you have to write the data adapter code, but for this example you can just copy and paste the code written before.
+		</para>
+	  	<figure>
+			<title>Create the class</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="2.png" format="PNG"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+		<para>
+			Now you have to create the data adapter that use this class, from select the element File -> New -> Data adapter.
+		</para>
+	 	<figure>
+			<title>Create the data adapter</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="3.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+		<para>
+			From the dialog select the same project folder where you put the class (in this case MyReports) and has name of the file put MyCustomAdapter and hit Next. Now you have to choose the type 
+			of the data adapter, select Custom Implementation of JRDataSource and hit Next. At this point you must provide the information to get the class previously written:
+			<itemizedlist mark='opencircle'>
+				<listitem>
+				<para>As name of the datasource you can put anything you like, in this case we can use MyDataSource</para>
+				</listitem>
+				<listitem>
+				<para>On the factory class hit the button with three dots "...", and in the new dialog search for MyImplementation and hit Ok. At the and in the Factory Class field you should find 
+				something like CustomDataAdapter.MyImplementation</para>
+				</listitem>
+				<listitem>
+				<para>In the second textfield you must insert the static method that return an instance of your class, in this case simply type getDataSource</para>
+				</listitem>
+			</itemizedlist>
+			After you have compiled all the fields hit the Test button to check if it is all right, and if you obtain a successful response hit the Finish button.
+		</para>
+	    <figure>
+			<title>Provide the class informations</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="4.png" format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+	  <para>
+	  	At this point you can use this new data adapter inside a report. Create a new report from the report wizard (File -> New -> Jasper Report), for this example use the template Coffee.
+	  	Place it in the same Project folder of the data adapter (MyReports) and as data adapter select MyDataAdapter and hit Finish.
+	  </para>
+	  <para>
+	  	Now create two fields (In the outline view right click on the element Fields and select Create Field, one time for each field), and drag and drop them in the detail band. Probably you will 
+	  	have to adjust the size of the band and of the frame inside it (you could also remove this frame). Anyway ad the and you will obtain something like this:
+	  </para>
+	  <figure>
+			<title>Structure of the report</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="5.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+	  <para>
+	  	Finally switch to the Preview tab to compile the report and see the result:
+	  </para>
+	  <figure>
+	   <title>Final result</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="6.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+     </section>
+</section>

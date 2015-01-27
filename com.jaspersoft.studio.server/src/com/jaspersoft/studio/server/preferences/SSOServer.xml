@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+  Copyright (C) 2005 - 2014 TIBCO Software Inc. All rights reserved.
+  http://www.jaspersoft.com.
+  
+  Unless you have purchased  a commercial license agreement from Jaspersoft,
+  the following license terms  apply:
+  
+  This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+-->
+<mapping>
+	<class name="com.jaspersoft.studio.server.preferences.SSOServer">
+		<map-to xml="SSOServer" />
+
+		<field name="uuid" type="string">
+			<bind-xml name="uuid" node="element" />
+		</field>
+		<field name="url" type="string">
+			<bind-xml name="url" node="element" />
+		</field>
+		<field name="user" type="string">
+			<bind-xml name="user" node="element" />
+		</field>
+		<field name="password" type="string">
+			<bind-xml name="password" node="element" />
+		</field>
+
+		<field name="type" type="com.jaspersoft.studio.server.preferences.SSOTypes">
+			<bind-xml name="type" node="element" />
+		</field>
+	</class>
+</mapping>
+

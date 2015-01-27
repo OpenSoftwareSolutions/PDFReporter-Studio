@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="newResourceHelp" title="Select the resources to import">
+      <description>In this step you can select the resources that will be imported and that at the end of the wizard you can start to translate</description>
+      <topic href="html/translation/createtranslation.html" label="How to translate Jaspersoft Studio"/>
+      <topic href="html/translation/exporttranslation.html" label="How to publish a Jaspersoft Studio translation"/>
+   </context>
+   <context id="defineStructureHelp" title="Define the project and target languages">
+      <description>In this step you can define the project where the resources can be placed. You can select an existing Translation project or input the name of a new one. You must also add one or more target languages (in other words the translations you want to do). It's recommended to leave the button to create the folder structure enabled, because it avoid the name clashes and keep the project more organized.</description>
+      <topic href="html/translation/createtranslation.html" label="How to translate Jaspersoft Studio"/>
+      <topic href="html/translation/exporttranslation.html" label="How to publish a Jaspersoft Studio translation"/>
+   </context>
+</contexts>

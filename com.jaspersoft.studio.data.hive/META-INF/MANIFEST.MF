@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Hadoop Hive driver
+Bundle-SymbolicName: com.jaspersoft.studio.data.hive;singleton:=true
+Bundle-Version: 5.6.2.final
+Bundle-Activator: com.jaspersoft.studio.data.hive.Activator
+Bundle-Vendor: Jaspersoft Corporation
+Require-Bundle: com.jaspersoft.studio.data;bundle-version="5.6.2";visibility:=reexport,
+ com.jaspersoft.studio.server;bundle-version="5.6.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Eclipse-BuddyPolicy: registered
+Eclipse-RegisterBuddy: com.jaspersoft.studio.data
+Bundle-ClassPath: lib/js-hive-datasource-1.1.0-cdh5.jar,
+ lib/hive-jdbc-0.12.0-cdh5.0.3.jar,
+ lib/hive-service-0.12.0-cdh5.0.3.jar,
+ lib/hive-exec-0.12.0-cdh5.0.3.jar,
+ lib/httpcore-4.3.2.jar,
+ lib/hadoop-core-1.2.1.jar,
+ .

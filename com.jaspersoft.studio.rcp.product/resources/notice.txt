@@ -1,0 +1,50 @@
+JaspersoftStudio installer and OSX icons created by Jaspersoft.
+
+
+JaspersoftStudio uses icons created by
+Mark James (mjames at gmail.com)
+http://www.famfamfam.com/lab/icons/silk/
+
+JaspersoftStudio uses icons created by Yusuke Kamiyamane
+Copyright (C) 2011 Yusuke Kamiyamane. All rights reserved.
+The icons are licensed under a Creative Commons Attribution
+3.0 license. <http://creativecommons.org/licenses/by/3.0/>
+
+Eclipse IDE and Eclipse RCP are based on software from eclipse.org,
+and are made available by the Eclipse Foundation under the terms and
+conditions of the Eclipse Public License Version 1.0 ("EPL").
+A copy of the EPL is provided with this Content and is also
+available at http://www.eclipse.org/legal/epl-v10.html.
+
+iReport uses several other open source libraries.
+
+You can refer to the following links in order to
+download the relative source code.
+
+This product includes software developed by the Apache Software 
+Foundation (http://www.apache.org/).
+
+http://www.antlr.org/
+http://asm.objectweb.org/
+http://barbecue.sourceforge.net/
+http://www.beanshell.org/
+http://cglib.sourceforge.net/
+http://jakarta.apache.org/commons/
+http://www.dom4j.org/
+http://ehcache.sourceforge.net/
+http://groovy.codehaus.org/
+http://www.hibernate.org/
+http://www.hsqldb.org/
+http://www.lowagie.com/iText/
+http://jasperreports.sourceforge.net
+http://www.jfree.org/jcommon/index.php
+http://www.eclipse.org/jdt/core/index.php
+http://www.jfree.org/jfreechart/index.php
+http://java.sun.com/products/jta/
+http://jexcelapi.sourceforge.net/
+http://logging.apache.org/log4j/docs/index.html
+http://catcode.com/pngencoder/
+http://jakarta.apache.org/poi/
+http://xml.apache.org/xalan-j/
+http://xerces.apache.org/xerces2-j/
+

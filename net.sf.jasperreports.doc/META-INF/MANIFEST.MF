@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JasperReports Documentation
+Bundle-SymbolicName: net.sf.jasperreports.doc; singleton:=true
+Bundle-Version: 5.6.2.final
+Bundle-Vendor: Jaspersoft Corporation
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Eclipse-BundleShape: dir

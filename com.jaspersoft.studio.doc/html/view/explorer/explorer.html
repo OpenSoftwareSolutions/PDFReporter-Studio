@@ -1,0 +1,74 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Project Explorer View</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Project Explorer View</h2></div></div><hr></div>
+	
+
+	<div class="section"><div class="titlepage"></div>
+
+		<p>
+			Jaspersoft Studio uses the Eclipse environment to organize all the resources. This means users create projects that contain images, styles, libraries, and other files needed for report development.
+			This is done in the
+			<span class="emphasis"><em>Project Explorer view</em></span>
+			.
+		</p>
+		<p>This view shows a project file structure similar to that found in other file managers. Use context menus or drag and drop files to work with them.
+		</p>
+		<p>
+			One of the current tasks is to open a report. To do this, double-click a
+			<code class="filename">.jrxml</code>
+			or
+			<code class="filename">.jasper</code>
+			file, or select
+			the
+			<span class="guimenuitem">Open With </span>
+			context menu.
+			<span class="guimenuitem">JasperReports Designer</span>
+			can open reports in design mode,
+			or
+			<span class="guimenuitem">JasperReports Preview</span>
+			can open a preview from which it's possible to run reports.
+			It's also possible to open
+			<code class="filename">.jrprint</code>
+			files to view a generated report,
+			<code class="filename">.jrtx</code>
+			files to edit styles,
+			Data Adapter files to create data adapters, or just Preview the report from the
+			<span class="guimenuitem">Preview</span>
+			item in context menu.
+		</p>
+		<p>
+			Another task is to add or remove java library jars to or from project CLASSPATH. To do this, open a context menu on the desired jar and locate the Build Path item.
+			Choose the correct sub-item,
+			<span class="guimenuitem">"Add To Build
+				Path"
+			</span>
+			or
+			<span class="guimenuitem">"Remove From Build"</span>
+			. Please look into Eclipse documentation for information on how to configure CLASSPATH in Eclipse.
+		</p>
+		<p>
+			Existing Eclipse users may already have some projects in the workspace. These users must activate JasperReports Nature on the project with
+			<code class="filename">.jrxml</code>
+			files,
+			to do this, select the project, open the context menu, and look at
+			<span class="guimenu">JasperReports</span> &rarr; <span class="guimenuitem">Toggle JasperReports Nature</span>
+			menu item.
+		</p>
+		<p>
+			Plenty of configuration options are available for this view. To open the configuration dialog, click on the arrow in top right corner of the view.
+		</p>
+		<div class="figure"><a name="N40052"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Setup JasperReport Nature</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="pexplore_nature.png" alt="Setup JasperReport Nature"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<div class="figure"><a name="N40065"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Open a report file</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="pexplore_open.png" alt="Open a report file"></div>
+			</div>
+		</div></div><br class="figure-break">
+
+
+	</div>
+
+</div></body></html>

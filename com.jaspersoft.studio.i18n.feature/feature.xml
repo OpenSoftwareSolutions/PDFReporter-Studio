@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.jaspersoft.studio.i18n.feature"
+      label="Internationalization Support for Jasperosoft Studio"
+      version="1.0.0.nl"
+      provider-name="Jaspersoft Corportation">
+
+   <description url="http://community.jaspersoft.com/project/jaspersoft-studio">
+      Internationalization support for Eclipse-based JasperReports Designer
+   </description>
+
+   <copyright url="http://www.jaspersoft.com/legal-notices">
+      Copyright © 2010 - 2013 Jaspersoft Corporation
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+</feature>

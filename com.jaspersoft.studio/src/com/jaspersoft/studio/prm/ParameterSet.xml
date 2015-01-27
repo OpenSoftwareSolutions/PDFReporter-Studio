@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- Copyright (C) 2005 - 2014 TIBCO Software Inc. All rights reserved. http://www.jaspersoft.com. Unless you have purchased a commercial license agreement from Jaspersoft, the following license terms 
+	apply: This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html -->
+<mapping>
+	<class name="com.jaspersoft.studio.prm.ParameterSet">
+		<map-to xml="ParameterSet" />
+
+		<field name="name" type="string">
+			<bind-xml name="name" node="element" />
+		</field>
+		<field name="builtIn" type="boolean">
+			<bind-xml name="builtIn" node="element" />
+		</field>
+		<field name="parameters" type="net.sf.jasperreports.engine.design.JRDesignParameter" collection="arraylist">
+			<bind-xml name="parameters" />
+		</field>
+	</class>
+	<class name="net.sf.jasperreports.engine.design.JRDesignParameter">
+		<map-to xml="JRDesignParameter" />
+		<field name="name" type="java.lang.String">
+			<bind-xml name="name" node="element" />
+		</field>
+		<field name="description" type="java.lang.String">
+			<bind-xml name="description" node="element" />
+		</field>
+		<field name="forPrompting" type="boolean">
+			<bind-xml name="forPrompting" node="element" />
+		</field>
+		<field name="valueClassName" type="java.lang.String">
+			<bind-xml name="valueClassName" node="element" />
+		</field>
+		<field name="nestedTypeName" type="java.lang.String">
+			<bind-xml name="nestedTypeName" node="element" />
+		</field>
+		<field name="defaultValueExpression" type="net.sf.jasperreports.engine.design.JRDesignExpression">
+			<bind-xml name="defaultValueExpression" node="element" />
+		</field>
+	</class>
+	<class name="net.sf.jasperreports.engine.design.JRDesignExpression">
+		<map-to xml="JRDesignParameter" />
+		<field name="text" type="java.lang.String">
+			<bind-xml name="text" node="element" />
+		</field>
+	</class>
+</mapping>
+

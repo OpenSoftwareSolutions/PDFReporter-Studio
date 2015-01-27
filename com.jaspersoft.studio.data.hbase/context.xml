@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   
+   
+   <context id="adapter_hbase" title="HBase Data Adapter">
+      <description>Apache HBase™ is the Hadoop database, a distributed, scalable, big data store.</description>
+      <topic href="html/hbase.html" label="HBase Data Adapter"/>
+   </context>
+   <context id="query_hbase" title="Dataset and query dialog">
+      <description>From this dialog you can change the dataset query, define new parameters or change the adapter used to retrive the data.</description>
+      <topic href="http://hbase.apache.org/book/book.html" label="The Apache HBase™ Reference Guide"/> 
+      
+   </context>
+</contexts>

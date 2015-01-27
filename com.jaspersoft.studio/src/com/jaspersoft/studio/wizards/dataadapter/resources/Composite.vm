@@ -1,0 +1,191 @@
+/*******************************************************************************
+ * Copyright (C) 2005 - 2014 TIBCO Software Inc. All rights reserved.
+ * http://www.jaspersoft.com.
+ * 
+ * Unless you have purchased  a commercial license agreement from Jaspersoft,
+ * the following license terms  apply:
+ * 
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ ******************************************************************************/
+package $packageName;
+
+import net.sf.jasperreports.data.DataAdapter;
+import net.sf.jasperreports.engine.JasperReportsContext;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Spinner;
+
+import $dataAdapterPackage;
+import com.jaspersoft.studio.data.ADataAdapterComposite;
+import com.jaspersoft.studio.data.DataAdapterDescriptor;
+
+/**
+ * Inside this class are defined the controls shown when the 
+ * adapter is created on edited from Jaspersoft Studio. 
+ * This controls can be used the configure the data adapter.
+ * With the example data adapter it provide the controls to define
+ * the number of record, the number of value for each record, and
+ * the range between every value is generated
+ * 
+ * @author Orlandin Marco
+ *
+ */
+public class $adapterComposite extends ADataAdapterComposite {
+	
+	/**
+	 * Spinner control to define the number of records
+	 */
+	private Spinner recordField;
+	
+	/**
+	 * Spinner control to define the number of value for each records
+	 */
+	private Spinner columnField;
+	
+	/**
+	 * Lower limit for the generated values
+	 */
+	private Spinner minValueField;
+	
+	/**
+	 * Upper limit for the generated values
+	 */
+	private Spinner maxValueField;
+
+	/**
+	 * The descriptor of the data adapter
+	 */
+	private $descriptorName dataAdapterDescriptor;
+
+	/**
+	 * Construct the class and initialize the controls
+	 * 
+	 * @param parent the parent of the controls
+	 * @param style the style for the controls
+	 * @param context the current JasperReportsContext
+	 */
+	public $adapterComposite(Composite parent, int style, JasperReportsContext context) {
+		super(parent, style,context);
+		initComponents();
+	}
+
+	/**
+	 * Create the controls
+	 */
+	private void initComponents() {
+		setLayout(new GridLayout(2, false));
+
+		Label recordNumber = new Label(this, SWT.NONE);
+		recordNumber.setText("Number of Record");
+		recordNumber.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false,1, 1));
+
+		recordField = getSpinner(this, 0, Integer.MAX_VALUE);
+		recordField.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,1, 1));
+		
+		Label columnNumber = new Label(this, SWT.NONE);
+		columnNumber.setText("Number of Columns");
+		columnNumber.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false,1, 1));
+
+		columnField = getSpinner(this, 1, 20);
+		columnField.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,1, 1));
+		
+		Label minValue = new Label(this, SWT.NONE);
+		minValue.setText("Minimum Generated Value");
+		minValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false,1, 1));
+
+		minValueField = getSpinner(this, 0, Integer.MAX_VALUE);
+		minValueField.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,1, 1));
+		
+		Label maxValue = new Label(this, SWT.NONE);
+		maxValue.setText("Maximum Generated Value");
+		maxValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false,1, 1));
+
+		maxValueField = getSpinner(this, 0, Integer.MAX_VALUE);
+		maxValueField.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,1, 1));
+	}
+	
+	/**
+	 * Create a single spinner with the range of accepted value between
+	 * a provided minimum and maximum
+	 * 
+	 * @param parent the parent of the spinner
+	 * @param min the minimum value for the spinner
+	 * @param max the maximum value for the spinner 
+	 * @return the generated spinner
+	 */
+	private Spinner getSpinner(Composite parent, int min, int max){
+		final Spinner spinner = new Spinner(parent, SWT.BORDER);
+		spinner.setMaximum(max);
+		spinner.setMinimum(min);
+		return spinner;
+	}
+
+	/**
+	 * Return the current data adapter descriptor, if it is not available
+	 * it is created
+	 */
+	public DataAdapterDescriptor getDataAdapter() {
+		if (dataAdapterDescriptor == null) {
+			dataAdapterDescriptor = new $descriptorName();
+		}
+		return dataAdapterDescriptor;
+	}
+
+	/**
+	 * Set the data adapter descriptor from outside and bind the created controls to it
+	 */
+	@Override
+	public void setDataAdapter(DataAdapterDescriptor dataAdapterDescriptor) {
+		this.dataAdapterDescriptor = ($descriptorName) dataAdapterDescriptor;
+		$dataAdapterType dataAdapter = ($dataAdapterType) dataAdapterDescriptor.getDataAdapter();
+		bindWidgets(dataAdapter);
+	}
+	
+	/**
+	 * Given the data adapter uses it to initialize the values of the spinner to
+	 * reflect the current configuration
+	 *  
+	 * @param dataAdapter the not null data adapter
+	 */
+	private void updateAdapterSettings(DummyDataAdapter dataAdapter){
+		dataAdapter.setRecordNumber(recordField.getSelection());
+		dataAdapter.setColumnsNumber(columnField.getSelection());
+		dataAdapter.setMaximum(maxValueField.getSelection());
+		dataAdapter.setMinimum(minValueField.getSelection());
+	}
+
+	/**
+	 * Bind the data adapter to the widgets to have that every change on the
+	 * spinner widgets is reflected on the data adapter
+	 * 
+	 * @param dataAdapter the data adapter
+	 */
+	@Override
+	protected void bindWidgets(DataAdapter dataAdapter) {
+		final DummyDataAdapter dummyAdapter = (DummyDataAdapter)dataAdapter;
+		recordField.setSelection(dummyAdapter.getRecordNumber());
+		columnField.setSelection(dummyAdapter.getColumnsNumber());
+		maxValueField.setSelection(dummyAdapter.getMaximum());
+		minValueField.setSelection(dummyAdapter.getMinimum());
+		
+		ModifyListener valueChangedListener = new ModifyListener() {	
+			@Override
+			public void modifyText(ModifyEvent e) {
+				updateAdapterSettings(dummyAdapter);
+			}
+		};
+		recordField.addModifyListener(valueChangedListener);
+		columnField.addModifyListener(valueChangedListener);
+		maxValueField.addModifyListener(valueChangedListener);
+		minValueField.addModifyListener(valueChangedListener);
+	}
+}

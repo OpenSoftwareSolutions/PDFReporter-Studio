@@ -1,0 +1,69 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>How to install a Jaspersoft Studio translation</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>How to install a Jaspersoft Studio translation</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+      <p>In the tutorial How to translate Jaspersoft Studio we have seen how we can create a new translation, in this tutorial will be 
+      explained how that translation can be installed on Jaspersoft Studio and how to switch between all the installed translations.</p>
+      <p>If you are using windows as operative system and you have installed Jaspersot Studio into the default location (C:\Program Files\Jaspersoft) it is 
+      suggested to run Jaspersoft Studio with administration privilage before to start the installation procedure. This because all the files inside Program Files 
+      are wrtie protected by default and if Jaspersoft Studio is not runned as administrator it will not able to access its own files to install the translation. 
+      To run Jaspersoft Studio as administrator right click the file you normally double click it to run the application and select "Run as Administrator".
+      </p>
+      <p>First of all you need a tralsation project inside your workspace as explained into the previous tutorials, since this project contains the files that will be 
+      installed on your Jaspersoft Studio. To start the installation process you must right click on your translation project and select Install Translation Locally.</p>
+  		<div class="figure"><a name="N40017"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Start the installation process</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="9.png" width="800" alt="Start the installation process"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>At this point a wizard will start, on the first step you will see  which components of Jaspersoft Studio will be translated from you project, by default they are all 
+      selected but if you want to leave something untraslated just unchek it. By clicking on each component name you can see some informations about the translation that will 
+      be generated for that component. Most of this informations are important to have a working translation, and for this reason they are preconfigured to work with 
+      your actual installation of Jaspersoft Studio, leave them unchanged if you don't know that they means. The only information that you can safley change with any 
+      value you want is the translation author name (Plugin Producer). When you have done click Next.</p>
+  		<div class="figure"><a name="N4002E"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Review the translated resources</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="10.png" width="800" alt="Review the translated resources"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>On the second step you must define the languages provided by your translation. You can have more than one language since every translation project can contains any 
+      number of different translations. The wizard will analyze your translation project to find automatically the languages provided, if there are some languages not discovered 
+      or some languages added by mistake you can  add or remove them using the Add and Remove buttons.
+	  </p>
+	  <p>For every language you can provide also an icon that will be shown when you select the language you want to use inside the application. There are default icons for almost every
+ 	   selectable language. But if the language that you want to provide has not a default image or if you dont like it you can use a custom one using the Set flag icon button. 
+ 	   Not that if you want to change the icon of an already added language you must remove it and then add it with the new icon.</p>
+  		<div class="figure"><a name="N40048"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Review the provaded languages</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="11.png" width="800" alt="Review the provaded languages"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>In this step you also have to provide the path where your translation will be placed and in this folder will be generated one or more files. These files must be 
+      placed into a specific folder to have them loaded by Jaspersoft Studio. This folder is your Jaspersoft Studio installation directorty/dropins/eclipse/plugins. 
+      You can select as output path this folder to avoid to move the files manually. However in many cases this folder will be already selected by default, but on some 
+      operative system it isn't possible to find it automatically for access restriction or on the plugin version of Jaspersoft Studio. Click Next when you have selected the 
+      folder.</p>
+       <div class="figure"><a name="N4005F"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Define the destination path</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="12.png" width="800" alt="Define the destination path"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>
+		The third step has only an informative purpose, you can simply click Finish to have your file placed into the selected output folder. At this point close Jaspersoft Studio, 
+		place the translation files into its plugins folder (if they are not already there) and restart Jaspersoft Studio. At this point from the menu Window-&gt;Language you can see 
+		and select the language you have installed.
+		</p>
+		<div class="figure"><a name="N40076"></a><p class="title"><b>Figure&nbsp;5.&nbsp;Select the new language</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="13.png" width="800" alt="Select the new language"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>
+		Note that this menu is not available on the plugin version of Jaspersoft Studio, and if you get an error when you select the language try to start the application with Administrative Privileges.
+		</p>
+	</div>
+</div></body></html>

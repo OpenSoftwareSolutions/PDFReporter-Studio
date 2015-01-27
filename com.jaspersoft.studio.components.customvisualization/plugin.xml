@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.jaspersoft.studio.components">
+      <component
+            ClassFactory="com.jaspersoft.studio.components.customvisualization.CVComponentFactory">
+      </component>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.properties.propertyTabs">
+      <propertyTabs
+            contributorId="com.jaspersoft.studio.editor.report.ReportContainer">
+         <propertyTab
+               afterTab="com.jaspersoft.studio.components.customvisualization.tab"
+               category="element"
+               id="com.jaspersoft.studio.components.customvisualization.tab"
+               image="icons/cvcomponent-16.png"
+               label="%propertyTab.label">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.properties.propertySections">
+      <propertySections
+            contributorId="com.jaspersoft.studio.editor.report.ReportContainer">
+         <propertySection
+               class="com.jaspersoft.studio.components.customvisualization.properties.CVSection"
+               id="com.jaspersoft.studio.components.customvisualization.properties.CVSection"
+               tab="com.jaspersoft.studio.components.customvisualization.tab">
+            <input
+                  type="com.jaspersoft.studio.components.customvisualization.model.MCustomVisualization">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+</plugin>

@@ -1,0 +1,10 @@
+#Before Eclipse 3.8 Juno it was necessary to add the needed external sites to visit, modifying the content.xml inside the content.jar produced.
+#Better to simply change the already existing repository elements switching the attribute "option" from value 0 (disabled) to 1 (enabled).
+#Eclipse 3.8 Juno it was solved this bug: https://bugs.eclipse.org/bugs/show_bug.cgi?id=376893
+#See also this topic for some more info: http://www.eclipse.org/forums/index.php/m/840671/
+<references size="4">
+	<repository uri="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/" url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/" type="0" options="1"/>
+	<repository uri="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/" url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/" type="1" options="1"/>
+	<repository uri="http://updates.yakindu.com/indigo/milestones/" url="http://updates.yakindu.com/indigo/milestones/" type="0" options="1"/>
+	<repository uri="http://updates.yakindu.com/indigo/milestones/" url="http://updates.yakindu.com/indigo/milestones/" type="1" options="1"/>
+</references>

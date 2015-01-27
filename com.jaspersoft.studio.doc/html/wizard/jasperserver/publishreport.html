@@ -1,0 +1,21 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Publish a report on JasperReports Server</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Publish a report on JasperReports Server</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+	  <p>
+	  	Open the report you want to upload and hit the button with a blue arrow in the right-upper corner of the designer, and a dialog will appear. 
+	  	In this window you can browse the server directory structure to choose where to place the report. Select the "Reports" folder as in the image above. 
+	  	Give a name at the report unit that will be create to contains all the files of the report we are uploading (for this example we can use "ColumnsSample"). Then hit the "Next" button.
+	  </p>
+	  <div class="figure"><a name="N40011"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Report publish procedure</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="4.png" width="800" alt="Report publish procedure"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	In the next step we have to handle the data source. Infact exporting a report is quite simple, but exporting the datasource used to fill the report it isn't so trivial. About the datasource exporting we have 3 options:
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">Datasource from repository: the server will use a datasource already on it to fill the report, so we will only need to browse the server until we find the wanted datasource.</li><li class="listitem" style="list-style-type: circle">Local data source</li><li class="listitem" style="list-style-type: circle">Don't use any datasource: only the report is exported without any datasource connection</li></ul></div><p>
+		We will use the third option, that is the default one, and hit "Finish". The report will now uploaded to the server and if there is no error an appropriate message will be shown.
+	  </p>
+      </div>
+</div></body></html>

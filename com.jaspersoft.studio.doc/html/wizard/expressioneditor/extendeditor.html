@@ -1,0 +1,94 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Expression Editor: how to extend it and contribute your own functions</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Expression Editor: how to extend it and contribute your own functions</h2></div></div><hr></div>
+	
+	<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="N4000C"></a>Overview</h3></div></div></div>
+		
+		<p>In this section, we will cover some of the internal workings of the Functions Library. We will explain how it is implemented and how a developer can extend it in order to contribute his own functions in the environment.</p>
+	</div>
+	<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="N40015"></a>Implementation details</h3></div></div></div>
+		
+		<div class="literallayout"><p>Since&nbsp;their&nbsp;introduction,&nbsp;the&nbsp;expression&nbsp;functions&nbsp;APIs&nbsp;have&nbsp;been&nbsp;refactored.&nbsp;When&nbsp;first&nbsp;introduced&nbsp;they&nbsp;were&nbsp;a&nbsp;standalone&nbsp;project&nbsp;and&nbsp;were&nbsp;added&nbsp;to&nbsp;the&nbsp;Jaspersoft&nbsp;Studio&nbsp;distribution&nbsp;as&nbsp;jars.<br>
+			Starting&nbsp;from&nbsp;the&nbsp;JasperReports&nbsp;version&nbsp;5.1.2&nbsp;they&nbsp;were&nbsp;moved&nbsp;to&nbsp;the&nbsp;JasperReport&nbsp;library.&nbsp;The&nbsp;main&nbsp;classes&nbsp;are&nbsp;part&nbsp;of&nbsp;the&nbsp;core&nbsp;library&nbsp;but&nbsp;the&nbsp;additional&nbsp;ones&nbsp;are&nbsp;contributed&nbsp;as&nbsp;separate&nbsp;jar&nbsp;produced&nbsp;from&nbsp;the&nbsp;jasperreports/demo/functions&nbsp;folder.<br>
+			All&nbsp;implementation&nbsp;details&nbsp;and&nbsp;additional&nbsp;examples&nbsp;are&nbsp;good&nbsp;covered&nbsp;in&nbsp;the&nbsp;official&nbsp;JasperReports&nbsp;documentation,&nbsp;therefore&nbsp;give&nbsp;a&nbsp;look&nbsp;at&nbsp;the&nbsp;following&nbsp;<a class="ulink" href="http://jasperreports.sourceforge.net/sample.reference/functions/index.html#functions" target="_top">reference&nbsp;page</a>&nbsp;before&nbsp;proceed.&nbsp;It&nbsp;will&nbsp;help&nbsp;you&nbsp;in&nbsp;having&nbsp;a&nbsp;good&nbsp;understanding&nbsp;of&nbsp;what&nbsp;we&nbsp;will&nbsp;cover&nbsp;in&nbsp;the&nbsp;next&nbsp;section.<br>
+		</p></div>
+	</div>
+	<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="N40022"></a>Creating a Functions Library skeleton</h3></div></div></div>
+		
+		<p>
+			In order to make the developer's life more easy, we created a dedicated wizard in Jaspersoft Studio which has the purpose of preparing the base skeleton for having a new functions library ready to use.
+		</p>
+		<p>
+			There are some requirements in order to proceed:
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">be sure to have in your JasperReport project <span class="emphasis"><em>Build-Path</em></span> the "<span class="emphasis"><em>JasperReports Library</em></span>"
+					<div class="figure"><a name="N40037"></a><p class="title"><b>Figure&nbsp;1.&nbsp;JasperReports Library classpath entry</b></p><div class="figure-contents">
+						
+						<div class="screenshot">
+							<div class="mediaobject"><img src="img/extendingExpEditor_01.png" alt="JasperReports Library classpath entry"></div>
+						</div>
+					</div></div><br class="figure-break">
+				</li><li class="listitem" style="list-style-type: circle">be sure to have a <span class="emphasis"><em>Source Folder</em></span> in your JasperReports project. If you don't have it create a new one, and if necessary unlock the Java Capabilities from the Jaspersoft Studio preferences.
+					<div class="figure"><a name="N40050"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Enabling Java Capabilities</b></p><div class="figure-contents">
+						
+						<div class="screenshot">
+							<div class="mediaobject"><img src="img/extendingExpEditor_02.png" alt="Enabling Java Capabilities"></div>
+						</div>
+					</div></div><br class="figure-break">
+					<div class="figure"><a name="N40063"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Adding a source folder to the project</b></p><div class="figure-contents">
+						
+						<div class="screenshot">
+							<div class="mediaobject"><img src="img/extendingExpEditor_03.png" alt="Adding a source folder to the project"></div>
+						</div>
+					</div></div><br class="figure-break">
+				</li></ul></div><p>
+		</p>
+		<p>
+		After having verified these few requirements, you can proceed by invoking the wizard <span class="emphasis"><em>File &gt; New &gt; Other... &gt; Jaspersoft Studio &gt; Functions Library</em></span>.
+			</p><div class="figure"><a name="N4007E"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Invoking 'Functions Library' wizard</b></p><div class="figure-contents">
+				
+				<div class="screenshot">
+					<div class="mediaobject"><img src="img/extendingExpEditor_04.png" alt="Invoking 'Functions Library' wizard"></div>
+				</div>
+			</div></div><p><br class="figure-break">		
+		</p>
+		<p>
+		In the first page you will have to enter some basic information:
+			</p><div class="figure"><a name="N40094"></a><p class="title"><b>Figure&nbsp;5.&nbsp;'Function Library' wizard information page</b></p><div class="figure-contents">
+				
+				<div class="screenshot">
+					<div class="mediaobject"><img src="img/extendingExpEditor_05.png" alt="'Function Library' wizard information page"></div>
+				</div>
+			</div></div><p><br class="figure-break">
+			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">the <span class="emphasis"><em>Library Name</em></span> should be a class-name like identifier and it will be used to generate the class file containing your functions;</li><li class="listitem">the <span class="emphasis"><em>Source folder</em></span> is the chosen Build-Path entry;</li><li class="listitem">the <span class="emphasis"><em>Package</em></span> is the Java package where most of the generated output files will be placed;</li><li class="listitem">the <span class="emphasis"><em>Category Label</em></span> will be the text shown in the Expression Editor categories list;</li><li class="listitem">the <span class="emphasis"><em>Category Description</em></span> is an additional details regarding the category</li><li class="listitem">the <span class="emphasis"><em>Category Class</em></span> is automatically suggested based on the chosen label;</li><li class="listitem">the automatic creation of sample methods and an example report;</li></ol></div><p>				
+		</p>
+		<p>
+		The second (optional) page allows the user to define more additional categories to which the library functions will belong to.
+			</p><div class="figure"><a name="N400D4"></a><p class="title"><b>Figure&nbsp;6.&nbsp;Additional categories definition page</b></p><div class="figure-contents">
+				
+				<div class="screenshot">
+					<div class="mediaobject"><img src="img/extendingExpEditor_06.png" alt="Additional categories definition page"></div>
+				</div>
+			</div></div><p><br class="figure-break">
+		</p>
+		<p>
+			After completing the wizard (click on Finish button) you will end-up having the skeleton that is useful to start implementing your own functions. The sample methods serve only as a quick and simple example. Again, for all the details please refer to the official JasperReports documentation as exposed in the above section.
+			</p><div class="figure"><a name="N400EA"></a><p class="title"><b>Figure&nbsp;7.&nbsp;Generated files</b></p><div class="figure-contents">
+				
+				<div class="screenshot">
+					<div class="mediaobject"><img src="img/extendingExpEditor_07.png" alt="Generated files"></div>
+				</div>
+			</div></div><p><br class="figure-break">
+		</p>
+		<p>
+			If you double click on a text-field in order to bring-up the expression editor you can see how the sample functions are presented.
+			</p><div class="figure"><a name="N40100"></a><p class="title"><b>Figure&nbsp;8.&nbsp;New samples functions in expression editor</b></p><div class="figure-contents">
+				
+				<div class="screenshot">
+					<div class="mediaobject"><img src="img/extendingExpEditor_08.png" alt="New samples functions in expression editor"></div>
+				</div>
+			</div></div><p><br class="figure-break">					
+		</p>
+	</div>
+	<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="N40115"></a>Conclusions</h3></div></div></div>
+		
+		<p>As you can see the creation of new functions library was made more easy introducing this wizard. All the foundation files will be ready just after one simple step. Moreover having the ability to edit Java classes and properties files directly inside your Jaspersoft Studio installation, allows you to quickly test your functions. You can develop without the need to generate every time the jar package to be included on the Build-Path. You can modify your library and proceed with internationalization support, test and once all is done export the jar file using the dedicated standard wizard.</p>
+	</div>
+</div></body></html>

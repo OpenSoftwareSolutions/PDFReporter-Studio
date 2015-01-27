@@ -1,0 +1,10 @@
+${functionsLibraryClass}.HELLO_WORLD_MSG.description = A dummy method that prints an "Hello World!" message
+${functionsLibraryClass}.HELLO_WORLD_MSG.name = Hello World
+${functionsLibraryClass}.REPEAT_MSG.description = Prints the specified message for the amount of times
+${functionsLibraryClass}.REPEAT_MSG.name = Repeated Message
+${functionsLibraryClass}.REPEAT_MSG.message.name = Message
+${functionsLibraryClass}.REPEAT_MSG.message.description = The message to be printed
+${functionsLibraryClass}.REPEAT_MSG.times.name = Times
+${functionsLibraryClass}.REPEAT_MSG.times.description = The number of times to print the message
+${functionsLibraryClass}.REPEAT_MSG.forceUpperCase.name = Force upper-case
+${functionsLibraryClass}.REPEAT_MSG.forceUpperCase.description = Specify to force the final message to upper-case

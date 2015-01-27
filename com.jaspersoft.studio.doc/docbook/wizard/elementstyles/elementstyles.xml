@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+	<title>Styles and Elements Attributes</title>
+	<section>
+		<para>
+			Every element in Jaspersoft Studio has many attributes, defining its graphical appearance and its behavior. This attributes are visible on the property panel.
+		</para>
+		<figure>
+			<title>Attributes tab</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="1.png" format="PNG" contentwidth="800px"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			The attributes are divided in categories. In Figure 1, above, you can see the categories Appearance, Borders, Image, and Inheritance. Appearance and Borders are shared among many elements and contain 
+			the attributes that define the graphical appearance of the elements, such the width of its borders, the background color, and so on. The Image category is a special one, because it is present only for 
+			the elements of the type "Image."
+		</para>
+		<para>
+			In the Properties tab, every element has a unique category. These categories are used as element types. In this tab there are properties that define each element's behavior, and for this reason they are 
+			specific for every type.
+		</para>
+		<para>
+			Many times the value of an attribute is undefined, and it has a common default value. This means that the element does not have a specific behavior defined, but gets a behavior from somewhere else. 
+			For example, the default value of the attribute "background color" is undefined in most of cases, but when a non-transparent element is added to the designer, we can see that it has a white background. 
+			The value of the background color attribute is inherited from a lower level.
+		</para>
+		<para>
+			There are many levels from where the value can be inherited, the first are the styles.
+		</para>
+		<formalpara><title>The Styles</title>
+		<para>
+			Styles are not a visual element, but a collection of attributes that can be inherited from other elements. The styles can be created and selected from the Outline tab, and edited using the Properties tab 
+			after the selection.
+		</para>
+		</formalpara>
+		<figure>
+			<title>Styles and their properties</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="2.png" format="PNG" contentwidth="800px"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			In Figure 2 there are five styles defined, with the "Subtitle" style selected, and its properties displayed in the Properties tab. In the Figure 1, we can see that in the Appearance tab there is the attribute "Style". 
+			Here a user can choose one of the defined styles that will be associated with that element. This means that every undefined attribute of the element will inherit its value from the analogous attribute of the style. 
+			But, because the style is an element,  it can have some undefined attributes as well as a "Style" attribute that can be used to inherit values from another style.
+		</para>
+		<para>
+			This defines a hierarchy where an element can inherit attribute values from a style, which in turn can inherit attribute values from another style, and so on until a style that doesn't define a "Style attribute is reached. 
+			In addition to this there is the possibility to set a style as default, using the attribute "Default Style" in the Property tab of the style, in the "Style" category. Only one default style can be defined, and must be created 
+			by the user if one is to be used. When there is a default style defined,, even those that dosen't use explicitly inherit a style can inherit the attributes value from the default style. With a such complex hierarchy there is 
+			the possibility that an attribute value could be defined in more styles with different values and could be confusing think which the element will use.
+		</para>
+		<para>
+			Because of this, it is important to follow a simple rule: If an element has an undefined attribute, its value will be taken from the nearest style in the hierarchy with that attribute defined. If it's defined also from a lower 
+			style in the hierarchy we will say that the lower value is overrided from an higher one.
+		</para>
+		<para>
+			Another case is that an attribute is undefined in the whole hierarchy and in this case the value will be inherited from a series of default values defined at application level. This default attributes are at the lower level of the 
+			hierarchy, and they are in the hierarchy of every element. The definition of nearest is strictly dependant from how the hierarchy is seen. At the top level there is the element itself, under it there is the style associated 
+			(if there is) and one after another the styles in hierarchy. After them there is the default style if it's defined and at last the default values.
+		</para>
+		<para>
+			<itemizedlist mark='opencircle'>
+				<listitem><para>Styled Text with no forecolor and no trasparent value defined that inherit directly from the Style 1.</para></listitem>
+				<listitem><para>The Style 1 that define the forecolor with the value green and that inherit from the Style 2.</para></listitem>
+				<listitem><para>The Style 2 that define the forecolor with the value red.</para></listitem>
+				<listitem><para>The Style 3, marked as default style, that set the trasparent value to false.</para></listitem>
+				<listitem><para>The default values that define the forecolor to black and set the transparent value to ture.</para></listitem>
+			</itemizedlist>
+			Since the hierarchy is:
+		</para>
+		<figure>
+			<title>Example hierarchy</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="inherit.jpg" format="JPEG"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			In this case the Styled Text will have the forecolor with the value green because the nearest style with a forecolor with a value is the style 1, and it has the value green. So the forecolor in the style 2 and in the default values are overrided. 
+			The transparent value is inherited instead from the style 3 for the same reason, and the value from the default values is overrided.
+		</para>
+	</section>
+</section>

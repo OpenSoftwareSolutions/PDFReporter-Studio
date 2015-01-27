@@ -1,0 +1,294 @@
+<project default="packageDistributions">
+	<!-- generic properties -->
+	<property name="jssRcpPluginName" value="com.jaspersoft.studio.rcp" />
+	<property name="jssRcpProductFolderName" value="com.jaspersoft.studio.rcp.product" />
+	<property name="jssRcpProductFolderPath" value="${basedir}/../../${jssRcpProductFolderName}" />
+	<property name="dist" value="${basedir}/../product/dist"/>
+	<property name="productRootFolder" value="jaspersoftstudio" />
+	<property name="productVersionFile" value="buildversion.properties" />
+	<property name="jre.location.linux32" value="features/jre.linux.gtk.x86.feature_1.7.0/jre/bin" />
+	<property name="jre.location.linux64" value="features/jre.linux.gtk.x86_64.feature_1.7.0/jre/bin" />
+	<!-- import properties for mac machine producing the DMG -->
+	<property file="authenticationInfo.properties"/>
+
+	<!-- ================================= 
+          target: packageDistributions
+         ================================= -->
+	<target name="packageDistributions" description="Invoke the packaging tasks for all distributions">
+		<echo message="Packaging all the distributions"/>
+		<antcall>
+			<target name="prepareEnvironment"/>
+    		<target name="linux-x86-installer"/>
+    		<target name="linux-x86_64-installer"/>
+			<target name="mac-x86_64-installer"/>
+    		<target name="windows-x86-installer"/>
+    		<target name="windows-x86_64-installer"/>
+		</antcall>
+	</target>
+
+	<target name="prepareEnvironment" description="Prepare the environment for the packages" depends="readProductVersion">
+		<property file="jss.properties"/>
+		<delete dir="${dist}" includeemptydirs="true" defaultexcludes="false"/>
+		<mkdir dir="${dist}"/>
+	</target>
+	
+	<!-- ================================= 
+          target: windows-x86-installer
+         ================================= -->
+	<target name="windows-x86-installer" description="Create the win32 x86 installer using NSIS script (NSIS required)" if="jss.version">
+		<echo message="Executing 'windows-x86-installer' task"/>
+		<property name="dirlocation.win32.x86" value="${jssRcpProductFolderPath}/target/products/${jssRcpProductFolderName}/win32/win32/x86" />
+
+		<!-- Replacing the exe launcher (it is a modified version of the original laucher (Eclipse 3.8)
+		     improved with Jaspersoft Studio icons -->
+		<copy file="${jssRcpProductFolderPath}/resources/Jaspersoft Studio.exe" tofile="${dirlocation.win32.x86}/jaspersoftstudio/Jaspersoft Studio.exe" overwrite="true" />
+		<copy file="${jssRcpProductFolderPath}/resources/jaspersoftstudio.ico" tofile="${dirlocation.win32.x86}/jaspersoftstudio/jaspersoftstudio.ico" overwrite="true" />
+		<!-- copy notice.txt and LICENSE.txt in the eclipse folder -->
+		<copy file="${jssRcpProductFolderPath}/resources/notice.txt" todir="${dirlocation.win32.x86}/jaspersoftstudio" />
+		<copy file="${jssRcpProductFolderPath}/resources/LICENSE.txt" todir="${dirlocation.win32.x86}/jaspersoftstudio" />
+		<!-- copy additional licensing files -->
+		<copy file="${basedir}/rootfiles/license/TIBCO-Jaspersoft-Studio-5.6.2-license.txt" todir="${dirlocation.win32.x86}/${productRootFolder}" />
+
+		<taskdef name="nsisant" classname="net.sf.nsisant.Task" classpath="${jssRcpProductFolderPath}/lib/nsisant-1.1.jar" />
+		<nsisant script="${jssRcpProductFolderPath}/resources/JaspersoftStudioInstaller.nsi">
+			<define name="PRDUCT_ARCH" value="x86" />
+			<define name="PRODUCT_VERSION" value="${jss.version}" />
+			<define name="PRODUCT_WEB_SITE" value="http://community.jaspersoft.com/project/jaspersoft-studio" />
+			<define name="INSTALLER_FILES_DIR" value="${dirlocation.win32.x86}/jaspersoftstudio" />
+			<define name="OUTPUT_FILE_NAME" value="${dist}/${jss.win32.x86.installer}" />
+		</nsisant>
+	</target>
+	
+	<!-- ================================= 
+          target: windows-x86_64-installer
+         ================================= -->
+	<target name="windows-x86_64-installer" description="Create the win32 x64 installer using NSIS script (NSIS required)" if="jss.version">
+		<echo message="Executing 'windows-x86_64-installer' task"/>
+		<property name="dirlocation.win32.x86_64" value="${jssRcpProductFolderPath}/target/products/${jssRcpProductFolderName}/win32/win32/x86_64" />
+
+		<!-- Replacing the exe launcher (it is a modified version of the original laucher (Eclipse 3.8)
+		     improved with Jaspersoft Studio icons -->
+		<copy file="${jssRcpProductFolderPath}/resources/Jaspersoft Studio64.exe" tofile="${dirlocation.win32.x86_64}/jaspersoftstudio/Jaspersoft Studio.exe" overwrite="true" />
+		<copy file="${jssRcpProductFolderPath}/resources/jaspersoftstudio.ico" tofile="${dirlocation.win32.x86_64}/jaspersoftstudio/jaspersoftstudio.ico" overwrite="true" />
+		<!-- copy notice.txt and LICENSE.txt in the eclipse folder -->
+		<copy file="${jssRcpProductFolderPath}/resources/notice.txt" todir="${dirlocation.win32.x86_64}/jaspersoftstudio" />
+		<copy file="${jssRcpProductFolderPath}/resources/LICENSE.txt" todir="${dirlocation.win32.x86_64}/jaspersoftstudio" />
+		<!-- copy additional licensing files -->
+		<copy file="${basedir}/rootfiles/license/TIBCO-Jaspersoft-Studio-5.6.2-license.txt" todir="${dirlocation.win32.x86_64}/${productRootFolder}" />
+
+		<taskdef name="nsisant" classname="net.sf.nsisant.Task" classpath="${jssRcpProductFolderPath}/lib/nsisant-1.1.jar" />
+		<nsisant script="${jssRcpProductFolderPath}/resources/JaspersoftStudioInstaller64.nsi">
+			<define name="PRDUCT_ARCH" value="x86_64" />
+			<define name="PRODUCT_VERSION" value="${jss.version}" />
+			<define name="PRODUCT_WEB_SITE" value="http://community.jaspersoft.com/project/jaspersoft-studio" />
+			<define name="INSTALLER_FILES_DIR" value="${dirlocation.win32.x86_64}/jaspersoftstudio" />
+			<define name="OUTPUT_FILE_NAME" value="${dist}/${jss.win32.x86_64.installer}" />
+		</nsisant>
+	</target>
+	
+
+	<!-- ================================= 
+          target: linux-x86-installer
+         ================================= -->
+	<target name="linux-x86-installer" description="Create the Linux (x86) tgz package (Unix system required)" if="jss.version">
+		<echo message="Executing 'linux-x86-installer' task"/>
+		<property name="dirlocation.linux.x86" value="${jssRcpProductFolderPath}/target/products/${jssRcpProductFolderName}/linux/gtk/x86" />
+
+		<!-- copy notice.txt and LICENSE.txt in the eclipse folder -->
+		<copy file="${jssRcpProductFolderPath}/resources/notice.txt" todir="${dirlocation.linux.x86}/${productRootFolder}" />
+		<copy file="${jssRcpProductFolderPath}/resources/LICENSE.txt" todir="${dirlocation.linux.x86}/${productRootFolder}" />
+		<!-- copy fix files for Ubuntu -->
+		<copy file="${basedir}/rootfiles/linux/ubuntu.readme" todir="${dirlocation.linux.x86}/${productRootFolder}" />
+		<copy file="${basedir}/rootfiles/linux/runubuntu.sh" todir="${dirlocation.linux.x86}/${productRootFolder}" />
+		<!-- copy additional licensing files -->
+		<copy file="${basedir}/rootfiles/license/TIBCO-Jaspersoft-Studio-5.6.2-license.txt" todir="${dirlocation.linux.x86}/${productRootFolder}" />
+		<!-- set executable flag to launcher -->
+		<chmod file="${dirlocation.linux.x86}/${productRootFolder}/Jaspersoft Studio" perm="ugo+x" />
+		<!-- rename the folder -->
+		<move file="${dirlocation.linux.x86}/${productRootFolder}" tofile="${dirlocation.linux.x86}/${jss.distro.folder}" />
+		<!-- create tar.gz file -->
+		<!-- <tar destfile="${dist}/${jss.linux.x86.tgz}" basedir="${dirlocation.linux.x86}/" compression="gzip" longfile="gnu" /> -->
+		<tar destfile="${dist}/${jss.linux.x86.tgz}" longfile="gnu" compression="gzip">
+			<tarfileset dir="${dirlocation.linux.x86}/" filemode="755">
+				<include name="**/features/jre.linux.gtk.x86.feature_*/jre/bin/*" />
+				<include name="**/Jaspersoft Studio" />
+				<include name="**/runubuntu.sh"/>
+			</tarfileset>
+			<tarfileset dir="${dirlocation.linux.x86}/">
+				<include name="**/*" />
+				<exclude name="**/features/jre.linux.gtk.x86.feature_*/jre/bin/*"/>
+				<exclude name="**/Jaspersoft Studio" />
+				<exclude name="**/runubuntu.sh"/>
+			</tarfileset>
+		</tar>
+		<!-- create debian package -->
+		<antcall target="createDeb">
+			<param name="architecture" value="i386"/>
+			<param name= "zipdir.linux" value = "${dirlocation.linux.x86}/"/>
+			<param name="jre.feature.location" value="${jre.location.linux32}"/>
+		</antcall>
+	</target>
+
+	<!-- ================================= 
+          target: linux-x86_64-installer
+         ================================= -->
+	<target name="linux-x86_64-installer" description="Create the Linux (x86_64) tgz package (Unix system required)" if="jss.version">
+		<echo message="Executing 'linux-x86_64-installer' task"/>
+		<property name="dirlocation.linux.x86_64" value="${jssRcpProductFolderPath}/target/products/${jssRcpProductFolderName}/linux/gtk/x86_64" />
+
+		<!-- copy notice.txt and LICENSE.txt in the eclipse folder -->
+		<copy file="${jssRcpProductFolderPath}/resources/notice.txt" todir="${dirlocation.linux.x86_64}/${productRootFolder}" />
+		<copy file="${jssRcpProductFolderPath}/resources/LICENSE.txt" todir="${dirlocation.linux.x86_64}/${productRootFolder}" />
+		<!-- copy fix files for Ubuntu -->
+		<copy file="${basedir}/rootfiles/linux/ubuntu.readme" todir="${dirlocation.linux.x86_64}/${productRootFolder}" />
+		<copy file="${basedir}/rootfiles/linux/runubuntu.sh" todir="${dirlocation.linux.x86_64}/${productRootFolder}" />
+		<!-- copy additional licensing files -->
+		<copy file="${basedir}/rootfiles/license/TIBCO-Jaspersoft-Studio-5.6.2-license.txt" todir="${dirlocation.linux.x86_64}/${productRootFolder}" />
+		<!-- set executable flag to launcher -->
+		<chmod file="${dirlocation.linux.x86_64}/${productRootFolder}/Jaspersoft Studio" perm="ugo+x" />	
+		<!-- rename the folder -->
+		<move file="${dirlocation.linux.x86_64}/${productRootFolder}" tofile="${dirlocation.linux.x86_64}/${jss.distro.folder}" />
+		<!-- create tar.gz file -->
+		<!-- <tar destfile="${dist}/${jss.linux.x86_64.tgz}" basedir="${dirlocation.linux.x86_64}/" compression="gzip" longfile="gnu" /> -->
+		<tar destfile="${dist}/${jss.linux.x86_64.tgz}" longfile="gnu" compression="gzip">
+			<tarfileset dir="${dirlocation.linux.x86_64}/" filemode="755">
+				<include name="**/features/jre.linux.gtk.x86_64.feature_*/jre/bin/*" />
+				<include name="**/Jaspersoft Studio" />
+				<include name="**/runubuntu.sh"/>
+			</tarfileset>
+			<tarfileset dir="${dirlocation.linux.x86_64}/">
+				<include name="**/*" />
+				<exclude name="**/features/jre.linux.gtk.x86_64.feature_*/jre/bin/*"/>
+				<exclude name="**/Jaspersoft Studio" />
+				<exclude name="**/runubuntu.sh"/>
+			</tarfileset>
+		</tar>
+		<!-- create debian package -->
+		<antcall target="createDeb">
+			<param name="architecture" value="amd64"/>
+			<param name= "zipdir.linux" value = "${dirlocation.linux.x86_64}/"/>
+			<param name="jre.feature.location" value="${jre.location.linux64}"/>
+		</antcall>
+	</target>
+
+	<!-- ================================= 
+          target: mac-x86_64-installer
+         ================================= -->
+	<target name="mac-x86_64-installer" description="Create DMG installer for Mac x86_64 using a remote mac server" if="jss.version">
+		<echo message="Executing 'mac-x86_x64-installer' task"/>
+		<property name="dirlocation.mac.x86_64" value="${jssRcpProductFolderPath}/target/products/${jssRcpProductFolderName}/macosx/cocoa/x86_64" />
+		<property name="mac.x86_64.zipfile" value="${dist}/JaspersoftStudio-macosx.cocoa.x86_64.zip" />
+
+		<!-- copy additional licensing files -->
+		<copy file="${basedir}/rootfiles/license/TIBCO-Jaspersoft-Studio-5.6.2-license.txt" todir="${dirlocation.mac.x86_64}/${productRootFolder}" />
+		
+		<zip destfile="${mac.x86_64.zipfile}">
+			<fileset dir="${dirlocation.mac.x86_64}"/>
+		</zip>
+
+		<sshexec host="${dmg.sshhost}" username="${dmg.sshuser}" password="${dmg.sshpass}" command="rm -Rf ${dmg.sshroot}/tmp-jssbuild" trust="true"/>
+		<sshexec host="${dmg.sshhost}" username="${dmg.sshuser}" password="${dmg.sshpass}" command="mkdir ${dmg.sshroot}/tmp-jssbuild" trust="true"/>
+		<scp file="${jssRcpProductFolderPath}/resources/jss-package-template.tgz" todir="${dmg.sshuser}@${dmg.sshhost}:${dmg.sshroot}/tmp-jssbuild" password="${dmg.sshpass}" trust="true"/>
+		<scp file="${jssRcpProductFolderPath}/resources/mac_distro.sh" todir="${dmg.sshuser}@${dmg.sshhost}:${dmg.sshroot}/tmp-jssbuild" password="${dmg.sshpass}" trust="true"/>
+		<scp file="${mac.x86_64.zipfile}" todir="${dmg.sshuser}@${dmg.sshhost}:${dmg.sshroot}/tmp-jssbuild" password="${dmg.sshpass}" trust="true"/>
+		<sshexec host="${dmg.sshhost}" username="${dmg.sshuser}" password="${dmg.sshpass}" command="cd '${dmg.sshroot}/tmp-jssbuild'; chmod +x mac_distro.sh; ./mac_distro.sh ${jss.version}" trust="true"/>
+		<scp file="${dmg.sshuser}@${dmg.sshhost}:${dmg.sshroot}/tmp-jssbuild/jaspersoftstudio.dmg" localTofile="${dist}/${jss.mac.x86_64}" password="${dmg.sshpass}" trust="true"/>
+		
+		<!-- remove the temporary zipped file -->
+		<delete file="${mac.x86_64.zipfile}"/>
+	</target>
+
+	<!-- ================================= 
+          target: readProductVersion                      
+         ================================= -->
+	<target name="readProductVersion" description="Read the version for the product to be packed.">
+		<!-- need this to be able to use the if -->
+		<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+		<if>
+			<available file="${productVersionFile}"/>
+			<then>
+				<property file="${productVersionFile}"/>
+				<!-- we replace the "-SNAPSHOT" with ".SNAPSHOT" otherwise while generating the 
+					deb file an exception will be raised: Upstream version can contain hyphens only if debian version is specified! -->
+				<propertyregex property="jss.version"
+				               input="${productBuildQualifier}"
+				               regexp="-"
+				               replace="."
+				               global="true" />
+			</then>
+			<else>
+				<property name="manifestFilePosition" value="../../${jssRcpPluginName}/META-INF/MANIFEST.MF"/>
+				<readBundleVersion fileposition="${manifestFilePosition}"/>
+				<property name="jss.version" value="${Bundle-Version}"/>
+			</else>
+		</if>
+	</target>
+
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: readBundleVersion          
+         = = = = = = = = = = = = = = = = = -->
+	<macrodef name="readBundleVersion">
+		<attribute name="fileposition"/>
+		<sequential>
+			<loadproperties srcfile="@{fileposition}">
+				<filterchain>
+					<linecontains>
+						<contains value="Bundle-Version:"/>
+					</linecontains>
+				</filterchain>
+			</loadproperties>
+		</sequential>
+	</macrodef>
+
+	<!-- ================================= 
+          target: createDeb
+         ================================= -->
+	<target name = "createDeb" description = "Create a deb file with the binary inside">
+		<path id="ant-deb.classpath">
+			<fileset dir="${jssRcpProductFolderPath}/lib" includes="ant-deb.jar"/>
+		</path>
+		<taskdef name="deb" classname="com.googlecode.ant_deb_task.Deb" classpathref="ant-deb.classpath"/>
+		<taskdef name="desktopEntry" classname="com.googlecode.ant_deb_task.DesktopEntry" classpathref="ant-deb.classpath"/>
+
+		<mkdir dir="${dist}/debian/usr/share/applications" />
+		<mkdir dir="${dist}/debian/opt/jaspersoft" />
+		<copy todir="${dist}/debian/opt/jaspersoft" >
+			<fileset dir="${zipdir.linux}" includes="**"/>
+		</copy>
+		<echo file="${dist}/debian/postinst" append="false">#! /bin/sh
+chmod +x "/opt/jaspersoft/${jss.distro.folder}/Jaspersoft Studio"
+chmod +x "/opt/jaspersoft/${jss.distro.folder}/runubuntu.sh"
+chmod -R +x "/opt/jaspersoft/${jss.distro.folder}/${jre.feature.location}/"
+exit 0;</echo>
+		<desktopEntry 
+				toFile="${dist}/debian/usr/share/applications/jasperstudio.desktop" 
+				path="/opt/jaspersoft/${jss.distro.folder}" 
+				icon="/opt/jaspersoft/${jss.distro.folder}/icon.xpm" 
+				name="Jaspersoft Studio Community" 
+				exec="&quot;/opt/jaspersoft/${jss.distro.folder}/Jaspersoft Studio&quot;"
+				categories="Office"/>
+		<deb 
+				todir="${dist}" 
+				package="jaspersoftstudio"
+				section="editors" 
+				postinst="${dist}/debian/postinst" 
+				architecture="${architecture}"
+				homepage="http://community.jaspersoft.com/project/jaspersoft-studio"
+				appname="Jaspersoft Studio Community"
+				depends="openjdk-6-jre">
+			<version upstream="${jss.version}" debian="" />
+			<maintainer name="Jaspersoft Studio Team" email="giulio@jaspersoft.com"/>
+			<description synopsis="An open-source Eclipse-based report designer for JasperReports and JasperReports Server.">
+	Jaspersoft Studio is a new, free, open source report designer for JasperReports. 
+	Jaspersoft Studio is a port of iReport on top of the Eclipse platform and its core is JasperReports.
+			    </description>
+			<tarfileset dir="${dist}/debian">
+				<include name="usr/**" />
+				<include name="opt/**" />
+			</tarfileset>
+		</deb>
+
+		<delete dir="${dist}/debian" />
+		<!-- END DEB CREATION -->
+	</target>
+</project>

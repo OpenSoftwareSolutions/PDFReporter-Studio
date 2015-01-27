@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+<title>Creation of a Chart using a subreport</title>
+<section>
+      <para>
+      	JasperReports supports a large number of built-in charts created using the popular open source library JFreeChart. 
+      	Chart types include Pie, Bar, Stacked Bar, Line, Area, Bubble, Gantt, Thermometer and Meter. In this tutorial we will learn how to add a multi-series chart to a report, 
+      	using the subreport element. 
+	  </para>
+	  <para>
+	  	A subreport is an element that includes a report inside another report. The idea in this tutorial is to have a subreport containing just the graph, and a main report that 
+	  	includes the subreport in the summary section.
+		For example we want to use two reports because in the main report we need a list of records without any aggregation so we had used the query like 
+		"select * from orders" (assuming we are using the sample database) and from all the fields read we had selected the order id, the shipment name, shipment address, 
+		shipment city, shipment region. But for the graph in the subreport we don't need a list of records, just a group of them. In other words, we need the records grouped by the shipment city. 
+		For this reason we need two queries, one that returns all the records  (for the main report) and one for the group (for the subreport). Because a report can have only one main query, 
+		we can use another report for the additional query. Note that there are other ways to use more than a query on the report, but for now we choose this one to introduce the concept of subreport.
+	  </para>
+	  <para>
+		The first thing to do is drag and drop the subreport element from the palette into the summary section and a wizard will appear:
+	  </para>
+	  <figure>
+			<title>Place the subreport element</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="2.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+	  <para>
+		  In the first step of the wizard we have three choices:
+		  <itemizedlist mark='opencircle'>
+			<listitem>Create a new report as subreport.</listitem>
+			<listitem>Use an existing report as subreport.</listitem>
+			<listitem>Put an empty report as subreport, as a placeholder.</listitem>
+		  </itemizedlist>
+	  	  Since we are doing this from scratch select the first option, Create a new report, and click Next.
+	  </para>
+	  <figure>
+			<title>Select the template</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="3.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+	  <para>
+	  	Now we will seen a wizard almost identical to the one seen when we created the first report. This time, since we need only a blank paper with a graph select BlankA4 and hit Next.
+	  </para>
+	  <figure>
+			<title>Select name and location</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="4.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+	  </figure>
+	  <para>
+	  	Now we need to choose the location and the filename of the new report, put it in the standard location MyReports and as name use "GraphReport" and click Next.
+	  </para>
+  	  <figure>
+		<title>Configure the datasource</title>
+		<screenshot>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="5.png" format="PNG" contentwidth="800px" />
+				</imageobject>
+			</mediaobject>
+		</screenshot>
+	  </figure>
+	  <para>
+	  	Now we have to select the data adapter. Since we need to use the same data source for both reports, select the same data adapter as used in the main report. 
+	  	We must also provide the query to retrieve the fields, so enter the query that returns the records grouped by the shipment city. Every record read from the database with 
+	  	this query contains two fields: the number of elements for a city and the name of the city. After that we can click Next.
+	  </para>
+	  <figure>
+		<title>Add the fields</title>
+		<screenshot>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="6.png" format="PNG" contentwidth="800px" />
+				</imageobject>
+			</mediaobject>
+		</screenshot>
+	  </figure>
+	  <para>
+	  	At this point we can see the fields included by the second query. Click the add all button or double-click on each field until they are in the right list. After that click Next. 
+	  	The following step in the wizard is to create groups into the report, but this is unnecessary for our goal. Click Next again.
+	  </para>
+  	  <figure>
+		<title>Configure the connection</title>
+		<screenshot>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="7.png" format="PNG" contentwidth="800px" />
+				</imageobject>
+			</mediaobject>
+		</screenshot>
+	  </figure>
+	  <para>
+	  	Now we have to select the connection to the database. Since we are using the same database as in the main report we can select the first option and click Next. 
+	  	In the following step in the wizard, we could create some parameters that can be passed from the main report to the subereport, but we don't need them so click the button Finish.
+	  </para>
+	  <para>
+		Now we have a new report with all his bands, but we need only one of them. In fact, we need only a band for the graph, and the band must be printed only once, 
+		so the detail band is excluded. We can choose the Title or Summary band. If we decide to choose Title, we need to remove the other bands because otherwise they will 
+		take up space unnecessarily. So for each band except Title right-click on its element in the outline view and choose Delete. The name of a deleted band appears in light 
+		gray text in the outline view, so at the end of the process the only band with a black name must be Title.
+	  </para>
+   	  <figure>
+		<title>Prepare the layout</title>
+		<screenshot>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="8.png" format="PNG" contentwidth="800px" />
+				</imageobject>
+			</mediaobject>
+		</screenshot>
+	  </figure>
+	  <para>
+	  	Now we can place the chart. Drag its element from the palette into the Title band to open the wizard, select the bar chart and click Next.
+	  </para>
+   	  <figure>
+		<title>Place the chart</title>
+		<screenshot>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="9.png" format="PNG" contentwidth="800px" />
+				</imageobject>
+			</mediaobject>
+		</screenshot>
+	  </figure>
+	  <para>
+	  	In the next step you can configure the series of the chart, as shown in the following image:
+	  </para>
+  	  <figure>
+		<title>Configure the chart</title>
+		<screenshot>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="10.png" format="PNG" contentwidth="800px" />
+				</imageobject>
+			</mediaobject>
+		</screenshot>
+	  </figure>
+	  <para>
+	  	Then click Finish to create the chart. Since we need space, resize the Title band with an height of 350 pixels. Right-click on the chart, select Size to 
+	  	Container and then Fill Both. The chart will take all the space in the band. Now we can switch to the Preview tab and if it is all correct, save this 
+	  	subreport and switch to the main report as shown in the following image:
+	  </para>
+	  <figure>
+		<title>Test the subreport</title>
+		<screenshot>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="11.png" format="PNG" contentwidth="800px" />
+				</imageobject>
+			</mediaobject>
+		</screenshot>
+	  </figure>
+	  <para>
+	  	Now the only thing to do is to resize the subreport element to fill the Summary band, and compile the report. On the last page you will get a result like this:
+	  </para>
+	  <figure>
+		<title>Final result on the main report</title>
+		<screenshot>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="12.png" format="PNG" contentwidth="800px" />
+				</imageobject>
+			</mediaobject>
+		</screenshot>
+	  </figure>
+      </section>
+</section>
+	  

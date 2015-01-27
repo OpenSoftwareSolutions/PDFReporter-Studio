@@ -1,0 +1,9 @@
+
+a#jssplugin-communityLink img { background-image : url(graphics/jssbox_45.png); }
+a#jssplugin-communityLink:hover img { background-image : url(graphics/jssbox_52.png); }
+
+a#jssplugin-samplesLink img { background-image : url(graphics/samples_45.png); }
+a#jssplugin-samplesLink:hover img { background-image : url(graphics/samples_52.png); }
+
+a#jssplugin-tutorialsLink img { background-image : url(graphics/tutorials_45.png); }
+a#jssplugin-tutorialsLink:hover img { background-image : url(graphics/tutorials_52.png); }

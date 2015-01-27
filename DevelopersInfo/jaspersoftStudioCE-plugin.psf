@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.tigris.subversion.subclipse.core.svnnature">
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.babel.editor,com.jaspersoft.studio.babel.editor"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio,com.jaspersoft.studio"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.community,com.jaspersoft.studio.community"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.components,com.jaspersoft.studio.components"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.components.customvisualization,com.jaspersoft.studio.components.customvisualization"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.data,com.jaspersoft.studio.data"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.data.cassandra,com.jaspersoft.studio.data.cassandra"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.data.drivers,com.jaspersoft.studio.data.drivers"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.data.hbase,com.jaspersoft.studio.data.hbase"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.data.hive,com.jaspersoft.studio.data.hive"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.data.mongodb,com.jaspersoft.studio.data.mongodb"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.data.sql,com.jaspersoft.studio.data.sql"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.data.sql.ui,com.jaspersoft.studio.data.sql.ui"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.doc,com.jaspersoft.studio.doc"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.doc.samples,com.jaspersoft.studio.doc.samples"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.editor.jrexpressions,com.jaspersoft.studio.editor.jrexpressions"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.editor.jrexpressions.ui,com.jaspersoft.studio.editor.jrexpressions.ui"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.html,com.jaspersoft.studio.html"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.properties,com.jaspersoft.studio.properties"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.server,com.jaspersoft.studio.server"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.server.soap,com.jaspersoft.studio.server.soap"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jaspersoftstudio/trunk/com.jaspersoft.studio.xtext.jface,com.jaspersoft.studio.xtext.jface"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jasperreportseclipseplugin/trunk/net.sf.jasperreports,net.sf.jasperreports"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jasperreportseclipseplugin/trunk/net.sf.jasperreports.doc,net.sf.jasperreports.doc"/>
+<project reference="0.9.3,http://code.jaspersoft.com/svn/repos/jasperreportseclipseplugin/trunk/net.sf.jasperreports.samples,net.sf.jasperreports.samples"/>
+</provider>
+</psf>

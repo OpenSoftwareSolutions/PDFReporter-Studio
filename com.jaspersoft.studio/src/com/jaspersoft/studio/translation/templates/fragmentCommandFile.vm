@@ -1,0 +1,11 @@
+            <command
+                  commandId="com.jaspersoft.studio.switchlanguage.command"
+                  icon="$iconpath"
+                  id="$languageCommandId"
+                  label="$languageName"
+                  style="toggle">
+               <parameter
+                     name="com.jaspersoft.studio.switchlanguage.locale"
+                     value="$languageParameter">
+               </parameter>
+            </command>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+	<title>How to create context tool items</title>
+
+	<section>
+		<section>
+			<title>Introduction</title>
+			<para>
+				This tutorial is about the Jaspersoft Studio extensions that add actions or contribution items for the selected element or elements to the global eclipse toolbar. This actions and
+				contribution
+				items are organized into groups, visibility of this groups of items is controlled by the user using preferences.
+			</para>
+		</section>
+		<section>
+			<title>Extension Points</title>
+
+
+			<para>
+				<emphasis>com.jaspersoft.studio.toolitems</emphasis>
+				– contains all the actions or ContributionItems that could be found on the toolbar
+			</para>
+
+			<para>
+				<itemizedlist mark='opencircle'>
+					<listitem>
+						<para>
+							<emphasis>id</emphasis>
+							– the toolitem unique identifier
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<emphasis>contributionItemClass</emphasis>
+							– ContributionItem class name, null if this is an action
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<emphasis>ActionID</emphasis>
+							– action ID, null if this is a ContributionItem
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<emphasis>label</emphasis>
+							– item label, make sens for actions
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<emphasis>tooltip</emphasis>
+							– item tooltip, description
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<emphasis>icon</emphasis>
+							– if not null override action icon
+						</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>for each toolitem it's necessary to add classes for each this item apply</para>
+			<para>
+				<emphasis>com.jaspersoft.studio.toolitemsets</emphasis>
+				– defines item groups, and their visibility
+			</para>
+			<para>
+				<itemizedlist mark='opencircle'>
+					<listitem>
+						<para>
+							<emphasis>
+								id
+							</emphasis>
+							– group unique identifier
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<emphasis>
+								name
+							</emphasis>
+							– the name that is visible in preferences page
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<emphasis>
+								visibility
+							</emphasis>
+							– default group visibility
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<emphasis>
+								description
+							</emphasis>
+							– description, tooltip of the group
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<emphasis>
+								toolbaruri
+							</emphasis>
+							– the toolbar uri from global eclipse toolbar namespace
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<emphasis>
+								menuuri
+							</emphasis>
+							– the menu uri from global eclipse menu (not used for the moment)
+						</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+				for each group, a list of id of toolitems from com.jaspersoft.studio.toolitems should be defined
+			</para>
+		</section>
+		<section>
+			<title>Steps to add an Action</title>
+			<para>A good example are actions we already have to set some boolean properties for text elements and actions to help arrange elements in the report, look at:</para>
+			<para>
+				<programlisting language="java"><![CDATA[
+			com.jaspersoft.studio.editor.action.order.BringBackwardAction
+			com.jaspersoft.studio.editor.action.text.BoldAction
+			]]></programlisting>
+			</para>
+			<para>
+				in this tutorial we will explain BoldAction, this action set bold property on a text element
+			</para>
+			<para>
+				We have to create an action that usually extends a SelectionAction, in this tutorial we'll extend AbooleanPropertyAction class, this clas implements functionality to set/get a boolean
+				property
+				from
+				the model, we just have to override a method that check if this action apply to the model, and a method that return the property name
+				the action should be added to the editors
+				ActionsRegistry,
+				in out example we'll add this lines to com.jaspersoft.studio.editor.report.AbstractVisualEditor.
+			</para>
+			<para>
+				<programlisting language="java"><![CDATA[
+		protected void createActions() {
+
+		...
+
+		action = new BoldAction(this);
+
+		registry.registerAction(action);
+
+		selectionActions.add(action.getId());
+
+		...
+
+		}
+		]]></programlisting>
+			</para>
+			<para>
+				add the item to plugin.xml:
+			</para>
+			<para>
+				<programlisting language="xml"><![CDATA[
+		<extension point="com.jaspersoft.studio.toolitems">
+
+			...
+
+			<toolitems ActionID="com.jaspersoft.studio.editor.action.text.bold" icon="icons/resources/eclipse/font-bold.gif" id="com.jaspersoft.studio.editor.action.text.bold" label="Bold"
+				tooltip="Set font to Bold">
+
+				<selectedObject class="com.jaspersoft.studio.model.text.MTextElement"></selectedObject>
+
+			</toolitems>
+
+			...
+
+		</extension>
+		]]></programlisting>
+			</para>
+			<para>
+				add item to the group, we will use “com.jaspersoft.studio.graphic.text” uri for our toolbar
+			</para>
+			<para>
+				<programlisting language="xml"><![CDATA[
+		<extension point="com.jaspersoft.studio.toolitemsets">
+
+			...
+
+			<toolitemsets description="Text Element properties" id="com.jaspersoft.studio.graphic.text" name="Text Properties" toolbaruri="com.jaspersoft.studio.graphic.text" visibility="true">
+
+				...
+
+				<toolitem toolitemID="com.jaspersoft.studio.editor.action.text.bold"></toolitem>
+
+				...
+
+		</extension>
+		]]></programlisting>
+			</para>
+			<para>
+				test, select a Static Text element and look if “bold” button is visible in the eclipse global toolbar
+			</para>
+		</section>
+
+		<section>
+			<title>Steps to add an ContributionItem</title>
+			<para>A contribution item give us possibility to add a widget to the toolbar like a combo. In this example we will look at FontNameContributionItem, for more examples look in
+				com.jaspersoft.studio.editor.action.text package.
+			</para>
+			<para>
+				<orderedlist numeration="arabic">
+					<listitem>
+						<para>
+							create the contribution item we will extend ApropertyComboContributionItem class , this class implements the functionality necessary to get and set values in the model, we have just set an
+							ID,
+							property name and implement a method that will populate our combo box.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							add the item to plugin.xml:
+						</para>
+						<para>
+							<programlisting language="xml"><![CDATA[
+    <extension point="com.jaspersoft.studio.toolitems">
+
+    ...
+
+    <toolitems contributionItemClass="com.jaspersoft.studio.editor.action.text.FontNameComboContributionItem" id="com.jaspersoft.studio.editor.action.text.fontname" tooltip="Font Name">
+
+    <selectedObject class="com.jaspersoft.studio.model.text.MTextElement"></selectedObject>
+
+    </toolitems>
+
+    ...
+
+    </extension>
+]]></programlisting>
+						</para>
+						<para>
+							meaning is straightforward we tell to extension which class implements contribution item, tooltip for this contribution item and for what selected model classes this item is visible
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							add item to the group, we will use “com.jaspersoft.studio.graphic.text” uri for our toolbar
+						</para>
+						<para>
+							<programlisting language="xml"><![CDATA[
+    <extension
+
+    point="com.jaspersoft.studio.toolitemsets">
+
+    ...
+
+    <toolitemsets
+
+    description="Text Element properties"
+
+    id="com.jaspersoft.studio.graphic.text"
+
+    name="Text Properties"
+
+    toolbaruri="com.jaspersoft.studio.graphic.text"
+
+    visibility="true">
+
+    ...
+
+    <toolitem
+
+    toolitemID="com.jaspersoft.studio.editor.action.text.fontname">
+
+    </toolitem>
+
+    ...
+
+    </toolitemsets>
+
+    ...
+
+    </extension>]]></programlisting>
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							test, select a Static Text element and look if combo with font names is visible in the eclipse global toolbar
+						</para>
+					</listitem>
+				</orderedlist>
+			</para>
+		</section>
+		<section>
+			<title>Preferences</title>
+			<para>To hide or show a group of items, go to Preferences → Jaspersoft Studio → Toolbars and use checkboxes.
+			</para>
+			<figure>
+				<title>Toolbar visibility preferences page</title>
+				<screenshot>
+					<mediaobject>
+						<imageobject>
+							<imagedata fileref="Preferences _042.png" format="PNG" contentwidth="800px" />
+						</imageobject>
+					</mediaobject>
+				</screenshot>
+			</figure>
+		</section>
+	</section>
+</section>

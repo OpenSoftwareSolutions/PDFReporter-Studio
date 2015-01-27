@@ -1,0 +1,61 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>How to translate Jaspersoft Studio</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>How to translate Jaspersoft Studio</h2></div></div><hr></div>
+	
+	<div class="section"><div class="titlepage"></div>
+		<p>Jaspersoft Studio is provided with some translation (like english and italian), but if you want to contribute the translation process, 
+		we provide all the tools to allow a not technical user to create its own translation and submit it to the Jasperosft Studio team. Then the translation 
+		will be validated and if there aren't problems it will be included into the next version of Jaspersoft Studio.</p>
+		<p>The following information are not strictly necessary to start with the translation process, and are intended only if you want to know how the internationalization 
+		system works, otherwise you can skip this paragraph and go to the next one. The Jaspersoft Studio translation is based on the eclipse's internationalization standard, 
+		this means that there are more files with the .properties extension. Each of this file has inside one or more rows in the that in the form key = value. 
+		The key and the equal symbol must be untouched, since they are used internally from the application and are not visible in any part of the user interface. 
+		The value is a string that is displayed by the application and it can be changed. So essentially the procedure explained in this tutorial will extract all the properties 
+		files used by Jaspersoft Studio and then they must be edited changing every value string.</p>
+		<p>The first thing to do is start the translation wizard, to do this open Jaspersfot Studio and click File -&gt; New -&gt; Other...</p>
+		<div class="figure"><a name="N40017"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Start a new project wizard</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="1.png" width="800" alt="Start a new project wizard"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>The new project wizard will be opened, expand the category Resource Bundle and select Resources Translation, the hit Next.</p>
+		<div class="figure"><a name="N4002E"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Select a Resources Translation project</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="2.png" width="800" alt="Select a Resources Translation project"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>At this point you will all the resources that are available for the translation process, every group of elements with a name that start like "com.jaspersoft.studio" 
+		represent a collection of one or more files that contains the text used inside Jaspersoft Studio. There are may files because they are usded inside different locations of the 
+		application, for example there are the files that contains the text for the data adapter, for the advanced components (table, crosstab, chart...), for the connection to the server. 
+		If you select an element you can se on the right some informations about it, this is useful to understand what certain files contains. However select all the categories that belong 
+		to Jaspersoft Studio (selecting a category is like selecting every element inside it) and hit Next.</p>
+		<div class="figure"><a name="N40045"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Select all the Jaspersoft Studio resources</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="3.png" width="800" alt="Select all the Jaspersoft Studio resources"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>Now you must define a translation project, you can select an already existing translation project or symply type a name for a new one. You can see a checkbox that by 
+		default is selected, leave it selected because doing this at the end of the wizard inside the project will be created an organized folder structure (otherwise all the files will 
+		be put inside the project into the same folder) that will avoid name clashes and will help the Jaspersoft Studio team to review the file, since the folder structure reflect in some 
+		way how the files are organized inside the application itself.
+		</p><p>Then you must select the target language of the translation using the  combo box or typing it directly and then press add. You can add more than one language, 
+		by doing this at the end of the wizard will be created the file structure to handle all the added languages. So add every language you want then press finish.</p>
+		<div class="figure"><a name="N4005E"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Select the destination project and languages</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="4.png" width="800" alt="Select the destination project and languages"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>Now the structure of the project will be created with inside every file you need to translate, plus this files will have inside the original english text that should be 
+		translated. To translate a file double click on it and it will be opened in the editor, then you can select every string inside the file to see the original english text then 
+		translate them into your target language.</p>
+		<div class="figure"><a name="N40075"></a><p class="title"><b>Figure&nbsp;5.&nbsp;Use the provided editor to translate the files</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="5.png" width="800" alt="Use the provided editor to translate the files"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>If you want to know how to publish the translation plese follow the How to publish a Jaspersoft Studio translation tutorial.</p>
+	</div>
+</div></body></html>

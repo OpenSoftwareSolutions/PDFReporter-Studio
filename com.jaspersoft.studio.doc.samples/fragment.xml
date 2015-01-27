@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<fragment>
+ <extension point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <cheatsheet
+      	category="com.jaspersoft.studio.cheatsheets.reports"
+        composite="false"
+        contentFile="cheatsheets/openreport.xml"
+        id="com.jaspersoft.studio.cheatsheets.openreport"
+        name="Import and open reports samples">
+      </cheatsheet>
+ </extension>
+ <extension
+       point="com.jaspersoft.studio.babel.editor.resourceInput">
+    <input
+          class="com.jaspersoft.studio.doc.samples.messages.ResourcePublisher">
+    </input>
+ </extension>
+</fragment>

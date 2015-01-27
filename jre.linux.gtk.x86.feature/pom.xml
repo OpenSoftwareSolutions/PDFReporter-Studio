@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.jaspersoft.studio.community-edition</groupId>
+		<artifactId>features</artifactId>
+		<version>5.6.2.final</version>
+		<relativePath>../aggregator/features/</relativePath>
+	</parent>
+
+	<groupId>com.jaspersoft.studio.community-edition</groupId>
+	<artifactId>jre.linux.gtk.x86.feature</artifactId>
+	<packaging>eclipse-feature</packaging>
+	<version>1.7.0</version>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>unpack-jre</id>
+						<phase>generate-resources</phase>
+						<configuration>
+							<target>
+								<gunzip src="${jre.packages.location}/jre-7u${jre.packages.version}-linux-i586.tar.gz" />
+								<untar src="${jre.packages.location}/jre-7u${jre.packages.version}-linux-i586.tar" dest="${project.build.directory}/../"/>
+								<move file="jre1.7.0_${jre.packages.version}" tofile="jre"/>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project> 

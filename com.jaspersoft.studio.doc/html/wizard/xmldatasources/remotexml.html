@@ -1,0 +1,61 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Creation of a Remote XML dataset</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Creation of a Remote XML dataset</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+      <p>Jaspersoft Studio provide also a data adapter for the remote XML, like the RSS Feed. This mean that is possibile generate
+      a report using not only a local XML but a remote XML provided from some service. This time we will use as example the RSS
+      Feed of the BBC News. Start the creation of a new report from File-&gt;New-&gt;Jasper Report and as template select
+      "Tree" and as file name use "BBCReport". Now you have to choose the data adapter, but since you
+      doesn't have an adapter for the remote XML you have to click "New" and in the window that will appear select
+      the option "XML document (remote)" and hit "Next". Call the new data adapter "BBCAdapter" and
+      use this values:</p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">XML URL: http://feeds.bbci.co.uk/news/rss.xml?edition=int#</li><li class="listitem" style="list-style-type: circle">Date pattern: EEE, dd MMM yyyy HH:mm:ss z</li></ul></div>
+      <p>And hit "Finish".</p>
+        		<div class="figure"><a name="N4001E"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Remote XML Data Adapter</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="6.png" width="800" alt="Remote XML Data Adapter"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>You have now created a data adapter for an XML on the web identified by an URL. Now you have the possibility to insert an
+      XPath query as seen with the local XML. The RSS of the BBC contains all the the news into the tag "item", inside
+      the tag "Channel". So expanding the "Channel" tag and double clicking on "Item" will generate
+      the following XPath query: /rss/channel/item. After that hit "Finish" to retrieve the fields.</p>
+        		<div class="figure"><a name="N40035"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Select the Node</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="7.png" width="800" alt="Select the Node"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>Remember that double clicking on an element "Item" dosen't mean to select that precise element, but all the
+      elements with the tag "Item" at the same level of the clicked one. From the field list select (by double clicking)
+      the title, description and pubDate, then hit "Next". Even this time we don't need groups so hit
+      "Next" and then "Finish". Now you have a report with the fields already placed, but the description is
+      not in a good position considering that it has to contain more text. So enlarge the band "Detail" and move the
+      description under the title and enlarge the field description to fill the band. You should obtain something like this:</p>
+        		<div class="figure"><a name="N4004C"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Resize the bands for the new elements</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="8.png" width="800" alt="Resize the bands for the new elements"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>Switch to the preview tab to compile the report and you should see a result like this:</p>
+        		<div class="figure"><a name="N40063"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Compile the Report</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="9.png" width="800" alt="Compile the Report"></div>
+			</div>
+		</div></div><br class="figure-break">
+      <p>When a remote XML is request it is possible to specify some parameters, open the "Dataset &amp; Query" dialog
+      (select the report from the outline view, then from the properties tab hit the button "Edit query, filter and sort
+      options") you can see that as query language you are using XPath2. The XPath2 query executer is able to download the XML
+      file from a remote url that we set when we have defined the data source, but the url can also be specified using the
+      parameters. And optionally GET and POST parameters can be also specified as parameters for the report from the
+      "Parameters" tab inside the "Dataset &amp; Query" dialog. When the report is executed inside an
+      application, the URL can be set dinamically with a parameter XML_URL. Other parameters that can be set include: XML_USERNAME
+      and XML_PASSWORD for http authentication and XML_DATE_PATTERN and XML_NUMBER_PATTERN to set the pattern that convert dates
+      and numbers from text. POST and GET parameters can be specified creating parameters with the prefix XML_POST_ and XML_GET_.
+      For example, to pass a GET parameter of name id, the parameter must be called XML_GET_id. This approach is very flexible and
+      can be used to get data from a web application like a PHP script that can create the XML data based on a set on input
+      parameters passed from the report.</p>
+     	</div>
+</div></body></html>

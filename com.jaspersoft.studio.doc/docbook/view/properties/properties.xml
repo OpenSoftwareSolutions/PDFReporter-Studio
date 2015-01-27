@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+	<title>Properties View</title>
+
+	<section>
+
+		<para>
+			The Properties view helps you configure a selected element or elements.
+			If more than one element is selected, only the properties those elements have in common are shown. If the 5Properties view is
+			not
+			visible, open the context menu for the selected elements and find the
+			<guimenuitem>Show Properties</guimenuitem>
+			menu item, which shows and brings to the front the
+			Properties view.
+		</para>
+		<para>
+			Properties are organized into tabs and sections for a better
+			organization and usability. Tabs can include the following:
+			<itemizedlist mark='opencircle'>
+				<listitem>
+					<para>
+						Appearance, which contains all the properties responsible for element size, position, colors, style and flags when the element is shown in the runtime.
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						Borders, where you can configure how borders of the element are painted.
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						Advanced, which contains all the properties for the report element in a form of a table tree, and you can reset the property to default value, in context menu.
+					</para>
+				</listitem>
+			</itemizedlist>
+		</para>
+		<para>
+			For example, a property description is shown in the tool tip and in the status line.
+		</para>
+
+		<figure>
+			<title>Advanced Properties Tab</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="properties_advanced.png" format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<figure>
+			<title>Appearance Properties Tab</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="properties_appearance.png" format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+
+
+	</section>
+
+</section>

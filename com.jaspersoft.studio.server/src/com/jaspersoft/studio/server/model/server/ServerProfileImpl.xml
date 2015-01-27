@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+  Copyright (C) 2005 - 2014 TIBCO Software Inc. All rights reserved.
+  http://www.jaspersoft.com.
+  
+  Unless you have purchased  a commercial license agreement from Jaspersoft,
+  the following license terms  apply:
+  
+  This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+-->
+<mapping>
+	<class name="com.jaspersoft.studio.server.model.server.ServerProfile">
+		<map-to xml="serverProfile" />
+
+		<field name="name" type="string">
+			<bind-xml name="name" node="element" />
+		</field>
+		<field name="jrVersion" type="string">
+			<bind-xml name="jrVersion" node="element" />
+		</field>
+		<field name="url" type="string">
+			<bind-xml name="url" node="element" />
+		</field>
+		<field name="user" type="string">
+			<bind-xml name="user" node="element" />
+		</field>
+		<field name="organisation" type="string">
+			<bind-xml name="organisation" node="element" />
+		</field>
+		<field name="pass" type="string">
+			<bind-xml name="pass" node="element" />
+		</field>
+		<field name="supportsDateRanges" type="boolean">
+			<bind-xml name="supportsDateRanges" node="element" />
+		</field>
+		<field name="useOnlySOAP" type="boolean">
+			<bind-xml name="useOnlySOAP" node="element" />
+		</field>
+		<field name="useSSO" type="boolean">
+			<bind-xml name="useSSO" node="element" />
+		</field>
+		<field name="syncDA" type="boolean">
+			<bind-xml name="syncDA" node="element" />
+		</field>
+		<field name="chunked" type="boolean">
+			<bind-xml name="chunked" node="element" />
+		</field>
+		<field name="mime" type="boolean">
+			<bind-xml name="mime" node="element" />
+		</field>
+		<field name="timeout" type="int">
+			<bind-xml name="timeout" node="element" />
+		</field>
+		<field name="projectPath" type="string">
+			<bind-xml name="projectPath" node="element" />
+		</field>
+		<field name="locale" type="string">
+			<bind-xml name="locale" node="element" />
+		</field>
+		<field name="timeZone" type="string">
+			<bind-xml name="timeZone" node="element" />
+		</field>
+		<field name="ssoUuid" type="string">
+			<bind-xml name="ssoUuid" node="element" />
+		</field>
+	</class>
+</mapping>

@@ -1,0 +1,2 @@
+Issue: In some latest Ubuntu versions there are some problems related to the main menu not appearing.
+Solution: you can run Jaspersoft Studio using the dedicated the runubuntu.sh script. 

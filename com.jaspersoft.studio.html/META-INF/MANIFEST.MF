@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Html Component
+Bundle-SymbolicName: com.jaspersoft.studio.html;singleton:=true
+Bundle-Version: 5.6.2.final
+Bundle-Activator: com.jaspersoft.studio.html.Activator
+Bundle-Vendor: Jaspersoft Corporation
+Require-Bundle: com.jaspersoft.studio;bundle-version="5.6.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+ JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Eclipse-RegisterBuddy: net.sf.jasperreports, com.jaspersoft.studio
+Bundle-ClassPath: .,
+ lib/htmlcomponent.jar,
+ lib/jtidy-r938.jar,
+ lib/core-renderer.jar
+Export-Package: com.jaspersoft.studio.html,
+ com.jaspersoft.studio.html.command,
+ com.jaspersoft.studio.html.messages,
+ com.jaspersoft.studio.html.model,
+ net.sf.jasperreports,
+ net.sf.jasperreports.components.html,
+ net.sf.jasperreports.engine.export,
+ net.sf.jasperreports.engine.util,
+ net.sf.jasperreports.extensions,
+ net.sf.jasperreports.renderers

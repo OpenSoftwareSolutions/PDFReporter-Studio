@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (C) 2010 - 2013 Jaspersoft Corporation. All rights reserved.
+  http://www.jaspersoft.com
+  
+  Unless you have purchased a commercial license agreement from Jaspersoft, 
+  the following license terms apply:
+  
+  This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+  
+  Contributors:
+      Jaspersoft Studio Team - initial API and implementation
+-->
+<deployment name="defaultClientConfig"
+            xmlns="http://xml.apache.org/axis/wsdd/"
+            xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <globalConfiguration>
+   <parameter name="disablePrettyXML" value="true"/>
+   <parameter name="enableNamespacePrefixOptimization" value="false"/>
+ </globalConfiguration>
+ <!-- <transport name="http" pivot="java:org.apache.axis.transport.http.CommonsHTTPSender"/> -->
+ <transport name="http" pivot="java:com.jaspersoft.ireport.jasperserver.ws.http.JSSCommonsHTTPSender"/>
+ <transport name="local" pivot="java:org.apache.axis.transport.local.LocalSender"/>
+ <transport name="java" pivot="java:org.apache.axis.transport.java.JavaSender"/>
+</deployment>
+

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension-point id="classpathcontainer" name="ClasspathContainer" schema="schema/classpathcontainer.exsd"/>
+<extension point="org.eclipse.ui.navigator.navigatorContent">
+    <commonFilter
+        description="Hides *.jasper JasperReports compiled file"
+        id="com.jaspersoft.studio.commonFilter.hideJasper"
+        name="*.jasper compiled reports"
+        activeByDefault="false">
+        <filterExpression>
+            <and>
+                <adapt type="org.eclipse.core.resources.IResource">
+                    <test property="org.eclipse.core.resources.name" value="*.jasper"/>
+                </adapt>
+            </and>
+        </filterExpression>
+    </commonFilter>
+    <commonFilter
+        description="Hides *.jrprint"
+        id="com.jaspersoft.studio.commonFilter.hideJrprint"
+        name="*.jrprint JasperReports compiled print file"
+        activeByDefault="false">
+        <filterExpression>
+            <and>
+                <adapt type="org.eclipse.core.resources.IResource">
+                    <test property="org.eclipse.core.resources.name" value="*.jrprint"/>
+                </adapt>
+            </and>
+        </filterExpression>
+    </commonFilter>
+</extension>
+<extension point="org.eclipse.ui.navigator.viewer">
+    <viewerContentBinding
+          viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+          <includes>
+            <contentExtension pattern="com.jaspersoft.studio.commonFilter.hideJasper"/>
+            <contentExtension pattern="com.jaspersoft.studio.commonFilter.hideJrprint"/>
+          </includes>
+    </viewerContentBinding>
+</extension>
+   <extension
+         id="builder"
+         name="JasperReports Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="net.sf.jasperreports.eclipse.builder.JasperReportsBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="nature"
+         name="JasperReports Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="net.sf.jasperreports.eclipse.builder.JasperReportsNature">
+         </run>
+      </runtime>
+      <builder
+            id="net.sf.jasperreports.builder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="net.sf.jasperreports.popupMenus.toggleNature">
+         <menu
+               icon="icons/jr_icon.png"
+               id="net.sf.jasperreports.menu1"
+               label="JasperReports"
+               path="additions">
+            <separator
+                  name="separator1">
+            </separator>
+         </menu>
+         <action
+               class="net.sf.jasperreports.eclipse.builder.action.ToggleNatureAction"
+               enablesFor="+"
+               icon="icons/jasper_icon.png"
+               id="net.sf.jasperreports.actions.toggleNature"
+               label="Toggle JasperReports Nature"
+               menubarPath="net.sf.jasperreports.menu1/separator1"
+               style="toggle">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="net.sf.jasperreports.popupMenus.reportPreview.jrxml"
+            nameFilter="*.jrxml"
+            objectClass="org.eclipse.core.resources.IResource">
+         <action
+               class="net.sf.jasperreports.eclipse.ui.ReportPreviewAction"
+               icon="icons/jr_icon.png"
+               id="net.sf.jasperreports.actions.reportPreview"
+               label="Preview"/>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="net.sf.jasperreports.popupMenus.reportPreview.jasper"
+            nameFilter="*.jasper"
+            objectClass="org.eclipse.core.resources.IResource">
+         <action
+               class="net.sf.jasperreports.eclipse.ui.ReportPreviewAction"
+               icon="icons/jr_icon.png"
+               id="net.sf.jasperreports.actions.reportPreview"
+               label="Preview">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         id="jrxmlProblem.marker"
+         name="JRXML Problem"
+         point="org.eclipse.core.resources.markers">
+      <persistent
+            value="true">
+      </persistent>
+      <attribute
+            name="userEditable">
+      </attribute>
+      <attribute
+            name="lineNumber">
+      </attribute>
+      <attribute
+            name="charEnd">
+      </attribute>
+      <attribute
+            name="message">
+      </attribute>
+      <attribute
+            name="severity">
+      </attribute>
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="net.sf.jasperreports"
+            name="JasperReports"/>
+      <view
+            category="net.sf.jasperreports"
+            class="net.sf.jasperreports.eclipse.ui.ReportPreviewView"
+            icon="icons/jr_icon.png"
+            id="net.sf.jasperreports.views.reportPreview"
+            name="Preview"/>
+   </extension>
+   <extension
+         point="org.eclipse.team.core.ignore">
+      <ignore
+            enabled="true"
+            pattern="*.jasper">
+      </ignore>
+      <ignore
+            enabled="true"
+            pattern="*.jrprint">
+      </ignore>
+   </extension>
+   <extension
+         point="org.eclipse.team.core.fileTypes">
+      <fileTypes
+            extension="jrxml"
+            type="text">
+      </fileTypes>
+      <fileTypes
+            extension="jasper"
+            type="binary">
+      </fileTypes>
+      <fileTypes
+            extension="jrprint"
+            type="binary">
+      </fileTypes>
+      <fileTypes
+            extension="jrpxml"
+            type="text">
+      </fileTypes>
+      <fileTypes
+            extension="jrtx"
+            type="text">
+      </fileTypes>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="com.jaspersoft.studio"
+            name="Jaspersoft Studio">
+      </category>
+      <wizard
+            category="com.jaspersoft.studio"
+            class="net.sf.jasperreports.eclipse.wizard.project.JRProjectWizard"
+            icon="icons/jasper_icon.png"
+            id="net.sf.jasperreports.projectwizar"
+            name="JasperReports Project"
+            project="true">
+         <description>
+            Create a JasperReports project
+         </description>
+      </wizard>
+   </extension>
+   <extension
+         id="net.sf.jasperreports.JR_CONTAINER"
+         name="net.sf.jasperreports.JR_CONTAINER"
+         point="org.eclipse.jdt.core.classpathContainerInitializer">
+      <classpathContainerInitializer
+            class="net.sf.jasperreports.eclipse.classpath.container.JRClasspathContainerInitializer"
+            id="net.sf.jasperreports.JR_CONTAINER">
+      </classpathContainerInitializer>
+   </extension>
+   <extension
+         point="org.eclipse.jdt.ui.classpathContainerPage">
+      <classpathContainerPage
+            class="net.sf.jasperreports.eclipse.classpath.container.JRClasspathContainerPage"
+            id="net.sf.jasperreports.JR_CONTAINER"
+            name="JasperReports Libraries">
+      </classpathContainerPage>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup class="net.sf.jasperreports.eclipse.EnhancedSystemOutStartup"/>
+      <startup
+            class="net.sf.jasperreports.eclipse.start.CleanTempResources"/>
+   </extension>
+   <extension
+         id="nature"
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/jr_icon.png"
+            id="net.sf.jasperreports.natureimage"
+            natureId="net.sf.jasperreports.nature">
+      </image>
+   </extension>
+
+</plugin>

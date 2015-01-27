@@ -1,0 +1,48 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Creation of a Dataset</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Creation of a Dataset</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+        <p>Every report has a main dataset defined during its creation, that is the one used in all the previous tutorials. But
+        some times we need fileds that are not returned by the query of the main dataset or the fields needed could also be in a
+        different datasource. To do this we can use the element "Dataset", this element permit to define many dataset
+        inside the report, each one with its fields and datasource. Obviously every dataset is indipendent from the others, so its
+        fields are separated from the ones of the main dataset, and also from the ones of the other datasets. With a report opened,
+        to create a dataset right click on the report root node in the outline view and choose "Create Dataset":</p>
+      		<div class="figure"><a name="N40011"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Select the Create Dataset Action</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="1.png" width="800" alt="Select the Create Dataset Action"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>Now a new wizard will be opened, in the first step you can select the name of the new dataset and if it use a connection
+        to a datasource or it is simply empty. Since we want to read data from the databese select the first option and use as name
+        "GroupData", as in the image below, then hit Next.</p>
+      		<div class="figure"><a name="N40028"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Select Name and Type</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="2.png" width="800" alt="Select Name and Type"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>In the next step we have to select the data adapters of the new dataset, and since we use the same database of the main
+        report even this time we will select "Sample DB - Database JBDC Connection". We must also provide a query to
+        retrieve the fields and this is "select count(*), SHIPCITY from orders group by SHIPCITY". It returns the records
+        grouped by the shipment city, in this way we have that every record read from the database with this query will contain two
+        fields: the number of element for a city and the name of the city. After that we can click Next.</p>
+      		<div class="figure"><a name="N4003F"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Provide the data adapter and the query</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="3.png" width="800" alt="Provide the data adapter and the query"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>At this point will be shown the fields discovered using the provided query and we can choose which add to the report.
+        Since we need them all hit the button to add all and then Next, as in the following image:</p>
+      		<div class="figure"><a name="N40056"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Add the Fields</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="4.png" width="800" alt="Add the Fields"></div>
+			</div>
+		</div></div><br class="figure-break">
+        <p>At this point we can define groups, but we don't need them so hit the Finish button. The dataset will be created and
+        is visible from the outline view, if you explore its element you can see that it has its own fields, variables and
+        groups.</p>
+     	</div>
+</div></body></html>

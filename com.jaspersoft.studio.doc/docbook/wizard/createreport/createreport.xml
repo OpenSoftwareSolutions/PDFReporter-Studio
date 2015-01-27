@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+<title>Creation of a Report</title>
+<section>
+<para>In this tutorial, we cover the basics of how to design a report.To keep things simple, this tutorial uses a sample
+      database included in the installation of Jaspersoft Studio. The data to print is retrieved using a SQL query embedded in the
+      report. The first thing to do is create a new report. To do this, open the File menu, select New, and then click Jasper
+      Report. A new window appears, as shown in the following figure:</para>
+        		<figure>
+			<title>Template selection</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="1.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+      <para>Here you can select a template. A template defines the initial graphical layout of a report and from this dialog, in just
+      a few clicks, you can create a very simple blank layout, or a much more complex one, with image, text, number of pages and so
+      on. As an example, let&#39;s select a template with some elements in it. From the window displayed in the figure above,
+      select Coffee and click Next. In the next step, select the folder in the workspace where you want to put the report, and name
+      the new report. You can use the default folder MyReports, name the report use Example1, as shown in the following figure,
+      then click Next. If you want to create a new project folder for the report, go near the end of this tutorial.</para>
+             		<figure>
+			<title>Folder Selection</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="2.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+      <para>Now for the most complex part of this tutorial: the selection of a data source. The data source is the location from which
+      the data is taken to fill the report. In this step, you must select a data adapter, which is essentially a connection to a
+      data source. Here you have three options:</para>
+ 		<itemizedlist mark='opencircle'>
+        <listitem>Selecting the data adapter &quot;One Empty Record - Empty rows&quot;: This is default data adapter used to create a
+        report without any data. Can be used to define the layout of the report before connecting it to a data source. In fact, a
+        data source can be provided at a later time, after the creation of the report.</listitem>
+        <listitem>Selecting the data adapter &quot;Sample DB - Database JBDC Connection&quot;: This is a an SQL database used as an
+        example, provided with the Jaspersoft Studio installation, for use in this tutorial.</listitem>
+        <listitem>Creating a new data adapter with the &quot;New&quot; button: Jaspersoft Studio supports a wide variety of data sources.
+        Using the &quot;New&quot; button allows you to browse and connect to an existing data source. Since this is a complex
+        functionality, we&#39;ll address it in another tutorial.</listitem>
+      </itemizedlist>
+      <para>For this example, we will use the Sample DB, but this is not sufficent to create the report. A SQL database can contain
+      many tables, with many fields, so we must specify which of these fields we will use in the report. To do this we must provide
+      a SQL query that selects all the fields we want include in the report. To keep this tutorial simple, we will select all the
+      fields from the table named &quot;orders&quot;. Write the query as shown in the image below and click Next.</para>
+             		<figure>
+			<title>Datasource Selection</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="3.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+      <para>Using this query ensures the database will be explored and all the fields found can be added to the report. In the next
+      step of the wizard there are two lists. On the left there are all the discovered fields, and on the right the ones that will
+      be added to the report. At first the right list is empty, but we can move one or more elements from the left list to the
+      right one using the buttons between the two lists or by double clicking on the field. An example is shown in the figure
+      below:</para>
+                   		<figure>
+			<title>Fields Selection</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="4.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+      <para>After selecting the fields click Next to proceed with the wizard. In the next window you can group fields. Grouping is a
+      function that, for now, we will not use, so click Next. The wizard is now complete. The only thing to do is click Finish.
+      Jaspersoft Studio now builds the report layout with the selected fields already included, as shown in the following
+      figure:</para>
+                         		<figure>
+			<title>Fields Added to the Report</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="5.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+      <para>Here, we can delete a field on the report by right-clicking on it and selecting delete, or adding a field from the Outline
+      View (the tab on the bottom-left of Jaspersoft Studio). To include the value of a field in the report, drag it from the
+      outline view to the design view. For example, drag a field into the detail band, a section of the report that is printed for
+      each record/row in the query results. The title and the summary bands are printed just once in each report, while the page
+      header and footer are printed once at the top and bottom of each page, respectively. In the figure below, see the example
+      where the field SHIPREGION was removed from the report and in its palce the file SHIPCOUNTRY is added.</para>
+                         		<figure>
+			<title>Drag a new field</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="6.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+      <para>When the field object is dragged inside the detail band, Jaspersoft Studio creates a text field element and sets the text
+      field expression for that element to $F{SHIPNAME}. This is a simple expression to print the value of the field with the name
+      SHIPNAME (the syntax $F{}). Repeat the same operation for other fields and format the text fields element by stretching,
+      dragging and aligning them. It is important that the text fields are all placed inside the detail band. To add other elements
+      (such lines or labels), drag them from the palette shown in the following figure into the designer view, then resize and
+      arrange them as desired:</para>
+                         		<figure>
+			<title>Drag an Element</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="7.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+      <para>In this case, we add a label in the title band for the report title, we add column labels using label elements placed in
+      the column header band, and we place a thin line just under the text fields in the detail band. Change the height of band by
+      dragging its bottom edge. A shortcut to reduce the height of the band is to double-click on its bottom edge, which aligns it
+      with the bottom edge of its lowest element. You can also set properties such as the height of the band in the property sheet
+      under the palette. The property sheet lets you view and edit the properties of the currently selected element in the
+      designer. Click on an element in the designer or in the report inspector to select it and view its properties. For bands, you
+      can also click in an unused part of the band. To preview the report, switch to the preview mode by clicking Preview in the
+      designer tool bar. The preview compiles the report in the background and fills it with data retrieved by the query through
+      the JDBC connection. As shown in the following figure, the detail band repeats for every row in the query results, creating a
+      simple table report:</para>
+                         		<figure>
+			<title>Switch to Preview</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="8.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+	</section>
+</section>

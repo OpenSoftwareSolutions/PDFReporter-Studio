@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+	<title>Creation of a Crosstab</title>
+	<section>
+		<para>The first thing to is create a new report, from Jaspersoft Studio select File-&gt;New-&gt;Jasper Report, call the new
+      report &quot;TablesExample&quot; and as template use &quot;Cherry&quot;. As data adapter use &quot;Sample DB - Database JDBC
+      connection&quot;, that came with Jaspersoft Studio and as SQL query to discover the fields use: &quot;select * from
+      orders&quot;. Now you have a list of the discovered fields, add them to the report in this order: ORDERDATE, ORDERID,
+      SHIPNAME, SHIPADDRESS and SHIPCITY. Don&#39;t use groups and complte the wizard. Now you have the report with some fields
+      already placed in it. You can test if it is all right by compiling the report switching to the preview tab. If it all right
+      you should see something like this:</para>
+		<figure>
+			<title>Example Report</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="1.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>Crosstabs are little more complicated of tables, even because its not easy to understand how the data is
+      &quot;crossed&quot;. Now we have a table that show the number of shipments done year by year. With the crosstab we can have
+      something more informative, like the shipment done year by year, but also divided by the destination countries. So the goal
+      is to have the countries on the rows, the years on the columns and in every cell of the table the number of shipment done for
+      a precise country in a precise year. As first thing drag and drop a Crosstab from the palette into the designer and the
+      corsstab&#39;s wizard will appear. In the first step you can choose if create a new dataset for the crosstab or use an
+      existing one. For our purpose this time we can reuse the main dataset, so select &quot;create a crosstab using an existing
+      dataset&quot;, select &quot;[Main Dataset]&quot; and hit &quot;Next&quot;.</para>
+		<figure>
+			<title>Select the datasource type</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="8.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>Now you have to choose the fields that go on the columns. For our goal we need the shippeddate, but this is not really
+      true because we need only the year and we have two ways to get this:</para>
+		<itemizedlist mark='opencircle'>
+			<listitem>Create a new dataset or change the main dataset query to have another field that contains only the year, something like
+        &quot;select ORDERDATE, ORDERID, SHIPNAME, SHIPADDRESS, SHIPCITY, SHIPCOUNTRY, SHIPPEDDATE, YEAR(SHIPPEDDATE) as
+        SHIPPEDYEAR from orders&quot;, that returns all the fields we need.</listitem>
+			<listitem>Using the main dataset but change manually the column element expression in the crosstab, from something like
+        &quot;$F{SHIPPEDDATE}&quot; to &quot;YEAR($F{SHIPPEDDATE})&quot;.</listitem>
+		</itemizedlist>
+		<para>Probably the first way is more easy and clean, but since we already know how to create datasets and change the main
+      dataset query, and we have never seen how to edit an already created crosstab we choose the second one to have a more
+      informative tutorial. Returning to the wizard add the field &quot;SHIPPEDDATE&quot; by double clicking on it and hit
+      &quot;Next&quot;.</para>
+		<figure>
+			<title>Select the columns</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="9.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>Now we must add the country on the rows, so in the next step select the field &quot;SHIPCOUNTRY&quot; and hit
+      &quot;Next&quot;.</para>
+		<figure>
+			<title>Select the rows</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="10.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>It&#39;s time to define the detail data. Normally, the detail is the result of an aggregation function like the count of
+      orders by country by year, or the sum of freight for the same combination (country/year). We choose to print the number of
+      orders placed by adding the field &quot;ORDERID&quot; with the &quot;Count&quot; calculation (default value) and then click
+      &quot;Finish&quot;.</para>
+		<figure>
+			<title>Select the measure</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="12.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>Now you have your crosstab created, change its size to fit the band and compile the report switching in the preview tab.
+      Here you will see two problems:</para>
+		<itemizedlist mark='opencircle'>
+			<listitem>Since we have used a the shipped date on the columns now we have a column for every day where there was a shipment,
+        instead of every year;</listitem>
+			<listitem>Some elements dosen&#39;t have a shipped date, so there is a column for them with the label &quot;null&quot;, it would
+        be better to have the string &quot;Undefined&quot; (in a similar way to what happen with tables).</listitem>
+		</itemizedlist>
+		<para>For the first problem go in the crosstab editor by doubleclicking on the its element. Here you see a dedicated outline
+      view for this element, expand the element &quot;Crosstab&quot; and here you will see three very important elements: &quot;Row
+      Groups&quot;, &quot;Column Groups&quot; and &quot;Measures&quot;. Here are placed the fields choosen for row, column and
+      detail and to use this fields and are used elements of the type &quot;RowGroup&quot;, &quot;ColumnGroup&quot; and
+      &quot;Measure&quot; that are someway similar to variables since they use an expression that refer a field, they have a type
+      and a calculation time.</para>
+		<figure>
+			<title>Set the crosstab</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="13.png" format="PNG" contentwidth="800px" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+	</section>
+</section>

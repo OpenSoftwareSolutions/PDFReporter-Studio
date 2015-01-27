@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a dataset">
+   <intro>
+      <description>
+         Every report has a main dataset defined during its creation but some times we need fields that are not returned by the query of  the main dataset or the fields needed could also be in a different datasource. For this reason we can use the element <b>Dataset</b>: this element permit to define many dataset inside the report, each one with its fields and datasource. Obviously every dataset is independent from the others, so its fields are separated from the ones of the main dataset, and also from the ones of the other datasets.
+      </description>
+   </intro>
+   <item title="Open a Report">
+      <description>
+         With the report opened go into the Outline tab.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=org.eclipse.ui.views.ContentOutline)"/>
+   </item>
+   <item title="Start the dataset creation" dialog="true">
+      <description>
+         In the Outline there all the elements defined in the report disposed as a tree, right click on the root node and select <b>Create Dataset</b>. The root node is the first one and it has the name of the report.
+      </description>
+      <action pluginId="com.jaspersoft.studio" class="com.jaspersoft.studio.model.dataset.command.NewDatasetWizardHandler" required="false"/>
+   </item>
+   <item
+         skip="false"
+         title="Define the name">
+      <description>
+         Insert a name for the dataset and hit <b>Next</b>.
+      </description>
+   </item>
+   <item
+         title="Define the data origins">
+      <description>
+         In this step you need to define a data adapter, the location from where the fields will be retrieved, and a query to define how and which fields will be retrieved
+      </description>
+      <subitem
+            label="As data adapter use the default one, provided with Jaspersoft Studio, &quot;Sample DB - Database JDBC connection&quot;.">
+      </subitem>
+      <subitem
+            label="Provide a query to retrieve the fields from the data adapter, like &quot;select count(*), SHIPCITY from orders group by SHIPCITY&quot;, then hit &quot;Next&quot;.">
+      </subitem>
+   </item>
+   <item
+         title="Add the fields to the dataset">
+      <description>
+         At this point two fields will be discovered, add them to the dataset by double clicking on them or using the button <b>&gt;&gt;</b>.
+      </description>
+   </item>
+   <item
+         title="Complete the wizard">
+      <description>
+         The wizard is now finished, you can hit the button <b>Finish</b> to complete the dataset creation.
+      </description>
+   </item>
+</cheatsheet>

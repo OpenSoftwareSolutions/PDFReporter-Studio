@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?p2f version='1.0.0'?>
+<p2f version='1.0.0'>
+  <ius size='25'>
+    <iu id='org.apache.commons.dbcp' name='Apache Commons DBCP' version='1.4.0.v201204271417'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+      </repositories>
+    </iu>
+    <iu id='org.apache.commons.io' name='Apache Commons IO' version='2.0.1.v201105210651'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.apache.commons.lang' name='Apache Commons Lang' version='2.6.0.v201205030909'>
+      <repositories size='3'>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+        <repository location='http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.apache.commons.logging' name='Apache Commons Logging Plug-in' version='1.1.1.v201101211721'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.apache.commons.math' name='Apache Commons Math' version='2.1.0.v201105210652'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.apache.xerces' name='Apache Xerces-J' version='2.9.0.v201101211617'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.jgit.pgm.feature.group' name='Command Line Interface for Java implementation of Git' version='3.0.0.201306101825-r'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/egit/updates'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.egit.feature.group' name='Eclipse Git Team Provider' version='3.0.0.201306101825-r'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/egit/updates'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.platform.ide' name='Eclipse Platform' version='3.8.2.M20130131-0800'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/eclipse/updates/3.8'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.platform.sdk' name='Eclipse Platform SDK' version='3.8.2.M20130131-0800'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/eclipse/updates/3.8'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.sdk.ide' name='Eclipse SDK' version='3.8.2.M20130131-0800'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/eclipse/updates/3.8'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.gef.sdk.feature.group' name='Graphical Editing Framework GEF SDK' version='3.8.2.201301141834'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/tools/gef/updates/releases/'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.apache.commons.discovery' name='Jakarta-Commons Discovery' version='0.2.0.v201004190315'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.jgit.feature.group' name='Java implementation of Git' version='3.0.0.201306101825-r'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/egit/updates'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.jgit.java7.feature.group' name='Java implementation of Git - optional Java 7 libraries' version='3.0.0.201306101825-r'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/egit/updates'/>
+      </repositories>
+    </iu>
+    <iu id='net.java.dev.jna.feature.group' name='JNA Library' version='3.4.0.t20120117_1605'>
+      <repositories size='1'>
+        <repository location='http://subclipse.tigris.org/update_1.8.x'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.nebula.feature.feature.group' name='Nebula Widgets' version='1.0.0.201305042341'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/technology/nebula/snapshot'/>
+      </repositories>
+    </iu>
+    <iu id='org.slf4j.api' name='SLF4J API' version='1.6.4.v20120130-2120'>
+      <repositories size='3'>
+        <repository location='http://download.eclipse.org/eclipse/updates/3.8'/>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.tigris.subversion.subclipse.feature.group' name='Subclipse (Required)' version='1.8.22'>
+      <repositories size='1'>
+        <repository location='http://subclipse.tigris.org/update_1.8.x'/>
+      </repositories>
+    </iu>
+    <iu id='org.tigris.subversion.clientadapter.feature.feature.group' name='Subversion Client Adapter (Required)' version='1.8.6'>
+      <repositories size='1'>
+        <repository location='http://subclipse.tigris.org/update_1.8.x'/>
+      </repositories>
+    </iu>
+    <iu id='org.tigris.subversion.clientadapter.svnkit.feature.feature.group' name='SVNKit Client Adapter (Not required)' version='1.7.9.2'>
+      <repositories size='1'>
+        <repository location='http://subclipse.tigris.org/update_1.8.x'/>
+      </repositories>
+    </iu>
+    <iu id='org.tmatesoft.svnkit.feature.group' name='SVNKit Library' version='1.7.9.r9659_v20130411_2103'>
+      <repositories size='1'>
+        <repository location='http://subclipse.tigris.org/update_1.8.x'/>
+      </repositories>
+    </iu>
+    <iu id='org.apache.xalan' name='Xalan-Java' version='2.7.1.v201005080400'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.xtext.sdk.feature.group' name='Xtext SDK' version='2.3.1.v201208210947'>
+      <repositories size='2'>
+        <repository location='http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/'/>
+        <repository location='http://download.eclipse.org/releases/juno'/>
+      </repositories>
+    </iu>
+    <iu id='com.buzzcoders.yasw.widgets.map.feature.feature.group' name='YASW Map widget' version='1.0.0.v20140304-0957'>
+      <repositories size='1'>
+        <repository location='http://yasw-library.sf.net/updates/'/>
+      </repositories>
+    </iu>
+  </ius>
+</p2f>

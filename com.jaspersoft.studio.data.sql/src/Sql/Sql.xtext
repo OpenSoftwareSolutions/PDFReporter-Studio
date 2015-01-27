@@ -1,0 +1,224 @@
+grammar com.jaspersoft.studio.data.Sql with org.eclipse.xtext.common.Terminals hidden(WS, ML_COMMENT, SL_COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+generate sql "http://www.com.jaspersoft.studio.data.Sql"
+
+Model:
+	query=SelectQuery
+	('ORDER BY' orderByEntry=OrderByColumns)?
+	('LIMIT' ('ALL' | (INT (',' INT)?)))?
+	('OFFSET' INT)?
+	('FETCH FIRST' INT 'ROWS ONLY')?;
+
+SelectQuery returns SelectQuery:
+	Select (op+=SelectSubSet)*;
+
+SelectSubSet:
+	op=('UNION' | 'INTERSECT' | 'MINUS' | 'EXCEPT') all=('ALL')? query=Select;
+
+Select:
+	select='SELECT' ('DISTINCT')? ('TOP' (INT | SIGNED_DOUBLE) 'PERCENT'? 'WITH TIES'?)? cols=Columns 'FROM' tbl=Tables
+	('WHERE' whereExpression=FullExpression)?
+	('GROUP BY'
+	groupByEntry=GroupByColumns)? ('HAVING' havingEntry=FullExpression)?;
+
+Columns returns OrColumn:
+	ColumnOrAlias ({OrColumn.entries+=current} ("," entries+=ColumnOrAlias)+)?;
+
+ColumnOrAlias:
+	(ce=Operand alias=('AS')? (colAlias=DbObjectName)?) | allCols=STAR | dbAllCols=DbObjectNameAll;
+
+ColumnFull returns ColumnFull:
+	DbObjectName ({Col.entries+=current} ("." entries+=DbObjectName)+)?;
+
+Tables returns OrTable:
+	FromTable ({OrTable.entries+=current} ("," entries+=FromTable)+)?;
+
+FromTable:
+	table=TableOrAlias (fjoin+=FromTableJoin)*;
+
+FromTableJoin:
+	join=JoinType onTable=TableOrAlias 'ON' joinExpr=FullExpression;
+
+TableOrAlias:
+	(tfull=TableFull | sq=SubQueryOperand) alias=('AS')? (tblAlias=DbObjectName)?;
+
+TableFull:
+	DbObjectName ({tbls.entries+=current} ("." entries+=DbObjectName)+)?;
+
+DbObjectNameAll:
+	dbname=DBID '.' STAR;
+
+DbObjectName:
+	dbname=DBID;
+
+OrderByColumns returns OrOrderByColumn:
+	OrderByColumnFull ({OrOrderByColumn.entries+=current} ("," entries+=OrderByColumnFull)+)?;
+
+OrderByColumnFull:
+	(colOrder=ColumnFull | colOrderInt=INT) direction=('ASC' | 'DESC')?;
+
+GroupByColumns returns OrGroupByColumn:
+	GroupByColumnFull ({OrGroupByColumn.entries+=current} ("," entries+=GroupByColumnFull)+)?;
+
+GroupByColumnFull:
+	colGrBy=ColumnFull;
+
+FullExpression returns OrExpr:
+	ExpressionFragment ({OrExpr.entries+=current} (entries+=ExpressionFragmentSecond)+)?;
+
+ExpressionFragmentSecond returns FullExpression:
+	((c=('AND' | 'OR') efrag=ExpressionFragment) | notPrm=JRNPARAM);
+
+ExpressionFragment returns FullExpression:
+	expgroup=ExpressionGroup | exp=Expression | xexp=(XExpression | XExpression_) | notPrm=JRNPARAM;
+
+ExpressionGroup returns ExprGroup:
+	{ExprGroup} '(' expr=FullExpression ')';
+
+XExpression returns XExpr:
+	'$X' {XExpr} '{' xf=XFunction "," col=Operand ("," prm=XExpressionParams)? '}';
+
+XExpression_ returns XExpr:
+	'$X' {XExpr} '{' xf=XFunction "|" col=Operand ("|" prm=XExpressionParams)? '}';
+
+XExpressionParams returns Prms:
+	JRParameter ({Prms.entries+=current} ("," entries+=JRParameter)+)?;
+
+JRParameter:
+	jrprm=ID;
+
+Expression returns FullExpression:
+	op1=Operand (isnull=('IS NULL' | 'IS NOT NULL') | in=InOperator | between=Between | like=Like | comp=Comparison);
+
+Comparison:
+	operator=('>' | '>=' | '<' | '<=' | '=' | '<>') subOperator=('ANY' | 'ALL' | 'SOME')? op2=Operand;
+
+Like:
+	opLike=('LIKE' | 'NOT LIKE') op2=LikeOperand;
+
+LikeOperand returns LikeOperand:
+	op2=StringOperand | fop2=OperandFunction | fcast=OpFunctionCast;
+
+Between:
+	opBetween=('BETWEEN' | 'NOT BETWEEN') op2=Operand 'AND' op3=Operand;
+
+InOperator returns InOper:
+	{InOper} op=('NOT IN' | 'IN') '(' (subquery=SubQueryOperand | opList=OperandList) ')';
+
+OperandList:
+	ScalarOperand ({OpList.entries+=current} ("," entries+=ScalarOperand)+)?;
+
+Operand returns Operands:
+	op1=OperandFragment (({Plus.left=current} '+' | {Minus.left=current} '-' | {Star.left=current} STAR |
+	{Div.left=current} '/' | {Concat.left=current} '||') right=OperandFragment)*;
+
+OperandFragment returns Operand:
+	column=ColumnOperand | xop=XOperandFragment | subq=SubQueryOperand | fcast=OpFunctionCast |
+	func=OperandFunction | sqlcase=SQLCASE /*|opGroup=OperandGroup */;
+
+	//OperandGroup returns OpGroup:
+//	{OpGroup} '(' op=Operand ')';
+OperandFunction returns OpFunction:
+	{OpFunction} fname=FNAME (STAR | args=OpFunctionArg) ')';
+
+OpFunctionArg:
+	OpFunctionArgOperand ({OpFList.entries+=current} ("," entries+=OpFunctionArgOperand)+)?;
+
+OpFunctionArgOperand returns OpFunctionArgOperand:
+/*fa=OpFunctionArgAgregate | fc=OpFunctionArgCast |*/ op=(OpFunctionArgAgregate | Operand);
+
+OpFunctionCast:
+	'CAST(' op=Operand 'AS' type=ID ('(' p=INT (',' p2=INT)? ')')? ')';
+
+OpFunctionArgAgregate:
+	('ALL' | 'DISTINCT') Operand;
+
+XOperandFragment returns Operand:
+	param=ParameterOperand | eparam=ExclamationParameterOperand | scalar=ScalarOperand;
+
+ParameterOperand returns POperand:
+	prm=JRPARAM;
+
+ExclamationParameterOperand returns ExpOperand:
+	prm=JRNPARAM;
+
+ColumnOperand returns ColumnOperand:
+	cfull=ColumnFull;
+
+SubQueryOperand returns SubQueryOperand:
+	{SubQueryOperand} '(' sel=SelectQuery ')';
+
+ScalarOperand returns ScalarOperand:
+	soint=INT | sostr=StringOperand | sodbl=SIGNED_DOUBLE | sodate=DATE | sotime=TIME | sodt=TIMESTAMP;
+
+SQLCASE returns SQLCaseOperand:
+	'CASE' (expr=FullExpression)? when=SQLCaseWhens 'END';
+
+SQLCaseWhens:
+	SqlCaseWhen ({WhenList.entries+=current} (entries+=SqlCaseWhen)+)?;
+
+SqlCaseWhen returns SqlCaseWhen:
+	'WHEN' expr=FullExpression 'THEN' texp=Operand ('ELSE' eexp=Operand)?;
+
+enum XFunction:
+	xin='IN' | xnotin='NOTIN' | xeq='EQUAL' | xnoteq='NOTEQUAL' | xls='LESS' | xgt='GREATER'
+	| xlsr='LESS]' | xgtl='[GREATER' | xbwn='BETWEEN' | xbwnc='[BETWEEN]' | xbwnl='[BETWEEN'
+	| xbwnr='BETWEEN]';
+
+JoinType:
+	('NATURAL')? ('INNER' | ('LEFT' | 'RIGHT' | 'FULL') ('OUTER')? | 'CROSS')? 'JOIN';
+
+DBID:
+	ID | DBNAME | STRING;
+
+StringOperand:
+	STRING_;
+
+FNAME:
+	ID '(';
+
+terminal JRPARAM:
+	'$P{'->'}';
+
+terminal JRNPARAM:
+	'$P!{'->'}';
+
+terminal STAR:
+	"*";
+
+terminal INT returns ecore::EInt:
+	'-'? ('0'..'9')+;
+
+terminal TIMESTAMP returns ecore::EDate:
+	DATE ' ' TIME;
+
+terminal DATE returns ecore::EDate:
+	"'" '0'..'9' '0'..'9' '0'..'9' '0'..'9' '-' ('0'..'1') '0'..'9' '-' '0'..'3' '0'..'9' "'";
+
+terminal TIME returns ecore::EDate:
+	"'" '0'..'9' '0'..'9' ':' '0'..'9' '0'..'9' ':' '0'..'1' '0'..'9' '.' '0'..'9' '0'..'9' '0'..'9' "'";
+
+terminal SIGNED_DOUBLE returns ecore::EBigDecimal:
+	'-'? ('0'..'9')+ ('.' ('0'..'9')+)?;
+
+terminal STRING_:
+	"'" ('\\' ('b' | 't' | 'n' | 'f' | 'r' | 'u' | '"' | "'" | '\\') | !('\\' | "'"))* "'";
+
+terminal STRING:
+	'"' ('\\' ('b' | 't' | 'n' | 'f' | 'r' | 'u' | '"' | "'" | '\\') | !('\\' | '"'))* '"';
+
+terminal DBNAME:
+	'`' ('\\' ('b' | 't' | 'n' | 'f' | 'r' | 'u' | '"' | "'" | '\\') | !('\\' | '`'))* '`' |
+	'[' ('\\' ('b' | 't' | 'n' | 'f' | 'r' | 'u' | '"' | "'" | '\\') | !('\\' | ']'))* ']';
+
+terminal ID:
+	('a'..'z' | 'A'..'Z' | 'À'..'ÿ' | 'Ā'..'ſ' | 'ƀ'..'ɏ' | 'А'..'я' | '_' | '-' | 'ぁ'..'ゟ' | '゠'..'ヿ' | 'ㇰ'..'ㇿ' |
+	'一'..'鿿' |
+	'歴'..'す' | 'ア'..'ン' | '豈'..'﫿' | '㐀'..'䶿' |
+	'0'..'9')*;
+
+terminal SL_COMMENT:
+	('--' | '#' | '//') !('\n' | '\r')* ('\r'? '\n')?;
+
+ 

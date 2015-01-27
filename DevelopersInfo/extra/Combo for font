@@ -1,0 +1,3 @@
+Since the combo popup component need some tweaks to be used for the font selection, it was substituted with a standard combo menu. 
+Anyway all the work of the combo popup for the font was manteined even if it's actually unused. 
+To restore the combo popup change the occurence of SPFont with SPFontPanelChart and SPFontNameCombo with SPFontNamePopUp.

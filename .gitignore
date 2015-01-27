@@ -1,0 +1,11 @@
+.metadata/
+**/target/**
+**/bin/**
+**/build/**
+**/jre/**
+eclipse_local_repo/
+jre_packages/
+**/.classpath
+**/.project
+**/.settings/**
+

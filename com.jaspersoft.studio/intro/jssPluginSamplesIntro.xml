@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<introContent>
+  	<extensionContent id="jssplugin-samplesIntroExtension" style="css/jssplugin.css" name="Jaspersoft Studio Samples Intro Extension" path="samples/@">
+		<group style-id="content-group" id="jssplugin-samplesIntroExtension-group" label="Reporting">
+			<text style-id="group-description">The following samples demonstrate how to use some features of Jaspersoft Studio.</text>
+       		<link label="Jaspersoft Studio Samples Project Wizard" url="http://org.eclipse.ui.intro/runAction?pluginId=net.sf.jasperreports.samples&amp;class=net.sf.jasperreports.samples.wizards.JasperReportsSamplesProjectAction" id="jssplugin-samplesLink" style-id="content-link">
+          		<text>Opens the wizard to create a new project full of samples related to JasperReports.</text>
+       		</link>
+       	</group>
+  	</extensionContent>
+</introContent>

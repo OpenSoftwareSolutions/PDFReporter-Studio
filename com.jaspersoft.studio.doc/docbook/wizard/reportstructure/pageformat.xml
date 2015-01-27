@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+	<title>Editing the Page Format</title>
+	<section>
+		<para>To change the page properties click on the "Edit page format" button in the properties view of the report, or right click on the report itself and select "Page Format" from the contextual menu, to see the page properties.</para>
+		<figure>
+			<title>Page format button</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="2.png" format="PNG" contentwidth="800px"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			In the dialog that will appear you can change the page dimensions, that probably are the report's most important properties.
+		</para>
+		<figure>
+			<title>Page format dialog</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="3.png" format="PNG" contentwidth="800px"/>
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			A list of standard measure is presented, The unit of measurement used by Jaspersoft Studio and JasperReport is the pixeld. Howerver, it is possible to specify report dimension using 
+			units of measurement that are more common, such as centimeters, millimeters, or inches. Note that because the dimnesions management is based on pixels, some rought adjustments can take 
+			place when viewing the same data using different units of measurement. If you are interested in the argument check also the Measure Units Tutorial. In the following table there is a 
+			list of  the standard measures and their dimensions in pixels.
+		</para>
+		<figure>
+			<title>Supported pageformats</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="9.png" format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+		<para>
+			By modifying width and height, it is possible to create a report of whatever size you like. The page orientations options, Landscape or Portrait, in reality are not meaningful, 
+			because the page dimension are characterized by width and height independent of the sheet orientation. Howerver, this property can be used bt certain report exporters.The page margin 
+			dimensions are set by means of the four options on the Page Margin tab. 
+		</para> 
+	</section>
+</section>

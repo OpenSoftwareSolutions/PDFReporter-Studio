@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.jaspersoft.studio.rcp.feature"
+      label="Jaspersoft Studio Community RCP Feature"
+      version="5.6.2.final"
+      provider-name="Jaspersoft Corporation"
+      plugin="net.sf.jasperreports"
+      os="linux,macosx,win32"
+      ws="cocoa,gtk,win32">
+
+   <description url="http://community.jaspersoft.com/project/jaspersoft-studio">
+      Eclipse-based JasperReports Designer
+   </description>
+
+   <copyright url="http://www.jaspersoft.com/legal-notices">
+      Copyright © 2010 - 2013 Jaspersoft Corporation
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="Jaspersoft Studio site" url="http://jasperstudio.sf.net/updates"/>
+      <discovery label="Jaspersoft Studio" url="http://community.jaspersoft.com/project/jaspersoft-studio"/>
+   </url>
+
+   <includes
+         id="com.jaspersoft.studio.feature"
+         version="0.0.0"
+         search-location="both"/>
+
+   <includes
+         id="org.eclipse.cvs"
+         version="0.0.0"
+         optional="true"
+         search-location="both"/>
+
+   <includes
+         id="org.tigris.subversion.clientadapter.svnkit.feature"
+         version="0.0.0"
+         optional="true"
+         search-location="both"/>
+
+   <includes
+         id="org.tmatesoft.svnkit"
+         version="0.0.0"
+         optional="true"
+         search-location="both"/>
+
+   <includes
+         id="org.tigris.subversion.clientadapter.feature"
+         version="0.0.0"
+         optional="true"
+         search-location="both"/>
+
+   <includes
+         id="org.tigris.subversion.clientadapter.svnkit.feature"
+         version="0.0.0"
+         optional="true"
+         search-location="both"/>
+
+   <includes
+         id="org.tigris.subversion.subclipse"
+         version="0.0.0"
+         optional="true"
+         search-location="both"/>
+
+   <includes
+         id="org.eclipse.egit"
+         version="0.0.0"
+         optional="true"
+         search-location="both"/>
+
+   <includes
+         id="org.eclipse.jgit"
+         version="0.0.0"
+         optional="true"
+         search-location="both"/>
+
+   <includes
+         id="org.eclipse.jgit.java7"
+         version="0.0.0"
+         optional="true"
+         search-location="both"/>
+
+   <includes
+         id="org.eclipse.jgit.pgm"
+         version="0.0.0"
+         optional="true"
+         search-location="both"/>
+
+   <includes
+         id="com.jaspersoft.studio.jre.feature"
+         version="0.0.0"
+         search-location="both"/>
+
+   <includes
+         id="org.eclipse.equinox.p2.user.ui"
+         version="0.0.0"
+         search-location="both"/>
+
+   <includes
+         id="com.jaspersoft.studio.i18n.feature"
+         version="0.0.0"
+         search-location="both"/>
+
+   <requires>
+      <import plugin="org.eclipse.ui.intro"/>
+      <import plugin="com.jaspersoft.studio" version="5.6.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.browser" version="3.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.debug.ui"/>
+      <import plugin="org.eclipse.equinox.p2.operations" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.p2.core" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.p2.ui" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.p2.metadata" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.p2.engine" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.views.log"/>
+      <import plugin="org.eclipse.debug.core" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.jdt.debug" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.jdt.core" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.jdt.launching" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.jface" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.ui" version="3.5.0" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="com.jaspersoft.studio.rcp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jdt.launching.macosx"
+         os="macosx"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jdt.launching.ui.macosx"
+         os="macosx"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

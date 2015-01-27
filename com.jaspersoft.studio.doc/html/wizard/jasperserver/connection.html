@@ -1,0 +1,44 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Connect to JasperReports Server</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Connect to JasperReports Server</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+	  <p>
+	  	JasperReports Server is a stand-alone and embeddable reporting server. In this tutorial we will see how connect JaspersoftStudio to JasperReports Server and how to upload and download a report from the server.
+	  	Since we need to interact with JasperReports Server we need an URL to it and we need the credential to access it. Anyway if you doesn't have one of this you can do a local installation of JasperReports Server. 
+	  	To do this, follow <a class="ulink" href="http://community.jaspersoft.com/project/jasperreports-server/releases" target="_top">THIS</a> link and download the correct version for your operative system, and then install it following the on screen instructions.
+	  </p>
+	  <p>
+	  	To have an easy replicable example lets suppose that we are using a local installation of JasperReports Server. To check if our server is running open your browser and copy in the address bar this URL: 
+		</p><pre class="programlisting">http://localhost:8080/jasperserver/login.html</pre><p>
+		You should see a window like this:
+	  </p>
+	  <div class="figure"><a name="N4001B"></a><p class="title"><b>Figure&nbsp;1.&nbsp;JasperReports Server login screen</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="1.png" width="800" alt="JasperReports Server login screen"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	If it is all working, start Jaspersoft Studio, go into the "Repository Explorer" tab and hit the button "Create a JasperReports Server Connection":
+	  </p>
+	  <div class="figure"><a name="N40032"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Create a connection to JasperReports server</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="2.png" width="800" alt="Create a connection to JasperReports server"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	A dialog to insert the data of the server will appear, fill it as follow:
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">Name: the name of the connection, you can use any name you want. For this example we will leave the default one: JasperReports Server;</li><li class="listitem" style="list-style-type: circle">URL: the address of the server, the default one is already right if we are using a local server. For this example the correct address is http://localhost:8080/jasperserver/services/repository;</li><li class="listitem" style="list-style-type: circle">User: the username to access the server, the default one for the local server is "jasperadmin";</li><li class="listitem" style="list-style-type: circle">Password: as the username, for the local server by default it is "jasperadmin"</li></ul></div><p>
+		Then hit the test button to test the connection and it is all working hit the "Finish" button.
+	  </p>
+	  <div class="figure"><a name="N40059"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Configure the connection</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="3.png" width="800" alt="Configure the connection"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	At this point you are connected to the server and you can upload and download reports.
+	  </p>
+      </div>
+</div></body></html>

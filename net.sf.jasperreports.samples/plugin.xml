@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="samples" name="Samples" schema="schema/samples.exsd"/>
+
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="com.jaspersoft.studio"
+            class="net.sf.jasperreports.samples.wizards.SampleNewWizard"
+            icon="icons/jrxml_icon.png"
+            id="net.sf.jasperreports.samples.wizards.SampleNewWizard"
+            name="JasperReports Samples"
+            project="true">
+         <description>
+            Create a JasperReports project that contains a many samples
+         </description>
+      </wizard>
+   </extension>
+
+</plugin>

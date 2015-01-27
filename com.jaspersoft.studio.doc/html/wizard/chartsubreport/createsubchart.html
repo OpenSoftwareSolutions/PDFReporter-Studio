@@ -1,0 +1,132 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Creation of a Chart using a subreport</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Creation of a Chart using a subreport</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+      <p>
+      	JasperReports supports a large number of built-in charts created using the popular open source library JFreeChart. 
+      	Chart types include Pie, Bar, Stacked Bar, Line, Area, Bubble, Gantt, Thermometer and Meter. In this tutorial we will learn how to add a multi-series chart to a report, 
+      	using the subreport element. 
+	  </p>
+	  <p>
+	  	A subreport is an element that includes a report inside another report. The idea in this tutorial is to have a subreport containing just the graph, and a main report that 
+	  	includes the subreport in the summary section.
+		For example we want to use two reports because in the main report we need a list of records without any aggregation so we had used the query like 
+		"select * from orders" (assuming we are using the sample database) and from all the fields read we had selected the order id, the shipment name, shipment address, 
+		shipment city, shipment region. But for the graph in the subreport we don't need a list of records, just a group of them. In other words, we need the records grouped by the shipment city. 
+		For this reason we need two queries, one that returns all the records  (for the main report) and one for the group (for the subreport). Because a report can have only one main query, 
+		we can use another report for the additional query. Note that there are other ways to use more than a query on the report, but for now we choose this one to introduce the concept of subreport.
+	  </p>
+	  <p>
+		The first thing to do is drag and drop the subreport element from the palette into the summary section and a wizard will appear:
+	  </p>
+	  <div class="figure"><a name="N40017"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Place the subreport element</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="2.png" width="800" alt="Place the subreport element"></div>
+			</div>
+	  </div></div><br class="figure-break">
+	  <p>
+		  In the first step of the wizard we have three choices:
+		  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">Create a new report as subreport.</li><li class="listitem" style="list-style-type: circle">Use an existing report as subreport.</li><li class="listitem" style="list-style-type: circle">Put an empty report as subreport, as a placeholder.</li></ul></div><p>
+	  	  Since we are doing this from scratch select the first option, Create a new report, and click Next.
+	  </p>
+	  <div class="figure"><a name="N4003B"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Select the template</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="3.png" width="800" alt="Select the template"></div>
+			</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	Now we will seen a wizard almost identical to the one seen when we created the first report. This time, since we need only a blank paper with a graph select BlankA4 and hit Next.
+	  </p>
+	  <div class="figure"><a name="N40052"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Select name and location</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="4.png" width="800" alt="Select name and location"></div>
+			</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	Now we need to choose the location and the filename of the new report, put it in the standard location MyReports and as name use "GraphReport" and click Next.
+	  </p>
+  	  <div class="figure"><a name="N40069"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Configure the datasource</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="5.png" width="800" alt="Configure the datasource"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	Now we have to select the data adapter. Since we need to use the same data source for both reports, select the same data adapter as used in the main report. 
+	  	We must also provide the query to retrieve the fields, so enter the query that returns the records grouped by the shipment city. Every record read from the database with 
+	  	this query contains two fields: the number of elements for a city and the name of the city. After that we can click Next.
+	  </p>
+	  <div class="figure"><a name="N40080"></a><p class="title"><b>Figure&nbsp;5.&nbsp;Add the fields</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="6.png" width="800" alt="Add the fields"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	At this point we can see the fields included by the second query. Click the add all button or double-click on each field until they are in the right list. After that click Next. 
+	  	The following step in the wizard is to create groups into the report, but this is unnecessary for our goal. Click Next again.
+	  </p>
+  	  <div class="figure"><a name="N40097"></a><p class="title"><b>Figure&nbsp;6.&nbsp;Configure the connection</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="7.png" width="800" alt="Configure the connection"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	Now we have to select the connection to the database. Since we are using the same database as in the main report we can select the first option and click Next. 
+	  	In the following step in the wizard, we could create some parameters that can be passed from the main report to the subereport, but we don't need them so click the button Finish.
+	  </p>
+	  <p>
+		Now we have a new report with all his bands, but we need only one of them. In fact, we need only a band for the graph, and the band must be printed only once, 
+		so the detail band is excluded. We can choose the Title or Summary band. If we decide to choose Title, we need to remove the other bands because otherwise they will 
+		take up space unnecessarily. So for each band except Title right-click on its element in the outline view and choose Delete. The name of a deleted band appears in light 
+		gray text in the outline view, so at the end of the process the only band with a black name must be Title.
+	  </p>
+   	  <div class="figure"><a name="N400B1"></a><p class="title"><b>Figure&nbsp;7.&nbsp;Prepare the layout</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="8.png" width="800" alt="Prepare the layout"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	Now we can place the chart. Drag its element from the palette into the Title band to open the wizard, select the bar chart and click Next.
+	  </p>
+   	  <div class="figure"><a name="N400C8"></a><p class="title"><b>Figure&nbsp;8.&nbsp;Place the chart</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="9.png" width="800" alt="Place the chart"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	In the next step you can configure the series of the chart, as shown in the following image:
+	  </p>
+  	  <div class="figure"><a name="N400DF"></a><p class="title"><b>Figure&nbsp;9.&nbsp;Configure the chart</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="10.png" width="800" alt="Configure the chart"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	Then click Finish to create the chart. Since we need space, resize the Title band with an height of 350 pixels. Right-click on the chart, select Size to 
+	  	Container and then Fill Both. The chart will take all the space in the band. Now we can switch to the Preview tab and if it is all correct, save this 
+	  	subreport and switch to the main report as shown in the following image:
+	  </p>
+	  <div class="figure"><a name="N400F6"></a><p class="title"><b>Figure&nbsp;10.&nbsp;Test the subreport</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="11.png" width="800" alt="Test the subreport"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p>
+	  	Now the only thing to do is to resize the subreport element to fill the Summary band, and compile the report. On the last page you will get a result like this:
+	  </p>
+	  <div class="figure"><a name="N4010D"></a><p class="title"><b>Figure&nbsp;11.&nbsp;Final result on the main report</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="12.png" width="800" alt="Final result on the main report"></div>
+		</div>
+	  </div></div><br class="figure-break">
+      </div>
+</div></body></html>

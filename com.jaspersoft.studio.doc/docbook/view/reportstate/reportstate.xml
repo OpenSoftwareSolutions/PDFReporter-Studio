@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xsi:schemaLocation="http://docbook.org/ns/docbook http://www.docbook.org/xml/5.0/xsd/docbook.xsd http://www.w3.org/1999/xlink http://www.docbook.org/xml/5.0/xsd/xlink.xsd"
+	xml:base="../" xmlns="http://docbook.org/ns/docbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ns="http://docbook.org/ns/docbook">
+	<title>Report State View</title>
+
+	<section>
+
+		<para>The Report State view moves to the front when a report is executed. This view shows:
+		</para>
+		<itemizedlist mark='opencircle'>
+			<listitem>
+				<para>
+					The console which displays the report execution process in real-time.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					A list of errors that occurs during report execution. Double clicking an error will open error dialog with a detailed stacktrace.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Some statistics of report execution like fill size, record count, page count, compilation time, filling time, export time.
+				</para>
+			</listitem>
+
+		</itemizedlist>
+
+		<figure>
+			<title>Report State View</title>
+			<screenshot>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="reportstate.png" format="PNG" />
+					</imageobject>
+				</mediaobject>
+			</screenshot>
+		</figure>
+
+	</section>
+
+</section>

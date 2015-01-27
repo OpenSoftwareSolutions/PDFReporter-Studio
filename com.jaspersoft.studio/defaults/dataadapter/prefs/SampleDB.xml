@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl"><name>Sample DB</name>
+<driver>org.hsqldb.jdbcDriver</driver><username>sa</username><password></password><savePassword>true</savePassword>
+<url>jdbc:hsqldb:res:/defaults/hsqldb/test</url><database></database><serverAddress></serverAddress></jdbcDataAdapter>

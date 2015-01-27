@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="net.sf.jasperreports.samples.feature"
+      label="JasperReports Library Samples Feature"
+      version="5.6.2.final"
+      provider-name="Jaspersoft Corporation"
+      os="linux,macosx,win32"
+      ws="carbon,cocoa,gtk,win32">
+
+   <description url="http://community.jaspersoft.com/project/jaspersoft-studio">
+      JasperReports Samples for Jaspersoft Studio
+   </description>
+
+   <copyright url="http://www.jaspersoft.com/legal-notices">
+      Copyright © 2010 - 2013 Jaspersoft Corporation
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="net.sf.jasperreports" version="5.6.2" match="greaterOrEqual"/>
+      <import plugin="net.sf.jasperreports.samples" version="5.6.2" match="greaterOrEqual"/>
+      <import plugin="net.sf.jasperreports.doc" version="5.6.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.navigator.resources" version="3.4.200" match="greaterOrEqual"/>
+      <import plugin="com.jaspersoft.studio.doc" version="2.0.1" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="net.sf.jasperreports.samples"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.jaspersoft.studio.doc.samples"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,44 @@
+#set( $clazzSuffix = ".class" )
+#if($packageName && !("$packageName" == ""))
+package $packageName;
+#end
+import net.sf.jasperreports.functions.annotations.Function;
+import net.sf.jasperreports.functions.annotations.FunctionCategories;
+import net.sf.jasperreports.functions.annotations.FunctionParameter;
+import net.sf.jasperreports.functions.annotations.FunctionParameters;
+
+@FunctionCategories({ 
+	#foreach( $category in $categoriesList )
+	    $category$clazzSuffix#if( $foreach.hasNext ),#end
+	#end
+ })
+ public class $functionLibraryName {
+ 
+ 	#if( $printSampleMethods )
+ 	@Function("HELLO_WORLD_MSG")
+ 	public static String HELLO_WORLD_MSG() {
+ 		return "Hello World!";
+ 	}
+
+	@Function("REPEAT_MSG")
+	@FunctionParameters({
+		@FunctionParameter("message"),
+		@FunctionParameter("times"),
+		@FunctionParameter("forceUpperCase")})
+	public static String REPEAT_MSG(String message, Integer times){
+		return REPEAT_MSG(message,times,false);
+	}
+	
+	public static String REPEAT_MSG(String message, Integer times, Boolean forceUpperCase){
+		StringBuffer sb = new StringBuffer();
+		for(int i=0; i<times; i++) {
+			sb.append(message).append("\n");
+		}
+		String txt = sb.toString();
+		if(forceUpperCase) {
+			txt = txt.toUpperCase();
+		}
+		return txt;
+	}	
+ 	#end
+ }

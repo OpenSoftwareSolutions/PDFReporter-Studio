@@ -1,0 +1,74 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Creation of a Group</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Creation of a Group</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+      <p>
+	      Groups allow you to organize the records of a report with a better structure. A group is defined through an expression, so
+	      it can contain fields and variables, JasperRepors evaluates this expression and puts in the same group all the elements that
+	      have the same final result of the expression. When the result change then a new group is started. To create a new group go
+	      into the Outline view, right click on the root element (the report you have created) and select "Create Group", as
+	      shown in the image below:
+      </p>
+ 	  <div class="figure"><a name="N40011"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Select the Create Group action</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="1.png" width="800" alt="Select the Create Group action"></div>
+			</div>
+	  </div></div><br class="figure-break">
+      <p>Now the window to create a new group will appear:</p>
+      <div class="figure"><a name="N40028"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Group Name and Type</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="2.png" alt="Group Name and Type"></div>
+			</div>
+	  </div></div><br class="figure-break">
+      <p>From here, enter the group name and select your method for creating the new group:</p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">
+	  		Create group from a report object: this is a simplified way to create a group without creating an expression in the expression editor. 
+	  		With this option, all the fields and variables defined in the selected report object are listed, and you can choose which to use in your 
+	  		group. Selecting an element from this list is equivalent to create a group where the expression include only that element.
+	  	</li><li class="listitem" style="list-style-type: circle">
+			often the "create group from a report object" option will be sufficent to do what you want, but sometimes a more complex selection is needed. 
+			When you provide an expression for the group, JasperReport will evaluate it against each record. When the expression changes in value, a new group is created. 
+			Suppose you have the file that contains the amount of money you spent each day, and a report that get the data from this file, into the field Money_Spent. 
+			Then define a group with an expression Iike $F{Money_Spent}&gt;150. This expression returns a boolean value, doing this the consecutive records with a 
+			value greater than 150 will be grouped toghether. If you have a variable containing that expression already, you can use the simpler method of creating a 
+			group from a report object, as described above.
+		</li></ul></div>
+	  <p>
+	  	In the previous example, we used the word "consecutive" for the grouped values. Suppose to spent $120 for two consecutive days, $200 the third day and $100 the fourth day. 
+	  	With these values three groups will be created: one with the first two elements, one with the third, and one with the fourth. This happens because the JasperReport:
+	  </p>
+	  <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">
+			Reads the first record and evaluates the group expression: $120 is lesser than $150, so the result of the expression is "false". 
+			But since this is the first evaluation a new group is created.
+		</li><li class="listitem" style="list-style-type: circle">
+			Reads the second value and evaluates the group expression: $120 is still lesser than $150 and the result is still false. Since 
+			it is the same value of the previous evaluation this value goes in the first group.
+		</li><li class="listitem" style="list-style-type: circle">
+			Reads the third value and evaluates the group expression: $200 is greater than $150 and the result is true. It is different from 
+			the previous evaluation, so a new group for this value is created.
+		</li><li class="listitem" style="list-style-type: circle">
+			Reads the fourth and last value and evaluates the group expression: $100 is not greater than $150 and the result is false. Even 
+			this time it is different from the previous evaluation so another group is created.
+ 		</li></ul></div>
+ 	  <p>
+ 	  	This should clarify how the evaluation of the expression affects the creation of a group. Returning to the creation of the group, 
+ 	  	after we have selected the way how the group is evaluated we can click "Next" or "Finish". If we click next the following window will appear:
+      </p>
+      <div class="figure"><a name="N4005E"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Group Bands Selection</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="3.png" alt="Group Bands Selection"></div>
+			</div>
+	  </div></div><br class="figure-break">
+      <p>
+      	There you can select if you want the header and the footer of the group in the report. The group will be evaluated even
+      	without this two bands, but without any of them there aren't visually changes between a group and another (but the group
+      	can still be used for other calculations, see for example the evaluation time, reset type and the other fields in the
+      	variable section that uses the group to do some calculations). This because the bands Header and Footer will be always
+      	created, and them are visible in the outline view, but if one of the checkbox is unchecked then the relative band will not be
+      	placed into the report (in the outline view a band not visible in the report has its name in lightgray color). If you click
+      	finish in the previous screen instead of Next both the bands of the group will be created.
+      </p>
+      </div>
+</div></body></html>

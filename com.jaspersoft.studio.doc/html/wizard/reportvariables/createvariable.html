@@ -1,0 +1,255 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>The Variables</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>The Variables</h2></div></div><hr></div>
+
+<div class="section"><div class="titlepage"></div>
+      <p>
+		Variables can be used to store partial results and do complex calculations with the data extracted from data source. These values can then be used in other parts of the report, including other variables. 
+		This tutorial shows how to create and configure a variable, and explains the fields that define it.
+ 	  </p>	
+	  <p>
+	  	As with many other elements, all the defined variables are visible in the Outline menu under the item called "Variables". From there you can create a new variable (right click on the "Variables" item and then "Create variable") 
+	  	and, once selected, a variable its properties are visible on the Properties tab.  There are some built-in variables on Jaspersoft Stuido, which present in every report. You can identify these variables because their name has a 
+	  	light gray color, instead of a black color, and the properties of these variables can not be edited.
+	  </p>
+	  <div class="figure"><a name="N40014"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Variable properties</b></p><div class="figure-contents">
+		
+		<div class="screenshot">
+			<div class="mediaobject"><img src="1.png" width="800" alt="Variable properties"></div>
+		</div>
+	  </div></div><br class="figure-break">
+	  <p><b>Base properties of a variable.&nbsp;</b>
+	  
+	  	At a minimum, all variables must have the following defined:
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">
+				<p>
+				Name:  a string used to refer to the variable, it is necessary to use this variable inside other expressions (such the valorization of a Text Field or the  computation of another variable). 
+				To refer to a variable the following syntax is used: $V{variable_name}.
+				</p>
+			</li><li class="listitem" style="list-style-type: circle">
+				<p>
+				Type: necessary because a variable is an object that probably will be used in other expressions, so it's type must be known to be manipulated correctly.
+				</p>
+			</li><li class="listitem" style="list-style-type: circle">
+				<p>
+				Expression: the function used to define the variable value, it can be composed of more fields and variables, and could be used logic operators, math operators and so on. To easily define the 
+				expression an expression editor is provided in Jaspersoft Studio, this can be opened using the button at the right of the text Field used to write the expression. The expression is evaluated 
+				on each iteration, every time a record is read from the datasource. If there isn't a calculation function defined (this will be explained below) the result of the expression will be assigned 
+				to the variable, so it's important that the result has a type compatible with the one in the variable.
+				</p>
+			</li><li class="listitem" style="list-style-type: circle">
+				<p>
+				Initial Value:  the value assumed from the variable at the beginning, before the first computation of its expression. The initial value it's an expression itself, so it can be defined through 
+				the expression editor. It's not mandatory, but this depends on the expression itself and should be a good practice define an initial value. Suppose to have a variable called variable1 with the 
+				expression "new Integer(5)". At every record read will be assign to the variable the integer value 5, so the initial value it isn't important in this context. But suppose to change the expression 
+				to "$V{variable1}+5", this means that at every iteration the variable is incremented by 5. In this case an initial value it's necessary otherwise at the first iteration the variable1 is undefined 
+				and this breaks all future evaluations. So an initial value it's not mandatory, but the not initialized variables can be dangerous, so it's a good practice define it.
+				</p>
+			</li></ul></div><p>
+	  
+	  </p>
+	  <p><b>Other properties of a variable.&nbsp;</b>
+	 	
+	  	The most complex property of a variable is its temporal value. Since its expression is evaluated at every iteration, it is important to understand which value has a variable, and at which time. 
+	  	This can be complicated, considering that a variable can use other variables inside its expression. For these reasons there are mechanisms that can be used to simplify the evaluation or the reading of 
+	  	the variable value during the iterations.
+	  	
+ 		</p><p><b>Evaluation Time.&nbsp;</b>
+ 			
+				The evaluation time is not an attribute of the variable but of the elements that can use variables in their expressions (like a Text Field) and define the "time" when the value of the variable 
+				should be read. A variable can potentially change value at every iteration, so a value read at one time may be different from the one obtained during another time. So for every element that can 
+				define an expression is possible to say when evaluate it. And since in the expression could be defined one or more variables this parameter also influences also when these variables are read. 
+				The possible values are:
+			
+			
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">
+					<p>
+					Report: the value of the expression is evaluated ad the end of the report.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Page:  the value of the expression is evaluated at the end of every page of the report.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Column: the value of the expression is evaluated at the end of each column (if the report is composed only of a column this is equivalent to Page).
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Group :  the value of the expression is evaluated after the break of the specified group. This option is visible only if at least one group is defined.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Band: the value of the expression is evaluated after the end of the band where the element with this evaluation time is placed. This is a very particular case, introduced to wait that the 
+					other elements in the band are completely created. The typical value of the variables are read at the start of the band, but for example suppose to have a subreport with an output parameter 
+					to print in the main report. To print this parameter it must be read when the subreport was already computed, so the value could  be printed when the band is completely created, in this cases 
+					the Band evaluation time is necessary.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Auto: this is used when in the expression of the element there are more variables and fields, that need to be evaluated at different times. The variables are evaluated at a time corresponding 
+					to their Reset Type (see below for more information), instead the fields are always evaluated at time -now. This type is useful when report elements have expressions that combine values evaluated 
+					at different times (e.g. percentage out of a total).
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Now: the value of the expression is evaluated after the read of every record, so at every iteration, this is the default behavior.
+					</p>
+				</li></ul></div><p>
+			
+		</p><p>
+		</p><p><b>Calculation Function.&nbsp;</b>
+			
+				A calculation function is an attribute of a variable that defines when the variable can be used in association with the expression to determinate the value of the variable. When using a calculation 
+				function, the value of the variable is not determined directly by its expression. Instead, it is passed to the calculation function that will use it (depending on the function) to calculate the variable 
+				value. There are many function built-in in Jaspersoft Studio:
+			
+			
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">
+					<p>
+					Sum: at every iteration the the value of the expression is taken it will be summed at the value of the variable. This is one of the cases where the initial value is really important.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Count: at every iteration the variable value is incremented by one unit. This only if the expression is different from null, in that case the value of the variable will be left unchanged.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Distinct Count: at every iteration the variable value is incremented by one unit, but only if the value of the expression was never returned before.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Average: the value of the variable is the arithmetic average of all values received in input from the expression.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Lowest: the variable take the value of the lowest element received from the expression.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Highest: the variable take the value of the highest element received from the expression.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Standard Deviation: the standard deviation of all the value received from the expression.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					First: the variable take the value from the first value returned by the expression.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					System: no calculation is done and the expression is not evaluated, the value of this variable will be the last value set on it. Usefull to store partial results or the final result of a computation.
+					</p>
+				</li></ul></div><p>
+			
+		</p><p>
+		</p><p><b>Increment Type.&nbsp;</b>
+			
+				As stated above, when a calculation function is defined, the the value of the expression is passed to the function that will do the calculation for the variable. The default behavior is to do this for 
+				every record read, but sometimes a different behavior is desired. Using the increment type parameter is possible to change the "time" on which the calculation function is used. The possible values for this attribute are:
+			
+			
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">
+					<p>
+					Report: the Calculation Function is called only at the end of the report, passing to it the value of the expression at that moment.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Page: the Calculation Function is called at the end of each page,  passing to it the value of the expression at that moments.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Column: the Calculation Function is called at the end of each column (if the report is composed only of a column this is equivalent to Page).
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Group : the Calculation Function is called at the start of every occurence of the specified group.  This option is visible only if at least one group is defined.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					None:  the Calculation Function is called after the read of every record, this is the default behavior.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Remember that the expression is evaluated at every record read, independently from the increment type selected, but the calculation function will be used only when the times match those defined in the increment type.
+					</p>
+				</li></ul></div><p>
+			
+		</p><p>
+		</p><p><b>Reset Type.&nbsp;</b>
+			
+				The reset type defines when a variable should be reset to the initial value, or to null if an initial value is undefined. This is useful when the variable is used to compute a partial value, such a sum or an average of 
+				only some of the records read. The possible values for this attribute are:
+			
+			
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">
+					<p>
+					Report: the variable is initialized only one time at the  beginning of the report creation.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Page: the variable is initialized on each page.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Column: the variable is initialized again in each new column (if the report is composed only of a column this is equivalent to Page).
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					Group : the variable is initialized at the start of every occurence of the specified group.  This option is visible only if at least one group is defined.
+					</p>
+				</li><li class="listitem" style="list-style-type: circle">
+					<p>
+					None: the variable will never be initialized, so the initial value expression is ignored.
+					</p>
+				</li></ul></div><p>
+			
+		</p><p>
+		</p><p><b>Incrementer Factory Class Name.&nbsp;</b>
+			
+				The calculation functions are useful but are also generics and limited at the numeric types. You may have a case where something more specific is needed. Suppose you have a field of type String and you want to concatenate 
+				the value read. You can do this by defining a new Incrementer. An incrementer is a piece of java code that extends the interface JRIncrementerFactory, and can build a personalized calculation function to do what you need. 
+				Every calculation function receives the expression value and the variable value and returns the result of the increment, so there is everything needed to do the calculation and return the right value.
+			
+		</p><p>
+	  </p>
+	  <p><b>Tips &amp; Tricks.&nbsp;</b>
+	  	
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">
+				<p>
+				Pay attention at the type of the variable, many time a bad result is due to this. For example if your expression return a number but the variable is type string (that it's also the default type) then its value will be always zero.
+				</p>
+			</li><li class="listitem" style="list-style-type: circle">
+				<p>
+				The form of the expression it's really important for the computation of a value, especially when in the expression is used the variable itself. Consider the following example with
+				</p>
+				<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">
+						<p>
+						A field with name "Money_Gained", readed from the datasource, that has an integer value and could be null
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+						A variable "Total1" with the expression IF(EQUALS($F{Money_Gained}, null), $V{Total1}, $V{Total1}+$F{Money_Gained}), initial value zero, and no calculation function;
+						</p>
+					</li><li class="listitem" style="list-style-type: circle">
+						<p>
+						A variable "Total2" with the expression  $V{Money_Gained} == null ? $V{Total2} : $V{Total2}+$F{Money_Gained}, initial value zero, and no calculation function;
+						</p>
+					</li></ul></div>
+				<p>
+					The two expressions could seem equivalent: them both sum the money gained to the  variable when it is not null (remember that if there isn't a calculation function then the value of the expression 
+					is assigned to the variable). The check if the Money Gained has value null it's necessary because the sum of a number with the value null is null. So adding null to Total1 or Total2 will change the variable 
+					to null. But even with this check when Money_Gained will became null for the first time even Total1 will be null, instead Total2 will have the correct value. 
+				</p>
+				<p>
+					This happen because this two expressions have 2 different interpreters, the first is interpreted by Groovy, the second by Java. The java behavior is to evaluate the condition and then select the correct branch. 
+					Instead Groovy compute the two branches, then evaluate the expression and finally it return the correct already evaluated branch. Doing this it will add the null value to Total1 before to do the check, and 
+					this will made Total1 to became null.A trick to avoid this is to use the variable only in the main branch, for example Total1 could be rewritten like:  $V{Total1}  + IF(EQUALS($F{Money_Gained}, null),0,F{Money_Gained}).
+				</p>
+				<p>
+					The syntax is still interpreted by Groovy, but now the variable is out of the IF branches, so even if they are both evaluated, the variable maintains its value.
+				</p>
+			</li></ul></div><p>
+		
+	  </p>
+	 </div>
+</div></body></html>

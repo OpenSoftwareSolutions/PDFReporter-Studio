@@ -1,0 +1,71 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Expression Editor: what it is and how it works</title><meta content="DocBook XSL Stylesheets V1.78.0" name="generator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N40003"></a>Expression Editor: what it is and how it works</h2></div></div><hr></div>
+	
+	<div class="section"><div class="titlepage"></div>
+		<p>A user that is editing an expression for a report, with language set to Groovy or Java, can see this interface:</p>
+		<div class="figure"><a name="N40011"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Expression editor dialog</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="img/useExpEditor_01.png" alt="Expression editor dialog"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>
+			A navigator tree (on the left) was already available and also features like "User Defined Expressions" and "Recent Expressions".
+			What is really new is the concept of "Built-in Functions". Something that we introduced only in Jaspersoft Studio in order to help 
+			the final users to write their expression in a simple and quicker way in respect to what they were used to do in the past.</p>
+		<p>
+			The new main feature in the Expression Editor is the support for the so-called "Built-in Functions".
+			The basic idea behind this implementation is that Java (and also Groovy) is powerful enough to mimic Excel-like expressions.
+			We decided to produce a library of simple functions like Microsoft Excel and OpenOffice do.
+			This way, the user feels writing an expression in JSS is similar to what he/she would do in one of these programs, plus it's more easy 
+			to make calculations that would otherwise be hard to write in a single expression (i.e date range calculation).
+			On the UI side, the user will be able to create an expression without actually writing it, simply using a "point-and-click" approach.
+			In fact, a convenient UI, similar to the OpenOffice one, will allow the user to write an entire expression just using basic functions and the functions forms.
+			This is the typical UI that is shown when a user decide to use an expression function.
+		</p>
+		<div class="figure"><a name="N4002A"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Expression editor structure</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="img/useExpEditor_02.png" alt="Expression editor structure"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>The main parts that make up the editor dialog are the followings:</p>
+		<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">The Text editing area: a text area with syntax highlighting and errors support, where the user can manually enter the expression;</li><li class="listitem" style="list-style-type: circle">The Object navigator panel: a list of nodes is presented in a tree form way, allowing the user to choose how to build his expression or part of it (i.e: parameter, variable, function, recently used expression, etc.);</li><li class="listitem" style="list-style-type: circle">The Node detail panel: the central panel that shows the details corresponding to the actual node selected in the navigator. In the screenshot above we are presenting a list of functions. This panel depends on the selected item on the left one. For example after selecting the "Parameters" node in the object navigator we will see a list of parameters.</li><li class="listitem" style="list-style-type: circle">The Element detail panel: the panel on the right that will contain further additional information relative to one of the item selected in central panel. In our specific case we will see the function details: a function generic information area, plus a form like zone where the user can input his parameters.</li></ul></div>
+		<p>
+			In order to provide features like syntax highlighting, errors validation and content assist, the expression editor has been implemented using Xtext framework. 
+			This Eclipse modeling project is widely used in order to provide an easy way to develop programming languages and domain specific languages.
+			We wrote our Java-like grammar in order to support report that can be written with Java or Groovy based expressions.
+			But the main goal, as mentioned, is to provide to the user a rich set of functions (that can be extended), in order to write less complicated and shorter expressions as possible.
+			As seen, the functions are grouped in categories and every function has (at least) these two characteristics:
+		</p>
+		<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: opencircle; "><li class="listitem" style="list-style-type: circle">behind the scene it's implemented as one or more static methods</li><li class="listitem" style="list-style-type: circle">each function has zero or more "named" parameters, a name, a description and a return type definition.</li></ul></div>
+		<p>
+			The function details panel is therefore created starting from the function metadata. However reflection was not good enough until we couldn't create a rich-enough function descriptor. 
+			We decided to use Java Annotations, in order to add to the functions and parameters enough information that could be later exposed to the end user.
+			At report level, JRXML source code, what changes is the inclusion of the needed "static imports" necessary for compiling the expressions containing the Built-in functions.
+		</p>
+		<div class="figure"><a name="N40060"></a><p class="title"><b>Figure&nbsp;3.&nbsp;Import inside the JRXML</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="img/useExpEditor_03.png" alt="Import inside the JRXML"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>More in depth details about the practical implementation of the functions library will be exposed in another tutorial where we will see also how to contribute custom new functions and how to write the necessary code to do that.</p> 
+		<p>
+			Inside Jaspersoft Studio a custom page has been created in the Preferences in order to allow the user to configure some information regarding the Expression Editor itself.
+			The user can access this page via the menu item Window &gt; Preferences &gt; Jaspersoft Studio &gt; Expression Editor, in Windows and Linux, or Jaspersoft Studio &gt; Preferences &gt; Jaspersoft Studio &gt; Expression Editor, in MacOsX.
+		</p>
+		<div class="figure"><a name="N40079"></a><p class="title"><b>Figure&nbsp;4.&nbsp;Expression editor configuration</b></p><div class="figure-contents">
+			
+			<div class="screenshot">
+				<div class="mediaobject"><img src="img/useExpEditor_04.png" alt="Expression editor configuration"></div>
+			</div>
+		</div></div><br class="figure-break">
+		<p>
+			From this page the user can create his custom expressions in order to be quickly ready to use from the "User Defined Expressions" node in the Object Navigator of the editor dialog. 
+			This functionality is similar to the iReport one available in the "Report Editor" section of the iReport Preferences.
+			The option provided to "Include static imports used for functions library" can be used in order to ensure that when saving a report no static import related to the functions library will be used. 
+			This facility was introduced to mitigate a problem when saving reports that did not contain expression functions in JRXML. Right now this kind of check on saving has been improved, so actually only 
+			the minimum imports required are added. If no function is used in one of the report expressions, no (useless) import is added.
+		</p>
+	</div>
+</div></body></html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.jaspersoft.studio.dataAdapters">
+         <dataAdapter ClassFactory="com.jaspersoft.studio.data.empty.EmptyDataAdapterFactory"/>
+         <dataAdapter ClassFactory="com.jaspersoft.studio.data.jdbc.JDBCDataAdapterFactory"/>
+         <dataAdapter
+               ClassFactory="com.jaspersoft.studio.data.jndi.JndiDataAdapterFactory">
+         </dataAdapter>
+         <dataAdapter
+               ClassFactory="com.jaspersoft.studio.data.mondrian.MondrianDataAdapterFactory">
+         </dataAdapter>
+         <dataAdapter
+               ClassFactory="com.jaspersoft.studio.data.xmla.XmlaDataAdapterFactory">
+         </dataAdapter>
+         <dataAdapter ClassFactory="com.jaspersoft.studio.data.csv.CSVDataAdapterFactory"/>
+         <dataAdapter ClassFactory="com.jaspersoft.studio.data.xls.XLSDataAdapterFactory"/>
+         <dataAdapter
+               ClassFactory="com.jaspersoft.studio.data.xlsx.XLSXDataAdapterFactory">
+         </dataAdapter>
+         <dataAdapter
+               ClassFactory="com.jaspersoft.studio.data.excel.ExcelDataAdapterFactory">
+         </dataAdapter>
+         <dataAdapter ClassFactory="com.jaspersoft.studio.data.xml.XMLDataAdapterFactory"/>
+         <dataAdapter ClassFactory="com.jaspersoft.studio.data.remotexml.RemoteXMLDataAdapterFactory"/>
+         <dataAdapter
+               ClassFactory="com.jaspersoft.studio.data.json.JsonDataAdapterFactory">
+         </dataAdapter>
+         <dataAdapter
+               ClassFactory="com.jaspersoft.studio.data.hibernate.HibernateDataAdapterFactory">
+         </dataAdapter>
+         <dataAdapter
+               ClassFactory="com.jaspersoft.studio.data.hibernate.spring.SpringHibernateDataAdapterFactory">
+         </dataAdapter>
+         <dataAdapter
+               ClassFactory="com.jaspersoft.studio.data.ejbql.EjbqlDataAdapterFactory">
+         </dataAdapter>
+         <dataAdapter
+               ClassFactory="com.jaspersoft.studio.data.bean.BeanDataAdapterFactory">
+         </dataAdapter>
+         <dataAdapter ClassFactory="com.jaspersoft.studio.data.customjrds.CustomJrdsDataAdapterFactory"/>
+         <dataAdapter ClassFactory="com.jaspersoft.studio.data.jrdsprovider.JrdsProviderDataAdapterFactory"/>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.queryDesigner">
+      <queryDesigner
+            QueryDesignerClass="com.jaspersoft.studio.data.querydesigner.hql.HQLQueryDesigner"
+            language="hql">
+      </queryDesigner>
+      <queryDesigner
+            QueryDesignerClass="com.jaspersoft.studio.data.querydesigner.ejbql.EJBQLQueryDesigner"
+            language="ejbql">
+      </queryDesigner>
+      <queryDesigner
+            QueryDesignerClass="com.jaspersoft.studio.data.querydesigner.plsql.PLSQLQueryDesigner"
+            language="plsql">
+      </queryDesigner>
+      <queryDesigner
+            QueryDesignerClass="com.jaspersoft.studio.data.querydesigner.xpath.XPathQueryDesigner"
+            language="xPath">
+      </queryDesigner>
+      <queryDesigner
+            QueryDesignerClass="com.jaspersoft.studio.data.querydesigner.xpath.XPathQueryDesigner"
+            language="xpath2">      	
+      </queryDesigner>     
+      <queryDesigner
+            QueryDesignerClass="com.jaspersoft.studio.data.querydesigner.json.JsonQueryDesigner"
+            language="json">      	
+      </queryDesigner>
+      <queryDesigner
+            QueryDesignerClass="com.jaspersoft.studio.data.querydesigner.sql.SimpleSQLQueryDesigner"
+            language="mdx">
+      </queryDesigner>      
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.mappingTool">
+      <mappingTool
+            MappingToolClass="com.jaspersoft.studio.data.tools.mapping.BeanMappingTool">
+      </mappingTool>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.babel.editor.resourceInput">
+      <input
+            class="com.jaspersoft.studio.data.messages.ResourcePublisher">
+      </input>
+   </extension>
+   
+   <!-- Preference page for the XML query editor -->
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="com.jaspersoft.studio.preferences.EditorsPreferencePage"
+            class="com.jaspersoft.studio.data.xml.XMLQueryEditorPreferencePage"
+            id="com.jaspersoft.studio.data.xml.XMLQueryEditorPreferencePage"
+            name="XML Query Editor">
+      </page>
+   </extension>
+
+</plugin>

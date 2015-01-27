@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.jaspersoft.studio.dataAdapters">
+         <dataAdapter ClassFactory="com.jaspersoft.studio.data.cassandra.CassandraDataAdapterFactory"/>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.server.resources">
+      <resource
+            ClassFactory="com.jaspersoft.studio.data.cassandra.server.CassandraResourceFactory">
+      </resource>
+   </extension>
+   <extension
+         point="com.jaspersoft.studio.queryDesigner">
+      <queryDesigner
+            QueryDesignerClass="com.jaspersoft.studio.data.cassandra.querydesigner.CassandraQLQueryDesigner"
+            language="CQL">
+      </queryDesigner>
+   </extension>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc_dataadapters.xml"
+            primary="false">
+      </toc>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="context.xml"
+            plugin="com.jaspersoft.studio.doc">
+      </contexts>
+   </extension>
+</plugin>
