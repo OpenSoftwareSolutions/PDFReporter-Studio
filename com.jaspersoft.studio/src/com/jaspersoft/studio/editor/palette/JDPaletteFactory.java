@@ -171,7 +171,7 @@ public class JDPaletteFactory {
 		drawer.add(createJDEntry(MRectangle.getIconDescriptor(), MRectangle.class));
 		drawer.add(createJDEntry(MEllipse.getIconDescriptor(), MEllipse.class));
 		drawer.add(createJDEntry(MLine.getIconDescriptor(), MLine.class));
-		drawer.add(createJDEntry(MGenericElement.getIconDescriptor(), MGenericElement.class));
+//		drawer.add(createJDEntry(MGenericElement.getIconDescriptor(), MGenericElement.class));
 
 		drawer.add(createJDEntry(MFrame.getIconDescriptor(), MFrame.class));
 		drawer.add(createJDEntry(MSubreport.getIconDescriptor(), MSubreport.class));
