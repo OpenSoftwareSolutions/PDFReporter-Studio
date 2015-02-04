@@ -43,35 +43,35 @@ public class ViewsFactory extends AViewsFactory {
 
 		pcmap.put("SEPARATOR1", null);
 
-		pcmap.put("Layered HTML", LayeredHTMLViewer.class);
-		pcmap.put("HTML", HTMLViewer.class);
-		pcmap.put("xHTML", XHTMLViewer.class);
-		pcmap.put("SEPARATOR1", null);
-		pcmap.put("SEPARATOR1", null);
+//		pcmap.put("Layered HTML", LayeredHTMLViewer.class);
+//		pcmap.put("HTML", HTMLViewer.class);
+//		pcmap.put("xHTML", XHTMLViewer.class);
+//		pcmap.put("SEPARATOR1", null);
+//		pcmap.put("SEPARATOR1", null);
 		pcmap.put("PDF", PdfViewer.class);
 
-		pcmap.put("SEPARATOR2", null);
-
-		pcmap.put("RTF", RTFViewer.class);
-		pcmap.put("DOCx", DocxViewer.class);
-		pcmap.put("ODT", OdtViewer.class);
-		pcmap.put("ODS", OdsViewer.class);
-		pcmap.put("PPTx", PowerPointViewer.class);
-		pcmap.put("Text", TXTViewer.class);
-
-		pcmap.put("SEPARATOR3", null);
-
-		pcmap.put("XLS", XlsViewer.class);
-		pcmap.put("XLS Metadata", XlsMetadataViewer.class);
-		pcmap.put("XLSx", XlsxViewer.class);
-		pcmap.put("ExcelAPI", ExcelAPIViewer.class);
-		pcmap.put("CSV", CSVViewer.class);
-		pcmap.put("CSV Metadata", CSVMetadataViewer.class);
-
-		pcmap.put("SEPARATOR4", null);
-
-		pcmap.put("XML", XMLViewer.class);
-		pcmap.put("XML With Images", XMLImagesViewer.class);
+//		pcmap.put("SEPARATOR2", null);
+//
+//		pcmap.put("RTF", RTFViewer.class);
+//		pcmap.put("DOCx", DocxViewer.class);
+//		pcmap.put("ODT", OdtViewer.class);
+//		pcmap.put("ODS", OdsViewer.class);
+//		pcmap.put("PPTx", PowerPointViewer.class);
+//		pcmap.put("Text", TXTViewer.class);
+//
+//		pcmap.put("SEPARATOR3", null);
+//
+//		pcmap.put("XLS", XlsViewer.class);
+//		pcmap.put("XLS Metadata", XlsMetadataViewer.class);
+//		pcmap.put("XLSx", XlsxViewer.class);
+//		pcmap.put("ExcelAPI", ExcelAPIViewer.class);
+//		pcmap.put("CSV", CSVViewer.class);
+//		pcmap.put("CSV Metadata", CSVMetadataViewer.class);
+//
+//		pcmap.put("SEPARATOR4", null);
+//
+//		pcmap.put("XML", XMLViewer.class);
+//		pcmap.put("XML With Images", XMLImagesViewer.class);
 	}
 
 	/**
