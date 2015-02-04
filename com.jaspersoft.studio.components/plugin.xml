@@ -4,21 +4,26 @@
 
    <extension
          point="com.jaspersoft.studio.components">
+         <!--
       <component
             ClassFactory="com.jaspersoft.studio.components.barcode.BarcodeComponentFactory">
       </component>
+      -->
       <component
             ClassFactory="com.jaspersoft.studio.components.list.ListComponentFactory">
       </component>
+      <!--
        <component
             ClassFactory="com.jaspersoft.studio.components.chart.ChartComponentFactory">
       </component>
+      -->
       <component
             ClassFactory="com.jaspersoft.studio.components.crosstab.CrosstabComponentFactory">
       </component>
       <component
             ClassFactory="com.jaspersoft.studio.components.table.TableComponentFactory">
       </component>
+      <!--
       <component
             ClassFactory="com.jaspersoft.studio.components.map.MapComponentFactory">
       </component>
@@ -28,6 +33,7 @@
       <component
             ClassFactory="com.jaspersoft.studio.components.chartspider.SpiderChartComponentFactory">
       </component>
+      -->
    </extension>
    <extension
          point="com.jaspersoft.studio.properties.propertySections">
