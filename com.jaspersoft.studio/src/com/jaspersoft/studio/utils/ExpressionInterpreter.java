@@ -18,6 +18,7 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 
 import com.jaspersoft.studio.utils.expr.AInterpreter;
 import com.jaspersoft.studio.utils.expr.GroovyInterpretter;
+import com.jaspersoft.studio.utils.expr.JEvalInterpreter;
 import com.jaspersoft.studio.utils.expr.JavaInterpreter;
 import com.jaspersoft.studio.utils.jasper.JasperReportsConfiguration;
 
@@ -44,6 +45,8 @@ public class ExpressionInterpreter {
 				interpreter = new GroovyInterpretter();
 			else if (jasperDesign.getLanguage().equalsIgnoreCase("bsh"))
 				interpreter = new JavaInterpreter();
+			else if (jasperDesign.getLanguage().equalsIgnoreCase("jeval"))
+				interpreter = new JEvalInterpreter();
 			
 			if (interpreter != null) interpreter.prepareExpressionEvaluator(dataset, jasperDesign, jConfig);
 		} catch (Exception ex) {
