@@ -1847,12 +1847,9 @@
              providerClass="com.jaspersoft.studio.style.view.text.TextStyleView">
        </styleViewProvider>
     </extension>
-    <extension
-          point="com.jaspersoft.studio.dataAdapters">
-       <dataAdapter
-             ClassFactory="com.jaspersoft.studio.data.queryexecutor.QueryExecutorDataAdapterFactory">
-       </dataAdapter>
-        </extension>
+    <extension point="com.jaspersoft.studio.dataAdapters">
+       <!-- <dataAdapter ClassFactory="com.jaspersoft.studio.data.queryexecutor.QueryExecutorDataAdapterFactory"/> -->
+    </extension>
     <extension
           point="com.jaspersoft.studio.EditorSettingsMenu">
        <EditorSettingsMenu

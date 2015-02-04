@@ -5,15 +5,20 @@
          point="com.jaspersoft.studio.dataAdapters">
          <dataAdapter ClassFactory="com.jaspersoft.studio.data.empty.EmptyDataAdapterFactory"/>
          <dataAdapter ClassFactory="com.jaspersoft.studio.data.jdbc.JDBCDataAdapterFactory"/>
+         <!--
          <dataAdapter
                ClassFactory="com.jaspersoft.studio.data.jndi.JndiDataAdapterFactory">
          </dataAdapter>
          <dataAdapter
                ClassFactory="com.jaspersoft.studio.data.mondrian.MondrianDataAdapterFactory">
          </dataAdapter>
+         -->
+         <!--
          <dataAdapter
                ClassFactory="com.jaspersoft.studio.data.xmla.XmlaDataAdapterFactory">
          </dataAdapter>
+         -->
+         <!--
          <dataAdapter ClassFactory="com.jaspersoft.studio.data.csv.CSVDataAdapterFactory"/>
          <dataAdapter ClassFactory="com.jaspersoft.studio.data.xls.XLSDataAdapterFactory"/>
          <dataAdapter
@@ -22,11 +27,13 @@
          <dataAdapter
                ClassFactory="com.jaspersoft.studio.data.excel.ExcelDataAdapterFactory">
          </dataAdapter>
+         -->
          <dataAdapter ClassFactory="com.jaspersoft.studio.data.xml.XMLDataAdapterFactory"/>
          <dataAdapter ClassFactory="com.jaspersoft.studio.data.remotexml.RemoteXMLDataAdapterFactory"/>
          <dataAdapter
                ClassFactory="com.jaspersoft.studio.data.json.JsonDataAdapterFactory">
          </dataAdapter>
+         <!--
          <dataAdapter
                ClassFactory="com.jaspersoft.studio.data.hibernate.HibernateDataAdapterFactory">
          </dataAdapter>
@@ -41,6 +48,7 @@
          </dataAdapter>
          <dataAdapter ClassFactory="com.jaspersoft.studio.data.customjrds.CustomJrdsDataAdapterFactory"/>
          <dataAdapter ClassFactory="com.jaspersoft.studio.data.jrdsprovider.JrdsProviderDataAdapterFactory"/>
+         -->
    </extension>
    <extension
          point="com.jaspersoft.studio.queryDesigner">
