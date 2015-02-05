@@ -107,12 +107,14 @@
          version="0.0.0"
          unpack="false"/>
 
+<!--
    <plugin
          id="com.jaspersoft.studio.html"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+-->
 
    <plugin
          id="com.jaspersoft.studio.data"
@@ -135,20 +137,23 @@
          version="0.0.0"
          unpack="false"/>
 
+<!--
    <plugin
          id="com.jaspersoft.studio.data.hive"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+-->
 
+<!--
    <plugin
          id="com.jaspersoft.studio.data.mongodb"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
+-->
    <plugin
          id="com.jaspersoft.studio.properties"
          download-size="0"
@@ -219,12 +224,14 @@
          version="0.0.0"
          unpack="false"/>
 
+<!-- 
    <plugin
          id="com.jaspersoft.studio.data.hbase"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         -->
 
    <plugin
          id="com.jaspersoft.studio.server.soap"
@@ -233,11 +240,13 @@
          version="0.0.0"
          unpack="false"/>
          
+<!--
    <plugin
          id="com.jaspersoft.studio.components.customvisualization"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+-->
 
 </feature>
