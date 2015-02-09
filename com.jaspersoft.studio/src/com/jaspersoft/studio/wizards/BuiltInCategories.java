@@ -76,7 +76,7 @@ public class BuiltInCategories {
 		List<String> result = new ArrayList<String>();
 		result.add(ALL_TYPES_KEY);
 		result.add(NORMAL_KEY);
-		result.add(TABULAR_KEY);
+		// result.add(TABULAR_KEY);
 		result.add(A4_KEY);
 		result.add(LANDSCAPE_KEY);
 		return result;

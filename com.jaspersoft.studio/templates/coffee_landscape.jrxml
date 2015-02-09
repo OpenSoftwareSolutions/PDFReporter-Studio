@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Coffee Landscape" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<style name="Title" isDefault="false" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
-	<style name="SubTitle" isDefault="false" forecolor="#736343" fontName="Arial" fontSize="18"/>
-	<style name="Column header" isDefault="false" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
-	<style name="Detail" isDefault="false" fontName="Arial" fontSize="12"/>
-	<style name="Row" isDefault="false" mode="Transparent">
+<!-- Created with Jaspersoft Studio version 5.6.2.final using JasperReports Library version 5.6.1  -->
+<!-- 2015-02-07T17:28:09 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Coffee_Landscape" language="jeval" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="61ffe96b-bb87-4e09-a932-5bca42c979d1">
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
 		<conditionalStyle>
-			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<conditionExpression><![CDATA[(boolean)$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
 			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
 	<group name="Group1">
 		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
 		<groupHeader>
 			<band height="37">
 				<frame>
-					<reportElement mode="Opaque" x="-21" y="7" width="843" height="24" forecolor="#B89F7D" backcolor="#F2EBDF"/>
+					<reportElement mode="Opaque" x="-21" y="7" width="843" height="24" forecolor="#B89F7D" backcolor="#F2EBDF" uuid="1c70a0aa-c1a1-42f6-b9f0-28c73251f775"/>
 					<rectangle>
-						<reportElement mode="Opaque" x="21" y="0" width="36" height="24" backcolor="#736343"/>
+						<reportElement mode="Opaque" x="21" y="0" width="36" height="24" backcolor="#736343" uuid="00bb4cd9-a590-4eaa-b360-0db1479b7d90"/>
 						<graphicElement>
 							<pen lineWidth="0.0"/>
 						</graphicElement>
 					</rectangle>
 					<textField>
-						<reportElement style="SubTitle" x="68" y="0" width="755" height="24" forecolor="#736343"/>
+						<reportElement style="SubTitle" x="68" y="0" width="755" height="24" forecolor="#736343" uuid="f271e4e1-ec3c-4e71-bad4-ec7083d8bd95"/>
 						<textElement>
 							<font isBold="true"/>
 						</textElement>
-						<textFieldExpression class="java.lang.String"><![CDATA["GroupField"]]></textFieldExpression>
+						<textFieldExpression><![CDATA['GroupField']]></textFieldExpression>
 					</textField>
 				</frame>
 			</band>
@@ -41,11 +46,11 @@
 		<groupHeader>
 			<band height="30">
 				<textField>
-					<reportElement style="SubTitle" x="0" y="4" width="802" height="20"/>
+					<reportElement style="SubTitle" x="0" y="4" width="802" height="20" uuid="02e9b908-3117-4789-a2fd-b89cbc0a364f"/>
 					<textElement>
 						<font size="16" isBold="true"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["GroupField"]]></textFieldExpression>
+					<textFieldExpression><![CDATA['GroupField']]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -56,33 +61,33 @@
 	<title>
 		<band height="136" splitType="Stretch">
 			<image>
-				<reportElement x="0" y="0" width="164" height="126"/>
-				<imageExpression class="java.lang.String"><![CDATA["coffee.jpg"]]></imageExpression>
+				<reportElement x="0" y="0" width="164" height="126" uuid="8aa9790f-f9f8-43b3-8dac-839c5929eecc"/>
+				<imageExpression><![CDATA['coffee.jpg']]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement style="Title" x="270" y="0" width="263" height="62"/>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="c22ebf05-352c-4397-b4a6-81c8eecdb7bd"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Times-Roman"/>
 				</textElement>
 				<text><![CDATA[Coffee Title]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="303" y="62" width="196" height="22"/>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="7a2e865a-6b9d-4df9-9a48-f9de4b357004"/>
 				<textElement>
 					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
 				</textElement>
 				<text><![CDATA[Coffee SubTitle]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="172" y="94" width="383" height="42"/>
+				<reportElement x="172" y="94" width="383" height="42" uuid="d0e74182-feea-4e09-882e-efc78bfb3b1c"/>
 				<textElement textAlignment="Right">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
 			</staticText>
 			<image>
-				<reportElement x="633" y="-73" width="219" height="209"/>
-				<imageExpression class="java.lang.String"><![CDATA["coffee_stain.png"]]></imageExpression>
+				<reportElement x="633" y="-73" width="219" height="209" uuid="9c8e01ef-1c98-4267-87ce-eb6890e4ab7e"/>
+				<imageExpression><![CDATA['coffee_stain.png']]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -91,13 +96,8 @@
 	</pageHeader>
 	<columnHeader>
 		<band height="16" splitType="Stretch">
-			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="100" height="15" forecolor="#736343"/>
-				<textElement/>
-				<text><![CDATA[Label]]></text>
-			</staticText>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="e1deff15-3e76-4dce-9e23-c5217fdb0fb8"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -107,19 +107,14 @@
 	<detail>
 		<band height="15" splitType="Stretch">
 			<frame>
-				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15"/>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="1" y="0" width="100" height="15"/>
-					<textElement/>
-					<textFieldExpression class="java.lang.String"><![CDATA["Field"]]></textFieldExpression>
-				</textField>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="0fa49693-0dd3-4c5b-b5c2-d83dd7eeaab1"/>
 			</frame>
 		</band>
 	</detail>
 	<columnFooter>
 		<band height="6" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="b515468b-6e9b-4774-9bac-867424d35215"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -129,27 +124,27 @@
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="c6a668cd-5164-4b3a-b2ad-1a6ec07d6879"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343"/>
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="7c37c8c8-9a19-4823-ba67-88ae95bbaa8c"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[' ' + '$V{PAGE_NUMBER}']]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343"/>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="2580be51-8083-4ff2-9453-1a2b88a7dbfb"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+					<textFieldExpression><![CDATA['Page '+'$V{PAGE_NUMBER}'+' of']]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="0e1fca49-6b42-48a6-b62d-d6a4379acfbe"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+					<textFieldExpression><![CDATA[(date) now()]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

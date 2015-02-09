@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tree" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<!-- Created with Jaspersoft Studio version 5.6.2.final using JasperReports Library version 5.6.1  -->
+<!-- 2015-02-07T17:16:07 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tree" language="jeval" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="37316d93-0c02-4fb2-9f7e-edd36af657de">
 	<property name="template.type" value="columnar"/>
-	<style name="Title" isDefault="false" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
-	<style name="SubTitle" isDefault="false" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
-	<style name="Column header" isDefault="false" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
-	<style name="Detail" isDefault="false" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
-	<style name="Row" isDefault="false" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
 		<conditionalStyle>
-			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<conditionExpression><![CDATA[(boolean)$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
 	<group name="Group1">
 		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
 		<groupHeader>
 			<band height="31">
 				<frame>
-					<reportElement mode="Opaque" x="0" y="7" width="555" height="24" forecolor="#B89F7D" backcolor="#9DB1B8"/>
+					<reportElement mode="Opaque" x="0" y="7" width="555" height="24" forecolor="#B89F7D" backcolor="#9DB1B8" uuid="1f08f400-50fc-47cd-8234-9fba25eb128b"/>
 					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="2" y="1" width="479" height="23" forecolor="#FFFFFF"/>
+						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="2" y="1" width="479" height="23" forecolor="#FFFFFF" uuid="78176870-147f-4f8e-b917-79a07dabc7a8"/>
 						<textElement>
 							<font isBold="false"/>
 						</textElement>
-						<textFieldExpression class="java.lang.String"><![CDATA["GroupField"]]></textFieldExpression>
+						<textFieldExpression><![CDATA['GroupField']]></textFieldExpression>
 					</textField>
 				</frame>
 			</band>
@@ -36,11 +41,11 @@
 		<groupHeader>
 			<band height="24">
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="0" y="4" width="299" height="20" forecolor="#000000"/>
+					<reportElement positionType="Float" x="0" y="4" width="299" height="20" forecolor="#000000" uuid="4db74faa-b0b8-4039-a18c-c296562f9b67"/>
 					<textElement>
 						<font fontName="Times New Roman" size="16" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["GroupField"]]></textFieldExpression>
+					<textFieldExpression><![CDATA['GroupField']]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -51,18 +56,18 @@
 	<title>
 		<band height="132" splitType="Stretch">
 			<image>
-				<reportElement x="2" y="0" width="118" height="132"/>
-				<imageExpression class="java.lang.String"><![CDATA["tree1.png"]]></imageExpression>
+				<reportElement x="2" y="0" width="118" height="132" uuid="1ac2c682-5d16-4dfd-b2d8-4f01f8b28245"/>
+				<imageExpression><![CDATA['tree1.png']]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement style="Title" x="120" y="10" width="435" height="93"/>
+				<reportElement style="Title" x="120" y="10" width="435" height="93" uuid="2c0ad81b-2da9-4fd0-879e-26579cce15be"/>
 				<textElement>
 					<font size="80" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Tree Title]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="336" y="103" width="217" height="29"/>
+				<reportElement style="SubTitle" x="336" y="103" width="217" height="29" uuid="aceafa71-8266-470e-af1c-cc70233c3056"/>
 				<textElement>
 					<font size="22" isBold="false"/>
 				</textElement>
@@ -78,33 +83,19 @@
 	</columnHeader>
 	<detail>
 		<band height="91" splitType="Stretch">
-			<staticText>
-				<reportElement style="Column header" positionType="Float" x="79" y="0" width="132" height="20" forecolor="#000000"/>
-				<textElement textAlignment="Right">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[Label]]></text>
-			</staticText>
 			<image>
-				<reportElement x="2" y="0" width="56" height="80"/>
-				<imageExpression class="java.lang.String"><![CDATA["tree2.png"]]></imageExpression>
+				<reportElement x="2" y="0" width="56" height="80" uuid="b0fc3e5c-0da9-468e-970f-3bb3b93f9f45"/>
+				<imageExpression><![CDATA['tree2.png']]></imageExpression>
 			</image>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="2" y="90" width="551" height="1"/>
+				<reportElement positionType="FixRelativeToBottom" x="2" y="90" width="551" height="1" uuid="b611909e-3b68-4424-a97f-9f3643b2223e"/>
 			</line>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="215" y="0" width="338" height="18"/>
-				<textElement>
-					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Field"]]></textFieldExpression>
-			</textField>
 		</band>
 	</detail>
 	<columnFooter>
 		<band height="7" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="29d350aa-f540-46eb-8fb1-15f8c0f56ac0"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -114,27 +105,27 @@
 	<pageFooter>
 		<band height="13" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#9DB1B8"/>
+				<reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#9DB1B8" uuid="ffe4618d-1baa-4c3d-9c36-c297b874650c"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="513" y="-1" width="40" height="13" forecolor="#FFFFFF"/>
+					<reportElement style="Column header" x="513" y="-1" width="40" height="13" forecolor="#FFFFFF" uuid="602677bb-1abe-4a87-9549-e65251146c0a"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[' ' + '$V{PAGE_NUMBER}']]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="433" y="-1" width="80" height="13" forecolor="#FFFFFF"/>
+					<reportElement style="Column header" x="433" y="-1" width="80" height="13" forecolor="#FFFFFF" uuid="13ad85f7-d12b-4ed1-b423-f418295d21f5"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+					<textFieldExpression><![CDATA['Page '+'$V{PAGE_NUMBER}'+' of']]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF"/>
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" uuid="0845f01e-a9aa-426d-b409-3a0125110591"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+					<textFieldExpression><![CDATA[(date) now()]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

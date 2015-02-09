@@ -62,19 +62,21 @@ public class ExtendedTemplateProvider implements TemplateProvider {
 		if (cache == null){
 			cache =  new ArrayList<TemplateBundle>();
 			Enumeration<?> en = JaspersoftStudioPlugin.getInstance().getBundle().findEntries("templates/table", "*.jrxml", false); //Doesn't search in the subdirectories
-			while (en.hasMoreElements()) {
-				URL templateURL = (URL) en.nextElement();
-				try {
-					TemplateBundle bundle = new TableTemplateBunlde(templateURL, JasperReportsConfiguration.getDefaultJRConfig());
-					if (bundle != null)
-					{
-						cache.add(bundle);
-					}	
-				} catch (Exception ex) 	{
-					// Log error but continue...
-					JaspersoftStudioPlugin.getInstance().getLog().log(
-							new Status(IStatus.ERROR,JaspersoftStudioPlugin.PLUGIN_ID,
-									MessageFormat.format(Messages.DefaultTemplateProvider_TemplateLoadingErr,new Object[]{templateURL}), ex));
+			if (en != null) {
+				while (en.hasMoreElements()) {
+					URL templateURL = (URL) en.nextElement();
+					try {
+						TemplateBundle bundle = new TableTemplateBunlde(templateURL, JasperReportsConfiguration.getDefaultJRConfig());
+						if (bundle != null)
+						{
+							cache.add(bundle);
+						}	
+					} catch (Exception ex) 	{
+						// Log error but continue...
+						JaspersoftStudioPlugin.getInstance().getLog().log(
+								new Status(IStatus.ERROR,JaspersoftStudioPlugin.PLUGIN_ID,
+										MessageFormat.format(Messages.DefaultTemplateProvider_TemplateLoadingErr,new Object[]{templateURL}), ex));
+					}
 				}
 			}
 		}

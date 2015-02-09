@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Flower" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<!-- Created with Jaspersoft Studio version 5.6.2.final using JasperReports Library version 5.6.1  -->
+<!-- 2015-02-07T17:10:43 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Flower" language="jeval" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fabfcf33-1563-42be-8f93-9fd0af4742e4">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="687"/>
-	<style name="Title" isDefault="false" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
-	<style name="SubTitle" isDefault="false" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
-	<style name="Column header" isDefault="false" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
-	<style name="Detail" isDefault="false" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
-	<style name="Row" isDefault="false" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
 		<conditionalStyle>
-			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<conditionExpression><![CDATA[(boolean)$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<subDataset name="PieChartDataset"/>
+	<subDataset name="PieChartDataset" uuid="726fa4cd-90ca-4531-9f50-c48418ce5a8e"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
 	<group name="Group1">
 		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
 		<groupHeader>
 			<band height="31">
 				<frame>
-					<reportElement mode="Opaque" x="229" y="7" width="326" height="24" forecolor="#B89F7D" backcolor="#70A9C6"/>
+					<reportElement mode="Opaque" x="229" y="7" width="326" height="24" forecolor="#B89F7D" backcolor="#70A9C6" uuid="ef603366-b701-4447-9d49-ff9e7ca1534d"/>
 					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="2" y="1" width="263" height="23" forecolor="#FFFFFF"/>
+						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="2" y="1" width="263" height="23" forecolor="#FFFFFF" uuid="d6028633-f8c4-458f-892b-d3c14547f1d0"/>
 						<textElement>
 							<font fontName="Arial" isBold="false" pdfFontName="Helvetica"/>
 						</textElement>
-						<textFieldExpression class="java.lang.String"><![CDATA["GroupField"]]></textFieldExpression>
+						<textFieldExpression><![CDATA["GroupField"]]></textFieldExpression>
 					</textField>
 				</frame>
 			</band>
@@ -39,11 +44,11 @@
 		<groupHeader>
 			<band height="24">
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="231" y="4" width="299" height="20" forecolor="#000000"/>
+					<reportElement positionType="Float" x="231" y="4" width="299" height="20" forecolor="#000000" uuid="0e47c430-457c-4709-8803-36ff49547e11"/>
 					<textElement>
 						<font fontName="Arial" size="16" isBold="true" pdfFontName="Helvetica-Bold"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["GroupField"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["GroupField"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -52,14 +57,14 @@
 		<band height="802" splitType="Stretch">
 			<pie3DChart>
 				<chart isShowLegend="false" evaluationTime="Report">
-					<reportElement x="-20" y="357" width="247" height="131"/>
+					<reportElement x="-20" y="357" width="247" height="131" uuid="ab9a010d-ef19-43be-8710-9a54ae285cea"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
 				<pieDataset>
 					<dataset>
-						<datasetRun subDataset="PieChartDataset">
+						<datasetRun subDataset="PieChartDataset" uuid="3c771eb3-1a90-4e5b-ad3b-4332bfe66739">
 							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(5)]]></dataSourceExpression>
 						</datasetRun>
 					</dataset>
@@ -80,27 +85,27 @@ $V{REPORT_COUNT}]]></keyExpression>
 				</pie3DPlot>
 			</pie3DChart>
 			<image>
-				<reportElement x="-20" y="65" width="229" height="250">
+				<reportElement x="-20" y="65" width="229" height="250" uuid="f00c5630-3975-42f4-b9ff-76b7073eebfe">
 					<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
 				</reportElement>
-				<imageExpression class="java.lang.String"><![CDATA["flower1.png"]]></imageExpression>
+				<imageExpression><![CDATA["flower1.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="-20" y="-20" width="229" height="250">
+				<reportElement x="-20" y="-20" width="229" height="250" uuid="e57009fb-e2bb-45c6-82b6-bdc1ebd07ac7">
 					<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
 				</reportElement>
-				<imageExpression class="java.lang.String"><![CDATA["flower1.png"]]></imageExpression>
+				<imageExpression><![CDATA["flower1.png"]]></imageExpression>
 			</image>
 			<pie3DChart>
 				<chart isShowLegend="false" evaluationTime="Report">
-					<reportElement x="-20" y="488" width="247" height="131"/>
+					<reportElement x="-20" y="488" width="247" height="131" uuid="d8cd9912-c247-44ba-a754-57180fb6b63e"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
 				<pieDataset>
 					<dataset>
-						<datasetRun subDataset="PieChartDataset">
+						<datasetRun subDataset="PieChartDataset" uuid="65bf526a-36e9-43b8-ba8f-4050da6b7f69">
 							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(5)]]></dataSourceExpression>
 						</datasetRun>
 					</dataset>
@@ -122,14 +127,14 @@ $V{REPORT_COUNT}]]></keyExpression>
 			</pie3DChart>
 			<pie3DChart>
 				<chart isShowLegend="false" evaluationTime="Report">
-					<reportElement x="-20" y="619" width="247" height="131"/>
+					<reportElement x="-20" y="619" width="247" height="131" uuid="19c3f822-065e-4435-ad28-df9d003a490c"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
 				<pieDataset>
 					<dataset>
-						<datasetRun subDataset="PieChartDataset">
+						<datasetRun subDataset="PieChartDataset" uuid="fe91f833-7960-47ed-8e8a-caf47a685587">
 							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(5)]]></dataSourceExpression>
 						</datasetRun>
 					</dataset>
@@ -150,7 +155,7 @@ $V{REPORT_COUNT}]]></keyExpression>
 				</pie3DPlot>
 			</pie3DChart>
 			<staticText>
-				<reportElement mode="Opaque" x="318" y="394" width="239" height="181" backcolor="#FFFFCC">
+				<reportElement mode="Opaque" x="318" y="394" width="239" height="181" backcolor="#FFFFCC" uuid="de824ff3-9199-4194-aab5-ce7018339919">
 					<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
 				</reportElement>
 				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4">
@@ -171,7 +176,7 @@ This rectangle element is not printed (see the print when expression of this
 element)]]></text>
 			</staticText>
 			<line>
-				<reportElement x="201" y="431" width="117" height="1">
+				<reportElement x="201" y="431" width="117" height="1" uuid="5550402c-87ef-481f-89d3-edd6def07a28">
 					<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
 				</reportElement>
 				<graphicElement>
@@ -179,7 +184,7 @@ element)]]></text>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="275" y="-10" width="240" height="181" backcolor="#FFFFCC">
+				<reportElement mode="Opaque" x="275" y="-10" width="240" height="181" backcolor="#FFFFCC" uuid="bc9cd8c7-7460-4c7f-923a-b1dee7c0fb8d">
 					<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
 				</reportElement>
 				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4">
@@ -195,7 +200,7 @@ element)]]></text>
 				<text><![CDATA[Flowers: there are two flowers, the first one is printed only starting from the second page, the other one only in the first page.]]></text>
 			</staticText>
 			<line>
-				<reportElement x="72" y="37" width="204" height="1">
+				<reportElement x="72" y="37" width="204" height="1" uuid="112d752a-5a2c-4442-a064-85cb2a4262b5">
 					<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
 				</reportElement>
 				<graphicElement>
@@ -207,16 +212,16 @@ element)]]></text>
 	<title>
 		<band height="94" splitType="Stretch">
 			<staticText>
-				<reportElement style="SubTitle" x="336" y="65" width="217" height="29"/>
+				<reportElement style="SubTitle" x="336" y="65" width="217" height="29" uuid="2b721cc4-ecd7-4b1c-98de-623521768e2f"/>
 				<textElement textAlignment="Right">
 					<font size="22" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Flower SubTitle]]></text>
 			</staticText>
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="0" width="597" height="65" forecolor="#006699" backcolor="#006699"/>
+				<reportElement mode="Opaque" x="-20" y="0" width="597" height="65" forecolor="#006699" backcolor="#006699" uuid="f01ee850-77ff-44e5-9aa6-e3312c15b6d6"/>
 				<staticText>
-					<reportElement style="Title" x="231" y="0" width="346" height="65"/>
+					<reportElement style="Title" x="231" y="0" width="346" height="65" uuid="b1997349-eb48-4889-bff9-5c7c821ce969"/>
 					<textElement textAlignment="Right">
 						<font size="54" isBold="false"/>
 					</textElement>
@@ -231,38 +236,24 @@ element)]]></text>
 	<columnHeader>
 		<band height="27" splitType="Stretch">
 			<frame>
-				<reportElement x="227" y="0" width="328" height="20"/>
-				<staticText>
-					<reportElement style="Column header" positionType="Float" x="0" y="0" width="132" height="20" forecolor="#000000"/>
-					<textElement>
-						<font fontName="Arial" isBold="false" pdfFontName="Helvetica"/>
-					</textElement>
-					<text><![CDATA[Label]]></text>
-				</staticText>
+				<reportElement x="227" y="0" width="328" height="20" uuid="034bf85f-a9b3-44c3-b347-523d43644fe4"/>
 			</frame>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="23" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="227" y="22" width="326" height="1"/>
+				<reportElement positionType="FixRelativeToBottom" x="227" y="22" width="326" height="1" uuid="0a2d1dac-8aaf-48bd-923b-4979f64a7e95"/>
 			</line>
 			<frame>
-				<reportElement x="227" y="0" width="328" height="20"/>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="172" height="18"/>
-					<textElement>
-						<font fontName="Arial" size="14" isBold="false" pdfFontName="Helvetica"/>
-					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["Field"]]></textFieldExpression>
-				</textField>
+				<reportElement x="227" y="0" width="328" height="20" uuid="abb5c4d3-49d4-4d8e-9e5e-137ea7386912"/>
 			</frame>
 		</band>
 	</detail>
 	<columnFooter>
 		<band height="7" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="4bbaf724-06af-4167-ab03-58215cc093b6"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -272,27 +263,27 @@ element)]]></text>
 	<pageFooter>
 		<band height="13" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#006699"/>
+				<reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#006699" uuid="d5a432ee-fcd2-41ce-b74a-b71da93d262c"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="513" y="-1" width="40" height="13" forecolor="#FFFFFF"/>
+					<reportElement style="Column header" x="513" y="-1" width="40" height="13" forecolor="#FFFFFF" uuid="e3876294-7701-4dab-adab-9987c7ef9cbb"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="433" y="-1" width="80" height="13" forecolor="#FFFFFF"/>
+					<reportElement style="Column header" x="433" y="-1" width="80" height="13" forecolor="#FFFFFF" uuid="cbf4a2d1-8829-4ca1-a0e4-b78ed14d3e2a"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF"/>
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" uuid="8f545cde-d947-4af9-b5eb-fe4499ed3ee2"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

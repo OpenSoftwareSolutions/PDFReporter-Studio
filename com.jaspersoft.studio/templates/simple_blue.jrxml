@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Simple Blue" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<!-- Created with Jaspersoft Studio version 5.6.2.final using JasperReports Library version 5.6.1  -->
+<!-- 2015-02-07T17:14:24 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Simple_Blue" language="jeval" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f73628ae-69e0-4208-ace5-94ed8fdb1d6e">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
 	<group name="Group1">
 		<groupHeader>
 			<band height="33">
 				<staticText>
-					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6"/>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="6d6491cd-73d5-45d5-b5f5-185096b12a53"/>
 					<textElement>
 						<font size="12"/>
 					</textElement>
 					<text><![CDATA[G1Label]]></text>
 				</staticText>
 				<textField>
-					<reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6"/>
+					<reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="9c13074d-73b2-40dc-9c1c-1ba475b49c5d"/>
 					<textElement>
 						<font size="24" isBold="true"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["G1Field"]]></textFieldExpression>
+					<textFieldExpression><![CDATA['G1Field']]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666"/>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="d1cce431-4fb4-4e8f-b597-6690e9207e9a"/>
 				</line>
 			</band>
 		</groupHeader>
@@ -30,14 +35,14 @@
 		<groupHeader>
 			<band height="32">
 				<textField>
-					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699"/>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="c7abb3f6-bacf-4906-afb8-339107949d61"/>
 					<textElement>
 						<font size="22" isBold="true"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["G2Field"]]></textFieldExpression>
+					<textFieldExpression><![CDATA['G2Field']]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666"/>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="2897e5f2-9706-44eb-9c7c-6f81a4b64fcc"/>
 					<textElement>
 						<font size="12"/>
 					</textElement>
@@ -53,14 +58,14 @@
 		<groupHeader>
 			<band height="32">
 				<textField>
-					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699"/>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="09ec27f0-b414-4365-8e6b-d4e1be878fa6"/>
 					<textElement>
 						<font size="20" isBold="true"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["G3Field"]]></textFieldExpression>
+					<textFieldExpression><![CDATA['G3Field']]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666"/>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="5bbfb13d-13f7-46aa-984a-dc1475f77f0a"/>
 					<textElement>
 						<font size="12"/>
 					</textElement>
@@ -76,14 +81,14 @@
 		<groupHeader>
 			<band height="32">
 				<textField>
-					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699"/>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="c35dd4df-c68c-4741-ba9c-1d4d8f849ae0"/>
 					<textElement>
 						<font size="16" isBold="true"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["G4Field"]]></textFieldExpression>
+					<textFieldExpression><![CDATA['G4Field']]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666"/>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="a24b7f77-e996-4039-b69c-b0d8807f3828"/>
 					<textElement>
 						<font size="12"/>
 					</textElement>
@@ -101,16 +106,16 @@
 	<title>
 		<band height="72">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699"/>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="b7c5fe23-a6d7-42e9-aba6-b4949fc180e9"/>
 				<staticText>
-					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="b15af629-e667-44f0-9150-b6fcb8f82cec"/>
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
 					<text><![CDATA[TITLE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF"/>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="cf66f7ed-a9b2-4256-bc68-4d00627617fc"/>
 					<textElement textAlignment="Right">
 						<font size="14" isBold="false"/>
 					</textElement>
@@ -124,29 +129,15 @@
 	</pageHeader>
 	<columnHeader>
 		<band height="21">
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="183" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
-				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[DetailLabel]]></text>
-			</staticText>
 			<line>
-				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666"/>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="89b7edca-6e7e-442b-9899-85374efc2e24"/>
 			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20">
-			<textField isStretchWithOverflow="true">
-				<reportElement x="0" y="0" width="183" height="20"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["DetailField"]]></textFieldExpression>
-			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="4753702e-3406-4c28-82bd-952f1c638fc5"/>
 			</line>
 		</band>
 	</detail>
@@ -156,19 +147,17 @@
 	<pageFooter>
 		<band height="17">
 			<textField>
-				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="03378dc1-5fba-4a77-b108-2ff5a32f3808"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<textFieldExpression><![CDATA['Page '+'$V{PAGE_NUMBER}'+' of']]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="668d2201-1676-46c4-8d65-a1abbc497a70"/>
+				<textFieldExpression><![CDATA[' ' + '$V{PAGE_NUMBER}']]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="0" y="4" width="100" height="13"/>
-				<textElement/>
-				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<reportElement x="0" y="4" width="100" height="13" uuid="8f217736-7db9-4278-b4f0-f1ad09ee4325"/>
+				<textFieldExpression><![CDATA[(date) now()]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
