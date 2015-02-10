@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Jaspersoft Studio" uid="com.jaspersoft.studio.rcp.product" id="com.jaspersoft.studio.rcp.product" application="com.jaspersoft.studio.rcp.application" version="5.6.2.final" useFeatures="true" includeLaunchers="true">
+<product name="PDFReporter Studio" uid="com.jaspersoft.studio.rcp.product" id="com.jaspersoft.studio.rcp.product" application="com.jaspersoft.studio.rcp.application" version="5.6.2.final" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/com.jaspersoft.studio.rcp/icons/studio_logo_about.png"/>
       <text>
-         Jaspersoft Studio - Visual Designer for JasperReports. 
+         PDFReporter Studio - Visual Designer for PDFReporting. 
+Copyright (C) 2015  Open Software Solutions GmbH. All rights reserved. 
 Copyright (C) 2010 - 2014 TIBCO Software Inc. All rights reserved. 
-
-For more information, please visit 
-http://community.jaspersoft.com/project/jaspersoft-studio  
 
 Special thanks to all people who support this software.
       </text>
@@ -20,35 +18,36 @@ Special thanks to all people who support this software.
    </configIni>
 
    <launcherArgs>
-      <programArgs>-data @noDefault</programArgs>
+      <programArgs>-data @noDefault
+      </programArgs>
       <vmArgs>-Xms128m
 -Xmx1024m
 -XX:PermSize=128M
 -XX:MaxPermSize=256M
 -XX:+CMSClassUnloadingEnabled
 -XX:+UseConcMarkSweepGC
--Dfile.encoding=UTF-8</vmArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+-Dfile.encoding=UTF-8
+      </vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/com.jaspersoft.studio.rcp/icons/jss_16.png" i32="/com.jaspersoft.studio.rcp/icons/jss_icon_32.png" i48="/com.jaspersoft.studio.rcp/icons/jss_icon_48.png" i64="/com.jaspersoft.studio.rcp/icons/jss_icon_64.png" i128="/com.jaspersoft.studio.rcp/icons/jss_icon_128.png"/>
+   <windowImages i16="/com.jaspersoft.studio.rcp/icons/jss_16.png" i32="/com.jaspersoft.studio.rcp/icons/jss_icon_32.png" i48="/com.jaspersoft.studio.rcp/icons/jss_icon_48.png" i64="/com.jaspersoft.studio.rcp/icons/jss_icon_64.png" i128="/com.jaspersoft.studio.rcp/icons/jss_icon_128.png" i256="/com.jaspersoft.studio.rcp/icons/jss_icon_256.png"/>
 
    <splash
       location="com.jaspersoft.studio.rcp"
       startupProgressRect="0,260,362,5"
       startupMessageRect="4,240,358,18"
-      startupForegroundColor="0061A2" />
+      startupForegroundColor="000000" />
    <launcher name="Jaspersoft Studio">
       <linux icon="/com.jaspersoft.studio.rcp/icons/jss_icon_128.xpm"/>
       <macosx icon="/com.jaspersoft.studio.rcp/icons/jaspersoftstudio.icns"/>
       <solaris/>
       <win useIco="true">
-         <ico path="/com.jaspersoft.studio.rcp/icons/jaspersoftstudio.ico"/>
+         <ico path="/com.jaspersoft.studio.rcp/icons/pdfreporter.ico"/>
          <bmp/>
       </win>
    </launcher>
-
-   <intro introId="com.jaspersoft.studio.rcp.intro"/>
 
    <vm>
    </vm>
@@ -153,21 +152,13 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="com.jaspersoft.studio.community"/>
       <plugin id="com.jaspersoft.studio.components"/>
       <plugin id="com.jaspersoft.studio.data"/>
-      <!-- <plugin id="com.jaspersoft.studio.data.cassandra"/> -->
       <plugin id="com.jaspersoft.studio.data.drivers"/>
-      <!--
-      <plugin id="com.jaspersoft.studio.data.hive"/>
-      <plugin id="com.jaspersoft.studio.data.mongodb"/>
-      -->
       <plugin id="com.jaspersoft.studio.data.sql"/>
       <plugin id="com.jaspersoft.studio.data.sql.ui"/>
       <plugin id="com.jaspersoft.studio.doc"/>
       <plugin id="com.jaspersoft.studio.doc.samples" fragment="true"/>
       <plugin id="com.jaspersoft.studio.editor.jrexpressions"/>
       <plugin id="com.jaspersoft.studio.editor.jrexpressions.ui"/>
-      <!--
-      <plugin id="com.jaspersoft.studio.html"/>
-      -->
       <plugin id="com.jaspersoft.studio.properties"/>
       <plugin id="com.jaspersoft.studio.rcp"/>
       <plugin id="com.jaspersoft.studio.server"/>
@@ -413,18 +404,13 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <configurations>
       <plugin id="com.jaspersoft.studio.rcp" autoStart="false" startLevel="5" />
-      <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
-      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
-      <property name="eclipse.log.level" value="ALL"/>
-      <!--
-      	Apparently Tycho 0.18 does not respect this property.
-      	The solution is that we need to add the bundle org.eclipse.update.configurator and set its start level.
-      	<property name="org.eclipse.update.reconcile" value="false" />
-      -->
+      <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4" />
+      <property name="eclipse.log.level" value="ALL" />
    </configurations>
 
 </product>
