@@ -115,10 +115,10 @@ public class JRXmlWriterHelper {
 			}
 			// Get JSS bundle version
 			String jssPluginVersion = JaspersoftStudioPlugin.getInstance().getBundle().getVersion().toString();
-			String jrVersionTxt = " using JasperReports Library version " + version + " ";
+			String jrVersionTxt = " using PDFReporter Library version " + version + " ";
 			xml = xml
 					.replaceFirst(
-							"<jasperReport ", "<!-- Created with Jaspersoft Studio version " + jssPluginVersion + jrVersionTxt + " -->\r\n" + timestamp + "<jasperReport "); //$NON-NLS-1$ //$NON-NLS-2$
+							"<jasperReport ", "<!-- Created with PDFReporter Studio version " + jssPluginVersion + jrVersionTxt + " -->\r\n" + timestamp + "<jasperReport "); //$NON-NLS-1$ //$NON-NLS-2$
 			return xml;
 		}
 		return null;
