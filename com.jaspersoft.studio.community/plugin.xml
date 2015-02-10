@@ -14,8 +14,10 @@
             class="com.jaspersoft.studio.community.IssueSubmissionHandler">
       </handler>
    </extension>
+  
    <extension
          point="org.eclipse.ui.menus">
+         <!--
       <menuContribution
             locationURI="menu:help">
             <command
@@ -42,6 +44,7 @@
             </command>
          </toolbar>
       </menuContribution>
+      -->
    </extension>
    <extension
          point="com.jaspersoft.studio.babel.editor.resourceSender">
