@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Jaspersoft Studio
+Bundle-Name: PDFReporter Studio
 Bundle-SymbolicName: com.jaspersoft.studio.rcp; singleton:=true
 Bundle-Version: 5.6.2.final
 Bundle-Localization: plugin
 Bundle-Activator: com.jaspersoft.studio.rcp.Activator
-Bundle-Vendor: Jaspersoft Corporation
+Bundle-Vendor: Open Software Solutions GmbH
 Require-Bundle: org.eclipse.ui.intro;visibility:=reexport,
  com.jaspersoft.studio;bundle-version="5.6.2",
  org.eclipse.ui.browser;bundle-version="3.3.0",

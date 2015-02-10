@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="net.sf.jasperreports.feature"
-      label="JasperReports Feature"
+      label="PDFReporter Feature"
       version="5.6.2.final"
-      provider-name="Jaspersoft Corporation"
+      provider-name="Open Software Solutions GmbH"
       plugin="net.sf.jasperreports">
 
    <description url="http://community.jaspersoft.com/project/jaspersoft-studio">

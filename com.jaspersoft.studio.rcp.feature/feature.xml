@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="com.jaspersoft.studio.rcp.feature"
-      label="Jaspersoft Studio Community RCP Feature"
+      label="PDF Reporter RCP Feature"
       version="5.6.2.final"
-      provider-name="Jaspersoft Corporation"
+      provider-name="Open Software Solutions GmbH"
       plugin="net.sf.jasperreports"
       os="linux,macosx,win32"
       ws="cocoa,gtk,win32">
 
    <description url="http://community.jaspersoft.com/project/jaspersoft-studio">
-      Eclipse-based JasperReports Designer
+      Eclipse-based PDFReporter Designer
    </description>
 
    <copyright url="http://www.jaspersoft.com/legal-notices">
@@ -21,7 +21,7 @@
    </license>
 
    <url>
-      <update label="Jaspersoft Studio site" url="http://jasperstudio.sf.net/updates"/>
+      <update label="PDF Reporter site" url="http://jasperstudio.sf.net/updates"/>
       <discovery label="Jaspersoft Studio" url="http://community.jaspersoft.com/project/jaspersoft-studio"/>
    </url>
 
