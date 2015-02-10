@@ -4,12 +4,14 @@
 <extension-point id="resources" name="Resources" schema="schema/resources.exsd"/>
 <extension-point id="publisher" name="Publisher" schema="schema/publisher.exsd"/>
 <extension-point id="protocols" name="Protocols" schema="schema/protocols.exsd"/>
+<!--
    <extension
          point="com.jaspersoft.studio.repositoryview">
       <repositoryview
             ClassFactory="com.jaspersoft.studio.server.ServerProvider">
       </repositoryview>
    </extension>
+   -->
    <extension
          point="com.jaspersoft.studio.properties.propertyTabs">
       <propertyTabs
