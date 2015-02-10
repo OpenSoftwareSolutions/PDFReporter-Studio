@@ -153,17 +153,21 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="com.jaspersoft.studio.community"/>
       <plugin id="com.jaspersoft.studio.components"/>
       <plugin id="com.jaspersoft.studio.data"/>
-      <plugin id="com.jaspersoft.studio.data.cassandra"/>
+      <!-- <plugin id="com.jaspersoft.studio.data.cassandra"/> -->
       <plugin id="com.jaspersoft.studio.data.drivers"/>
+      <!--
       <plugin id="com.jaspersoft.studio.data.hive"/>
       <plugin id="com.jaspersoft.studio.data.mongodb"/>
+      -->
       <plugin id="com.jaspersoft.studio.data.sql"/>
       <plugin id="com.jaspersoft.studio.data.sql.ui"/>
       <plugin id="com.jaspersoft.studio.doc"/>
       <plugin id="com.jaspersoft.studio.doc.samples" fragment="true"/>
       <plugin id="com.jaspersoft.studio.editor.jrexpressions"/>
       <plugin id="com.jaspersoft.studio.editor.jrexpressions.ui"/>
+      <!--
       <plugin id="com.jaspersoft.studio.html"/>
+      -->
       <plugin id="com.jaspersoft.studio.properties"/>
       <plugin id="com.jaspersoft.studio.rcp"/>
       <plugin id="com.jaspersoft.studio.server"/>
