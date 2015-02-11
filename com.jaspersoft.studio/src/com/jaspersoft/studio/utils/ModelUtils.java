@@ -972,6 +972,7 @@ public class ModelUtils {
 
 	@SuppressWarnings("deprecation")
 	public static String[] getQueryLanguagesOnly(JasperReportsConfiguration context) {
+		/*
 		Set<String> langs = new HashSet<String>();
 		List<JRQueryExecuterFactoryBundle> bundles = context.getExtensions(JRQueryExecuterFactoryBundle.class);
 
@@ -1022,7 +1023,13 @@ public class ModelUtils {
 		}
 		String[] languages = langs.toArray(new String[langs.size()]);
 		Arrays.sort(languages, Collator.getInstance());
-		return languages;
+		*/
+		
+		// returning hard coded list as overriding in extensions registry looks quite
+		// complicated.
+		return new String[] {
+				"SQL", "JSON", "xPath"
+		};
 	}
 
 	public static String[] getExpressionLanguages(JasperReportsConfiguration jconfig) {
