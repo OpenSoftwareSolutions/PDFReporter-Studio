@@ -81,12 +81,14 @@
             language="mdx">
       </queryDesigner>      
    </extension>
+   <!--
    <extension
          point="com.jaspersoft.studio.mappingTool">
       <mappingTool
             MappingToolClass="com.jaspersoft.studio.data.tools.mapping.BeanMappingTool">
       </mappingTool>
    </extension>
+   -->
    <extension
          point="com.jaspersoft.studio.babel.editor.resourceInput">
       <input
