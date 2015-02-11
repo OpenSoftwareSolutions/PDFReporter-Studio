@@ -14,13 +14,13 @@
 			1.7.0
 		</jre.product.version>
 		<macosx.cocoa.x86_64.jre.relative.location>
-			macosx/cocoa/x86_64/jaspersoftstudio/features/jre.macosx.cocoa.x86_64.feature_${jre.product.version}/jre/Contents/Home/bin
+			macosx/cocoa/x86_64/pdfreporterstudio/features/jre.macosx.cocoa.x86_64.feature_${jre.product.version}/jre/Contents/Home/bin
 		</macosx.cocoa.x86_64.jre.relative.location>
 		<linux.gtk.x86_64.jre.relative.location>
-			linux/gtk/x86_64/jaspersoftstudio/features/jre.linux.gtk.x86_64.feature_${jre.product.version}/jre/bin
+			linux/gtk/x86_64/pdfreporterstudio/features/jre.linux.gtk.x86_64.feature_${jre.product.version}/jre/bin
 		</linux.gtk.x86_64.jre.relative.location>
 		<linux.gtk.x86.jre.relative.location>
-			linux/gtk/x86/jaspersoftstudio/features/jre.linux.gtk.x86.feature_${jre.product.version}/jre/bin
+			linux/gtk/x86/pdfreporterstudio/features/jre.linux.gtk.x86.feature_${jre.product.version}/jre/bin
 		</linux.gtk.x86.jre.relative.location>
 	</properties>
 
@@ -54,7 +54,7 @@
 							<products>
 								<product>
 									<id>com.jaspersoft.studio.rcp.product</id>
-									<rootFolder>jaspersoftstudio</rootFolder>								
+									<rootFolder>pdfreporterstudio</rootFolder>								
 								</product>
 							</products>						
 						</configuration>
