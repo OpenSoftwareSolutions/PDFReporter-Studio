@@ -69,11 +69,11 @@
             name="PDFReporter Studio">
          <property
                name="windowImages"
-               value="icons/jss_16.png,icons/jss_icon_32.png,icons/jss_icon_48.png,icons/jss_icon_64.png,icons/jss_icon_128.png">
+               value="icons/jss_16.png,icons/jss_icon_32.png,icons/jss_icon_48.png,icons/jss_icon_64.png,icons/jss_icon_128.png,icons/jss_icon_256.png">
          </property>
          <property
                name="aboutText"
-               value="Jaspersoft Studio - Visual Designer for JasperReports. &#x0A;Copyright (C) 2010 - 2014 TIBCO Software Inc. All rights reserved. &#x0A;&#x0A;For more information, please visit &#x0A;http://community.jaspersoft.com/project/jaspersoft-studio  &#x0A;&#x0A;Special thanks to all people who support this software.">
+               value="PDFReporter Studio - Visual Designer for PDFReporting. &#x0A;Copyright (C) 2015  Open Software Solutions GmbH. All rights reserved. &#x0A;Copyright (C) 2010 - 2014 TIBCO Software Inc. All rights reserved. &#x0A;&#x0A;Special thanks to all people who support this software.">
          </property>
          <property
                name="aboutImage"
@@ -97,7 +97,7 @@
          </property>
          <property
                name="startupForegroundColor"
-               value="0061A2">
+               value="000000">
          </property>
       </product>
    </extension> 
