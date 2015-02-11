@@ -1757,6 +1757,7 @@
   </menuContribution>
 	</extension>
 	
+	<!--
 	<extension
          point="org.eclipse.ui.intro.configExtension">
       <configExtension
@@ -1772,6 +1773,7 @@
             content="intro/jssPluginSamplesIntro.xml">
       </configExtension>
    </extension>
+   -->
  <extension
        point="org.eclipse.core.runtime.adapters">
     <factory

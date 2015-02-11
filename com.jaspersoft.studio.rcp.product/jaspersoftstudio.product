@@ -40,15 +40,14 @@ Special thanks to all people who support this software.
       startupMessageRect="4,240,358,18"
       startupForegroundColor="000000" />
    <launcher name="PDFReporter Studio">
-      <linux icon="/com.jaspersoft.studio.rcp/icons/jss_icon_128.xpm"/>
-      <macosx icon="/com.jaspersoft.studio.rcp/icons/pdfreporter.icns"/>
+      <linux icon="/icons/jss_icon_128.xpm"/>
+      <macosx icon="/icons/pdfreporter.icns"/>
       <solaris/>
       <win useIco="true">
-         <ico path="/com.jaspersoft.studio.rcp/icons/pdfreporter.ico"/>
+         <ico path="/icons/pdfreporter.ico"/>
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>

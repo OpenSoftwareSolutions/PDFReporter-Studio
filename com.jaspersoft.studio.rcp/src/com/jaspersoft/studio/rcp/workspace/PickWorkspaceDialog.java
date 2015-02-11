@@ -54,7 +54,7 @@ import com.jaspersoft.studio.rcp.messages.Messages;
 public class PickWorkspaceDialog extends TitleAreaDialog {
 
 	// the name of the default workspace for Jaspersoft Studio installation (also for back-compatibility)
-	public static final String JSS_DEFAULT_WS = "JaspersoftWorkspace"; //$NON-NLS-1$
+	public static final String JSS_DEFAULT_WS = "PDFReporterStudioWorkspace"; //$NON-NLS-1$
 
     private static final String KEY_WS_ROOT_DIR   = "wsRootDir"; //$NON-NLS-1$
     private static final String KEY_LAST_USED_WORKSPACES = "wsLastUsedWorkspaces"; //$NON-NLS-1$
@@ -137,9 +137,14 @@ public class PickWorkspaceDialog extends TitleAreaDialog {
             workspacePathCombo = new Combo(inner, SWT.BORDER);
             workspacePathCombo.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
             String wsRoot = preferences.get(KEY_WS_ROOT_DIR, ""); //$NON-NLS-1$
+            
+            System.out.println("wsRoot=" + wsRoot);
+            
             if (wsRoot == null || wsRoot.length() == 0) {
                 wsRoot = getWorkspacePathSuggestion();
+                System.out.println("wsRoot (updated from suggestion)=" + wsRoot);
             }
+            
             workspacePathCombo.setText(wsRoot == null ? "" : wsRoot); //$NON-NLS-1$
 
             String lastUsed = preferences.get(KEY_LAST_USED_WORKSPACES, ""); //$NON-NLS-1$

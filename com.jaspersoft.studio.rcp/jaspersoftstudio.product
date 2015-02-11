@@ -32,13 +32,13 @@ Special thanks to all people who support this software.
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/com.jaspersoft.studio.rcp/icons/jss_16.png" i32="/com.jaspersoft.studio.rcp/icons/jss_icon_32.png" i48="/com.jaspersoft.studio.rcp/icons/jss_icon_48.png" i64="/com.jaspersoft.studio.rcp/icons/jss_icon_64.png" i128="/com.jaspersoft.studio.rcp/icons/jss_icon_128.png" i256="/com.jaspersoft.studio.rcp/icons/jss_icon_256.png"/>
+   <windowImages i16="/icons/jss_16.png" i32="/jss_icon_32.png" i48="/icons/jss_icon_48.png" i64="/icons/jss_icon_64.png" i128="/icons/jss_icon_128.png" i256="/icons/jss_icon_256.png"/>
 
    <splash
       location="com.jaspersoft.studio.rcp"
       startupProgressRect="0,260,362,5"
       startupMessageRect="4,240,358,18"
-      startupForegroundColor="000000" />
+      startupForegroundColor="FFFFFF" />
    <launcher name="Jaspersoft Studio">
       <linux icon="/com.jaspersoft.studio.rcp/icons/jss_icon_128.xpm"/>
       <macosx icon="/com.jaspersoft.studio.rcp/icons/jaspersoftstudio.icns"/>
@@ -48,6 +48,7 @@ Special thanks to all people who support this software.
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>

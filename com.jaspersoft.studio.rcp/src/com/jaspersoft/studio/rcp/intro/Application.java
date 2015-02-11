@@ -48,6 +48,9 @@ public class Application implements IApplication {
 		
 		try {
 			Location instanceLoc = Platform.getInstanceLocation(); 
+			
+			System.out.println("instanceLoc.allowsDefault()=" + instanceLoc.allowsDefault());
+			System.out.println("instanceLoc.isSet()=" + instanceLoc.isSet());
 			 
 			if(!instanceLoc.allowsDefault() && !instanceLoc.isSet()) {
 		        // get the last used workspace location 
@@ -61,6 +64,10 @@ public class Application implements IApplication {
 	            if (ret != null) { 
 	            	showPickupDialog = true;
 	            }
+	            
+	            System.out.println("showPickupDialog=" + showPickupDialog);
+	            System.out.println("lastUsedWs=" + lastUsedWs);
+	            System.out.println("ret=" + ret);
 		 
 		        if (showPickupDialog) { 
 		            PickWorkspaceDialog pwd = new PickWorkspaceDialog(false,Activator.getDefault().getImage("icons/jss_icon_64.png")); 
@@ -82,18 +89,21 @@ public class Application implements IApplication {
 		            } 
 		            else { 
 		            	// tell Eclipse what the selected location was and continue 
+			            System.out.println("setting from last selected location: " + pwd.getSelectedWorkspaceLocation());
 		            	instanceLoc.set(new URL("file", null, pwd.getSelectedWorkspaceLocation()), false); 
 		            } 
 		        } 
 		        else { 
 		            // set the last used location and continue 
+		            System.out.println("setting from last used location: " + lastUsedWs);
 		            instanceLoc.set(new URL("file", null, lastUsedWs), false); 
 		        }
 			}
 			
 			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor(openDocProcessor));
 		    if (returnCode !=  PlatformUI.RETURN_RESTART) return EXIT_OK;
-		    return EXIT_RELAUNCH.equals(Integer.getInteger(PROP_EXIT_CODE)) ? EXIT_RELAUNCH : EXIT_RESTART;		} finally {
+		    return EXIT_RELAUNCH.equals(Integer.getInteger(PROP_EXIT_CODE)) ? EXIT_RELAUNCH : EXIT_RESTART;		} 
+		finally {
 			display.dispose();
 		}
 	}
