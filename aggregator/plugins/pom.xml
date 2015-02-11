@@ -66,9 +66,7 @@
 		<module>../../com.jaspersoft.studio.doc</module>
 		<module>../../com.jaspersoft.studio.doc.samples</module>
 		<module>../../com.jaspersoft.studio.editor.jrexpressions</module>
-		<module>
-			../../com.jaspersoft.studio.editor.jrexpressions.ui
-		</module>
+		<module>../../com.jaspersoft.studio.editor.jrexpressions.ui</module>
 		<module>../../com.jaspersoft.studio.html</module>
 		<module>../../com.jaspersoft.studio.properties</module>
 		<module>../../com.jaspersoft.studio.rcp</module>
