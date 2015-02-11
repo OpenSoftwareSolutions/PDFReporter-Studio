@@ -205,12 +205,12 @@
    </extension>
    <extension
          id="com.jaspersoft.studio.preferences"
-         name="Jaspersoft Studio Preferences"
+         name="PDFReporter Preferences"
          point="org.eclipse.ui.preferencePages">
       <page
             class="com.jaspersoft.studio.preferences.StudioPreferencePage"
             id="com.jaspersoft.studio.preferences.StudioPreferencePage"
-            name="Jaspersoft Studio">
+            name="PDFReporter">
       </page>
       <page
             category="com.jaspersoft.studio.preferences.StudioPreferencePage"
@@ -254,6 +254,7 @@
             id="com.jaspersoft.studio.preferences.exporter.PDFExporterPreferencePage"
             name="%PDFExporter">
       </page>
+      <!--
       <page
             category="com.jaspersoft.studio.preferences.exporter.JRExporterPreferencePage"
             class="com.jaspersoft.studio.preferences.exporter.HTMLExporterPreferencePage"
@@ -302,6 +303,7 @@
             id="com.jaspersoft.studio.preferences.exporter.G2DExporterPreferencePage"
             name="%G2DExporter">
       </page>
+      -->
       <page
             category="com.jaspersoft.studio.preferences.StudioPreferencePage"
             class="com.jaspersoft.studio.preferences.execution.ReportExecutionPreferencePage"
