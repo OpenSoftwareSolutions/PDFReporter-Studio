@@ -1,5 +1,5 @@
 # PDFReporter-Studio
-PDFReporter Studio is an open source, eclipse-based report designer based on Jasper Studio using the PDFReporter library. Create very sophisticated layouts containing images, subreports, crosstabs and much more for mobile usage. Access your data through JDBC and XML, custom sources can be added. Then publish your reports as PDF.
+PDFReporter Studio is an open source, eclipse-based report designer based on Jasper Studio using the PDFReporter library. Create very sophisticated layouts containing images, subreports, crosstabs and much more for mobile usage. Access your data through SQL, XML and JSON, custom sources can be added. Then publish your reports as PDF.
 
 # Licensing
 You can use the PDFReporter Studio for designing your documents and reports for mobile usage. The following licenses are used in this product, Affero GNU Public License, GNU Library or Lesser, General Public License version 3.0 (LGPLv3)
