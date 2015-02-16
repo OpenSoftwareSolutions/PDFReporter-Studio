@@ -17,8 +17,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -39,6 +42,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
+import com.jaspersoft.studio.rcp.Activator;
 import com.jaspersoft.studio.rcp.messages.Messages;
 
 /**
@@ -77,6 +81,8 @@ public class PickWorkspaceDialog extends TitleAreaDialog {
 	private static final int maxHistory = 20;
 
 	private boolean switchWorkspace;
+	
+	final static Logger logger = Logger.getLogger(PickWorkspaceDialog.class.getName());
 
 	// whatever the user picks ends up on this variable
 	private String selectedWorkspaceRootLocation;
@@ -138,11 +144,11 @@ public class PickWorkspaceDialog extends TitleAreaDialog {
             workspacePathCombo.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false));
             String wsRoot = preferences.get(KEY_WS_ROOT_DIR, ""); //$NON-NLS-1$
             
-            System.out.println("wsRoot=" + wsRoot);
+            logInfo("wsRoot=" + wsRoot);
             
             if (wsRoot == null || wsRoot.length() == 0) {
                 wsRoot = getWorkspacePathSuggestion();
-                System.out.println("wsRoot (updated from suggestion)=" + wsRoot);
+                logInfo("wsRoot (updated from suggestion)=" + wsRoot);
             }
             
             workspacePathCombo.setText(wsRoot == null ? "" : wsRoot); //$NON-NLS-1$
@@ -469,6 +475,11 @@ public class PickWorkspaceDialog extends TitleAreaDialog {
             err.printStackTrace();
             return false;
         }
+    }
+    
+    public static void logInfo(String msg){
+        IStatus st = new Status(IStatus.INFO,Activator.PLUGIN_ID, msg);
+        Activator.getDefault().getLog().log(st);
     }
 
 }
