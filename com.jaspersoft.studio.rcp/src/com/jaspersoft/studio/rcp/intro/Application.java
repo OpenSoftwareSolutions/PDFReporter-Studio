@@ -14,7 +14,9 @@ package com.jaspersoft.studio.rcp.intro;
 
 import java.net.URL;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -48,10 +50,7 @@ public class Application implements IApplication {
 		
 		try {
 			Location instanceLoc = Platform.getInstanceLocation(); 
-			
-			System.out.println("instanceLoc.allowsDefault()=" + instanceLoc.allowsDefault());
-			System.out.println("instanceLoc.isSet()=" + instanceLoc.isSet());
-			 
+		
 			if(!instanceLoc.allowsDefault() && !instanceLoc.isSet()) {
 		        // get the last used workspace location 
 		        String lastUsedWs = PickWorkspaceDialog.getLastSetWorkspaceDirectory();
@@ -65,9 +64,9 @@ public class Application implements IApplication {
 	            	showPickupDialog = true;
 	            }
 	            
-	            System.out.println("showPickupDialog=" + showPickupDialog);
-	            System.out.println("lastUsedWs=" + lastUsedWs);
-	            System.out.println("ret=" + ret);
+	            logInfo("showPickupDialog=" + showPickupDialog);
+	            logInfo("lastUsedWs=" + lastUsedWs);
+	            logInfo("ret=" + ret);
 		 
 		        if (showPickupDialog) { 
 		            PickWorkspaceDialog pwd = new PickWorkspaceDialog(false,Activator.getDefault().getImage("icons/jss_icon_64.png")); 
@@ -89,13 +88,13 @@ public class Application implements IApplication {
 		            } 
 		            else { 
 		            	// tell Eclipse what the selected location was and continue 
-			            System.out.println("setting from last selected location: " + pwd.getSelectedWorkspaceLocation());
+			            logInfo("setting from last selected location: " + pwd.getSelectedWorkspaceLocation());
 		            	instanceLoc.set(new URL("file", null, pwd.getSelectedWorkspaceLocation()), false); 
 		            } 
 		        } 
 		        else { 
 		            // set the last used location and continue 
-		            System.out.println("setting from last used location: " + lastUsedWs);
+		            logInfo("setting from last used location: " + lastUsedWs);
 		            instanceLoc.set(new URL("file", null, lastUsedWs), false); 
 		        }
 			}
@@ -123,4 +122,10 @@ public class Application implements IApplication {
 			}
 		});
 	}
+	
+  private static void logInfo(String msg){
+    IStatus st = new Status(IStatus.INFO,Activator.PLUGIN_ID, msg);
+    Activator.getDefault().getLog().log(st);
+  }
+
 }
