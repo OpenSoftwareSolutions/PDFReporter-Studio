@@ -72,7 +72,7 @@ public class JRtxEditor extends AMultiEditor implements CachedSelectionProvider{
 		JRSimpleTemplate report = (JRSimpleTemplate) model.getChildren().get(0).getValue();
 		IFile file = ((IFileEditorInput) getEditorInput()).getFile();
 		String xml = JRXmlTemplateWriter.writeTemplate(report, JRXmlWriterHelper.fixencoding(file.getCharset(true)));
-		xml = xml.replaceFirst("<jasperTemplate ", "<!-- Created with Jaspersoft Studio -->\n<jasperTemplate "); //$NON-NLS-1$ //$NON-NLS-2$
+		xml = xml.replaceFirst("<jasperTemplate ", "<!-- Created with PDFReporter Studio -->\n<jasperTemplate "); //$NON-NLS-1$ //$NON-NLS-2$
 		return xml;
 	}
 
