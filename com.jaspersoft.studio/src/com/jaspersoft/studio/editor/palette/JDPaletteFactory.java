@@ -162,7 +162,7 @@ public class JDPaletteFactory {
 			Map<String, List<PaletteEntry>> map) {
 		PaletteDrawer drawer = createGroup(paletteRoot, ignore, p.getName(), p.getImage());
 
-		drawer.add(createJDEntry(MCallout.getIconDescriptor(), MCallout.class));
+		// drawer.add(createJDEntry(MCallout.getIconDescriptor(), MCallout.class));
 
 		drawer.add(createJDEntry(MTextField.getIconDescriptor(), MTextField.class));
 		drawer.add(createJDEntry(MStaticText.getIconDescriptor(), MStaticText.class));
