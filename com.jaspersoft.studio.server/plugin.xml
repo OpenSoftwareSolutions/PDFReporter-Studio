@@ -196,6 +196,7 @@
             ClassFactory="com.jaspersoft.studio.server.editor.JRSEditorContributor">
       </editorLifecycle>
    </extension>
+   <!--
    <extension
          point="org.eclipse.ui.exportWizards">
       <category
@@ -228,6 +229,7 @@
          </selection>
       </wizard>
    </extension>
+   -->
    <extension
          id="server.hyperlinkTypes"
          point="com.jaspersoft.studio.hyperlinkTypes">
@@ -242,6 +244,7 @@
             InputControlProvider="com.jaspersoft.studio.server.editor.input.main.InputControlTypesProvider">
       </inputcontroltypes>
    </extension>
+   <!--
 	 <extension
 	         point="org.eclipse.ui.importWizards">
 	      <category
@@ -267,12 +270,14 @@
 	         </description>
 	      </wizard>
 	   </extension>
+	   -->
   <extension
         point="com.jaspersoft.studio.babel.editor.resourceInput">
      <input
            class="com.jaspersoft.studio.server.messages.ResourcePublisher">
      </input>
   </extension>
+  <!--
   <extension
         point="org.eclipse.ui.handlers">
      <handler
@@ -297,6 +302,8 @@
     </enabledWhen> 
      </handler>
   </extension>
+  -->
+  <!--
   <extension
         point="org.eclipse.ui.commands">
      <command
@@ -311,7 +318,7 @@
            locationURI="menu:project">
         <command
               commandId="com.jaspersoft.studio.server.publish"
-              icon="icons/server--upload.png"
+              icon="icons/server-upload.png"
               id="com.jaspersoft.studio.server.menu.publish"
               style="push"
               tooltip="%publish.command">
@@ -324,7 +331,7 @@
               id="com.jaspersoft.studio.server.toolbar">
            <command
                  commandId="com.jaspersoft.studio.server.publish"
-                 icon="icons/server--upload.png"
+                 icon="icons/server-upload.png"
                  id="com.jaspersoft.studio.community.toolbar.issueSubmit"
                  label="%command.label"
                  style="push"
@@ -333,6 +340,8 @@
         </toolbar>
      </menuContribution>
   </extension>
+  -->
+  <!--
   <extension
         point="org.eclipse.ui.bindings">
      <key
@@ -342,12 +351,14 @@
            sequence="M1+M3+U">
      </key>
   </extension>
+  -->
   <extension
         point="com.jaspersoft.studio.EditorSettingsMenu">
      <EditorSettingsMenu
            ClassFactory="com.jaspersoft.studio.server.publish.action.ServerSettingsEditorMenuContributor">
      </EditorSettingsMenu>
   </extension>
+  <!--
   <extension
         point="org.eclipse.ui.preferencePages">
      <page
@@ -357,6 +368,7 @@
            name="Single Sign On Servers">
      </page>
   </extension>
+  -->
   <extension
         point="org.eclipse.jdt.ui.classpathContainerPage">
      <classpathContainerPage

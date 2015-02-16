@@ -348,7 +348,7 @@
       <page
             class="com.jaspersoft.studio.preferences.StudioPreferencePage"
             id="com.jaspersoft.studio.preferences.StudioPreferencePage.property"
-            name="Jaspersoft Studio">
+            name="PDFReporter Studio">
          <enabledWhen>
             <reference
                   definitionId="com.jaspersoft.studio.projectorjrxml">
@@ -1316,7 +1316,7 @@
          point="org.eclipse.ui.views">
       <category
             id="net.sf.jasperreports"
-            name="Jaspersoft Studio">
+            name="PDFReporter Studio">
       </category>
       <view
             category="net.sf.jasperreports"
@@ -1355,7 +1355,7 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="com.jaspersoft.studio"
-            name="Jaspersoft Studio">
+            name="PDFReporter Studio">
       </category>
       <wizard
             category="com.jaspersoft.studio"
@@ -1439,12 +1439,14 @@
        <decorator
              ClassFactory="com.jaspersoft.studio.editor.gef.decorator.pdf.PDF508ElementDecorator">
        </decorator>
+       <!--
        <decorator
              ClassFactory="com.jaspersoft.studio.editor.gef.decorator.xls.XLSElementDecorator">
        </decorator>
        <decorator
              ClassFactory="com.jaspersoft.studio.editor.gef.decorator.csv.CSVElementDecorator">
        </decorator>
+       -->
     </extension>
     <extension
           point="com.jaspersoft.studio.postsetvalue">
@@ -1525,7 +1527,7 @@
 		  <command
                 commandId="com.jaspersoft.studio.commands.ReportNewWizard"
                 icon="icons/jrxml_icon.png"
-                label="Jasper Report"
+                label="Report"
                 style="push">
           </command>
 		  <command
@@ -1550,7 +1552,7 @@
           <command
                 commandId="com.jaspersoft.studio.commands.ReportNewWizard"
                 icon="icons/jrxml_icon.png"
-                label="Jasper Report"
+                label="Report"
                 style="push">
                 <visibleWhen>
                 	<with
@@ -1797,11 +1799,12 @@
        </adapter>
     </factory>    
  </extension>
+ <!--
  <extension
          point="org.eclipse.ui.importWizards">
       <category
             id="com.jaspersoft.studio"
-            name="Jaspersoft Studio">
+            name="PDFReporter Studio">
       </category>
       <wizard
             category="com.jaspersoft.studio"
@@ -1822,11 +1825,12 @@
          </description>
       </wizard>
    </extension>
+   -->
     <extension
          point="org.eclipse.ui.exportWizards">
       <category
             id="com.jaspersoft.studio"
-            name="Jaspersoft Studio">
+            name="PDFReporter Studio">
       </category>
       <wizard
             category="com.jaspersoft.studio"   
