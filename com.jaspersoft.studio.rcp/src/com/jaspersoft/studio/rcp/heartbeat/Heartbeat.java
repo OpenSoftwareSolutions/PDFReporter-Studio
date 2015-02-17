@@ -57,7 +57,7 @@ public class Heartbeat {
 			ph.setString(UUID_PROPERTY, uuid, InstanceScope.SCOPE);
 		}
 
-		String urlstr = "http://jasperstudio.sf.net/jsslastversion.php?version="
+ 		String urlstr = "http://pdfreporterstudio.sf.net/prslastversion.php?version="
 				+ VERSION + "&uuid=" + uuid + "&new=" + newInstallation;
 		System.out.println("Invoking URL: " + urlstr);
 		BufferedReader in = null;
