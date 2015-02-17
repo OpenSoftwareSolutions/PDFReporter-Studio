@@ -19,11 +19,12 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.UUID;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.widgets.Display;
 
-import com.jaspersoft.studio.JaspersoftStudioPlugin;
 import com.jaspersoft.studio.preferences.util.PropertiesHelper;
 import com.jaspersoft.studio.rcp.Activator;
 
@@ -59,7 +60,9 @@ public class Heartbeat {
 
  		String urlstr = "http://pdfreporterstudio.sf.net/prslastversion.php?version="
 				+ VERSION + "&uuid=" + uuid + "&new=" + newInstallation;
-		System.out.println("Invoking URL: " + urlstr);
+ 		
+		logInfo("Checking for new version at URL: '" + urlstr + "'");
+		
 		BufferedReader in = null;
 		try {
 			URL url = new URL(urlstr);
@@ -70,12 +73,14 @@ public class Heartbeat {
 			optmsg = "";
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
+				logInfo(" -- read line: '" + inputLine + "'");
 				if (version == null)
 					version = inputLine.trim();
 				else
 					optmsg += inputLine;
 			}
 			if (version != null && version.compareTo(VERSION) > 0) {
+				logInfo("Comparing '" + version + "' vs '" + VERSION + "'");
 				if (ph.getBoolean("show_update_dialog", true)) {
 					Display.getDefault().asyncExec(new Runnable() {
 
@@ -108,4 +113,15 @@ public class Heartbeat {
 		}
 
 	}
+	
+    public static void logInfo(String msg){
+        IStatus st = new Status(IStatus.INFO,Activator.PLUGIN_ID, msg);
+        Activator.getDefault().getLog().log(st);
+    }
+    
+    public static void logException(String msg, Throwable e){
+        IStatus st = new Status(IStatus.ERROR,Activator.PLUGIN_ID, msg, e);
+        Activator.getDefault().getLog().log(st);
+    }
+
 }

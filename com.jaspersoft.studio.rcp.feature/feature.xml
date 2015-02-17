@@ -8,7 +8,7 @@
       os="linux,macosx,win32"
       ws="cocoa,gtk,win32">
 
-   <description url="http://community.jaspersoft.com/project/jaspersoft-studio">
+   <description url="http://www.pdfreporting.com">
       Eclipse-based PDFReporter Designer
    </description>
 
@@ -22,8 +22,8 @@
    </license>
 
    <url>
-      <update label="PDF Reporter site" url="http://jasperstudio.sf.net/updates"/>
-      <discovery label="Jaspersoft Studio" url="http://community.jaspersoft.com/project/jaspersoft-studio"/>
+      <update label="PDF Reporter site" url="http://pdfreporterstudio.sf.net/updates"/>
+      <discovery label="PDFReporter Studio" url="http://www.pdfreporting.com"/>
    </url>
 
    <includes
