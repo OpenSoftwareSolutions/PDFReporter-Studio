@@ -57,8 +57,8 @@ public class MainDatasetSection extends AbstractSection {
 		gd.horizontalSpan = 2;
 		createWidget4Property(group, JRDesignDataset.PROPERTY_WHEN_RESOURCE_MISSING_TYPE).getControl().setLayoutData(gd);
 
-		gd = new GridData(GridData.FILL_HORIZONTAL);
-		createWidget4Property(group, JRDesignDataset.PROPERTY_SCRIPTLET_CLASS).getControl().setLayoutData(gd);
+//		gd = new GridData(GridData.FILL_HORIZONTAL);
+//		createWidget4Property(group, JRDesignDataset.PROPERTY_SCRIPTLET_CLASS).getControl().setLayoutData(gd);
 
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		createWidget4Property(group, JRDesignDataset.PROPERTY_RESOURCE_BUNDLE).getControl().setLayoutData(gd);
