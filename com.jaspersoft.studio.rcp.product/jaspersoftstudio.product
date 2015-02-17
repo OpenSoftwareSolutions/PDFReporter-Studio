@@ -38,7 +38,7 @@ Special thanks to all people who support this software.
       location="com.jaspersoft.studio.rcp"
       startupProgressRect="0,260,362,5"
       startupMessageRect="4,240,358,18"
-      startupForegroundColor="000000" />
+      startupForegroundColor="FFFFFF" />
    <launcher name="PDFReporter Studio">
       <linux icon="/icons/jss_icon_128.xpm"/>
       <macosx icon="/icons/pdfreporter.icns"/>
