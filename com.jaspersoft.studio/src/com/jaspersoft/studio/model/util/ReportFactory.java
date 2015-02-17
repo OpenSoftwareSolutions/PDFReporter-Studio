@@ -283,6 +283,7 @@ public class ReportFactory {
 				createNode(nVariables, jrVar, -1);
 
 		// create scriplets
+		/*
 		ANode nScriptlets = new MScriptlets(nDataset, dataSet);
 		if (dataSet.getParametersMap().containsKey(JRParameter.REPORT_SCRIPTLET)) {
 			JRParameter prm = dataSet.getParametersMap().get(JRParameter.REPORT_SCRIPTLET);
@@ -303,7 +304,7 @@ public class ReportFactory {
 			for (JRScriptlet jrScriptlet : dataSet.getScriptletsList())
 				createNode(nScriptlets, jrScriptlet, -1);
 		}
-
+    */
 		if (showGroups) {
 			// create scriplets
 			ANode nGroups = new MGroups(nDataset, dataSet);
