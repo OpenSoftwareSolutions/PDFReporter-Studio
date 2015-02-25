@@ -7,11 +7,11 @@ You can use the PDFReporter Studio for designing your documents and reports for 
 If want professional support please contact sales@pdfreporting.com for further informations. 
 
 # Github Page
-http://opensoftwaresolutions.github.io/PDFReporter-Studio
+[PDFReporter Studio on GitHub Page](http://opensoftwaresolutions.github.io/PDFReporter-Studio)
 
 # Official Webpage
-http://www.pdfreporting.com
+[PDFReporter Studio official webpage](http://www.pdfreporting.com)
 
 # Support & Milestones
-Generally most of the issues will be post on wiki https://github.com/OpenSoftwareSolutions/PDFReporter-Studio/wiki.
-You also find our milestones at https://sourceforge.net/p/pdfreporterstudio/tickets/.
+Generally most of the issues will be post on [Wiki](https://github.com/OpenSoftwareSolutions/PDFReporter-Studio/wiki).
+You also find our milestones at [here](https://sourceforge.net/p/pdfreporterstudio/tickets/).
